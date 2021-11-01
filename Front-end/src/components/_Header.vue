@@ -62,7 +62,7 @@
                                                             <router-link to="/home-one">전체 설문조사</router-link>
                                                         </li>
                                                         <li>
-                                                            <router-link to="/home-two">참여한 설문조사</router-link>
+                                                            <router-link to="/surveydrawup">참여한 설문조사</router-link>
                                                         </li>
                                                     </ul>
                                                 </li>
