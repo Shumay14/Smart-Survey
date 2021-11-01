@@ -4,7 +4,6 @@
         <div class="header-area__desktop header-area__desktop--default">
 
 
-
             <!--=======  header info area  =======-->
             <div class="header-info-area">
                 <div class="container">
@@ -12,6 +11,7 @@
                         <div class="col-lg-12">
                             <div class="header-info-wrapper align-items-center">
                                 <!-- logo -->
+
                                 <div class="logo">
                                     <router-link to="/">
                                         <img src="assets/img/logo/logo.png" class="img-fluid" alt="Brand Logo">
@@ -24,10 +24,14 @@
                                 </div>
 
                                 <div>
-                                    <label type="button" class="btn btn-primary" style="width: 11em">메타마스크 로그인
-                                        <Web3/>
+                                    <label type="button" class="btn btn-dark" v-if="!this.$store.state.metamaskAdd" style="width:7em">
+                                        <MetamaskLogo/>
+                                        로그인
+                                        <Web3 />
                                     </label>
-                                    <label type="button" class="btn btn-primary" style="width: 11em" @click="logout()">메타마스크 로그아웃
+
+                                    <label type="button" class="btn btn-dark" style="width:7em"
+                                        @click="logout()" v-show="this.$store.state.metamaskAdd">로그아웃
                                     </label>
                                 </div>
 
@@ -136,11 +140,13 @@
 <script>
     import FixedHeader from 'vue-fixed-header'
     import Web3 from "@/components/_Web3"
+    import MetamaskLogo from "@/components/_MetamaskLogo"
 
     export default {
         components: {
             FixedHeader,
-            Web3
+            Web3,
+            MetamaskLogo
         },
         methods: {
             // offcanvas mobilemenu
@@ -153,7 +159,7 @@
                 }
             },
             logout() {
-                this.$store.commit("metamaskAdd",null)
+                this.$store.commit("metamaskAdd", null)
             }
         },
     };
