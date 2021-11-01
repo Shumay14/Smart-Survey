@@ -12,6 +12,11 @@
                                 <SurveyContent :blogDetailsData="data.blogDetails" />
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-8 order-2 order-lg-2">
+                                <button class="hero-slider__btn">GET START</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -36,7 +41,7 @@ import BlogComment from '@/components/BlogComment';
         },
         data () {
             return {
-                data
+                data 
             }
         },
     };
