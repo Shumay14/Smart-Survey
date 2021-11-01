@@ -4,6 +4,7 @@ import FAQ from "../views/_SC_FAQ.vue";
 import OneOnOne from "../views/_SC_OneOnOne.vue";
 import Notice from "../views/_SC_Notice.vue";
 import MyPage from "../views/_MP_MyPage.vue";
+import SurveyDrawUp from "../views/_SV_SurveyDrawUp.vue";
 import SurveyList from "../views/_SurveyList.vue";
 
 
@@ -106,6 +107,10 @@ const routes = [
         path: "/notice",
         name: "notice",
         component: Notice,
+      },{
+        path: "/surveydrawup",
+        name: "surveydrawup",
+        component: SurveyDrawUp,
       },
 ]
 
