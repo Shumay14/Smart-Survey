@@ -34,7 +34,7 @@
 </template>
 
 <script>
-    import Header from '@/components/Header';
+    import Header from '@/components/_Header';
     import HeroOne from '../components/sections/HeroOne';
     import ServiceSlider from '../components/sections/ServiceSlider';
     import FunFact from '../components/FunFact';
@@ -45,7 +45,7 @@
     import BlogSection from '../components/sections/BlogSection';
     import BrandCarousel from '../components/BrandCarousel';
     import Footer from '../components/Footer';
-    import OffCanvasMobileMenu from '@/components/OffCanvasMobileMenu'
+    import OffCanvasMobileMenu from '@/components/_OffCanvasMobileMenu'
 
     import data from '../data/slider.json'
     export default {

@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@vue/compiler-sfc": "^3.2.20",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.6.1",
     "core-js": "^3.6.4",
@@ -23,7 +24,8 @@
     "vue-silentbox": "^0.1.9",
     "vue2-google-maps": "^0.10.7",
     "vuex": "^3.6.2",
-    "vuex-persistedstate": "^4.1.0"
+    "vuex-persistedstate": "^4.1.0",
+    "web3": "^1.6.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.2.0",

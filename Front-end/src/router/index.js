@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import MyPage from "../views/_MyPage.vue";
+
 
 Vue.use(VueRouter)
 
@@ -79,6 +81,12 @@ const routes = [
         name: 'Contact',
         component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
     },
+    // DID Project 팀 프로젝트
+    {
+        path: "/mypage",
+        name: "mypage",
+        component: MyPage,
+      },
 ]
 
 const router = new VueRouter({
