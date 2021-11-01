@@ -1,7 +1,9 @@
-import { createStore } from "vuex";
+import Vue from "vue";
+import Vuex from "vuex";
 import persistedstate from "vuex-persistedstate";
+Vue.use(Vuex)
 
-const store = createStore({
+const store = new Vuex.Store({
 
   state() {
     return {

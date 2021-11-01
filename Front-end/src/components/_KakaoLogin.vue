@@ -1,13 +1,13 @@
 <template>
     <div>
 
-        <label class="btn" v-show="!KakaoUser.email" @click="kakaologin()">
-            <img class="custom-login-btn" src="../assets/카카오연동.png" />
+        <label class="btn" v-show="!this.$store.state.KakaoUser.email" @click="kakaologin()">
+            <img class="custom-login-btn" src="../assets/img/카카오연동.png" />
         </label>
 
         
-        <label class="btn" v-show="KakaoUser.email" @click="kakaologout()">
-               <img class="custom-login-btn" src="../assets/카카오연동해제.png" />
+        <label class="btn"  v-show="this.$store.state.KakaoUser.email" @click="kakaologout()">
+               <img class="custom-login-btn" src="../assets/img/카카오연동해제.png" />
         </label>
         
 
@@ -26,7 +26,7 @@
         },
         //캐싱 해놓았다가 필요한 부분에 다시 재 사용
         computed: {
-            user() {
+            KakaoUser() {
                 return this.$store.state.KakaoUser;
             },
         },
@@ -38,6 +38,7 @@
         methods: {
 
             kakaologin() {
+                console.log(this.$store.state.KakaoUser);
                 Kakao.Auth.login({
                     // scope을 만든다. 닉네임,이메일 등 쓰겠다는 것을 정의해야 한다.
                     scope: "profile_nickname, account_email, gender, age_range, birthday",
@@ -66,7 +67,7 @@
             },
 
             kakaologout() {
-                
+                console.log(this.$store.state.KakaoUser);
                 if (!Kakao.Auth.getAccessToken()) {
                     console.log("아직 로그인 되지 않았습니다.");
                     return;

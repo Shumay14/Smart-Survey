@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import MyPage from "../views/_MyPage.vue";
+import FAQ from "../views/_SC_FAQ.vue";
+import OneOnOne from "../views/_SC_OneOnOne.vue";
+import Notice from "../views/_SC_Notice.vue";
+import MyPage from "../views/_MP_MyPage.vue";
+import SurveyList from "../views/_SurveyList.vue";
 
 
 Vue.use(VueRouter)
@@ -86,6 +90,22 @@ const routes = [
         path: "/mypage",
         name: "mypage",
         component: MyPage,
+      }, {
+        path: "/surveyList",
+        name: "surveyList",
+        component: SurveyList,
+      },{
+        path: "/faq",
+        name: "faq",
+        component: FAQ,
+      },{
+        path: "/oneonone",
+        name: "oneonone",
+        component: OneOnOne,
+      },{
+        path: "/notice",
+        name: "notice",
+        component: Notice,
       },
 ]
 

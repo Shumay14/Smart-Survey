@@ -7,6 +7,14 @@ import VueMeta from 'vue-meta'
 import VueSilentbox from 'vue-silentbox'
 import BackToTop from 'vue-backtotop'
 
+// vuex store
+import store from "./store/index";
+
+// kakaoLogin
+Kakao.init("4c0b3cb9449ad1776bd5e54e4afa9cba")
+Kakao.isInitialized();
+
+
 Vue.use(VueSilentbox)
 Vue.use(BootstrapVue)
 Vue.use(BackToTop)
@@ -30,5 +38,6 @@ Vue.config.productionTip = false
 
 new Vue({
     router,
+    store,
     render: h => h(App)
 }).$mount('#app')

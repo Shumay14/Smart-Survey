@@ -24,8 +24,10 @@
                                 </div>
 
                                 <div>
-                                    <label type="button" class="btn btn-primary">메타마스크 연동
+                                    <label type="button" class="btn btn-primary" style="width: 11em">메타마스크 로그인
                                         <Web3/>
+                                    </label>
+                                    <label type="button" class="btn btn-primary" style="width: 11em" @click="logout()">메타마스크 로그아웃
                                     </label>
                                 </div>
 
@@ -70,16 +72,16 @@
                                                 </li>
 
                                                 <li class="has-children has-children--multilevel-submenu">
-                                                    <router-link to="/service">고객센터</router-link>
+                                                    <router-link to="/notice">고객센터</router-link>
                                                     <ul class="submenu">
                                                         <li>
-                                                            <router-link to="/service">공지사항</router-link>
+                                                            <router-link to="/notice">공지사항</router-link>
                                                         </li>
                                                         <li>
-                                                            <router-link to="/service-details">1:1 문의</router-link>
+                                                            <router-link to="/oneonone">1:1 문의</router-link>
                                                         </li>
                                                         <li>
-                                                            <router-link to="/service-details-right">FAQ</router-link>
+                                                            <router-link to="/faq">FAQ</router-link>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -150,6 +152,9 @@
                     el.classList.remove(className);
                 }
             },
+            logout() {
+                this.$store.commit("metamaskAdd",null)
+            }
         },
     };
 </script>
