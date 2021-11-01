@@ -39,39 +39,39 @@
         }
     ],
     "blogSidebarData": {
-        "searchTitle": "Search",
-        "CategoriesTitle": "Categories",
+        "searchTitle": "검색",
+        "CategoriesTitle": "카테고리",
         "categories": [
             {
-                "title": "Renovation",
+                "title": "정부/정책",
                 "link": "/blog-details"
             },
             {
-                "title": "Architecture",
+                "title": "부동산",
                 "link": "/blog-details"
             },
             {
-                "title": "Concrete Supply",
+                "title": "차량",
                 "link": "/blog-details"
             },
             {
-                "title": "Laminate Flooring",
+                "title": "금융/투자",
                 "link": "/blog-details"
             },
             {
-                "title": "Consulting",
+                "title": "디자인",
                 "link": "/blog-details"
             },
             {
-                "title": "Interior Design",
+                "title": "여행",
                 "link": "/blog-details"
             },
             {
-                "title": "Project Planning",
+                "title": "음식",
                 "link": "/blog-details"
             }
         ],
-        "popularPostTitle": "Popular Post",
+        "popularPostTitle": "인기있는 설문",
         "popularPost": [
             {
                 "image": "assets/img/blog/sidebar-blog-1.jpg",
@@ -89,38 +89,46 @@
                 "date": "March 12, 2020"
             }
         ],
-        "tagTitle": "Popular Tags",
+        "tagTitle": "제공할 정보 목록 (VC-Grade)",
         "tags": [
             {
-                "name": "Renovation",
+                "name": "성별",
                 "link": "/blog-left-sidebar"
             },
             {
-                "name": "Interior",
+                "name": "나이대",
                 "link": "/blog-left-sidebar"
             },
             {
-                "name": "Concrete",
+                "name": "학력",
                 "link": "/blog-left-sidebar"
             },
             {
-                "name": "Flooring",
+                "name": "거주지",
                 "link": "/blog-left-sidebar"
             },
             {
-                "name": "Consulting",
+                "name": "전공",
                 "link": "/blog-left-sidebar"
             },
             {
-                "name": "Planning",
+                "name": "연봉",
                 "link": "/blog-left-sidebar"
             },
             {
-                "name": "Architecture",
+                "name": "자격증",
                 "link": "/blog-left-sidebar"
             },
             {
-                "name": "Industry",
+                "name": "이메일",
+                "link": "/blog-left-sidebar"
+            },
+            {
+                "name": "전화번호",
+                "link": "/blog-left-sidebar"
+            },
+            {
+                "name": "차량 보유 여부",
                 "link": "/blog-left-sidebar"
             }
         ]
