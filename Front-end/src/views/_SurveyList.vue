@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import Header from '@/components/Header';
+    import Header from '@/components/_Header';
     import Breadcrumb from '../components/Breadcrumb'
     import SurveySlider from '../components/sections/_SurveySlider';
     import SurveyDetailWrapper from '../components/sections/_SurveyDetailWrapper'
