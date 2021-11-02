@@ -8,7 +8,8 @@ const store = new Vuex.Store({
   state() {
     return {
       KakaoUser: {},
-      metamaskAdd: {}
+      metamaskAdd: {},
+      metamaskShortAdd: ""
     };
   },
   mutations: {
@@ -17,6 +18,7 @@ const store = new Vuex.Store({
     },
     metamaskAdd(state, data) {
       state.metamaskAdd = data;
+      state.metamaskShortAdd = data.substring(0,4) + "..." + data.substring(39,42);
     },
   },
   plugins: [

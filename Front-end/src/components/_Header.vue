@@ -66,7 +66,7 @@
                                                                     <router-link to="/mypage">마이페이지</router-link>
                                                                 </li>
                                                                 <li>
-                                                                    <router-link to="/project-details">관심사 설정
+                                                                    <router-link to="/favorite">관심사 설정
                                                                     </router-link>
                                                                 </li>
                                                             </ul>
@@ -99,15 +99,18 @@
                                     </div>
 
                                     <div class="col-3">
-                                        <label type="button" class="btn btn-dark" v-if="!this.$store.state.metamaskAdd"
-                                            style="width:7em">
+
+                                        <label class="metamask_Logo">
                                             <MetamaskLogo />
+                                        </label>
+                                        <label type="button" class="metamask_Logo_Button btn btn-dark"
+                                            v-if="(this.$store.state.metamaskAdd)==null" style="width:7em">
                                             로그인
                                             <Web3 />
                                         </label>
 
-                                        <label type="button" class="btn btn-dark" style="width:7em" @click="logout()"
-                                            v-show="this.$store.state.metamaskAdd">로그아웃
+                                        <label type="button" class="btn btn-dark metamask_Logo_Button" style="width:8em" @click="logout()"
+                                            v-show="(this.$store.state.metamaskAdd)!=null">{{this.$store.state.metamaskShortAdd}}
                                         </label>
                                     </div>
 
@@ -152,7 +155,8 @@
             },
             logout() {
                 this.$store.commit("metamaskAdd", null)
-            }
+            },
+            
         },
     };
 </script>
@@ -166,5 +170,22 @@
         position: fixed;
         box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
         animation: 900ms cubic-bezier(0.2, 1, 0.22, 1) 0s normal none 1 running fadeInDown;
+    }
+
+    .metamask_Logo {
+        border: 3px solid black;
+        padding: 5px;
+        border-radius: 30px;
+        top: -18px;
+        position: absolute;
+        z-index: 3;
+        background: white;
+    }
+
+    .metamask_Logo_Button {
+        position: absolute;
+        top: -15px;
+        left: 40px;
+        z-index: 1;
     }
 </style>
