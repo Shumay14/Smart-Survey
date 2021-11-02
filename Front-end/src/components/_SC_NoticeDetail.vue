@@ -8,22 +8,10 @@
                         <!-- 내용 시작-->
                         <div class="row">
                             <div class="blog-details col-12">
-
-
                                 <div class="blog-inner">
-                                    <!-- <div class="media">
-                                        <div class="image">
-                                            <img src="https://lh3.googleusercontent.com/proxy/SPxoTn3gHpdVaCaBrjByJXdHQHgrgV96Cb4S6J34TKmpydcL2ERLcgxrFdUg1OY9lORAtPITqUomeE-48RYCuQ9HCA6I6PvJzT9xip-v0ZuyCkcAgQN0vMHsN5Vc3geQ_6zExVjT62sQje2eLgoTVoI"
-                                                alt="image">
-                                        </div>
-                                    </div> -->
-
                                     <div class="content">
-                                        <h2 class="title">스마트 서베이 개발 시작</h2>
-                                        <!-- <h2 class="title">{{ blogDetailsData.title }}</h2> -->
-                                        <!-- 제목 -->
+                                        <!-- <h2 class="title">스마트 서베이 개발 시작</h2>
                                         <div class="desc section-space--bottom--30">
-                                            <!-- <p>{{ blogDetailsData.desc_para1 }}</p> -->
                                             <p>안녕하세요!<br>어느덧 찬바람이 불어오기시작하는 11월 입니다.<br></p>
 
                                             <blockquote
@@ -32,7 +20,6 @@
                                                 <span class="author">__HK DID 3팀</span>
                                             </blockquote>
 
-                                            <!-- <p>{{ blogDetailsData.desc_para3 }}</p> -->
                                             <p>11월 1일 부터 스마트서베이 개발을 시작합니다.<br></p>
 
                                         </div>
@@ -40,10 +27,33 @@
                                             <li>By HK DID 3팀
                                             </li>
                                             <li>
-                                                <!-- <a href="commentLink">{{ blogDetailsData.metas.comment }}</a> -->
                                                 2021.11.01
                                             </li>
-                                        </ul>
+                                        </ul> -->
+                                        <!-- 시작 -->
+                                        <table class="table table-hover">
+                                            <thead align="center">
+                                                <tr>
+                                                    <th class="col-2">번호</th>
+                                                    <th class="col-8">제목</th>
+                                                    <th class="col-2">날짜</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody align="center">
+                                                <tr>
+                                                    <th class="col-2">2</th>
+                                                    <td class="col-8">대규모 업데이트 공고</td>
+                                                    <td class="col-2">2021-11-02</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="col-2">1</th>
+                                                    <td class="col-8">서베이스낵이 변경됩니다</td>
+                                                    <td class="col-2">2021-11-01</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                        <!-- 끝 -->
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +91,7 @@
                             <div class="sidebar-blog">
                                 <div class="content">
                                     <h5>
-                                        <router-link to="/faq" >FAQ</router-link>
+                                        <router-link to="/faq">FAQ</router-link>
                                     </h5>
                                 </div>
                             </div>
@@ -106,7 +116,7 @@
     };
 </script>
 <style>
-/* .sidebar-blog:hover {
+    /* .sidebar-blog:hover {
     background-color: coral;
 } */
 </style>

@@ -3,9 +3,42 @@
     <div class="header-area">
         <div class="header-area__desktop header-area__desktop--default">
 
+
             <fixed-header>
                 <!--=======  header info area  =======-->
                 <div class="header-info-area" style="border: 0 3px 0 solid red">
+                    <!--=======  header top bar  =======-->
+                    <div class="header-top-bar">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+
+                                    <!-- top bar left -->
+                                    <div class="top-bar-left-wrapper">
+                                        <div class="social-links social-links--white-topbar d-inline-block">
+                                            <table>
+                                                <tr class=" mx-auto">
+
+                                                    <td class="table-dark">총 설문 금액</td>
+                                                    <td class="table-dark">참여 가능한 설문 수</td>
+                                                    <td class="table-dark">예상 수익</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <!-- top bar right -->
+
+                                    <div class="top-bar-right-wrapper">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--=======  End of header top bar   =======-->
+
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-12">
@@ -98,7 +131,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-3">
+                                    <div class="col-3 metamask_div">
 
                                         <label class="metamask_Logo">
                                             <MetamaskLogo />
@@ -109,7 +142,8 @@
                                             <Web3 />
                                         </label>
 
-                                        <label type="button" class="btn btn-dark metamask_Logo_Button" style="width:8em" @click="logout()"
+                                        <label type="button" class="btn btn-dark metamask_Logo_Button" style="width:8em"
+                                            @click="logout()"
                                             v-show="(this.$store.state.metamaskAdd)!=null">{{this.$store.state.metamaskShortAdd}}
                                         </label>
                                     </div>
@@ -156,7 +190,7 @@
             logout() {
                 this.$store.commit("metamaskAdd", null)
             },
-            
+
         },
     };
 </script>
@@ -170,6 +204,10 @@
         position: fixed;
         box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
         animation: 900ms cubic-bezier(0.2, 1, 0.22, 1) 0s normal none 1 running fadeInDown;
+    }
+
+    .metamask_div {
+        position: relative;
     }
 
     .metamask_Logo {
