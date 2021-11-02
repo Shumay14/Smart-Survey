@@ -84,7 +84,6 @@
 
             .header-info-area {
                 @media #{$desktop-device, $tablet-device, $large-mobile} {
-                    padding: 5px 0;
                 }
             }
         }
@@ -496,7 +495,7 @@
 /* header info area */
 
 .header-info-area {
-    padding: 5px 0;
+    padding:  0;
     background-color: $white;
     border-bottom: 3px solid rgb(240, 91, 5);
 
