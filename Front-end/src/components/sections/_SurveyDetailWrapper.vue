@@ -27,17 +27,12 @@
 <script>
 import data from '../../data/blog.json'
 
-// import BlogSidebar from '@/components/sections/BlogSidebar';
-// import BlogDetailsContent from '@/components/BlogDetailsContent';
-// import BlogComment from '@/components/BlogComment';
 import SurveySidebar from '@/components/sections/_SurveySidebar';
-import SurveyContent from '@/components/_SurveyContent';
-import BlogComment from '@/components/BlogComment';
+import SurveyContent from '@/components/_SV_SurveyContent';
     export default {
         components: {
             SurveySidebar,
-            SurveyContent,
-            BlogComment
+            SurveyContent
         },
         data () {
             return {
