@@ -3,106 +3,76 @@
     <div class="header-area">
         <div class="header-area__desktop header-area__desktop--default">
 
-
-            <!--=======  header info area  =======-->
-            <div class="header-info-area">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-12">
-                            <div class="header-info-wrapper align-items-center">
-                                <!-- logo -->
-
-                                <div class="logo">
-                                    <router-link to="/">
-                                        <img src="assets/img/logo/logo.png" class="img-fluid" alt="Brand Logo">
-                                    </router-link>
-                                </div>
-
-                                <!-- header contact info -->
-                                <div class="header-contact-info">
-                                    <!-- <button type="button" class="btn">메타마스크 연동</button> -->
-                                </div>
-
-                                <div>
-                                    <label type="button" class="btn btn-dark" v-if="!this.$store.state.metamaskAdd" style="width:7em">
-                                        <MetamaskLogo/>
-                                        로그인
-                                        <Web3 />
-                                    </label>
-
-                                    <label type="button" class="btn btn-dark" style="width:7em"
-                                        @click="logout()" v-show="this.$store.state.metamaskAdd">로그아웃
-                                    </label>
-                                </div>
-
-
-                                <!-- mobile menu -->
-                                <div class="mobile-navigation-icon" id="mobile-menu-trigger"
-                                    @click="mobiletoggleClass('addClass', 'active')">
-                                    <i></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--=======  End of header info area =======-->
-
-            <!--=======  header navigation area  =======-->
             <fixed-header>
-                <div class="header-navigation-area default-bg">
+                <!--=======  header info area  =======-->
+                <div class="header-info-area" style="border: 0 3px 0 solid red">
                     <div class="container">
-                        <div class="row">
+                        <div class="row align-items-center">
                             <div class="col-lg-12">
-                                <!-- header navigation -->
-                                <div class="header-navigation header-navigation--header-default position-relative">
-                                    <div class="header-navigation__nav position-static">
-                                        <nav>
-                                            <ul>
-                                                <li class="has-children has-children--multilevel-submenu">
-                                                    <router-link to="/home-one">설문조사</router-link>
-                                                    <ul class="submenu">
-                                                        <li>
-                                                            <router-link to="/home-one">전체 설문조사</router-link>
-                                                        </li>
-                                                        <li>
-                                                            <router-link to="/surveydrawup">참여한 설문조사</router-link>
-                                                        </li>
-                                                    </ul>
-                                                </li>
+                                <div class="header-info-wrapper align-items-center row">
 
-                                                <li>
-                                                    <router-link to="/about">설문 등록</router-link>
-                                                </li>
+                                    <!-- logo START -->
+                                    <div class="logo col-3">
+                                        <router-link to="/">
+                                            <img src="assets/img/logo/logo.png" class="img-fluid" alt="Brand Logo">
+                                        </router-link>
+                                    </div>
+                                    <!-- logo END -->
 
-                                                <li class="has-children has-children--multilevel-submenu">
-                                                    <router-link to="/notice">고객센터</router-link>
-                                                    <ul class="submenu">
-                                                        <li>
-                                                            <router-link to="/notice">공지사항</router-link>
+                                    <!-- header contact info -->
+                                    <div class="header-contact-info col-6">
+                                        <!-- 네비게이션 -->
+                                        <div
+                                            class="header-navigation header-navigation--header-default position-relative">
+                                            <div class="header-navigation__nav position-static">
+                                                <nav>
+                                                    <ul>
+                                                        <li class="has-children has-children--multilevel-submenu">
+                                                            <router-link to="/home-one">설문조사</router-link>
+                                                            <ul class="submenu">
+                                                                <li>
+                                                                    <router-link to="/home-one">전체 설문조사</router-link>
+                                                                </li>
+                                                                <li>
+                                                                    <router-link to="/surveydrawup">참여한 설문조사
+                                                                    </router-link>
+                                                                </li>
+                                                            </ul>
                                                         </li>
-                                                        <li>
-                                                            <router-link to="/oneonone">1:1 문의</router-link>
-                                                        </li>
-                                                        <li>
-                                                            <router-link to="/faq">FAQ</router-link>
-                                                        </li>
-                                                    </ul>
-                                                </li>
 
-                                                <li class="has-children has-children--multilevel-submenu">
-                                                    <router-link to="/mypage">마이페이지</router-link>
-                                                    <ul class="submenu">
                                                         <li>
+                                                            <router-link to="/about">설문 등록</router-link>
+                                                        </li>
+
+                                                        <li class="has-children has-children--multilevel-submenu">
+                                                            <router-link to="/notice">고객센터</router-link>
+                                                            <ul class="submenu">
+                                                                <li>
+                                                                    <router-link to="/notice">공지사항</router-link>
+                                                                </li>
+                                                                <li>
+                                                                    <router-link to="/oneonone">1:1 문의</router-link>
+                                                                </li>
+                                                                <li>
+                                                                    <router-link to="/faq">FAQ</router-link>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+
+                                                        <li class="has-children has-children--multilevel-submenu">
                                                             <router-link to="/mypage">마이페이지</router-link>
+                                                            <ul class="submenu">
+                                                                <li>
+                                                                    <router-link to="/mypage">마이페이지</router-link>
+                                                                </li>
+                                                                <li>
+                                                                    <router-link to="/project-details">관심사 설정
+                                                                    </router-link>
+                                                                </li>
+                                                            </ul>
                                                         </li>
-                                                        <li>
-                                                            <router-link to="/project-details">관심사 설정</router-link>
-                                                        </li>
-                                                    </ul>
-                                                </li>
 
-                                                <!-- <li class="has-children has-children--multilevel-submenu">
+                                                        <!-- <li class="has-children has-children--multilevel-submenu">
                                                     <router-link to="/blog-left-sidebar">BLOG</router-link>
                                                     <ul class="submenu">
                                                         <li>
@@ -122,8 +92,30 @@
                                                 <li>
                                                     <router-link to="/contact">CONTACT</router-link>
                                                 </li> -->
-                                            </ul>
-                                        </nav>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <label type="button" class="btn btn-dark" v-if="!this.$store.state.metamaskAdd"
+                                            style="width:7em">
+                                            <MetamaskLogo />
+                                            로그인
+                                            <Web3 />
+                                        </label>
+
+                                        <label type="button" class="btn btn-dark" style="width:7em" @click="logout()"
+                                            v-show="this.$store.state.metamaskAdd">로그아웃
+                                        </label>
+                                    </div>
+
+
+                                    <!-- mobile menu -->
+                                    <div class="mobile-navigation-icon" id="mobile-menu-trigger"
+                                        @click="mobiletoggleClass('addClass', 'active')">
+                                        <i></i>
                                     </div>
                                 </div>
                             </div>
@@ -131,10 +123,10 @@
                     </div>
                 </div>
             </fixed-header>
-            <!--=======  End of header navigation area =======-->
+            <!--=======  End of header info area =======-->
         </div>
     </div>
-    <!--====================  End of header area  ====================-->
+
 </template>
 
 <script>

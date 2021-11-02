@@ -84,7 +84,7 @@
 
             .header-info-area {
                 @media #{$desktop-device, $tablet-device, $large-mobile} {
-                    padding: 15px 0;
+                    padding: 5px 0;
                 }
             }
         }
@@ -350,7 +350,7 @@
 
                         &>a {
                             padding: 25px 0;
-                            color: $white;
+                            color: gray ;
                         }
                     }
                 }
@@ -496,10 +496,14 @@
 /* header info area */
 
 .header-info-area {
-    padding: 35px 0;
+    padding: 5px 0;
+    background-color: $white;
+    border-bottom: 3px solid rgb(240, 91, 5);
+
 
     @media #{$desktop-device, $tablet-device, $large-mobile} {
-        border-bottom: 1px solid #eee;
+        // border-bottom: 1px solid #eee;
+        border-bottom: 3px solid rgb(240, 91, 5);
     }
 }
 
