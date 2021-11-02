@@ -28,7 +28,7 @@
                                                 <nav>
                                                     <ul>
                                                         <li class="has-children has-children--multilevel-submenu">
-                                                            <router-link to="/home-one">설문조사</router-link>
+                                                            <router-link to="/surveylist">설문조사</router-link>
                                                             <ul class="submenu">
                                                                 <li>
                                                                     <router-link to="/surveylist">전체 설문조사</router-link>
