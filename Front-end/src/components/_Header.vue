@@ -39,7 +39,6 @@
                     </div>
                     <!--=======  End of header top bar   =======-->
 
-                    <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-12">
                                 <div class="header-info-wrapper align-items-center row">
@@ -155,7 +154,6 @@
                                         <i></i>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>

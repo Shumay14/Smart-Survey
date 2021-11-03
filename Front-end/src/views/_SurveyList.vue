@@ -3,9 +3,11 @@
 
         <Header />
 
+    <br>
+    <br>
         <Breadcrumb :items="items" title="설문 리스트" />
-        <BrandCarousel addClass="grey-bg" />  <!-- 필요없음 -->  
-
+        <!-- <BrandCarousel addClass="grey-bg" />   -->
+        
         <SurveySlider /> <!-- 상단 슬라이드 3개 -->
         <!-- 위 아래 컴포넌트 사이, 보상 가격별 필터링 필요 -->
         <SurveyDetailWrapper /> <!-- 메인 내용, 세부 컴포넌트들을 포함하는 Vue -->
