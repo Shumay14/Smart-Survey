@@ -84,7 +84,7 @@ const routes = [{
     {
         path: '/contact',
         name: 'Contact',
-        component: () => import( /* webpackChunkName: "contact" */ '../views/Contact.vue')
+        component: () => import( /* webpackChunkName: "contact" */ '../views/_AD_AdminPage.vue')
     },
     // DID Project 팀 프로젝트
     {
@@ -95,7 +95,7 @@ const routes = [{
         path: "/favorite",
         name: "favorite",
         component: Favorite,
-    },{
+    }, {
         path: "/surveylist",
         name: "surveylist",
         component: SurveyList,
@@ -115,6 +115,11 @@ const routes = [{
         path: "/surveydrawup",
         name: "surveydrawup",
         component: SurveyDrawUp,
+    },
+    {
+        path: '/admin',
+        name: 'admin',
+        component: () => import( /* webpackChunkName: "admin" */ '../views/_AD_AdminPage.vue')
     },
 ]
 

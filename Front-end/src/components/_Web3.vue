@@ -36,6 +36,7 @@
                         this.mymetamaskaddr_selec = true;
                         console.log(accounts[0]);
                         console.log("스토어에 저장:",this.$store.state.metamaskAdd)
+                        console.log(accounts[0].substring(0,4) + "..." + accounts[0].substring(39,42));
                         //getContract();
                     });
                     } catch (error) {}

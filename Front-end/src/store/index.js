@@ -8,8 +8,8 @@ const store = new Vuex.Store({
   state() {
     return {
       KakaoUser: {},
-      metamaskAdd: {},
-      metamaskShortAdd: ""
+      metamaskAdd: null,
+      metamaskShortAdd: null
     };
   },
   mutations: {
