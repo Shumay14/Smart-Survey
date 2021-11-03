@@ -1,110 +1,136 @@
 <template>
-    <!--====================  header area ====================-->
-    <div class="header-area">
-        <div class="header-area__desktop header-area__desktop--default">
-
-
-            <fixed-header>
-                <!--=======  header info area  =======-->
-                <div class="header-info-area" style="border: 0 3px 0 solid red">
-                    <!--=======  header top bar  =======-->
-                    <div class="header-top-bar">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col-lg-4">
-
-                                    <!-- top bar left -->
-                                    <div class="top-bar-left-wrapper">
-                                        <div class="social-links social-links--white-topbar d-inline-block">
-                                            <table>
-                                                <tr class=" mx-auto">
-
-                                                    <td class="table-dark">총 설문 금액</td>
-                                                    <td class="table-dark">참여 가능한 설문 수</td>
-                                                    <td class="table-dark">예상 수익</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8">
-                                    <!-- top bar right -->
-
-                                    <div class="top-bar-right-wrapper">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+  <!--====================  header area ====================-->
+  <div class="header-area">
+    <div class="header-area__desktop header-area__desktop--default">
+      <fixed-header>
+        <!--=======  header info area  =======-->
+        <div class="header-info-area" style="border: 0 3px 0 solid red">
+          <!--=======  header top bar  =======-->
+          <div class="header-top-bar">
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col-lg-4">
+                  <!-- top bar left -->
+                  <div class="top-bar-left-wrapper">
+                    <div
+                      class="
+                        social-links social-links--white-topbar
+                        d-inline-block
+                      "
+                    >
+                      <table>
+                        <tr class="mx-auto">
+                          <td class="table-dark">총 설문 금액</td>
+                          <td class="table-dark">참여 가능한 설문 수</td>
+                          <td class="table-dark">예상 수익</td>
+                        </tr>
+                      </table>
                     </div>
-                    <!--=======  End of header top bar   =======-->
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                  <!-- top bar right -->
 
-                        <div class="row align-items-center">
-                            <div class="col-lg-12">
-                                <div class="header-info-wrapper align-items-center row">
+                  <div class="top-bar-right-wrapper"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--=======  End of header top bar   =======-->
 
-                                    <!-- logo START -->
-                                    <div class="logo col-3">
-                                        <router-link to="/">
-                                            <img src="assets/img/logo/logo.png" class="img-fluid" alt="Brand Logo">
-                                        </router-link>
-                                    </div>
-                                    <!-- logo END -->
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <div class="header-info-wrapper align-items-center row">
+                <!-- logo START -->
+                <div class="logo col-3">
+                  <router-link to="/">
+                    <img
+                      src="assets/img/logo/logo.png"
+                      class="img-fluid"
+                      alt="Brand Logo"
+                    />
+                  </router-link>
+                </div>
+                <!-- logo END -->
 
-                                    <!-- header contact info -->
-                                    <div class="header-contact-info col-6">
-                                        <!-- 네비게이션 -->
-                                        <div
-                                            class="header-navigation header-navigation--header-default position-relative">
-                                            <div class="header-navigation__nav position-static">
-                                                <nav>
-                                                    <ul>
-                                                        <li class="has-children has-children--multilevel-submenu">
-                                                            <router-link to="/surveylist">설문조사</router-link>
-                                                            <ul class="submenu">
-                                                                <li>
-                                                                    <router-link to="/surveylist">전체 설문조사</router-link>
-                                                                </li>
-                                                                <li>
-                                                                    <router-link to="/surveydrawup">참여한 설문조사
-                                                                    </router-link>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
+                <!-- header contact info -->
+                <div class="header-contact-info col-6">
+                  <!-- 네비게이션 -->
+                  <div
+                    class="
+                      header-navigation header-navigation--header-default
+                      position-relative
+                    "
+                  >
+                    <div class="header-navigation__nav position-static">
+                      <nav>
+                        <ul>
+                          <li
+                            class="
+                              has-children has-children--multilevel-submenu
+                            "
+                          >
+                            <router-link to="/surveylist">설문조사</router-link>
+                            <ul class="submenu">
+                              <li>
+                                <router-link to="/surveylist"
+                                  >전체 설문조사</router-link
+                                >
+                              </li>
+                              <li>
+                                <router-link to="/surveydrawup"
+                                  >참여한 설문조사
+                                </router-link>
+                              </li>
+                            </ul>
+                          </li>
 
-                                                        <li>
-                                                            <router-link to="/about">설문 등록</router-link>
-                                                        </li>
+                          <li>
+                            <router-link to="/about">설문 등록</router-link>
+                          </li>
 
-                                                        <li class="has-children has-children--multilevel-submenu">
-                                                            <router-link to="/notice">고객센터</router-link>
-                                                            <ul class="submenu">
-                                                                <li>
-                                                                    <router-link to="/notice">공지사항</router-link>
-                                                                </li>
-                                                                <li>
-                                                                    <router-link to="/oneonone">1:1 문의</router-link>
-                                                                </li>
-                                                                <li>
-                                                                    <router-link to="/faq">FAQ</router-link>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
+                          <li
+                            class="
+                              has-children has-children--multilevel-submenu
+                            "
+                          >
+                            <router-link to="/notice">고객센터</router-link>
+                            <ul class="submenu">
+                              <li>
+                                <router-link to="/notice">공지사항</router-link>
+                              </li>
+                              <li>
+                                <router-link to="/oneonone"
+                                  >1:1 문의</router-link
+                                >
+                              </li>
+                              <li>
+                                <router-link to="/faq">FAQ</router-link>
+                              </li>
+                            </ul>
+                          </li>
 
-                                                        <li class="has-children has-children--multilevel-submenu">
-                                                            <router-link to="/mypage">마이페이지</router-link>
-                                                            <ul class="submenu">
-                                                                <li>
-                                                                    <router-link to="/mypage">마이페이지</router-link>
-                                                                </li>
-                                                                <li>
-                                                                    <router-link to="/favorite">관심사 설정
-                                                                    </router-link>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
+                          <li
+                            class="
+                              has-children has-children--multilevel-submenu
+                            "
+                          >
+                            <router-link to="/mypage">마이페이지</router-link>
+                            <ul class="submenu">
+                              <li>
+                                <router-link to="/mypage"
+                                  >마이페이지</router-link
+                                >
+                              </li>
+                              <li>
+                                <router-link to="/favorite"
+                                  >관심사 설정
+                                </router-link>
+                              </li>
+                            </ul>
+                          </li>
 
-                                                        <!-- <li class="has-children has-children--multilevel-submenu">
+                          <!-- <li class="has-children has-children--multilevel-submenu">
                                                     <router-link to="/blog-left-sidebar">BLOG</router-link>
                                                     <ul class="submenu">
                                                         <li>
@@ -124,104 +150,112 @@
                                                 <li>
                                                     <router-link to="/contact">CONTACT</router-link>
                                                 </li> -->
-                                                    </ul>
-                                                </nav>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-3 metamask_div">
-
-                                        <label class="metamask_Logo">
-                                            <MetamaskLogo />
-                                        </label>
-                                        <label type="button" class="metamask_Logo_Button btn btn-dark"
-                                            v-if="(this.$store.state.metamaskAdd)==null" style="width:7em">
-                                            로그인
-                                            <Web3 />
-                                        </label>
-
-                                        <label type="button" class="btn btn-dark metamask_Logo_Button" style="width:8em"
-                                            @click="logout()"
-                                            v-show="(this.$store.state.metamaskAdd)!=null">{{this.$store.state.metamaskShortAdd}}
-                                        </label>
-                                    </div>
-
-
-                                    <!-- mobile menu -->
-                                    <div class="mobile-navigation-icon" id="mobile-menu-trigger"
-                                        @click="mobiletoggleClass('addClass', 'active')">
-                                        <i></i>
-                                    </div>
-                                </div>
-                        </div>
+                        </ul>
+                      </nav>
                     </div>
+                  </div>
                 </div>
-            </fixed-header>
-            <!--=======  End of header info area =======-->
-        </div>
-    </div>
 
+                <div class="col-3 metamask_div">
+                  <label class="metamask_Logo">
+                    <MetamaskLogo />
+                  </label>
+                  <label
+                    type="button"
+                    class="metamask_Logo_Button btn btn-dark"
+                    v-if="this.$store.state.metamaskAdd == null"
+                    style="width: 7em"
+                  >
+                    로그인
+                    <Web3 />
+                  </label>
+
+                  <label
+                    type="button"
+                    class="btn btn-dark metamask_Logo_Button"
+                    style="width: 8em"
+                    @click="logout()"
+                    v-show="this.$store.state.metamaskAdd != null"
+                    >{{ this.$store.state.metamaskShortAdd }}
+                  </label>
+                </div>
+
+                <!-- mobile menu -->
+                <div
+                  class="mobile-navigation-icon"
+                  id="mobile-menu-trigger"
+                  @click="mobiletoggleClass('addClass', 'active')"
+                >
+                  <i></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fixed-header>
+      <!--=======  End of header info area =======-->
+    </div>
+  </div>
 </template>
 
 <script>
-    import FixedHeader from 'vue-fixed-header'
-    import Web3 from "@/components/_Web3"
-    import MetamaskLogo from "@/components/_MetamaskLogo"
+import FixedHeader from "vue-fixed-header";
+import Web3 from "@/components/_Web3";
+import MetamaskLogo from "@/components/_MetamaskLogo";
 
-    export default {
-        components: {
-            FixedHeader,
-            Web3,
-            MetamaskLogo
-        },
-        methods: {
-            // offcanvas mobilemenu
-            mobiletoggleClass(addRemoveClass, className) {
-                const el = document.querySelector('#offcanvas-menu');
-                if (addRemoveClass === 'addClass') {
-                    el.classList.add(className);
-                } else {
-                    el.classList.remove(className);
-                }
-            },
-            logout() {
-                this.$store.commit("metamaskAdd", null)
-            },
-
-        },
-    };
+export default {
+  components: {
+    FixedHeader,
+    Web3,
+    MetamaskLogo,
+  },
+  methods: {
+    // offcanvas mobilemenu
+    mobiletoggleClass(addRemoveClass, className) {
+      const el = document.querySelector("#offcanvas-menu");
+      if (addRemoveClass === "addClass") {
+        el.classList.add(className);
+      } else {
+        el.classList.remove(className);
+      }
+    },
+    logout() {
+      this.$store.commit("metamaskAdd", null);
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-    .vue-fixed-header--isFixed {
-        left: 0;
-        top: 0;
-        width: 100vw;
-        z-index: 999;
-        position: fixed;
-        box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
-        animation: 900ms cubic-bezier(0.2, 1, 0.22, 1) 0s normal none 1 running fadeInDown;
-    }
+.vue-fixed-header--isFixed {
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  position: fixed;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+  animation: 900ms cubic-bezier(0.2, 1, 0.22, 1) 0s normal none 1 running
+    fadeInDown;
+}
 
-    .metamask_div {
-        position: relative;
-    }
+.metamask_div {
+  position: relative;
+}
 
-    .metamask_Logo {
-        border: 3px solid black;
-        padding: 5px;
-        border-radius: 30px;
-        top: -18px;
-        position: absolute;
-        z-index: 3;
-        background: white;
-    }
+.metamask_Logo {
+  border: 3px solid black;
+  padding: 5px;
+  border-radius: 30px;
+  top: -18px;
+  position: absolute;
+  z-index: 3;
+  background: white;
+}
 
-    .metamask_Logo_Button {
-        position: absolute;
-        top: -15px;
-        left: 40px;
-        z-index: 1;
-    }
+.metamask_Logo_Button {
+  position: absolute;
+  top: -15px;
+  left: 40px;
+  z-index: 1;
+}
 </style>
