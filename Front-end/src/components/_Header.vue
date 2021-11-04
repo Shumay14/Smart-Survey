@@ -10,19 +10,25 @@
               <div class="col-lg-4">
                 <!-- top bar left -->
                 <div class="top-bar-left-wrapper">
-                  <div
-                    class="
-                      social-links social-links--white-topbar
-                      d-inline-block
-                    "
-                  >
-                    <table>
-                      <tr class="mx-auto">
-                        <td class="table-dark">총 설문 금액</td>
-                        <td class="table-dark">참여 가능한 설문 수</td>
-                        <td class="table-dark">예상 수익</td>
-                      </tr>
-                    </table>
+                  <div class="top-info-bar">
+                    <div class="info-menu--item--head">
+                      총 설문 금액
+                    </div>
+                    <div class="info-menu--item--data">
+                      - 10,000,000 ￦
+                    </div>
+                    <div class="info-menu--item--head">
+                      참여 가능한 설문 수 
+                    </div>
+                    <div class="info-menu--item--data">
+                      - 2,104 개 (2021.11.04 기준)
+                    </div>
+                    <div class="info-menu--item--head">
+                      예상 수익 
+                    </div>
+                    <div class="info-menu--item--data">
+                      - 약 156,943,280 ￦
+                    </div>
                   </div>
                 </div>
               </div>
@@ -276,6 +282,29 @@ export default {
   animation: 900ms cubic-bezier(0.2, 1, 0.22, 1) 0s normal none 1 running
     fadeInDown;
 }
+.top-info-bar{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.info-menu{
+  &--item{
+      &--head {
+      padding-top: 10px;
+      padding-bottom: 5px;
+
+      font-size: 15px;
+      font-weight: bold;
+      width: 50%;
+    }
+
+    &--data {
+      padding-bottom: 10px;
+      font-size: 13px;
+    }
+  }
+}
+
 
 .desktop-menu-icon {
   /* Mobile Device */
@@ -306,6 +335,8 @@ export default {
       left: 40px;
       z-index: 1;
     }
+
+    
   }
 }
 </style>
