@@ -7,10 +7,12 @@
                         <div class="col-md-6 col-8">
                             <div class="logo">
                                 <router-link to="/">
-                                    <img src="assets/img/logo/logo.png" alt="logo">
+                                    <img src="assets/img/logo-custom/Logo-full-03_example.png" alt="logo">
                                 </router-link>
                             </div>
                         </div>
+
+
                         <div class="col-md-6 col-4">
                             <div class="text-right">
                                 <span class="mobile-navigation-close-icon" @click="mobiletoggleClass('removeClass', 'active')"></span>
@@ -25,7 +27,6 @@
 </template>
 
 <script>
-
     import MobileNavMenu from '../components/_MobileNavMenu'
 
     export default{
@@ -38,6 +39,7 @@
                 const el = document.querySelector('#offcanvas-menu');
                 if (addRemoveClass === 'addClass') {
                     el.classList.add(className);
+                    
                 } else {
                     el.classList.remove(className);
                 }
