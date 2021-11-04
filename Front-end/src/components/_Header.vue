@@ -4,37 +4,7 @@
     <div class="header-area">
       <div class="header-area__desktop header-area__desktop--default">
         <!--=======  header top bar  =======-->
-        <div class="header-top-bar">
-          <div class="container">
-            <div class="row align-items-center">
-              <div class="col-lg-4">
-                <!-- top bar left -->
-                <div class="top-bar-left-wrapper">
-                  <div class="top-info-bar">
-                    <div class="info-menu--item--head">
-                      총 설문 금액
-                    </div>
-                    <div class="info-menu--item--data">
-                      - 10,000,000 ￦
-                    </div>
-                    <div class="info-menu--item--head">
-                      참여 가능한 설문 수 
-                    </div>
-                    <div class="info-menu--item--data">
-                      - 2,104 개 (2021.11.04 기준)
-                    </div>
-                    <div class="info-menu--item--head">
-                      예상 수익 
-                    </div>
-                    <div class="info-menu--item--data">
-                      - 약 156,943,280 ￦
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
         <!--=======  End of header top bar   =======-->
         <div class="header-info-area">
           <div class="container">
@@ -49,13 +19,8 @@
 
                       <!-- 커스텀로고     -->
                       <!-- <img src="assets/img/logo-custom/Logo-full-01.png" class="img-fluid" alt="Brand Logo"> -->
-                      <img
-                        src="assets/img/logo-custom/Logo-full-02.png"
-                        class="img-fluid"
-                        alt="Brand Logo"
-                      />
-                      <!-- <img src="assets/img/logo-custom/Logo-full-03.png" class="img-fluid" alt="Brand Logo"> -->
-
+                      <!-- <img src="assets/img/logo-custom/Logo-full-02.png" class="img-fluid" alt="Brand Logo"/> -->
+                      <img src="assets/img/logo-custom/Logo-full-03_example.png" class="img-fluid" alt="Brand Logo">
                       <!-- <img src="assets/img/logo-custom/Logo-img-01.png" class="img-fluid" style="width:50px" alt="Brand Logo"> -->
                       <!-- <img src="assets/img/logo-custom/Logo-img-02.png" class="img-fluid" style="width:50px" alt="Brand Logo"> -->
                       <!-- <img src="assets/img/logo-custom/Logo-img-03.png" class="img-fluid" style="width:50px" alt="Brand Logo"> -->
@@ -65,7 +30,7 @@
                   </div>
                   <!-- logo END -->
 
-                  <!-- header contact info -->
+                  <!-- header contact info start -->
                   <div class="header-contact-info">
                     <!-- 네비게이션 -->
                     <div
@@ -145,27 +110,6 @@
                                 </li>
                               </ul>
                             </li>
-
-                            <!-- <li class="has-children has-children--multilevel-submenu">
-                                                <router-link to="/blog-left-sidebar">BLOG</router-link>
-                                                <ul class="submenu">
-                                                    <li>
-                                                        <router-link to="/blog-left-sidebar">Blog Left Sidebar</router-link>
-                                                    </li>
-                                                    <li>
-                                                        <router-link to="/blog-right-sidebar">Blog Right Sidebar</router-link>
-                                                    </li>
-                                                    <li>
-                                                        <router-link to="/blog-details">Blog Details</router-link>
-                                                    </li>
-                                                    <li>
-                                                        <router-link to="/blog-details-right-sidebar">Blog Details Right Sidebar</router-link>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <router-link to="/contact">CONTACT</router-link>
-                                            </li> -->
                           </ul>
                         </nav>
                       </div>
@@ -225,6 +169,40 @@
           </div>
         </div>
         <!--=======  End of header info area =======-->
+        <div class="header-top-bar">
+          <div class="container">
+            <div class="top-info-bar row align-items-center">
+
+              <div class="info-menu--item col-lg-4">
+                <div class="info-menu--item--head text-right">
+                  총 설문 금액
+                </div>
+                <div class="info-menu--item--data">
+                  : 10,000,000 ￦
+                </div>
+              </div>
+              
+              <div class="info-menu--item col-lg-4">
+                <div class="info-menu--item--head text-right">
+                  참여 가능한 설문 수
+                </div>
+                <div class="info-menu--item--data">
+                  : 2,104 개 (2021.11.04 기준)
+                </div>
+              </div>
+              
+              <div class="info-menu--item col-lg-4">
+                <div class="info-menu--item--head text-right">
+                  예상 수익 
+                </div>
+                <div class="info-menu--item--data">
+                  : 약 156,943,280 ￦
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </fixed-header>
@@ -254,10 +232,13 @@ export default {
       const el = document.querySelector("#offcanvas-menu");
       if (addRemoveClass === "addClass") {
         el.classList.add(className);
+        console.log(className)
       } else {
         el.classList.remove(className);
+        console.log(className,"del")
       }
     },
+
     logout() {
       this.$store.commit("metamaskAdd", null);
     },
@@ -283,28 +264,29 @@ export default {
     fadeInDown;
 }
 .top-info-bar{
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
 }
 
 .info-menu{
   &--item{
-      &--head {
-      padding-top: 10px;
-      padding-bottom: 5px;
+    padding-top: 1px;
+    padding-bottom:1px;
 
+    &--head {
       font-size: 15px;
       font-weight: bold;
       width: 50%;
+      
+      float: left;
     }
 
     &--data {
-      padding-bottom: 10px;
       font-size: 13px;
+
     }
   }
 }
-
 
 .desktop-menu-icon {
   /* Mobile Device */
