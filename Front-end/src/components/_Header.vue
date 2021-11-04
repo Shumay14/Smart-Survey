@@ -34,7 +34,20 @@
                                 <!-- logo START -->
                                 <div class="logo">
                                     <router-link to="/">
-                                        <img src="assets/img/logo/logo.png" class="img-fluid" alt="Brand Logo">
+                                    
+                                    <!-- 기존 로고 -->
+                                        <!-- <img src="assets/img/logo/logo.png" class="img-fluid" alt="Brand Logo"> -->
+                                        
+                                    <!-- 커스텀로고     -->
+                                        <!-- <img src="assets/img/logo-custom/Logo-full-01.png" class="img-fluid" alt="Brand Logo"> -->
+                                        <img src="assets/img/logo-custom/Logo-full-02.png" class="img-fluid" alt="Brand Logo">
+                                        <!-- <img src="assets/img/logo-custom/Logo-full-03.png" class="img-fluid" alt="Brand Logo"> -->
+                                       
+                                        <!-- <img src="assets/img/logo-custom/Logo-img-01.png" class="img-fluid" style="width:50px" alt="Brand Logo"> -->
+                                        <!-- <img src="assets/img/logo-custom/Logo-img-02.png" class="img-fluid" style="width:50px" alt="Brand Logo"> -->
+                                        <!-- <img src="assets/img/logo-custom/Logo-img-03.png" class="img-fluid" style="width:50px" alt="Brand Logo"> -->
+                                        <!-- <img src="assets/img/logo-custom/Logo-img-04.png" class="img-fluid" style="width:50px" alt="Brand Logo"> -->
+                                        <!-- <spans style="">Survey Zone</spans> -->
                                     </router-link>
                                 </div>
                                 <!-- logo END -->
@@ -118,20 +131,27 @@
                                 </div>
 
                                 <div class="col-3 metamask_div desktop-menu-icon">
-
+                                    
+                                    <!-- 메타마스크 아이콘 시작-->
                                     <label class="metamask_Logo">
                                         <MetamaskLogo />
                                     </label>
+                                    <!-- 메타마스크 아이콘 종료 -->
+
+                                    <!-- 로그인 버튼 시작-->
                                     <label type="button" class="metamask_Logo_Button btn btn-dark"
                                         v-if="(this.$store.state.metamaskAdd)==null" style="width:7em">
                                         로그인
                                         <Web3 />
                                     </label>
+                                    <!-- 로그인 버튼 종료 -->
 
+                                    <!-- 로그아웃버튼 시작 -->
                                     <label type="button" class="btn btn-dark metamask_Logo_Button" style="width:8em"
                                         @click="logout()"
                                         v-show="(this.$store.state.metamaskAdd)!=null">{{this.$store.state.metamaskShortAdd}}
                                     </label>
+                                    <!-- 로그아웃버튼 종료 -->
                                 </div>
 
 
