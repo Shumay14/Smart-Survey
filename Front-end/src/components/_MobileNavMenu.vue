@@ -1,11 +1,6 @@
 <template>
     
     <div class="mobile-navigation">
-        
-        <div style="background-color: RGB(50,50,50)"> 
-            <LoginButton />
-            <!-- LOGIN BUTTON HERE -->
-        </div>
         <nav class="offcanvas-navigation" id="offcanvas-navigation">
             <ul>
                 <li class="menu-item-has-children">
