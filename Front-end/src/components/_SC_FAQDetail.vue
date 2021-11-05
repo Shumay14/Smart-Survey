@@ -72,15 +72,15 @@
                                         </div>
 
                                         <div class="accordion-item">
-                                            <h2 class="accordion-header" id="flush-headingThree">
+                                            <h2 class="accordion-header" id="flush-heading4">
                                                 <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-                                                    aria-expanded="false" aria-controls="flush-collapseThree">
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapse4"
+                                                    aria-expanded="false" aria-controls="flush-collapse4">
                                                     설문조사에 어떻게 참여하나요?
                                                 </button>
                                             </h2>
-                                            <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                                aria-labelledby="flush-headingThree"
+                                            <div id="flush-collapse4" class="accordion-collapse collapse"
+                                                aria-labelledby="flush-heading4"
                                                 data-bs-parent="#accordionFlushExample">
                                                 <div class="accordion-body">Placeholder content for this accordion,
                                                     which is intended to demonstrate the <code>.accordion-flush</code>

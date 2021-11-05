@@ -55,7 +55,8 @@
                     </div>
 
                     <!-- 오른쪽 -->
-                    <div class="col-lg-7 col-12">
+                    여기에다 뭘 채울 것인가?
+                    <!-- <div class="col-lg-7 col-12">
                         <div class="contact-form">
                             <h3>발급받은 VC 목록</h3>
                             <form id="contact-form">
@@ -76,7 +77,7 @@
                             </form>
                             <p class="form-message"></p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
