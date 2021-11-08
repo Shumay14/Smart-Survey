@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+
+import Main from '../views/_Main.vue'
 import FAQ from "../views/_SC_FAQ.vue";
 import OneOnOne from "../views/_SC_OneOnOne.vue";
 import Notice from "../views/_SC_Notice.vue";
@@ -9,6 +11,7 @@ import SurveyDrawUp from "../views/_SV_SurveyDrawUp.vue";
 import SurveyList from "../views/_SurveyList.vue";
 import SurveyList_test from "../views/_SurveyList_test.vue";
 import _SV_SurveyGrid_copy from "../../src/components/_SV_SurveyGrid_copy.vue";
+
 
 Vue.use(VueRouter);
 
@@ -117,6 +120,10 @@ const routes = [
   },
   // DID Project 팀 프로젝트
   {
+    path: '/',
+    name: 'main',
+    component: Main,
+  }, {
     path: "/mypage",
     name: "mypage",
     component: MyPage,
