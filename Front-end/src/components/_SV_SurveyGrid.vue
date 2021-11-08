@@ -1,5 +1,4 @@
 <template>
-    
     <div class="service-grid-item service-grid-item--style2 custom">
         <div class="service-grid-item__image">
             <div class="service-grid-item__image-wrapper">

@@ -36,26 +36,27 @@
               ><a href="#0">98 reviews</a></small
             >)
           </div> -->
-          <h3>Taco Mexican</h3>
-          <div class="type">Mexican / American</div>
-          <div class="location">
-            135 Newtownards Road, Belfast, BT4.
-            <span class="opening">Opens at 17:00.</span> Minimum order: $15
+          <h4>참여인원 0명/100명</h4>/
+          <!-- <div class="type">Mexican / American</div> -->
+          <h3>국밥에 관한 여론조사</h3>
+          <div class="location" style="margin-top: 1em">
+            <span class="opening">D-23</span> 21.06 - 21.10
           </div>
-          <ul>
+          <!-- <ul>
             <li>Take away<i class="icon_check_alt2 ok"></i></li>
             <li>Delivery<i class="icon_check_alt2 no"></i></li>
-          </ul>
+          </ul> -->
         </div>
       </div>
-      <div class="col-md-3">
+      <!-- <div class="col-md-3">
         <div class="go_to">
           <div>
             <a href="detail_page.html" class="btn_1">View Menu</a>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
+    <hr class="line" style="border: solid 1px gray; margin-top: 3em" />
     <!-- End row-->
     <div class="row">
       <div class="col-md-9">
@@ -72,7 +73,9 @@
               ><a href="#0">98 reviews</a></small
             >)
           </div> -->
-        <h3>Taco Mexican</h3>
+        <div>
+          <span>보상 지급액</span><span style="margin-left: 1em">2 SUB</span>
+        </div>
         <!-- <div class="type">Mexican / American</div>
           <div class="location">
             135 Newtownards Road, Belfast, BT4.
@@ -85,11 +88,11 @@
         <!-- </div> -->
       </div>
       <div class="col-md-3">
-        <!-- <div class="go_to">
-          <div>
-            <a href="detail_page.html" class="btn_1">View Menu</a>
-          </div>
-        </div> -->
+        <!-- <div class="go_to"> -->
+        <div>
+          <a href="detail_page.html" class="btn_1">View Menu</a>
+        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -100,6 +103,12 @@ export default {
   props: ["project"],
 };
 </script>
+<style scoped>
+.line {
+  border-width: 1px 0px 0px 0px;
+  height: 0.1px;
+}
+</style>
 
 <style lang="scss" scoped>
 .custom {
