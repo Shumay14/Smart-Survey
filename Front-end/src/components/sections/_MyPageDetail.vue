@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-lg-5 col-12">
                         <div class="contact-information">
-                            <h3>사용자 정보</h3>
+                            <h2 class="pb-3">사용자 정보</h2>
                             <ul>
                                 <li>
                                     <span class="icon">
@@ -59,7 +59,7 @@
 
                     <div class="col-lg-7 col-12">
                         <div class="contact-form">
-                            <h3>리워드 내역</h3>
+                            <h2 class="pb-3">리워드 내역</h2>
 
                             <!-- 리워드 테이블 시작 -->
                             <table class="table reward_table">

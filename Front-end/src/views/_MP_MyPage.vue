@@ -6,6 +6,7 @@
         <Breadcrumb :items="items" title="Contact Us" />
 
         <MyPageDetail />
+        <Footer/>
 
         <OffCanvasMobileMenu />
 
@@ -23,13 +24,16 @@
     import Breadcrumb from '../components/Breadcrumb'
     import MyPageDetail from '../components/sections/_MyPageDetail'
     import OffCanvasMobileMenu from '@/components/_OffCanvasMobileMenu';
+    import Footer from "../components/_Footer";
+
 
     export default {
         components: {
             Header,
             Breadcrumb,
             OffCanvasMobileMenu,
-            MyPageDetail
+            MyPageDetail,
+            Footer
         },
         data() {
             return {

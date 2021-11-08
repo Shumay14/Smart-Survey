@@ -7,6 +7,8 @@
 
         <OneOnOne />
 
+        <Footer />
+
         <OffCanvasMobileMenu />
 
         <!-- back to top start -->
@@ -21,6 +23,7 @@
     import Header from '@/components/_Header';
     import Breadcrumb from '../components/Breadcrumb'
     import OneOnOne from '../components/_SC_OneOnOneDetail'
+    import Footer from "../components/_Footer";
     import OffCanvasMobileMenu from '@/components/_OffCanvasMobileMenu'
 
     export default {
@@ -28,6 +31,7 @@
             Header,
             Breadcrumb,
             OneOnOne,
+            Footer,
             OffCanvasMobileMenu
         },
         data() {

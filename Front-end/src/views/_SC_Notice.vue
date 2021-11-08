@@ -7,8 +7,9 @@
 
         <NoticeDetail />
 
-        <BrandCarousel addClass="grey-bg" />
+        <!-- <BrandCarousel addClass="grey-bg" /> -->
 
+        <Footer />
 
         <OffCanvasMobileMenu />
 
@@ -24,16 +25,16 @@
     import Header from '@/components/_Header';
     import Breadcrumb from '../components/Breadcrumb'
     import NoticeDetail from '../components/_SC_NoticeDetail'
-    import BrandCarousel from '../components/BrandCarousel'
     import OffCanvasMobileMenu from '@/components/_OffCanvasMobileMenu'
+    import Footer from "../components/_Footer";
 
     export default {
         components: {
             Header,
             Breadcrumb,
             NoticeDetail,
-            BrandCarousel,
-            OffCanvasMobileMenu
+            OffCanvasMobileMenu,
+            Footer
         },
         data() {
             return {

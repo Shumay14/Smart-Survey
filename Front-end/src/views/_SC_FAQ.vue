@@ -6,6 +6,7 @@
         <Breadcrumb :items="items" title="Blog Details" />
 
         <FAQDetail />
+        <Footer/>
 
         <OffCanvasMobileMenu />
 
@@ -22,13 +23,16 @@
     import Breadcrumb from '../components/Breadcrumb'
     import FAQDetail from '../components/_SC_FAQDetail'
     import OffCanvasMobileMenu from '@/components/_OffCanvasMobileMenu'
+    import Footer from "../components/_Footer";
+
 
     export default {
         components: {
             Header,
             Breadcrumb,
             FAQDetail,
-            OffCanvasMobileMenu
+            OffCanvasMobileMenu,
+            Footer
         },
         data() {
             return {

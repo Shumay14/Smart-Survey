@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 order-1 order-lg-2">
-
+                        
                         <!-- 내용 시작-->
                         <div class="row">
                             <div class="blog-details col-12">

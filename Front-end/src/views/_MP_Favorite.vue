@@ -6,6 +6,7 @@
         <Breadcrumb :items="items" title="Contact Us" />
 
         <FavoriteDetail />
+        <Footer />
 
         <OffCanvasMobileMenu />
 
@@ -22,6 +23,7 @@
     import Header from '@/components/_Header';
     import Breadcrumb from '../components/Breadcrumb'
     import FavoriteDetail from '../components/sections/_MP_FavoriteDetail'
+    import Footer from "../components/_Footer";
     import OffCanvasMobileMenu from '@/components/_OffCanvasMobileMenu';
 
     export default {
@@ -29,7 +31,8 @@
             Header,
             Breadcrumb,
             OffCanvasMobileMenu,
-            FavoriteDetail
+            FavoriteDetail,
+            Footer
         },
         data() {
             return {
