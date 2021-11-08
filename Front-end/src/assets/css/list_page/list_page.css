@@ -1,0 +1,318 @@
+/* 2.2 List page*/
+#map {
+  width: 100%;
+  height: 450px;
+  border-bottom: 1px solid #ddd;
+}
+#filters_col {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ededed;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin-bottom: 25px;
+}
+#filters_col label {
+  font-weight: normal;
+}
+a#filters_col_bt {
+  display: block;
+  color: #444;
+  font-weight: 600;
+}
+a#filters_col_bt .icon_set_1_icon-65 {
+  font-size: 20px;
+  position: relative;
+  top: 0;
+  margin-right: 5px;
+}
+.filter_type h6 {
+  border-top: 1px solid #ddd;
+  margin: 15px 0;
+  padding: 15px 0 0 0;
+}
+.filter_type ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+.filter_type ul li .rating {
+  font-size: 16px;
+  left: -7px;
+  position: relative;
+  top: 3px;
+  color: #ccc;
+}
+.filter_type ul li .color_1,
+.filter_type ul li .color_2,
+.filter_type ul li .color_3,
+.filter_type ul li .color_4,
+.filter_type ul li .color_5,
+.filter_type ul li .color_6,
+.filter_type ul li .color_7,
+.filter_type ul li .color_8 {
+  width: 8px;
+  height: 8px;
+  margin: 5px 5px 0 0;
+  float: right;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.filter_type ul li .color_1 {
+  background-color: #7dccc7;
+}
+.filter_type ul li .color_2 {
+  background-color: #f29bc1;
+}
+.filter_type ul li .color_3 {
+  background-color: #8494c8;
+}
+.filter_type ul li .color_4 {
+  background-color: #8dc63f;
+}
+.filter_type ul li .color_5 {
+  background-color: #84c99e;
+}
+.filter_type ul li .color_6 {
+  background-color: #f5977d;
+}
+.filter_type ul li .color_7 {
+  background-color: #72d0f4;
+}
+.strip_list {
+  background-color: #fff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+  border: 1px solid #ededed;
+  min-height: 152px;
+  margin-bottom: 30px;
+  line-height: 1.3;
+  display: block;
+}
+.strip_list.last {
+  margin-bottom: 25px;
+}
+a.strip_list:hover h3 {
+  color: #ec008c;
+}
+.desc {
+  padding-left: 135px;
+  position: relative;
+}
+.desc .rating {
+  color: #ccc;
+  padding-top: 0;
+}
+.desc h3 {
+  margin: 0;
+  padding: 0;
+}
+.desc h3 a {
+  color: #333;
+}
+.desc h3 a:hover {
+  color: #ec008c;
+}
+.desc .type {
+  font-size: 12px;
+  font-style: italic;
+  color: #777;
+  margin-bottom: 12px;
+  margin-top: 5px;
+}
+.desc .opening {
+  color: #c33;
+}
+.desc ul {
+  list-style: none;
+  margin: 3px 0 0 0;
+  padding: 0;
+}
+.desc ul li {
+  display: inline-block;
+  margin-right: 15px;
+}
+.desc ul li i.ok {
+  color: #6c3;
+  position: relative;
+  top: 2px;
+  left: 5px;
+  font-size: 14px;
+}
+.desc ul li i.no {
+  color: #c30;
+  position: relative;
+  top: 2px;
+  left: 5px;
+  font-size: 14px;
+}
+.thumb_strip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 110px;
+  height: 110px;
+  overflow: hidden;
+  border: 1px solid #ededed;
+  padding: 5px;
+  text-align: center;
+  box-sizing: border-box;
+}
+.thumb_strip img {
+  width: 98px;
+  height: auto;
+}
+.strip_list .go_to {
+  display: table;
+  height: 112px;
+  text-align: right;
+  width: 100%;
+}
+.strip_list .go_to div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.ribbon_1 {
+  position: absolute;
+  text-indent: -9999px;
+  top: -5px;
+  left: -5px;
+  background: url(../../img/ribbon_popular.png) no-repeat 0 0;
+  width: 81px;
+  height: 80px;
+  z-index: 3;
+}
+a.strip_list {
+  color: #555;
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+}
+a.strip_list:hover {
+  transform: translate(0, -5px);
+  -webkit-transform: translate(0, -5px);
+  -ms-transform: translate(0, -5px);
+  -webkit-box-shadow: 0px 2px 0px 0px #ebedef;
+  -moz-box-shadow: 0px 2px 0px 0px #ebedef;
+  box-shadow: 0px 2px 0px 0px #ebedef;
+}
+/*4.2 Grid list*/
+.strip_list.grid .desc {
+  padding-left: 0;
+  text-align: center;
+}
+.strip_list.grid .thumb_strip {
+  display: block;
+  position: static;
+  margin: auto;
+  margin-bottom: 15px;
+  width: 140px;
+  height: 140px;
+}
+.strip_list.grid .thumb_strip img {
+  width: 128px;
+  height: auto;
+}
+.strip_list.grid .desc ul {
+  margin: 10px 0 0 0;
+}
+/*4.3 General*/
+a.load_more_bt {
+  display: block;
+  padding: 4px;
+  text-align: center;
+  /* border: 3px solid #fff; */
+  border: 3px solid white;
+  color: #555;
+  font-weight: 600;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 6px;
+}
+a.load_more_bt:hover {
+  /* background-color: #fff; */
+  background-color: #f0542d;
+  color: white;
+}
+#tools {
+  background: #fff;
+  margin-bottom: 25px;
+  height: 38px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #ededed;
+}
+a.bt_filters {
+  height: 36px;
+  width: 36px;
+  color: #555;
+  display: inline-block;
+  text-align: center;
+  line-height: 36px;
+  float: right;
+  font-size: 16px;
+  border-left: 1px solid #ededed;
+}
+#tools .styled-select select {
+  background: transparent;
+  width: 115%;
+  padding: 7px 5px 5px 15px;
+  border: 0;
+  border-radius: 0;
+  height: 31px;
+  margin: 0;
+  font-weight: 600;
+  font-size: 11px;
+  /* -moz-appearance: window; */
+  -webkit-appearance: none;
+  cursor: pointer;
+  color: #444;
+  box-shadow: none;
+}
+#tools .styled-select {
+  width: 100%;
+  overflow: hidden;
+  height: 36px;
+  background: url(arrow_down.svg) no-repeat right center;
+  border: none;
+  border-right: 1px solid #ededed;
+}
+
+.infoBox {
+  padding-right: 30px !important;
+}
+/*-------- 1.2 Buttons --------*/
+a.btn_1,
+.btn_1 {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: #fff;
+  background: #85c99d;
+  cursor: pointer;
+  padding: 10px 20px;
+  outline: none;
+  font-size: 12px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+}
+a.btn_1:hover,
+.btn_1:hover {
+  color: black;
+  background: #f0542d;
+}

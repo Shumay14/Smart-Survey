@@ -4,7 +4,7 @@
     <div class="header-area">
       <div class="header-area__desktop header-area__desktop--default">
         <!--=======  header top bar  =======-->
-        
+
         <!--=======  End of header top bar   =======-->
         <div class="header-info-area">
           <div class="container">
@@ -20,7 +20,11 @@
                       <!-- 커스텀로고     -->
                       <!-- <img src="assets/img/logo-custom/Logo-full-01.png" class="img-fluid" alt="Brand Logo"> -->
                       <!-- <img src="assets/img/logo-custom/Logo-full-02.png" class="img-fluid" alt="Brand Logo"/> -->
-                      <img src="assets/img/logo-custom/Logo-full-03_example.png" class="img-fluid" alt="Brand Logo">
+                      <img
+                        src="assets/img/logo-custom/Logo-full-03_example.png"
+                        class="img-fluid"
+                        alt="Brand Logo"
+                      />
                       <!-- <img src="assets/img/logo-custom/Logo-img-01.png" class="img-fluid" style="width:50px" alt="Brand Logo"> -->
                       <!-- <img src="assets/img/logo-custom/Logo-img-02.png" class="img-fluid" style="width:50px" alt="Brand Logo"> -->
                       <!-- <img src="assets/img/logo-custom/Logo-img-03.png" class="img-fluid" style="width:50px" alt="Brand Logo"> -->
@@ -104,8 +108,8 @@
                                   >
                                 </li>
                                 <li>
-                                  <router-link to="/favorite"
-                                    >관심사 설정
+                                  <router-link to="/favorite">
+                                    관심사 설정
                                   </router-link>
                                 </li>
                               </ul>
@@ -172,16 +176,11 @@
         <div class="header-top-bar">
           <div class="container">
             <div class="top-info-bar row align-items-center">
-
               <div class="info-menu--item col-lg-4">
-                <div class="info-menu--item--head text-right">
-                  총 설문 금액
-                </div>
-                <div class="info-menu--item--data">
-                  : 10,000,000 ￦
-                </div>
+                <div class="info-menu--item--head text-right">총 설문 금액</div>
+                <div class="info-menu--item--data">: 10,000,000 ￦</div>
               </div>
-              
+
               <div class="info-menu--item col-lg-4">
                 <div class="info-menu--item--head text-right">
                   참여 가능한 설문 수
@@ -190,16 +189,11 @@
                   : 2,104 개 (2021.11.04 기준)
                 </div>
               </div>
-              
-              <div class="info-menu--item col-lg-4">
-                <div class="info-menu--item--head text-right">
-                  예상 수익 
-                </div>
-                <div class="info-menu--item--data">
-                  : 약 156,943,280 ￦
-                </div>
-              </div>
 
+              <div class="info-menu--item col-lg-4">
+                <div class="info-menu--item--head text-right">예상 수익</div>
+                <div class="info-menu--item--data">: 약 156,943,280 ￦</div>
+              </div>
             </div>
           </div>
         </div>
@@ -232,10 +226,10 @@ export default {
       const el = document.querySelector("#offcanvas-menu");
       if (addRemoveClass === "addClass") {
         el.classList.add(className);
-        console.log(className)
+        console.log(className);
       } else {
         el.classList.remove(className);
-        console.log(className,"del")
+        console.log(className, "del");
       }
     },
 
@@ -263,27 +257,26 @@ export default {
   animation: 900ms cubic-bezier(0.2, 1, 0.22, 1) 0s normal none 1 running
     fadeInDown;
 }
-.top-info-bar{
+.top-info-bar {
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
 }
 
-.info-menu{
-  &--item{
+.info-menu {
+  &--item {
     padding-top: 1px;
-    padding-bottom:1px;
+    padding-bottom: 1px;
 
     &--head {
       font-size: 15px;
       font-weight: bold;
       width: 50%;
-      
+
       float: left;
     }
 
     &--data {
       font-size: 13px;
-
     }
   }
 }
@@ -317,8 +310,6 @@ export default {
       left: 40px;
       z-index: 1;
     }
-
-    
   }
 }
 </style>
