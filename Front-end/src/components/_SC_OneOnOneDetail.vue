@@ -10,7 +10,7 @@
                             <div class="blog-details col-12">
 
 
-                                메신져를 넣자
+                                <Messenger />
                             </div>
 
                         </div>
@@ -61,9 +61,11 @@
 </template>
 
 <script>
+        import Messenger from '@/components/sections/_Messenger'
+
     export default {
         components: {
-
+            Messenger,
         },
         data() {
             return {}

@@ -32,7 +32,8 @@
                                     <span class="icon">
                                         <!-- <i :class="data.contactInfo.telephone.icon"></i> -->
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="30px" viewBox="0 0 450 400">
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="30px"
+                                            viewBox="0 0 450 400">
                                             <path fill-rule="evenodd" stroke="rgb(0, 0, 0)" stroke-width="10px"
                                                 stroke-linecap="round" stroke-linejoin="round" fill="none"
                                                 d="M214.995,10.956 C328.210,10.956 419.990,76.168 419.990,156.611 C419.990,237.053 328.210,302.265 214.995,302.265 C204.863,302.265 194.903,301.743 185.165,300.734 C170.484,299.213 85.524,367.000 85.524,367.000 C85.524,367.000 117.939,285.292 106.554,280.240 C48.573,254.510 10.000,208.761 10.000,156.611 C10.000,76.168 101.779,10.956 214.995,10.956 Z" />
@@ -55,29 +56,84 @@
                     </div>
 
                     <!-- 오른쪽 -->
-                    여기에다 뭘 채울 것인가?
-                    <!-- <div class="col-lg-7 col-12">
+
+                    <div class="col-lg-7 col-12">
                         <div class="contact-form">
-                            <h3>발급받은 VC 목록</h3>
-                            <form id="contact-form">
-                                <div class="row row-10">
-                                    <div class="col-md-6 col-12 section-space--bottom--20">
-                                        <input name="con_name" type="text" placeholder="Your Name">
-                                    </div>
-                                    <div class="col-md-6 col-12 section-space--bottom--20">
-                                        <input name="con_email" type="email" placeholder="Your Email">
-                                    </div>
-                                    <div class="col-12">
-                                        <textarea name="con_message" placeholder="Your Message"></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button>Send Message</button>
-                                    </div>
+                            <h3>리워드 내역</h3>
+
+                            <!-- 리워드 테이블 시작 -->
+                            <table class="table reward_table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-3">일자</th>
+                                        <th>설문조사 명</th>
+                                        <th class="col-3">보상</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            2021.11.05
+                                        </td>
+                                        <td>
+                                            유튜브 패널 조사
+                                        </td>
+                                        <td>
+                                            6 SUB
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            2021.11.05
+                                        </td>
+                                        <td>
+                                            소비자 기호도 조사
+                                        </td>
+                                        <td>
+                                            4 SUB
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            2021.11.05
+                                        </td>
+                                        <td>
+                                            전자제품 선호도 조사
+                                        </td>
+                                        <td>
+                                            8 SUB
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            2021.11.05
+                                        </td>
+                                        <td>
+                                            갤럭시 핸드폰 만족도 조사
+                                        </td>
+                                        <td>
+                                            4 SUB
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- 리워드 테이블 끝 -->
+
+                            <!-- 페이지 네이션 -->
+                            <div class="row section-space--top--60">
+                                <div class="col">
+                                    <ul class="page-pagination">
+                                        <li><a href="#"><i class="fa fa-angle-left"></i> 처음</a></li>
+                                        <li class="active"><a href="#">01</a></li>
+                                        <li><a href="#">02</a></li>
+                                        <li><a href="#">03</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i> 다음</a></li>
+                                    </ul>
                                 </div>
-                            </form>
-                            <p class="form-message"></p>
+                            </div>
+                            <!-- 페이지 네이션 끝 -->
                         </div>
-                    </div> -->
+                    </div>
                 </div>
 
             </div>
@@ -106,3 +162,8 @@
         }
     };
 </script>
+<style scoped>
+    .reward_table {
+        text-align: center;
+    }
+</style>
