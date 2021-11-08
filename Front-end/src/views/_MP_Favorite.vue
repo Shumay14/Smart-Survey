@@ -3,7 +3,7 @@
 
         <Header />
 
-        <Breadcrumb :items="items" title="Contact Us" />
+        <Breadcrumb :items="items" title="관심사 설정" />
 
         <FavoriteDetail />
         <Footer />
@@ -38,11 +38,11 @@
             return {
                 items: [
                     {
-                        text: 'Home',
+                        text: '마이페이지',
                         to: "/"
                     },
                     {
-                        text: 'Contact',
+                        text: '관심사 설정',
                         active: true
                     }
                 ]

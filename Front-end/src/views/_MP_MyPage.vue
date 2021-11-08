@@ -3,7 +3,7 @@
 
         <Header />
 
-        <Breadcrumb :items="items" title="Contact Us" />
+        <Breadcrumb :items="items" title="마이페이지" />
 
         <MyPageDetail />
         <Footer/>
@@ -39,11 +39,11 @@
             return {
                 items: [
                     {
-                        text: 'Home',
+                        text: '마이페이지',
                         to: "/"
                     },
                     {
-                        text: 'Contact',
+                        text: '마이페이지',
                         active: true
                     }
                 ]
