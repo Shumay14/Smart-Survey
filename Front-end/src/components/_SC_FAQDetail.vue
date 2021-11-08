@@ -25,9 +25,9 @@
                                             <div id="flush-collapseOne" class="accordion-collapse collapse"
                                                 aria-labelledby="flush-headingOne"
                                                 data-bs-parent="#accordionFlushExample">
-                                                <div class="accordion-body">Placeholder content for this accordion,
-                                                    which is intended to demonstrate the <code>.accordion-flush</code>
-                                                    class. This is the first item's accordion body.</div>
+                                                <div class="accordion-body">
+                                                    DID란 탈중앙화 신원증명(Decentralized Identifier, 분산아이디)입니다. 기존 신원확인방식과 달리 중앙 시스템에 의해 통제되지 않으며 개개인이 자신의 정보에 완전한 통제권을 갖도록 하는 기술입니다.
+                                                </div>
                                             </div>
                                         </div>
 
