@@ -18,7 +18,7 @@
                     </div>
                     <div class="triangle"></div>
                     <div class="message">
-                        안녕하세요! 서베이존입니다. <br> 문의하실 사항을 남겨주시면 답변해드리겠습니다!
+                        안녕하세요! 서베이존입니다. <br> 문의하실 사항을 남겨주시면 답변해드리겠습니다.
                     </div>
                 </li>
 
@@ -49,7 +49,7 @@
             </ul>
             <footer>
         
-                <textarea placeholder="문의하실 사항을 적어주세요."></textarea>
+                <textarea placeholder="문의하실 사항을 남겨주세요..."></textarea>
                         <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
 			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt=""> -->
                 <a href="#">보내기</a>
@@ -343,7 +343,7 @@
         height: 80px;
         border-radius: 3px;
         padding: 20px;
-        font-size: 18px;
+        font-size: 15px;
         margin-bottom: 13px;
     }
 

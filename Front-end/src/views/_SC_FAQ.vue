@@ -3,7 +3,7 @@
 
         <Header />
 
-        <Breadcrumb :items="items" title="Blog Details" />
+        <Breadcrumb :items="items" title="FAQ" />
 
         <FAQDetail />
         <Footer/>
@@ -37,11 +37,11 @@
         data() {
             return {
                 items: [{
-                        text: 'Home',
+                        text: '고객센터',
                         to: "/"
                     },
                     {
-                        text: 'Blog Details',
+                        text: 'FAQ',
                         active: true
                     }
                 ]

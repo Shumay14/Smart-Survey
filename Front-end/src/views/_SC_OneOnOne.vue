@@ -3,7 +3,7 @@
 
         <Header />
 
-        <Breadcrumb :items="items" title="Blog Details" />
+        <Breadcrumb :items="items" title="1:1 문의" />
 
         <OneOnOne />
 
@@ -37,11 +37,11 @@
         data() {
             return {
                 items: [{
-                        text: 'Home',
-                        to: "/"
+                        text: '고객센터',
                     },
                     {
-                        text: 'Blog Details',
+                        text: '1:1 문의',
+                        to: "/oneonone",
                         active: true
                     }
                 ]

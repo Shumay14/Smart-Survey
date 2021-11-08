@@ -3,7 +3,7 @@
 
         <Header />
 
-        <Breadcrumb :items="items" title="Blog Details" />
+        <Breadcrumb :items="items" title="공지사항" />
 
         <NoticeDetail />
 
@@ -39,11 +39,11 @@
         data() {
             return {
                 items: [{
-                        text: 'Home',
-                        to: "/"
+                        text: '고객센터',
+                        to: "/notice"
                     },
                     {
-                        text: 'Blog Details',
+                        text: '공지사항',
                         active: true
                     }
                 ]
