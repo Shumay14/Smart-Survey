@@ -34,3 +34,14 @@ export async function createJWT(
 
   return createJWS
 }
+
+export function decodeJWT(jwt: string): JWTDecoded {
+  if (!jwt) throw new Error('invalid_argument: no JWT passed into decodeJWT')
+  try {
+    const jws = decodeJWS(jwt)
+    const decodedJwt: JWTDecoded = Object.assign(jws, { payload: JSON.parse(decodeBase64url(jws.payload)) })
+    return decodedJwt
+  } catch (e) {
+    throw new Error('invalid_argument: Incorrect format JWT')
+  }
+}
