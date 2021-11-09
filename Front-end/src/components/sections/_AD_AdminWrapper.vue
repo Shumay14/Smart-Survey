@@ -44,13 +44,13 @@
                                 <tr :key="tableIndex" v-for="privacyItem, tableIndex in privacyList" >
                                     <th class="col-2">{{privacyItem.description}}</th>
                                     
-                                    
-                                    <td class="col-8" v-if="surveySetting[tableIndex] === undefined">
+
+                                    <td class="col-8" v-show="surveySetting[tableIndex] === undefined">
                                         "#" {{surveySetting[tableIndex]}}"#" 
                                         <input type="button" @click="testa(tableIndex)" placeholder="test" />
                                     </td>
 
-                                    <td class="col-8" v-else>
+                                    <td class="col-8" v-if="surveySetting[tableIndex] != undefined">
                                         test
                                         {{surveySetting[tableIndex]}}@@
                                     </td>
