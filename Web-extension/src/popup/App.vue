@@ -1,7 +1,13 @@
 <template>
   <div style="width:400px">
-    <input type="number" v-bind="a">
-    <input type="number" v-bind="b">
+    <input
+      v-model="a"
+      type="number"
+    >
+    <input
+      type="number"
+      v-bind="b"
+    >
     <button @click="add()">
       ADD A + B
     </button>
@@ -20,8 +26,8 @@
     },
     methods: {
       add() {
-        this.c = 500
-        console.log("a")
+        this.c = 200
+        this.c = this.a + this.b
 
       }
     }
