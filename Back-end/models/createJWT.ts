@@ -32,7 +32,19 @@ export async function createJWT(
   
 ): Promise<string> {
 
-  return createJWS
+  const timestamps: Partial<JWTPayload> = {
+    iat: Math.floor(Date.now() / 1000),
+    exp: undefined,
+  }
+  const fullPayload = { timestamps, payload, iss: issuer }
+  return createJWS(fullPayload, signer, header)
+}
+
+export interface JWTDecoded {
+  header: JWTHeader
+  payload: JWTPayload
+  signature: string
+  data: string
 }
 
 export function decodeJWT(jwt: string): JWTDecoded {
@@ -41,7 +53,7 @@ export function decodeJWT(jwt: string): JWTDecoded {
     const jws = decodeJWS(jwt)
     const decodedJwt: JWTDecoded = Object.assign(jws, { payload: JSON.parse(decodeBase64url(jws.payload)) })
     return decodedJwt
-  } catch (e) {
+  } catch (error) {
     throw new Error('invalid_argument: Incorrect format JWT')
   }
 }
