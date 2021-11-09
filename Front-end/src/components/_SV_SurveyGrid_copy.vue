@@ -13,17 +13,33 @@
           <!-- <div class="type">Mexican / American</div> -->
           <div class="location margintop">
             보상지급액
-            <span class="opening" style="font-size: 2em; margin-left: 0.5em"
+            <span
+              class="opening"
+              style="font-size: 2em; margin-left: 0.5em; font-weight: bold"
               >2.5</span
             >
-            SUB
+            <span class="opening" style="margin-left: 0.5em; font-weight: bold">
+              SUB</span
+            >
             <span>= 5,460원</span>
           </div>
         </div>
       </div>
-      <!-- <hr class="line" style="border: solid 1px gray" /> -->
+      <hr
+        class="line"
+        style="
+          border: solid 1px gray;
+          position: absolute;
+          width: 70%;
+          margin-top: 6.5%;
+          margin-left: 21%;
+        "
+      />
       <div class="col-md-3">
-        <h3 class="padtop" style="color: red; text-align: center">D-23</h3>
+        <h3 class="padtop" style="color: #ff7f00; text-align: center">D-23</h3>
+        <!-- <h5 class="padtop" style="color: red; text-align: center">
+          21.03 - 21.06
+        </h5> -->
         <div class="go_to margintop">
           <a
             href="detail_page.html"

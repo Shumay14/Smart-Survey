@@ -83,16 +83,19 @@ a#filters_col_bt .icon_set_1_icon-65 {
 }
 .strip_list {
   box-shadow: 3px 3px 4px 0px gray;
+  padding: 10px 10px 25px 10px;
   background-color: #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  padding: 20px;
+  /* padding: 20px; */
   position: relative;
-  /* border: 1px solid #ededed; */
+  border: 1px solid #ededed;
   border-top: 2px solid #ccc;
   border-left: 2px solid #ccc;
-  min-height: 152px;
+  /* border-bottom: 2px solid #ccc; */
+  /* min-height: 152px; */
+  min-height: 120px;
   margin-bottom: 30px;
   line-height: 1.3;
   display: block;
@@ -129,7 +132,8 @@ a.strip_list:hover h3 {
   margin-top: 5px;
 }
 .desc .opening {
-  color: #c33;
+  /* color: #c33; */
+  color: #ff7f00;
 }
 .desc ul {
   list-style: none;
