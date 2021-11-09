@@ -1,5 +1,5 @@
 <template>
-    <div class="container section-space--inner--60 ">
+    <!-- <div class="container section-space--inner--60 ">
         <div class="comment-wrapper">
             <h3>설문 등록 페이지</h3>
             <div class="comment-form">
@@ -29,7 +29,7 @@
                         <span class="title-admin-sub"> ( 보상 지급액 = 보상금 / 표본수 ) </span>
                         <input type="text">
                     </div>
-                    
+                     -->
                     <div class="col-lg-6 section-space--bottom--20"> 
                         <span class="title-admin-main"> 참여 조건 설정</span>
                         <input type="text" placeholder="검색">
@@ -41,10 +41,11 @@
                                 </tr>
                             </thead>
                             <tbody align="center">
-                                <tr :key="tableIndex" v-for="privacyItem, tableIndex in privacyList">
+                                <tr :key="tableIndex" v-for="privacyItem, tableIndex in privacyList" >
                                     <th class="col-2">{{privacyItem.description}}</th>
                                     
                                     <td class="col-8" v-if="surveySetting[tableIndex] === undefined">
+                                        "#" {{surveySetting[tableIndex]}}"#" 
                                         <input type="button" @click="testa(tableIndex)" placeholder="test" />
                                     </td>
 
@@ -63,13 +64,13 @@
                         <span class="title-admin-main"> 세부 조건 설정 </span>
                         <input type="text" placeholder="검색">
                     </div> -->
-                    <div class="col-12 d-flex justify-content-center">
+                    <!-- <div class="col-12 d-flex justify-content-center">
                         <input type="submit" value="등록하기">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <script>
@@ -106,7 +107,7 @@
                 ]
             }
         },
-        methods: {
+        computed: {
             testa(a){
                 console.log("START - ", this.surveySetting[a])
                 this.surveySetting[a] = 1;
