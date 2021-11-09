@@ -30,7 +30,7 @@
                     <div class="col-lg-8 col-12 section-space--bottom--30 pl-30 pl-sm-15 pl-xs-15">
                         <div class="row row-5 image-popup">
                             <div class="col-xl-2 col-lg-3 col-sm-4 col-6 section-space--top--10"
-                                v-for="(i, num) in favoriteList" :key="num" v-show="i.level == 1" @click=" addItem(i)">
+                                v-for="(i, num) in favoriteList" :key="num" @click="addItem(i)">
                                 <div class="gallery-item single-gallery-thumb">
                                     <img :src="i.img" class="img-fluid" alt="thumbnail">
                                     <span class="overlayName">{{i.name}}</span>
@@ -67,24 +67,20 @@
         },
         methods: {
             addItem(i) {
-                console.log("클릭되고 있습니다!");
-
-                // 1안
+                // 만약 셀렉트 아이템이 포함되어있다면
                 if (this.selectedItem.includes(i) == true) {
-                    console.log(i.level)
+                    console.log("1단계: selectedItem에 있는 값이다.", i.level)
+
                 } else {
                     this.selectedItem.push(i)
+                    console.log("3단계:", "selectedItem에 밀어넣었다.")
                 }
-
-
-                // console.log(this.selectedItem)
-                // console.log(this.selectedItemLevel)
             },
 
             deleteItem(x) {
                 for (let i = 0; i < this.selectedItem.length; i++) {
-                    console.log(i)
-                    console.log(x)
+                    console.log("기존 항목들 리스트: ", i)
+                    console.log("누른 값: ", x)
                     if (this.selectedItem[i] == x) {
                         this.selectedItem.splice(i, 1);
                         i--;
