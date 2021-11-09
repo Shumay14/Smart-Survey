@@ -8,7 +8,7 @@
       <!--End col-md -->
 
       <div class="col-lg-8">
-        <div id="tools">
+        <!-- <div id="tools">
           <div class="row">
             <div class="col-md-3 col-sm-4 col-5">
               <div class="styled-select">
@@ -25,7 +25,7 @@
               ></a>
             </div>
           </div>
-        </div>
+        </div> -->
         <!--End tools -->
         <SurveyContent />
 
