@@ -12,48 +12,37 @@
                                 <!-- 이너 시작 -->
                                 <div class="blog-inner">
                                     <h1>FAQ</h1>
-                                    <!-- 아코디언 시작 -->
-                                    <div class="accordion accordion-flush" v-bind:id="'accordionFlush'+num"
-                                        v-for="(i,num) in reword" :key="num">
+
+                                    <div>
+                                        <button @click='selected=blockchain'>블록체인</button>
+                                        <button @click="selected=reword">보상</button>
+                                        <button @click="selected=survey">설문조사</button>
+                                        <button @click="selected=user">회원</button>
+                                    </div>
+
+                                    <!-- reword 아코디언 시작 -->
+                                    <div class="accordion accordion-flush" v-bind:id="'accordionFlushReword'+num"
+                                        v-for="(i,num) in selected" :key="num">
                                         <div class="accordion-item">
-                                            <h2 class="accordion-header" v-bind:id="'flush-heading'+num">
+                                            <h2 class="accordion-header" v-bind:id="'flush-heading-reword'+num">
                                                 <button class="accordion-button collapsed" type="button"
                                                     data-bs-toggle="collapse"
-                                                    v-bind:data-bs-target="'#flush-collapse'+num" aria-expanded="false"
-                                                    v-bind:aria-controls="'flush-collapse'+num">
+                                                    v-bind:data-bs-target="'#flush-collapse-reword'+num" aria-expanded="false"
+                                                    v-bind:aria-controls="'flush-collapse-reword'+num">
                                                     {{i.title}}
                                                 </button>
                                             </h2>
-                                            <div v-bind:id="'flush-collapse'+num" class="accordion-collapse collapse"
-                                                v-bind:aria-labelledby="'flush-heading'+num"
-                                                v-bind:data-bs-parent="'#accordionFlush'+num">
+                                            <div v-bind:id="'flush-collapse-reword'+num" class="accordion-collapse collapse"
+                                                v-bind:aria-labelledby="'flush-heading-reword'+num"
+                                                v-bind:data-bs-parent="'#accordionFlushReword'+num">
                                                 <div class="accordion-body">
                                                     {{i.content}}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="accordion accordion-flush" v-bind:id="'accordionFlush'+num"
-                                        v-for="(i,num) in reword" :key="num">
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="flush-heading{{num}}">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse"
-                                                    v-bind:data-bs-target="'#flush-collapse'+num" aria-expanded="false"
-                                                    v-bind:aria-controls="'flush-collapse'+num">
-                                                    {{i.title}}
-                                                </button>
-                                            </h2>
-                                            <div v-bind:id="'flush-collapse'+num" class="accordion-collapse collapse"
-                                                v-bind:aria-labelledby="'flush-heading'+num"
-                                                v-bind:data-bs-parent="'#accordionFlush'+num">
-                                                <div class="accordion-body">
-                                                    {{i.content}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                     <!-- 아코디언 끝 -->
+
 
                                 </div>
                             </div>
@@ -97,7 +86,6 @@
                             </div>
                         </div>
                         <!-- 인기있는 포스터 위젯 끝 -->
-
                     </div>
                 </div>
             </div>
@@ -106,7 +94,10 @@
 </template>
 
 <script>
+    import blockchain from '../data/_faq_blockchain.json'
     import reword from '../data/_faq_reword.json'
+    import survey from '../data/_faq_survey.json'
+    import user from '../data/_faq_user.json'
 
     export default {
         components: {
@@ -114,8 +105,18 @@
         },
         data() {
             return {
+                blockchain,
                 reword,
+                survey,
+                user,
+                selected : blockchain
             }
         },
+        computed() {
+        
+        },
+        mounted() {
+
+        }
     };
 </script>
