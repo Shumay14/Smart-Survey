@@ -46,7 +46,7 @@
                     </p>
                 </div>
                 <div class="col-6">
-                    <img src="assets/img/main/main-2.png" style="margin:100px"/>
+                    <img src="assets/img/main/main-2.png" style="margin:50px"/>
                 </div>
             </section>
             
@@ -65,7 +65,7 @@
                     </p>
                 </div>
                 <div class="col-6">
-                    <img src="assets/img/main/main-3.png" />
+                    <img src="assets/img/main/main-3.png" style="margin:50px"/>
                 </div>
             </section>
 
@@ -195,7 +195,10 @@
             object-fit: cover;
         }
     }
-
+    .img-main{
+        transition: 5s;
+        transform: translateY(100%);
+    }
     .description{
         padding-top: 30px;
         font-size: 20px;
