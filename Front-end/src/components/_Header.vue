@@ -176,23 +176,32 @@
         <div class="header-top-bar">
           <div class="container">
             <div class="top-info-bar row align-items-center">
-              <div class="info-menu--item col-lg-4">
+              <div class="info-menu--item col-lg-3">
                 <div class="info-menu--item--head text-right">총 설문 금액</div>
-                <div class="info-menu--item--data">: 10,000,000 ￦</div>
+                <div class="info-menu--item--data">: {{getCurrentSurveyInfo("total")}} ￦</div>
               </div>
 
-              <div class="info-menu--item col-lg-4">
+              <div class="info-menu--item col-lg-3">
                 <div class="info-menu--item--head text-right">
-                  참여 가능한 설문 수
+                  참여 가능한 설문
                 </div>
                 <div class="info-menu--item--data">
-                  : 2,104 개 (2021.11.04 기준)
+                  : {{getCurrentSurveyInfo("count")}} 개 
                 </div>
               </div>
 
-              <div class="info-menu--item col-lg-4">
-                <div class="info-menu--item--head text-right">예상 수익</div>
-                <div class="info-menu--item--data">: 약 156,943,280 ￦</div>
+              <div class="info-menu--item col-lg-3">
+                <div class="info-menu--item--head text-right">획득 가능한 수익</div>
+                <div class="info-menu--item--data">
+                  : {{getCurrentSurveyInfo("reward")}} ￦
+                </div>
+              </div>
+
+              <div class="info-menu--item col-lg-3">
+                <div class="info-menu--item--head text-right">획득한 수익</div>
+                <div class="info-menu--item--data">
+                  : 123,123 ￦
+                </div>
               </div>
             </div>
           </div>
@@ -205,11 +214,12 @@
 import FixedHeader from "vue-fixed-header";
 import Web3 from "@/components/_Web3";
 import MetamaskLogo from "@/components/_MetamaskLogo";
-
+import data from "../data/_survey"
 export default {
   components: {
     FixedHeader,
     Web3,
+    data,
     MetamaskLogo,
   },
   data() {
@@ -242,6 +252,29 @@ export default {
         this.$store.state.metamaskAdd +
         "/200?format=png";
     },
+    getCurrentSurveyInfo(msg){
+
+      console.log(data);
+
+    
+      if(msg=="total"){
+        var price = 0;
+        for(var item of data){
+          price += item.reward
+        }
+        return price.toLocaleString(); 
+      }
+
+      if(msg=="count"){ 
+        return data.length.toLocaleString(); 
+      }
+
+      if(msg=="reward"){ 
+        var price = 321200;
+        return price.toLocaleString(); 
+      }
+      return "222";
+    }
   },
 };
 </script>
@@ -266,7 +299,7 @@ export default {
   &--item {
     padding-top: 1px;
     padding-bottom: 1px;
-
+    letter-spacing: -0.02rem;
     &--head {
       font-size: 15px;
       font-weight: bold;
