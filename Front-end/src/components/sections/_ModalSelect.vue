@@ -42,28 +42,74 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div
-              @click="allbtn()"
-              v-bind:style="{ border: clickSelect }"
-              style="padding: 5px"
-            >
-              <i
-                class="far fa-check-circle fa-lg"
-                v-bind:style="{ color: allSelect }"
-              ></i
-              ><span style="font-weight: 900; font-size: 1rem">
-                전체 동의하기</span
+            <div style="border-bottom: 2px solid #f3f3f3">
+              <div
+                @click="allbtn()"
+                v-bind:style="{ outline: clickSelect }"
+                style="
+                  padding-left: 15.5px;
+                  padding-top: 5.5px;
+                  margin: 5px;
+                  height: 2.5rem; ;
+                "
               >
+                <i
+                  class="far fa-check-circle fa-lg"
+                  v-bind:style="{ color: allSelect }"
+                ></i
+                ><span style="font-weight: 900; font-size: 1rem">
+                  전체 동의하기</span
+                >
+              </div>
+              <p
+                style="font-size: 12px; margin-left: 3rem; margin-bottom: 1rem"
+              >
+                전체동의는 선택목적에 대한 동의를 포함하고 있으며, 선택목적에
+                대한 동의를 거부해도 서비스 이용이 가능합니다.
+              </p>
             </div>
-            전체동의는 선택목적에 대한 동의를 포함하고 있으며, 선택목적에 대한
-            동의를 거부해도 서비스 이용이 가능합니다.<br />
-            drooom@naver.com<br />
-            push 서비스 제공을 위해 회원번호와 함께 개인정보가 제공됩니다. 보다
-            자세한 개인정보 제공항목은 동의 내용에서 확인하실 수 있습니다.
-            정보는 서비스 탈퇴 시 지체없이 파기됩니다.<br />
-            [필수] 필수 제공 항목 닉네임, 프로필 사진 보기 <br />
-            [선택] 선택<br />
-            제공 항목 보기 성별 연령대 생일/
+            <!-- <hr style="height: 0.25px" /> -->
+            <div style="margin-top: 1rem; border-bottom: 2px solid #f3f3f3">
+              <div style="margin-left: 3rem; margin-bottom: 1rem">
+                <i class="fas fa-user-circle" style="color: #c5c8c1"></i>
+                <span style="margin-left: 0.5rem">drooom@naver.com</span>
+                <p style="font-size: 12px; margin-top: 0.5rem">
+                  push 서비스 제공을 위해 회원번호와 함께 개인정보가 제공됩니다.
+                  보다 자세한 개인정보 제공항목은 동의 내용에서 확인하실 수
+                  있습니다. 정보는 서비스 탈퇴 시 지체없이 파기됩니다.
+                </p>
+              </div>
+            </div>
+            <div style="margin-top: 1rem">
+              <div>
+                <div
+                  style="
+                    padding-left: 15.5px;
+                    padding-top: 5.5px;
+                    margin: 5px;
+                    height: 2.5rem;
+                    margin-bottom: 1rem;
+                  "
+                >
+                  <i class="fas fa-check fa-xs" style="color: #c5c8c1"></i
+                  ><span> [필수] 필수 제공 항목</span>
+                  <p style="font-size: 12px; color: #c5c8c1; margin-left: 1rem">
+                    닉네임
+                  </p>
+                </div>
+              </div>
+              <div>
+                <div style="margin-left: 2rem">
+                  <div>[선택] 선택 제공 항목</div>
+                  <div>
+                    <i class="fas fa-check fa-sm" style="color: #c5c8c1"></i>
+                    <span style="font-size: 16px; margin-left: 0.5rem"
+                      >성별</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button
