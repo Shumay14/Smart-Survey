@@ -1,95 +1,95 @@
 [{      "index": 1,
-        "level": 1,
+        "topIndex": 0,
         "category": "surveyType",
         "name": "국내",
         "img": "assets/img/favoriteImg/korea.jpg"
     },{
         "index": 2,
-        "level": 1,
+        "topIndex": 0,
         "category": "surveyType",
         "name": "해외",
         "img": "assets/img/favoriteImg/overseas.jpg"
     },{
         "index": 3,
-        "level": 1,
+        "topIndex": 0,
         "category": "car",
         "name": "자동차",
         "img": "assets/img/favoriteImg/car.jpg"
     }, {
         "index": 4,
-        "level": 2,
+        "topIndex": 3,
         "category": "car",
         "name": "소형차",
         "img": "assets/img/favoriteImg/car-small.jpg"
     }, {
         "index": 5,
-        "level": 2,
+        "topIndex": 3,
         "category": "car",
         "name": "중형차",
         "img": "assets/img/favoriteImg/car-middle.jpg"
     }, {
         "index": 6,
-        "level": 2,
+        "topIndex": 3,
         "category": "car",
         "name": "대형차",
         "img": "assets/img/favoriteImg/car-large.jpg"
     }, {
         "index": 7,
-        "level": 1,
+        "topIndex": 0,
         "category": "music",
         "name": "음악",
         "img": "assets/img/favoriteImg/music.jpg"
     }, {
         "index": 8,
-        "level": 1,
+        "topIndex": 0,
         "category": "cooking",
         "name": "요리",
         "img": "assets/img/favoriteImg/cooking.jpg"
     }, {
         "index": 9,
-        "level": 2,
+        "topIndex": 8,
         "category": "food",
         "name": "한식",
         "img": "assets/img/favoriteImg/food-korea.jpg"
     }, {
         "index": 10,
-        "level": 2,
+        "topIndex": 8,
         "category": "food",
         "name": "일식",
         "img": "assets/img/favoriteImg/food-japan.jpg"
     }, {
         "index": 11,
-        "level": 2,
+        "topIndex": 8,
         "category": "food",
         "name": "양식",
         "img": "assets/img/favoriteImg/food-western.jpg"
     }, {
         "index": 12,
-        "level": 2,
+        "topIndex": 8,
         "category": "food",
         "name": "중식",
         "img": "assets/img/favoriteImg/food-chinese.jpg"
     }, {
         "index": 13,
-        "level": 1,
+        "topIndex": 0,
         "category": "electronic-products",
         "name": "전자제품",
         "img": "assets/img/favoriteImg/electronic-products.jpg"
     }, {
         "index": 14,
-        "level": 2,
+        "topIndex": 13,
         "category": "electronic-products",
         "name": "이어폰",
         "img": "assets/img/favoriteImg/electronic-products-earphone.jpg"
     }, {
         "index": 15,
-        "level": 2,
+        "topIndex": 13,
         "category": "electronic-products",
         "name": "스마트폰",
         "img": "assets/img/favoriteImg/electronic-products-smartphone.jpg"
     }, {
         "index": 16,
-        "level": 2,
+        "topIndex": 13,
         "category": "electronic-products",
         "name": "스마트워치",
         "img": "assets/img/favoriteImg/electronic-products-smartwatch.jpg"

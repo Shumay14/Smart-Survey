@@ -9,26 +9,7 @@
                             <div class="blog-details col-12">
                                 <div class="blog-inner">
                                     <div class="content">
-                                        <!-- <h2 class="title">스마트 서베이 개발 시작</h2>
-                                        <div class="desc section-space--bottom--30">
-                                            <p>안녕하세요!<br>어느덧 찬바람이 불어오기시작하는 11월 입니다.<br></p>
 
-                                            <blockquote
-                                                class="blockquote section-space--bottom--30 section-space--top--30">
-                                                <p>블록체인 DID 기반 스마트 서베이 <br>11월 1일 사이트 대규모 개편예정</p>
-                                                <span class="author">__HK DID 3팀</span>
-                                            </blockquote>
-
-                                            <p>11월 1일 부터 스마트서베이 개발을 시작합니다.<br></p>
-
-                                        </div>
-                                        <ul class="meta">
-                                            <li>By HK DID 3팀
-                                            </li>
-                                            <li>
-                                                2021.11.01
-                                            </li>
-                                        </ul> -->
                                         <!-- 시작 -->
                                         <table class="table table-hover">
                                             <thead align="center">
@@ -38,21 +19,18 @@
                                                     <th class="col-2">날짜</th>
                                                 </tr>
                                             </thead>
-                                            <tbody align="center">
-                                                <tr>
-                                                    <th class="col-2">2</th>
-                                                    <td class="col-8">대규모 업데이트 공고</td>
-                                                    <td class="col-2">2021-11-02</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="col-2">1</th>
-                                                    <td class="col-8">서베이스낵이 변경됩니다</td>
-                                                    <td class="col-2">2021-11-01</td>
+                                            <tbody align="center" >
+                                                <tr v-for="(i, num) in notice" :key="num">
+                                                    <th class="col-2">{{i.index}}</th>
+                                                    <td class="col-8">{{i.title}}</td>
+                                                    <td class="col-2">{{i.date}}</td>
                                                 </tr>
 
                                             </tbody>
                                         </table>
+                                      
                                         <!-- 끝 -->
+                             
                                     </div>
                                 </div>
                             </div>
@@ -105,12 +83,24 @@
 </template>
 
 <script>
+    import notice from '../data/_notice.json'
     export default {
         components: {
 
         },
+
         data() {
-            return {}
+            return {
+                notice,
+            }
+        },
+        computed: {
+        },
+        mounted() {},
+        methods: {
+            test() {
+                console.log("this.notice.length", notice.length)
+            }
         },
     };
 </script>

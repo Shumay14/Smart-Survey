@@ -30,24 +30,18 @@
                     <div class="col-lg-8 col-12 section-space--bottom--30 pl-30 pl-sm-15 pl-xs-15">
                         <div class="row row-5 image-popup">
                             <div class="col-xl-2 col-lg-3 col-sm-4 col-6 section-space--top--10"
-                                v-for="(i, num) in favoriteList" :key="num" @click="addItem(i)">
-                                <div class="gallery-item single-gallery-thumb">
-                                    <img :src="i.img" class="img-fluid" alt="thumbnail">
+                                v-for="(i, num) in favoriteList" :key="num" @click="addItem(i)"
+                                v-show="selectedIndex.includes(i.topIndex) == true">
+                                <div class="gallery-item single-gallery-thumb " >
+                                    <img :src="i.img" class="img-fluid" alt="thumbnail" >
                                     <span class="overlayName">{{i.name}}</span>
                                     <span class="plus"></span>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                     <!-- 이미지 선택 끝 -->
-
-
-
-
-                    <!-- 아이템 필터링 시작 -->
-
-                    <!-- 아이템 필터링 끝 -->
-
 
                 </div>
             </div>
@@ -57,23 +51,26 @@
 </template>
 
 <script>
-    import favoriteList from '../../data/favoriteList.json'
+    import favoriteList from '../../data/_favoriteList.json'
     export default {
         data() {
             return {
                 favoriteList,
                 selectedItem: [],
+                selectedIndex: [0],
+                testv1: "",
+                testv2: "",
             }
         },
         methods: {
             addItem(i) {
                 // 만약 셀렉트 아이템이 포함되어있다면
                 if (this.selectedItem.includes(i) == true) {
-                    console.log("1단계: selectedItem에 있는 값이다.", i.level)
 
                 } else {
+                    // index를 따로 분리
                     this.selectedItem.push(i)
-                    console.log("3단계:", "selectedItem에 밀어넣었다.")
+                    this.selectedIndex.push(i.index)
                 }
             },
 
@@ -84,12 +81,19 @@
                     if (this.selectedItem[i] == x) {
                         this.selectedItem.splice(i, 1);
                         i--;
-                    }
-                }
+                    };
+                };
 
-            }
+                for (let l = 0; l < this.selectedIndex.length; l++) {
+                    if (this.selectedIndex[l] == x.index) {
+                        this.selectedIndex.splice(l, 1);
+                        // i--;
+                    }
+                };
+            },
+
         }
-    };
+    }
 </script>
 <style lang="scss">
     .favorite_Selected {
@@ -113,7 +117,7 @@
         // box-sizing: content-box;
         // -moz-box-sizing: content-box;
         // -webkit-box-sizing: content-box;
-
-
     }
+
+   
 </style>
