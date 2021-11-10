@@ -7,6 +7,7 @@
     <SurveySlider />
     <!-- 상단 슬라이드 3개 -->
     <!-- 위 아래 컴포넌트 사이, 보상 가격별 필터링 필요 -->
+    <!-- <SurveyDetailWrapper /> -->
     <SurveyDetailWrapper />
     <!-- 메인 내용, 세부 컴포넌트들을 포함하는 Vue -->
     <!-- More Load 버튼 생성 필요 (계속해서 설문 파일을 가져오는 모듈)-->
@@ -27,7 +28,6 @@ import Header from "@/components/_Header";
 import Breadcrumb from "../components/Breadcrumb";
 import SurveySlider from "../components/sections/_SurveySlider";
 import SurveyDetailWrapper from "../components/sections/_SurveyDetailWrapper";
-import BrandCarousel from "../components/_BrandCarousel";
 import Footer from "../components/_Footer";
 import OffCanvasMobileMenu from "@/components/OffCanvasMobileMenu";
 
@@ -37,7 +37,6 @@ export default {
     Breadcrumb,
     SurveySlider,
     SurveyDetailWrapper,
-    BrandCarousel,
     Footer,
     OffCanvasMobileMenu,
   },
