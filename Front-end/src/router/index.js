@@ -8,50 +8,49 @@ import Notice from "../views/_SC_Notice.vue";
 import Favorite from "../views/_MP_Favorite.vue";
 import MyPage from "../views/_MP_MyPage.vue";
 import SurveyDrawUp from "../views/_SV_SurveyDrawUp.vue";
-import SurveyList from "../views/_SurveyList.vue";
-import SurveyList_test from "../views/_SurveyList_test.vue";
+import SurveyList from "../views/_SurveyList.vue";;
 import _SV_SurveyGrid_copy from "../../src/components/_SV_SurveyGrid_copy.vue";
 import _ModalSelect from "../../src/components/sections/_ModalSelect.vue";
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
+const routes = [{
     path: "*",
     name: "NotFound",
     component: () =>
-      import(/* webpackChunkName: "NotFound" */ "../views/404.vue"),
+      import( /* webpackChunkName: "NotFound" */ "../views/404.vue"),
   },
   {
     path: "/home-two",
     name: "HomeTwo",
     component: () =>
-      import(/* webpackChunkName: "home-two" */ "../views/HomeTwo.vue"),
+      import( /* webpackChunkName: "home-two" */ "../views/HomeTwo.vue"),
   },
   {
     path: "/home-three",
     name: "HomeThree",
     component: () =>
-      import(/* webpackChunkName: "home-three" */ "../views/HomeThree.vue"),
+      import( /* webpackChunkName: "home-three" */ "../views/HomeThree.vue"),
   },
   {
     path: "/about",
     name: "About",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      import( /* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
     path: "/service",
     name: "Service",
     component: () =>
-      import(/* webpackChunkName: "service" */ "../views/Service.vue"),
+      import( /* webpackChunkName: "service" */ "../views/Service.vue"),
   },
   {
     path: "/service-details",
     name: "ServiceDetails",
     component: () =>
       import(
-        /* webpackChunkName: "service-details" */ "../views/ServiceDetails.vue"
+        /* webpackChunkName: "service-details" */
+        "../views/ServiceDetails.vue"
       ),
   },
   {
@@ -59,21 +58,23 @@ const routes = [
     name: "ServiceDetailsRight",
     component: () =>
       import(
-        /* webpackChunkName: "service-details-right" */ "../views/ServiceDetailsRight.vue"
+        /* webpackChunkName: "service-details-right" */
+        "../views/ServiceDetailsRight.vue"
       ),
   },
   {
     path: "/project",
     name: "Project",
     component: () =>
-      import(/* webpackChunkName: "project" */ "../views/Project.vue"),
+      import( /* webpackChunkName: "project" */ "../views/Project.vue"),
   },
   {
     path: "/project-details",
     name: "ProjectDetails",
     component: () =>
       import(
-        /* webpackChunkName: "project-details" */ "../views/ProjectDetails.vue"
+        /* webpackChunkName: "project-details" */
+        "../views/ProjectDetails.vue"
       ),
   },
   {
@@ -81,7 +82,8 @@ const routes = [
     name: "BlogLeftSidebar",
     component: () =>
       import(
-        /* webpackChunkName: "blog-left-sidebar" */ "../views/BlogLeftSidebar.vue"
+        /* webpackChunkName: "blog-left-sidebar" */
+        "../views/BlogLeftSidebar.vue"
       ),
   },
   {
@@ -89,28 +91,30 @@ const routes = [
     name: "BlogRightSidebar",
     component: () =>
       import(
-        /* webpackChunkName: "blog-right-sidebar" */ "../views/BlogRightSidebar.vue"
+        /* webpackChunkName: "blog-right-sidebar" */
+        "../views/BlogRightSidebar.vue"
       ),
   },
   {
     path: "/blog-details",
     name: "BlogDetails",
     component: () =>
-      import(/* webpackChunkName: "blog-details" */ "../views/BlogDetails.vue"),
+      import( /* webpackChunkName: "blog-details" */ "../views/BlogDetails.vue"),
   },
   {
     path: "/blog-details-right-sidebar",
     name: "BlogDetailsRightSidebar",
     component: () =>
       import(
-        /* webpackChunkName: "blog-details-right-sidebar" */ "../views/BlogDetailsRightSidebar.vue"
+        /* webpackChunkName: "blog-details-right-sidebar" */
+        "../views/BlogDetailsRightSidebar.vue"
       ),
   },
   {
     path: "/contact",
     name: "Contact",
     component: () =>
-      import(/* webpackChunkName: "contact" */ "../views/_AD_AdminPage.vue"),
+      import( /* webpackChunkName: "contact" */ "../views/_AD_AdminPage.vue"),
   },
   // DID Project 팀 프로젝트
   {
@@ -129,19 +133,14 @@ const routes = [
     component: Favorite,
   },
   {
-    path: "/surveylist",
-    name: "surveylist",
-    component: SurveyList,
-  },
-  {
     path: "/_ModalSelect",
     name: "_ModalSelect",
     component: _ModalSelect,
   },
   {
-    path: "/surveylist_test",
-    name: "surveylist_test",
-    component: SurveyList_test,
+    path: "/surveylist",
+    name: "surveylist",
+    component: SurveyList,
   },
   {
     path: "/faq",
@@ -167,7 +166,7 @@ const routes = [
     path: "/admin",
     name: "admin",
     component: () =>
-      import(/* webpackChunkName: "admin" */ "../views/_AD_AdminPage.vue"),
+      import( /* webpackChunkName: "admin" */ "../views/_AD_AdminPage.vue"),
   },
   {
     path: "/_SV_SurveyGrid_copy",
