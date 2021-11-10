@@ -13,86 +13,46 @@
                                 <div class="blog-inner">
                                     <h1>FAQ</h1>
                                     <!-- 아코디언 시작 -->
-                                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion accordion-flush" v-bind:id="'accordionFlush'+num"
+                                        v-for="(i,num) in reword" :key="num">
                                         <div class="accordion-item">
-                                            <h2 class="accordion-header" id="flush-headingOne">
+                                            <h2 class="accordion-header" v-bind:id="'flush-heading'+num">
                                                 <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                                    aria-expanded="false" aria-controls="flush-collapseOne">
-                                                    DID란 무엇인가요?
+                                                    data-bs-toggle="collapse"
+                                                    v-bind:data-bs-target="'#flush-collapse'+num" aria-expanded="false"
+                                                    v-bind:aria-controls="'flush-collapse'+num">
+                                                    {{i.title}}
                                                 </button>
                                             </h2>
-                                            <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                                aria-labelledby="flush-headingOne"
-                                                data-bs-parent="#accordionFlushExample">
+                                            <div v-bind:id="'flush-collapse'+num" class="accordion-collapse collapse"
+                                                v-bind:aria-labelledby="'flush-heading'+num"
+                                                v-bind:data-bs-parent="'#accordionFlush'+num">
                                                 <div class="accordion-body">
-                                                    DID란 탈중앙화 신원증명(Decentralized Identifier, 분산아이디)입니다. 기존 신원확인방식과 달리 중앙 시스템에 의해 통제되지 않으며 개개인이 자신의 정보에 완전한 통제권을 갖도록 하는 기술입니다.
+                                                    {{i.content}}
                                                 </div>
                                             </div>
                                         </div>
-
-
+                                    </div>
+                                    <!-- <div class="accordion accordion-flush" v-bind:id="'accordionFlush'+num"
+                                        v-for="(i,num) in reword" :key="num">
                                         <div class="accordion-item">
-                                            <h2 class="accordion-header" id="flush-headingTwo">
+                                            <h2 class="accordion-header" id="flush-heading{{num}}">
                                                 <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-                                                    aria-expanded="false" aria-controls="flush-collapseTwo">
-                                                    VC가 뭔가요?
+                                                    data-bs-toggle="collapse"
+                                                    v-bind:data-bs-target="'#flush-collapse'+num" aria-expanded="false"
+                                                    v-bind:aria-controls="'flush-collapse'+num">
+                                                    {{i.title}}
                                                 </button>
                                             </h2>
-                                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                                aria-labelledby="flush-headingTwo"
-                                                data-bs-parent="#accordionFlushExample">
-                                                <div class="accordion-body">Placeholder content for this accordion,
-                                                    which is intended to demonstrate the <code>.accordion-flush</code>
-                                                    class. This is the second item's accordion body. Let's imagine this
-                                                    being filled with some actual content.</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="flush-headingThree">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-                                                    aria-expanded="false" aria-controls="flush-collapseThree">
-                                                    SUB 토큰은 뭔가요?
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                                aria-labelledby="flush-headingThree"
-                                                data-bs-parent="#accordionFlushExample">
-                                                <div class="accordion-body">Placeholder content for this accordion,
-                                                    which is intended to demonstrate the <code>.accordion-flush</code>
-                                                    class. This is the third item's accordion body. Nothing more
-                                                    exciting happening here in terms of content, but just filling up the
-                                                    space to make it look, at least at first glance, a bit more
-                                                    representative of how this would look in a real-world application.
+                                            <div v-bind:id="'flush-collapse'+num" class="accordion-collapse collapse"
+                                                v-bind:aria-labelledby="'flush-heading'+num"
+                                                v-bind:data-bs-parent="'#accordionFlush'+num">
+                                                <div class="accordion-body">
+                                                    {{i.content}}
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="flush-heading4">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapse4"
-                                                    aria-expanded="false" aria-controls="flush-collapse4">
-                                                    설문조사에 어떻게 참여하나요?
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapse4" class="accordion-collapse collapse"
-                                                aria-labelledby="flush-heading4"
-                                                data-bs-parent="#accordionFlushExample">
-                                                <div class="accordion-body">Placeholder content for this accordion,
-                                                    which is intended to demonstrate the <code>.accordion-flush</code>
-                                                    class. This is the third item's accordion body. Nothing more
-                                                    exciting happening here in terms of content, but just filling up the
-                                                    space to make it look, at least at first glance, a bit more
-                                                    representative of how this would look in a real-world application.
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        </div>
+                                    </div> -->
                                     <!-- 아코디언 끝 -->
 
                                 </div>
@@ -113,7 +73,7 @@
                             <div class="sidebar-blog">
                                 <div class="content">
                                     <h5>
-                                        <router-link to="/notice" >공지사항</router-link>
+                                        <router-link to="/notice">공지사항</router-link>
                                     </h5>
                                 </div>
                             </div>
@@ -146,12 +106,16 @@
 </template>
 
 <script>
+    import reword from '../data/_faq_reword.json'
+
     export default {
         components: {
 
         },
         data() {
-            return {}
+            return {
+                reword,
+            }
         },
     };
 </script>

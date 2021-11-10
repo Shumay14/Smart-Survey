@@ -77,7 +77,6 @@
 
                     </div>
                 </div>
-                <button @click="test()">asd</button>
             </div>
         </div>
     </div>
