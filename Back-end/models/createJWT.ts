@@ -1,4 +1,12 @@
+// convert data into canonical(standard or normal) format
 import canonicalizeData from 'canonicalize'
+import { decodeBase64url, encodeBase64url } from './util'
+
+
+
+export type Signer = (data: string | Uint8Array) => Promise<string>
+export type SignerAlgorithm = (payload: string, signer: Signer) => Promise<string>
+
 
 export interface JWTHeader {
   typ: 'JWT'
@@ -13,20 +21,32 @@ export interface JWTPayload {
   iat?: number
   nbf?: number
   exp?: number
-  
 }
+
 
 // JWTSigniture is JWS = encode JWT header + payload
-export interface JWTSigniture {
-  siginture: string
+// export interface JWTSigniture {
+//   siginture: string
+// }
+
+
+export interface JWTData {
+
 }
 
+
+export interface JWTDecoded {
+  header: JWTHeader
+  payload: JWTPayload
+  signature: string
+  data: string
+}
 
 
 export async function createJWT(
   header: Partial<JWTHeader>,
-  payload: Partial<JWTPayload>
-
+  payload: Partial<JWTPayload>,
+  signer: Signer 
   
 ): Promise<string> {
 
@@ -38,12 +58,21 @@ export async function createJWT(
   return createJWS(fullPayload, signer, header)
 }
 
-export interface JWTDecoded {
-  header: JWTHeader
-  payload: JWTPayload
-  signature: string
-  data: string
+export async function createJWS(
+  payload: string | Partial<JWTPayload>,
+  signer: Signer,
+  header: Partial<JWTHeader> = {},
+  options: JWSCreationOptions = {}
+): Promise<string> {
+  if (!header.alg) header.alg = defaultAlg
+  const encodedPayload = typeof payload === 'string' ? payload : encodeSection(payload, options.canonicalize)
+  const signingInput: string = [encodeSection(header, options.canonicalize), encodedPayload].join('.')
+
+  const jwtSigner: SignerAlgorithm = SignerAlg(header.alg)
+  const signature: string = await jwtSigner(signingInput, signer)
+  return [signingInput, signature].join('.')
 }
+
 
 export function decodeJWT(jwt: string): JWTDecoded {
   if (!jwt) throw new Error('invalid_argument: no JWT passed into decodeJWT')
@@ -56,7 +85,8 @@ export function decodeJWT(jwt: string): JWTDecoded {
   }
 }
 
-
+const signer = ES256KSigner(process.env.PRIVATE_KEY)
+const jws = await createJWS({ my: 'payload' }, signer)
 
 
 const defaultAlg = 'ES256K'
