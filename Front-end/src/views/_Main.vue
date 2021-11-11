@@ -27,6 +27,7 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
+                    <img src="assets/img/main/main-2.png" class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/>
                     <img src="assets/img/main/main-1.png" style="width:90%"/>
                 </div>
             </section>
@@ -46,7 +47,7 @@
                     </p>
                 </div>
                 <div class="col-6">
-                    <img src="assets/img/main/main-2.png" style="margin:50px"/>
+                    <img src="assets/img/main/main-2.png" class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/>
                 </div>
             </section>
             
@@ -65,7 +66,7 @@
                     </p>
                 </div>
                 <div class="col-6">
-                    <img src="assets/img/main/main-3.png" style="margin:50px"/>
+                    <img src="assets/img/main/main-3.png" v-bind:class="{ 'img-main' : !showNavbar }"/>
                 </div>
             </section>
 
@@ -122,6 +123,9 @@
         },
         data() {
             return {
+                showNavbar : true,
+                lastScrollPosition : 0,
+                
                 items: [
                     {
                         text: 'Home',
@@ -134,6 +138,24 @@
                 ]
             }
         },
+        mounted() {
+            window.addEventListener('scroll', this.onScroll) 
+        },
+        beforeDestroy() { 
+            window.removeEventListener('scroll', this.onScroll) 
+        },
+        methods: {
+            onScroll () {
+                // Get the current scroll position
+                currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+                // Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero 
+                if (currentScrollPosition < 0) { return }
+                // Here we determine whether we need to show or hide the navbar 
+                this.showNavbar = currentScrollPosition < this.lastScrollPosition 
+                // Set the current scroll position as the last scroll position 
+                this.lastScrollPosition = currentScrollPosition 
+            },
+        }
     }
 </script>
 
@@ -196,8 +218,20 @@
         }
     }
     .img-main{
-        transition: 5s;
-        transform: translateY(100%);
+       height: 60px; 
+       width: 100vw; 
+       background: hsl(200, 50%, 50%); 
+       position: fixed; 
+       box-shadow: 0 2px 15px rgba(71, 120, 120, 0.5); 
+       transform: translate3d(0, 0, 0); 
+       transition: 0.1s all ease-out;
+
+        //fade in 효과 추가필요
+
+        &--hidden{
+            box-shadow: none;
+            transform: translate3d(0, -100%, 0);
+        }
     }
     .description{
         padding-top: 30px;
