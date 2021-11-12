@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    <img src="assets/img/main/main-2.png" class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/>
+                    <!-- <img src="assets/img/main/main-2.png" class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/> -->
                     <img src="assets/img/main/main-1.png" style="width:90%"/>
                 </div>
             </section>
@@ -47,7 +47,8 @@
                     </p>
                 </div>
                 <div class="col-6">
-                    <img src="assets/img/main/main-2.png" class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/>
+                    <img src="assets/img/main/main-2.png">
+                     <!-- class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/> -->
                 </div>
             </section>
             
@@ -66,7 +67,7 @@
                     </p>
                 </div>
                 <div class="col-6">
-                    <img src="assets/img/main/main-3.png" v-bind:class="{ 'img-main' : !showNavbar }"/>
+                    <img src="assets/img/main/main-3.png" v-bind:class="{ 'img-main' : showNavbar }"/>
                 </div>
             </section>
 
@@ -123,7 +124,9 @@
         },
         data() {
             return {
-                showNavbar : true,
+                showNavbar_a : true,
+                showNavbar_b : true,
+                
                 lastScrollPosition : 0,
                 
                 items: [
@@ -147,7 +150,8 @@
         methods: {
             onScroll () {
                 // Get the current scroll position
-                currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+                const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+                // console.log(currentScrollPosition)
                 // Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero 
                 if (currentScrollPosition < 0) { return }
                 // Here we determine whether we need to show or hide the navbar 
