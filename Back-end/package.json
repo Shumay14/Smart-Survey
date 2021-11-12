@@ -12,17 +12,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "did-jwt": "^5.10.0",
     "canonicalize": "^1.0.5",
+    "cors": "^2.8.5",
+    "did-jwt": "^5.10.0",
     "did-resolver": "^3.1.1",
-    "elliptic": "^6.5.4",
-    "js-sha3": "^0.8.0",
-    "multiformats": "^9.4.8",
-    "uint8arrays": "^3.0.0",
     "dotenv": "^10.0.0",
+    "elliptic": "^6.5.4",
     "ethereumjs-wallet": "^1.0.2",
+    "express": "^4.17.1",
+    "js-sha3": "^0.8.0",
     "jsontokens": "^3.0.0",
+    "multiformats": "^9.4.8",
+    "mysql": "^2.18.1",
     "truffle-wallet-provider": "0.0.5",
+    "uint8arrays": "^3.0.0",
     "web3": "^1.6.0"
   }
 }
