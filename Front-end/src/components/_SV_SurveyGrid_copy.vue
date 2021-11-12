@@ -30,7 +30,7 @@
             <span class="opening" style="margin-left: 0.5em; font-weight: bold">
               SUB</span
             >
-            <span> = {{ project.reward * 1300 }}</span>
+            <span> = {{ project.reward * 1300 }}￦</span>
           </div>
         </div>
       </div>
@@ -56,32 +56,39 @@
         <!-- <h5 class="padtop" style="color: red; text-align: center">
           21.03 - 21.06
         </h5> -->
-        <div class="go_to margintop">
+        <div class="margintop" style="margin-left: 1rem">
           <a
-            href="detail_page.html"
             class="btn_1"
             @mouseover="btnHoverin()"
             @mouseout="btnHoverout()"
-            >{{ btnname }}</a
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
           >
+            {{ btnname }}
+          </a>
+          <ModalSelect />
         </div>
       </div>
     </div>
     <!-- End row-->
+    <!-- <ModalSelect /> -->
   </div>
   <!-- End strip_list-->
 </template>
 
 <script>
 import dayjs from "dayjs";
+import ModalSelect from "../components/sections/_ModalSelect.vue";
+
 export default {
   props: ["project"],
   name: "",
-  components: {},
+  components: { ModalSelect },
   data() {
     return {
       btnname: "참여하기",
-      diffdday: "23",
+      allSelect: "#e8e8e8",
+      clickSelect: "",
     };
   },
   setup() {},
@@ -101,6 +108,11 @@ export default {
       const dday = dayjs(JSON.stringify(b));
       const diff = dday.diff(today, "day");
       return diff;
+    },
+    allbtn() {
+      this.allSelect = this.allSelect == "#fee500" ? "#e8e8e8" : "#fee500";
+      this.clickSelect =
+        this.clickSelect == "2px solid black" ? "" : "2px solid black";
     },
   },
 };

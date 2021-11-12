@@ -1,14 +1,14 @@
 <template>
   <div>
     <!-- Button trigger modal -->
-    <button
+    <!-- <button
       type="button"
       class="btn btn-primary"
       data-bs-toggle="modal"
       data-bs-target="#exampleModal"
     >
-      Launch demo modal
-    </button>
+      참여하기
+    </button> -->
 
     <!-- Modal -->
     <div
@@ -45,7 +45,7 @@
             <div style="border-bottom: 2px solid #f3f3f3">
               <div
                 @click="allbtn()"
-                v-bind:style="{ outline: clickSelect }"
+                v-bind:style="{ outline: allcliclSelect }"
                 style="
                   padding-left: 15.5px;
                   padding-top: 5.5px;
@@ -114,10 +114,12 @@
           <div class="modal-footer">
             <button
               type="button"
+              v-bind:style="{
+                'background-color': btnbackcolorstyle,
+                color: btncolorstyle,
+              }"
               style="
                 width: 100%;
-                background-color: #f6f6f6;
-                color: #c5c8c1;
                 border: 0;
                 padding: 0.5rem;
                 border-radius: 0.5rem;
@@ -127,7 +129,7 @@
             >
               동의하고 계속하기
             </button>
-            <button
+            <!-- <button
               type="button"
               style="
                 width: 100%;
@@ -140,7 +142,7 @@
               @click="kkk()"
             >
               동의하고 계속하기
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
@@ -155,7 +157,9 @@ export default {
     return {
       sampleData: "",
       allSelect: "#e8e8e8",
-      clickSelect: "",
+      allcliclSelect: "",
+      btnbackcolorstyle: "#f6f6f6",
+      btncolorstyle: "#c5c8c1",
     };
   },
   setup() {},
@@ -165,12 +169,16 @@ export default {
   methods: {
     allbtn() {
       this.allSelect = this.allSelect == "#fee500" ? "#e8e8e8" : "#fee500";
-      this.clickSelect =
-        this.clickSelect == "2px solid black" ? "" : "2px solid black";
+      this.allcliclSelect =
+        this.allcliclSelect == "2px solid black" ? "" : "2px solid black";
+      this.btnbackcolorstyle =
+        this.btnbackcolorstyle == "#f6f6f6" ? "#fee500" : "#f6f6f6";
+      this.btncolorstyle = this.btncolorstyle == "#c5c8c1" ? "" : "#c5c8c1";
     },
   },
 };
 </script>
+
 <style scoped>
 .center-name {
   /* left: 0;
