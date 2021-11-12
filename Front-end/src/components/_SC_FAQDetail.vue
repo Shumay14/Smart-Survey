@@ -23,14 +23,14 @@
                                             @click="selected=user">회원</button>
                                     </div>
                                     <!-- reword 아코디언 시작 -->
-                                    <div class="accordion accordion-flush" v-bind:id="'accordionFlushReword'+num"
+                                    <div class="accordion" v-bind:id="'accordion'+num"
                                         v-for="(i,num) in selected" :key="num">
                                         <div class="accordion-item">
                                             <h2 class="accordion-header " v-bind:id="'flush-heading-reword'+num">
                                                 <button class="accordion-button collapsed orange-text" type="button"
                                                     data-bs-toggle="collapse"
                                                     v-bind:data-bs-target="'#flush-collapse-reword'+num"
-                                                    aria-expanded="false"
+                                                    aria-expanded="true"
                                                     v-bind:aria-controls="'flush-collapse-reword'+num" >
                                                     {{i.title}}
                                                 </button>
@@ -38,7 +38,7 @@
                                             <div v-bind:id="'flush-collapse-reword'+num"
                                                 class="accordion-collapse collapse"
                                                 v-bind:aria-labelledby="'flush-heading-reword'+num"
-                                                v-bind:data-bs-parent="'#accordionFlushReword'+num">
+                                                v-bind:data-bs-parent="'#accordion'+num">
                                                 <div class="accordion-body">
                                                     {{i.content}}
                                                 </div>
@@ -113,13 +113,10 @@
                 reword,
                 survey,
                 user,
-                selected: blockchain
+                selected: blockchain,
             }
         },
-        computed() {
-
-        },
-        mounted() {
+        methods: {
 
         }
     };

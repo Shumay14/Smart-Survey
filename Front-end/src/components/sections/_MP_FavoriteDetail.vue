@@ -38,7 +38,7 @@
                     <!-- 이미지 선택 끝 -->
 
                     <!-- 관심사 목록 시작 -->
-                    <div class="col-lg-4 col-12 section-space--bottom--30 pt-">
+                    <div class="col-lg-4 col-12 section-space--bottom--30 pt-2">
                         <div class="project-information">
                             <h3>관심사 목록</h3>
                             <button type="button" class="favorite_Selected btn btn-outline-light mx-1 my-1"

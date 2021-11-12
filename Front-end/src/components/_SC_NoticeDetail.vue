@@ -19,13 +19,12 @@
                                                     <th class="col-2">날짜</th>
                                                 </tr>
                                             </thead>
-                                            <tbody align="center" >
-                                                <tr v-for="(i, num) in notice" :key="num">
-                                                    <th class="col-2">{{i.index}}</th>
-                                                    <td class="col-8">{{i.title}}</td>
-                                                    <td class="col-2">{{i.date}}</td>
+                                            <tbody  align="center">
+                                                <tr v-for="(i, num) in notice.slice().reverse()" :key="num">
+                                                    <th class="col-2" >{{i.index}}</th>
+                                                    <td class="col-8" style="text-align: start">{{i.title}}</td>
+                                                    <td class="col-2" >{{i.date}}</td>
                                                 </tr>
-
                                             </tbody>
                                         </table>
                                       
