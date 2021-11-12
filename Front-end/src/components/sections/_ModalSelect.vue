@@ -72,7 +72,7 @@
             <div style="margin-top: 1rem; border-bottom: 2px solid #f3f3f3">
               <div style="margin-left: 3rem; margin-bottom: 1rem">
                 <i class="fas fa-user-circle" style="color: #c5c8c1"></i>
-                <span style="margin-left: 0.5rem">drooom@naver.com</span>
+                <span style="margin-left: 0.5rem">{{ metamaskaddr }}</span>
                 <p style="font-size: 12px; margin-top: 0.5rem">
                   push 서비스 제공을 위해 회원번호와 함께 개인정보가 제공됩니다.
                   보다 자세한 개인정보 제공항목은 동의 내용에서 확인하실 수
@@ -155,7 +155,7 @@ export default {
   components: {},
   data() {
     return {
-      sampleData: "",
+      metamaskaddr: this.$store.state.metamaskAdd,
       allSelect: "#e8e8e8",
       allcliclSelect: "",
       btnbackcolorstyle: "#f6f6f6",
