@@ -10,33 +10,35 @@
                         <div class="project-details mb-3">
                             <h2 class="pb-2">관심사 설정</h2>
                             <p>관심사 설정이란 설정한 관심 항목에 따라 관련 설문조사를 우선으로 추천해주는 맞춤형 서비스입니다. <br>
-                           선택된 항목은 관심사 목록으로 이동하며, 목록에서 클릭하는 것으로 클릭된 항목을 뺄 수 있습니다. <br>
-                            하단에 사진을 클릭하여 관심사를 추가하세요!</p>
+                                선택된 항목은 관심사 목록으로 이동하며, 목록에서 클릭하는 것으로 클릭된 항목을 뺄 수 있습니다. <br>
+                                하단에 사진을 클릭하여 관심사를 추가하세요!</p>
                         </div>
                     </div>
                     <!-- 관심사 설정 설명 끝-->
 
-               
+
 
                     <!-- 이미지 선택 시작 -->
                     <div class="col-lg-8 col-12 section-space--bottom--30 pl-30 pl-sm-15 pl-xs-15">
                         <div class="row row-5 image-popup">
-                            <div class="col-lg-3 col-sm-4 col-6 section-space--top--10"
-                                v-for="(i, num) in favoriteList" :key="num" @click="addItem(i)"
-                                v-show="selectedIndex.includes(i.topIndex) == true">
-                                <div class="gallery-item single-gallery-thumb " >
-                                    <img :src="i.img" class="img-fluid" alt="thumbnail" >
-                                    <span class="overlayName">{{i.name}}</span>
-                                    <span class="plus"></span>
-                                </div>
+                            <div class="col-lg-3 col-sm-4 col-6 section-space--top--10" v-for="(i, num) in favoriteList"
+                                :key="num" @click="addItem(i)" v-show="selectedIndex.includes(i.topIndex) == true">
+                                <transition name="fade">
+                                    <div class="gallery-item single-gallery-thumb "
+                                        v-if="selectedIndex.includes(i.topIndex) == true">
+                                        <img :src="i.img" class="img-fluid" alt="thumbnail">
+                                        <span class="overlayName">{{i.name}}</span>
+                                        <span class="plus"></span>
+                                    </div>
+                                </transition>
 
                             </div>
                         </div>
                     </div>
                     <!-- 이미지 선택 끝 -->
 
-                         <!-- 관심사 목록 시작 -->
-                    <div class="col-lg-4 col-12 section-space--bottom--30">
+                    <!-- 관심사 목록 시작 -->
+                    <div class="col-lg-4 col-12 section-space--bottom--30 pt-">
                         <div class="project-information">
                             <h3>관심사 목록</h3>
                             <button type="button" class="favorite_Selected btn btn-outline-light mx-1 my-1"
@@ -122,5 +124,16 @@
         // -webkit-box-sizing: content-box;
     }
 
-   
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .7s;
+    }
+
+    .fade-enter,
+    .fade-leave-to
+
+    /* .fade-leave-active below version 2.1.8 */
+        {
+        opacity: 0;
+    }
 </style>
