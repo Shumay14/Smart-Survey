@@ -23,6 +23,7 @@
   <!-- End Content =============================================== -->
 </template>
 <script>
+// 왼쪽  --> 검색, 카테고리, 인기있는 설문, 제공할 정보 목록 json
 import data from "../../data/blog.json";
 import SurveySidebar from "@/components/sections/_SurveySidebar";
 import SurveyContent from "../_SV_SurveyContent_copy.vue";

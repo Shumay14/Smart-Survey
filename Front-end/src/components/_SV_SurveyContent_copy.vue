@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import data from "../data/project.json";
+import data from "../assets/json/survey.json";
 import SurveyGrid from "./_SV_SurveyGrid_copy.vue";
 
 export default {

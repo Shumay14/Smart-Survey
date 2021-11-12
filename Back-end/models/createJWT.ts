@@ -162,7 +162,6 @@ const didDoc = {
 
 
 
-
 const claim = JSON.stringify({ ... }); // Data representing the user's access
 const proof = sign(claim); // Sign data with Ethereum's `personal_sign` method
 const DIDToken = btoa(JSON.stringify([proof, claim]));

@@ -5,19 +5,28 @@
       <div class="col-md-9">
         <div class="desc">
           <div class="thumb_strip">
-            <a href="detail_page.html"
-              ><img src="../../src/assets/img/cute.jpg" alt=""
-            /></a>
+            <!-- <a href="detail_page.html"> -->
+            <img
+              :src="require('../../src/assets/img/' + `${project.img}`)"
+              alt="thumbnail"
+            />
+            <!-- <img src="../../src/assets/img/cute.jpg" alt="" /> -->
+            <!-- </a> -->
           </div>
-          <h3 class="padtop">국밥에 관한 여론조사</h3>
+          <h3 class="padtop">
+            <!-- <router-link to="/project-details"> -->
+            {{ project.title }}
+            <!-- </router-link> -->
+          </h3>
           <!-- <div class="type">Mexican / American</div> -->
           <div class="location margintop">
             보상지급액
             <span
               class="opening"
               style="font-size: 2em; margin-left: 0.5em; font-weight: bold"
-              >2.5</span
             >
+              {{ project.reward }}
+            </span>
             <span class="opening" style="margin-left: 0.5em; font-weight: bold">
               SUB</span
             >
@@ -35,8 +44,15 @@
           margin-left: 21%;
         "
       />
+      <!-- JSON.stringify(project.edate).$diff(
+              JSON.stringify(project.sdate),
+              "day"
+            ) -->
       <div class="col-md-3">
-        <h3 class="padtop" style="color: #ff7f00; text-align: center">D-23</h3>
+        <h3 class="padtop" style="color: #ff7f00; text-align: center">
+          D - {{ this.ddaylist(project.sdate, project.edate) }}
+        </h3>
+        <!-- <button @click="ddaylist(project.sdate, project.edate)">test</button> -->
         <!-- <h5 class="padtop" style="color: red; text-align: center">
           21.03 - 21.06
         </h5> -->
@@ -57,6 +73,7 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
 export default {
   props: ["project"],
   name: "",
@@ -64,6 +81,7 @@ export default {
   data() {
     return {
       btnname: "참여하기",
+      diffdday: "23",
     };
   },
   setup() {},
@@ -76,6 +94,13 @@ export default {
     },
     btnHoverout() {
       this.btnname = "참여하기";
+    },
+    ddaylist(a, b) {
+      // Json.parse -> object로 변환
+      const today = dayjs(JSON.stringify(a));
+      const dday = dayjs(JSON.stringify(b));
+      const diff = dday.diff(today, "day");
+      return diff;
     },
   },
 };

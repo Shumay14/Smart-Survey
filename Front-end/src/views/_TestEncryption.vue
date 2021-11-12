@@ -65,7 +65,7 @@
 
             async encrypt() {
                 const encryptionPublicKey = await this.getPublicKey();
-                const buf = Buffer.from(
+                    const buf = Buffer.from(
                     JSON.stringify(
                         sigUtil.encrypt(
                             encryptionPublicKey, {
