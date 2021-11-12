@@ -218,7 +218,7 @@
     }
 
     .orange {
-        background-color: #F0542D;
+        background-color: #F38024;
     }
 
     .blue {
@@ -306,7 +306,7 @@
     }
 
     #chat .you .message {
-        background-color: #F0542D;
+        background-color: #F38024;
     }
 
     #chat .me .message {
@@ -321,7 +321,7 @@
     }
 
     #chat .you .triangle {
-        border-color: transparent transparent #F0542D transparent;
+        border-color: transparent transparent #F38024 transparent;
         margin-left: 15px;
     }
 
@@ -360,7 +360,7 @@
         text-decoration: none;
         text-transform: uppercase;
         font-weight: bold;
-        color: #F0542D;
+        color: #F38024;
         vertical-align: top;
         margin-left: 333px;
         margin-top: 5px;

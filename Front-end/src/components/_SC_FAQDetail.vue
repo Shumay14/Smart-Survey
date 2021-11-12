@@ -12,27 +12,31 @@
                                 <!-- 이너 시작 -->
                                 <div class="blog-inner">
                                     <h1>FAQ</h1>
-
-                                    <div>
-                                        <button @click='selected=blockchain'>블록체인</button>
-                                        <button @click="selected=reword">보상</button>
-                                        <button @click="selected=survey">설문조사</button>
-                                        <button @click="selected=user">회원</button>
+                                    <div class="py-3">
+                                        <button type="button" class="btn btn-danger mx-1"
+                                            @click='selected=blockchain'>블록체인</button>
+                                        <button type="button" class="btn btn-danger mx-1"
+                                            @click="selected=reword">보상</button>
+                                        <button type="button" class="btn btn-danger mx-1"
+                                            @click="selected=survey">설문조사</button>
+                                        <button type="button" class="btn btn-danger mx-1"
+                                            @click="selected=user">회원</button>
                                     </div>
-
                                     <!-- reword 아코디언 시작 -->
                                     <div class="accordion accordion-flush" v-bind:id="'accordionFlushReword'+num"
                                         v-for="(i,num) in selected" :key="num">
                                         <div class="accordion-item">
-                                            <h2 class="accordion-header" v-bind:id="'flush-heading-reword'+num">
-                                                <button class="accordion-button collapsed" type="button"
+                                            <h2 class="accordion-header " v-bind:id="'flush-heading-reword'+num">
+                                                <button class="accordion-button collapsed orange-text" type="button"
                                                     data-bs-toggle="collapse"
-                                                    v-bind:data-bs-target="'#flush-collapse-reword'+num" aria-expanded="false"
-                                                    v-bind:aria-controls="'flush-collapse-reword'+num">
+                                                    v-bind:data-bs-target="'#flush-collapse-reword'+num"
+                                                    aria-expanded="false"
+                                                    v-bind:aria-controls="'flush-collapse-reword'+num" >
                                                     {{i.title}}
                                                 </button>
                                             </h2>
-                                            <div v-bind:id="'flush-collapse-reword'+num" class="accordion-collapse collapse"
+                                            <div v-bind:id="'flush-collapse-reword'+num"
+                                                class="accordion-collapse collapse"
                                                 v-bind:aria-labelledby="'flush-heading-reword'+num"
                                                 v-bind:data-bs-parent="'#accordionFlushReword'+num">
                                                 <div class="accordion-body">
@@ -109,14 +113,61 @@
                 reword,
                 survey,
                 user,
-                selected : blockchain
+                selected: blockchain
             }
         },
         computed() {
-        
+
         },
         mounted() {
 
         }
     };
 </script>
+<style scoped>
+    .btn-danger {
+        color: #fff;
+        background-color: #F38024;
+        border-color: #F38024
+    }
+
+    .btn-danger:hover {
+        color: #fff;
+        background-color: #b15912;
+        border-color: #ad5208
+    }
+
+    .btn-danger.focus,
+    .btn-danger:focus {
+        color: #fff;
+        background-color: #F38024;
+        border-color: #eb6f09;
+        box-shadow: 0 0 0 .2rem rgba(243, 76, 10, 0.5)
+    }
+
+    .btn-danger.disabled,
+    .btn-danger:disabled {
+        color: #fff;
+        background-color: #F38024;
+        border-color: #F38024
+    }
+
+    .btn-danger:not(:disabled):not(.disabled).active,
+    .btn-danger:not(:disabled):not(.disabled):active,
+    .show>.btn-danger.dropdown-toggle {
+        color: #fff;
+        background-color: #b15912;
+        border-color: #b15912
+    }
+
+    .btn-danger:not(:disabled):not(.disabled).active:focus,
+    .btn-danger:not(:disabled):not(.disabled):active:focus,
+    .show>.btn-danger.dropdown-toggle:focus {
+        box-shadow: 0 0 0 .2rem rgba(225, 83, 97, .5)
+    }
+
+    .orange-text{
+        color: #F38024;
+        
+    }
+</style>

@@ -9,27 +9,19 @@
                     <div class="col-12">
                         <div class="project-details mb-3">
                             <h2 class="pb-2">관심사 설정</h2>
-                            <p>관심사 설정이란 자신에게 맞는 설문조사를 추천해주는 맞춤설정을 할 수 있는 서비스입니다. 하단에 항목을 선택하면 설문조사를 추천할 때 우선으로 띄워줍니다.
-                            </p>
+                            <p>관심사 설정이란 설정한 관심 항목에 따라 관련 설문조사를 우선으로 추천해주는 맞춤형 서비스입니다. <br>
+                           선택된 항목은 관심사 목록으로 이동하며, 목록에서 클릭하는 것으로 클릭된 항목을 뺄 수 있습니다. <br>
+                            하단에 사진을 클릭하여 관심사를 추가하세요!</p>
                         </div>
                     </div>
                     <!-- 관심사 설정 설명 끝-->
 
-                    <!-- 관심사 목록 시작 -->
-                    <div class="col-lg-4 col-12 section-space--bottom--30">
-                        <div class="project-information">
-                            <h3>관심사 목록</h3>
-                            <button type="button" class="favorite_Selected btn btn-outline-light mx-1 my-1"
-                                v-for="(i, num) in selectedItem" :key="num" @click="deleteItem(i)">X {{i.name}}
-                            </button>
-                        </div>
-                    </div>
-                    <!-- 관심사 목록 끝 -->
+               
 
                     <!-- 이미지 선택 시작 -->
                     <div class="col-lg-8 col-12 section-space--bottom--30 pl-30 pl-sm-15 pl-xs-15">
                         <div class="row row-5 image-popup">
-                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 section-space--top--10"
+                            <div class="col-lg-3 col-sm-4 col-6 section-space--top--10"
                                 v-for="(i, num) in favoriteList" :key="num" @click="addItem(i)"
                                 v-show="selectedIndex.includes(i.topIndex) == true">
                                 <div class="gallery-item single-gallery-thumb " >
@@ -42,6 +34,17 @@
                         </div>
                     </div>
                     <!-- 이미지 선택 끝 -->
+
+                         <!-- 관심사 목록 시작 -->
+                    <div class="col-lg-4 col-12 section-space--bottom--30">
+                        <div class="project-information">
+                            <h3>관심사 목록</h3>
+                            <button type="button" class="favorite_Selected btn btn-outline-light mx-1 my-1"
+                                v-for="(i, num) in selectedItem" :key="num" @click="deleteItem(i)">X {{i.name}}
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 관심사 목록 끝 -->
 
                 </div>
             </div>
@@ -103,7 +106,7 @@
 
     .overlayName {
         text-align: center;
-        font-size: 150%;
+        font-size: 1.5rem;
         color: white;
         position: absolute;
 
