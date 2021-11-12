@@ -5,7 +5,7 @@
             <header>
                 <div>
                     <h2>1:1 문의 서비스</h2>
-                    <h3>2021-11-08</h3>
+                    <h3>{{today}}</h3>
                 </div>
             </header>
             <ul id="chat">
@@ -14,7 +14,7 @@
                     <div class="entete">
                         <span class="status orange"></span>
                         <h2>서베이존</h2>
-                        <h3>10:12AM, Today</h3>
+                        <h3>{{msgTime}}, Today</h3>
                     </div>
                     <div class="triangle"></div>
                     <div class="message">
@@ -22,37 +22,25 @@
                     </div>
                 </li>
 
-                <li class="me">
+                <li class="me" v-for="(i, num) in messageFake" :key="num">
                     <div class="entete">
-                        <h3>10:12AM, Today</h3>
-                        <!-- <h2></h2> -->
+                        <h3>{{i.time}}, Today</h3>
                         <span class="status blue"></span>
                     </div>
                     <div class="triangle"></div>
                     <div class="message">
-                        설문조사를 완료했는데 토큰이 들어오지않았습니다.
+                        {{i.text}}
                     </div>
                 </li>
 
-                <li class="you">
-                    <div class="entete">
-                        <span class="status orange"></span>
-                        <h2>서베이존</h2>
-                        <h3>10:12AM, Today</h3>
-                    </div>
-                    <div class="triangle"></div>
-                    <div class="message">
-                        보상수령 내역 확인 후 다시 안내해드리겠습니다. <br> 잠시 기다려주시면 감사하겠습니다.
-                    </div>
-                </li>
+
 
             </ul>
             <footer>
-        
-                <textarea placeholder="문의하실 사항을 남겨주세요..."></textarea>
-                        <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
+                <textarea placeholder="문의하실 사항을 남겨주세요..." v-model="messageFakeText"></textarea>
+                <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
 			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt=""> -->
-                <a href="#">보내기</a>
+                <button type="button float-end" class="btn btn-danger mx-1 float-end" @click="massageCreate()">보내기</button>
             </footer>
         </main>
         <aside>
@@ -61,7 +49,7 @@
                 <input type="text" placeholder="search">
 
             </header> -->
-            <ul >
+            <ul>
                 <li>
                     <div class="mx-3">
                         <h2>2021-11-08</h2>
@@ -82,22 +70,44 @@
                 </li>
             </ul>
         </aside>
+        
     </div>
+    
 </template>
 <script>
+
     export default {
         name: '',
         components: {},
         data() {
             return {
-                sampleData: ''
+                msgTime: new Date().getHours() + ':' + new Date().getMinutes(),
+                messageFakeText : "",
+                messageFake: [],
+                today:(new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate())
             }
         },
         created() {},
-        mounted() {},
+        mounted() {
+
+        },
         updated() {},
         unmounted() {},
-        methods: {}
+        methods: {
+            massageCreate() {
+                let msgText = this.messageFakeText;
+                console.log(msgText)
+                this.messageFake.push({
+                    "time": new Date().getHours() + ':' + new Date().getMinutes(),
+                    "text": msgText
+                });
+                console.log(this.messageFake)
+
+
+
+            }
+
+        }
     }
 </script>
 <style scoped>
@@ -266,7 +276,7 @@
         padding-left: 0;
         margin: 0;
         list-style-type: none;
-        /* overflow-y: scroll; */
+        overflow-y: scroll;
         height: 535px;
         border-top: 2px solid #fff;
         border-bottom: 2px solid #fff;
@@ -365,5 +375,51 @@
         margin-left: 333px;
         margin-top: 5px;
         display: inline-block;
+    }
+
+    .btn-danger {
+        color: #fff;
+        background-color: #F38024;
+        border-color: #F38024
+    }
+
+    .btn-danger:hover {
+        color: #fff;
+        background-color: #b15912;
+        border-color: #ad5208
+    }
+
+    .btn-danger.focus,
+    .btn-danger:focus {
+        color: #fff;
+        background-color: #F38024;
+        border-color: #eb6f09;
+        box-shadow: 0 0 0 .2rem rgba(243, 76, 10, 0.5)
+    }
+
+    .btn-danger.disabled,
+    .btn-danger:disabled {
+        color: #fff;
+        background-color: #F38024;
+        border-color: #F38024
+    }
+
+    .btn-danger:not(:disabled):not(.disabled).active,
+    .btn-danger:not(:disabled):not(.disabled):active,
+    .show>.btn-danger.dropdown-toggle {
+        color: #fff;
+        background-color: #b15912;
+        border-color: #b15912
+    }
+
+    .btn-danger:not(:disabled):not(.disabled).active:focus,
+    .btn-danger:not(:disabled):not(.disabled):active:focus,
+    .show>.btn-danger.dropdown-toggle:focus {
+        box-shadow: 0 0 0 .2rem rgba(225, 83, 97, .5)
+    }
+
+    .orange-text{
+        color: #F38024;
+        
     }
 </style>
