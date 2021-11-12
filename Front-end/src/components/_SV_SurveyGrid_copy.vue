@@ -30,7 +30,7 @@
             <span class="opening" style="margin-left: 0.5em; font-weight: bold">
               SUB</span
             >
-            <span>= 5,460원</span>
+            <span> = {{ project.reward * 1300 }}</span>
           </div>
         </div>
       </div>
