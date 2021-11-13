@@ -44,7 +44,15 @@
       <h3 class="sidebar-title">{{ blogSidebar.tagTitle }}</h3>
       <ul class="sidebar-tag">
         <li v-for="tag in blogSidebar.tags" :key="tag.id">
-          <router-link :to="tag.link">{{ tag.name }}</router-link>
+          <!-- <router-link :to="tag.link">{{ tag.name }}</router-link> -->
+          <button
+            class="tagbtn"
+            v-bind:id="tag.name"
+            @click="tagselectbtn(tag.name, $event)"
+            v-bind:style="{ 'background-color': selectboxcolor }"
+          >
+            {{ tag.name }}
+          </button>
         </li>
       </ul>
     </div>
@@ -54,5 +62,54 @@
 <script>
 export default {
   props: ["blogSidebar"],
+  name: "",
+  components: {},
+  data() {
+    return {
+      tagselect: [],
+      selectboxcolor: "",
+      selectonoff: false,
+    };
+  },
+  setup() {},
+  created() {},
+  mounted() {},
+  unmounted() {},
+  methods: {
+    tagselectbtn(tagName, event) {
+      this.tagselect.push(tagName);
+      event.currentTarget.style.background = "#ff7f00";
+      event.currentTarget.style.color = "white";
+      console.log(this.tagselect);
+    },
+  },
 };
 </script>
+<style lang="scss" scoped>
+.tagbtn {
+  display: inline-block;
+  padding: 1em 2em;
+  border-radius: 0;
+  color: black;
+  font-weight: bold;
+  font-size: 0.678rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: linear-gradient(
+    to right,
+    rgba(#ff7f00, 0) 25%,
+    rgba(#ff7f00, 0.8) 75%
+  );
+  background-position: 1% 50%;
+  background-size: 400% 300%;
+  border: 1px solid black;
+  transition: all 0.3s;
+
+  &:hover {
+    color: white;
+    color: #fff;
+    background-position: 99% 50%;
+  }
+}
+</style>
