@@ -8,41 +8,43 @@ import Notice from "../views/_SC_Notice.vue";
 import Favorite from "../views/_MP_Favorite.vue";
 import MyPage from "../views/_MP_MyPage.vue";
 import SurveyDrawUp from "../views/_SV_SurveyDrawUp.vue";
-import SurveyList from "../views/_SurveyList.vue";;
+import SurveyList from "../views/_SurveyList.vue";
 import _SV_SurveyGrid_copy from "../../src/components/_SV_SurveyGrid_copy.vue";
 import _ModalSelect from "../../src/components/sections/_ModalSelect.vue";
+import _TestEncryption from "../views/_TestEncryption.vue";
 
 Vue.use(VueRouter);
 
-const routes = [{
+const routes = [
+  {
     path: "*",
     name: "NotFound",
     component: () =>
-      import( /* webpackChunkName: "NotFound" */ "../views/404.vue"),
+      import(/* webpackChunkName: "NotFound" */ "../views/404.vue"),
   },
   {
     path: "/home-two",
     name: "HomeTwo",
     component: () =>
-      import( /* webpackChunkName: "home-two" */ "../views/HomeTwo.vue"),
+      import(/* webpackChunkName: "home-two" */ "../views/HomeTwo.vue"),
   },
   {
     path: "/home-three",
     name: "HomeThree",
     component: () =>
-      import( /* webpackChunkName: "home-three" */ "../views/HomeThree.vue"),
+      import(/* webpackChunkName: "home-three" */ "../views/HomeThree.vue"),
   },
   {
     path: "/about",
     name: "About",
     component: () =>
-      import( /* webpackChunkName: "about" */ "../views/About.vue"),
+      import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
     path: "/service",
     name: "Service",
     component: () =>
-      import( /* webpackChunkName: "service" */ "../views/Service.vue"),
+      import(/* webpackChunkName: "service" */ "../views/Service.vue"),
   },
   {
     path: "/service-details",
@@ -66,7 +68,7 @@ const routes = [{
     path: "/project",
     name: "Project",
     component: () =>
-      import( /* webpackChunkName: "project" */ "../views/Project.vue"),
+      import(/* webpackChunkName: "project" */ "../views/Project.vue"),
   },
   {
     path: "/project-details",
@@ -99,7 +101,7 @@ const routes = [{
     path: "/blog-details",
     name: "BlogDetails",
     component: () =>
-      import( /* webpackChunkName: "blog-details" */ "../views/BlogDetails.vue"),
+      import(/* webpackChunkName: "blog-details" */ "../views/BlogDetails.vue"),
   },
   {
     path: "/blog-details-right-sidebar",
@@ -114,7 +116,7 @@ const routes = [{
     path: "/contact",
     name: "Contact",
     component: () =>
-      import( /* webpackChunkName: "contact" */ "../views/_AD_AdminPage.vue"),
+      import(/* webpackChunkName: "contact" */ "../views/_AD_AdminPage.vue"),
   },
   // DID Project 팀 프로젝트
   {
@@ -166,12 +168,17 @@ const routes = [{
     path: "/admin",
     name: "admin",
     component: () =>
-      import( /* webpackChunkName: "admin" */ "../views/_AD_AdminPage.vue"),
+      import(/* webpackChunkName: "admin" */ "../views/_AD_AdminPage.vue"),
   },
   {
     path: "/_SV_SurveyGrid_copy",
     name: "_SV_SurveyGrid_copy",
     component: _SV_SurveyGrid_copy,
+  },
+  {
+    path: "/_TestEncryption",
+    name: "_TestEncryption",
+    component: _TestEncryption,
   },
 ];
 

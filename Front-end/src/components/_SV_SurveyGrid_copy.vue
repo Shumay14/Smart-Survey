@@ -62,11 +62,11 @@
             @mouseover="btnHoverin()"
             @mouseout="btnHoverout()"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            v-bind:data-bs-target="'#Modal' + project.id"
           >
             {{ btnname }}
           </a>
-          <ModalSelect />
+          <ModalSelect :project="project" />
         </div>
       </div>
     </div>

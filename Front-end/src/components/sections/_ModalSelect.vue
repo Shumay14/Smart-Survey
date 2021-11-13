@@ -13,7 +13,7 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      v-bind:id="'Modal' + project.id"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -30,8 +30,8 @@
               >
                 Push
               </h4>
-              <p id="exampleModalLabel" style="color: #c5c8c1; font-size: 10px">
-                Push
+              <p id="exampleModalLabel" style="color: #c5c8c1; font-size: 12px">
+                {{ project.title }}
               </p>
             </div>
             <button
@@ -58,7 +58,7 @@
                   v-bind:style="{ color: allSelect }"
                 ></i
                 ><span style="font-weight: 900; font-size: 1rem">
-                  전체 동의하기</span
+                  약관 동의하기</span
                 >
               </div>
               <p
@@ -91,14 +91,27 @@
                     margin-bottom: 1rem;
                   "
                 >
-                  <i class="fas fa-check fa-xs" style="color: #c5c8c1"></i
+                  <i
+                    class="fas fa-check fa-xs"
+                    style="color: #c5c8c1"
+                    v-bind:style="{ color: allSelect }"
+                  ></i
                   ><span> [필수] 필수 제공 항목</span>
-                  <p style="font-size: 12px; color: #c5c8c1; margin-left: 1rem">
-                    닉네임
-                  </p>
+                  <div
+                    style="
+                      font-size: 12px;
+                      color: #c5c8c1;
+                      margin-left: 1rem;
+                      margin-top: 0.5em;
+                    "
+                  >
+                    <inline style="margin-left: 5px">성별,</inline
+                    ><inline style="margin-left: 5px">나이대,</inline>
+                    <inline style="margin-left: 5px">전공</inline>
+                  </div>
                 </div>
               </div>
-              <div>
+              <!-- <div>
                 <div style="margin-left: 2rem">
                   <div>[선택] 선택 제공 항목</div>
                   <div>
@@ -108,7 +121,7 @@
                     >
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="modal-footer">
@@ -151,6 +164,7 @@
 </template>
 <script>
 export default {
+  props: ["project"],
   name: "",
   components: {},
   data() {
