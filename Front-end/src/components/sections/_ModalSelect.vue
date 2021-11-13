@@ -189,6 +189,9 @@ export default {
         this.btnbackcolorstyle == "#f6f6f6" ? "#fee500" : "#f6f6f6";
       this.btncolorstyle = this.btncolorstyle == "#c5c8c1" ? "" : "#c5c8c1";
     },
+    kkk() {
+      console.log(this.project.title + "출력");
+    },
   },
 };
 </script>
