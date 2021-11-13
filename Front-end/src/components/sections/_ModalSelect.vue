@@ -105,9 +105,9 @@
                       margin-top: 0.5em;
                     "
                   >
-                    <inline style="margin-left: 5px">성별,</inline
-                    ><inline style="margin-left: 5px">나이대,</inline>
-                    <inline style="margin-left: 5px">전공</inline>
+                    <span style="margin-left: 5px">성별,</span>
+                    <span style="margin-left: 5px">나이대,</span>
+                    <span style="margin-left: 5px">전공</span>
                   </div>
                 </div>
               </div>
