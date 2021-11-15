@@ -239,13 +239,14 @@ a.load_more_bt {
   border: 3px solid white;
   color: #555;
   font-weight: 600;
+  transition: all 0.3s;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 6px;
 }
 a.load_more_bt:hover {
   /* background-color: #fff; */
-  background-color: #f0542d;
+  background-color: #ff7f00;
   color: white;
 }
 #tools {
