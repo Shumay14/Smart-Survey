@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="sidebar-widget">
+    <!-- <div class="sidebar-widget">
       <h3 class="sidebar-title">{{ blogSidebar.searchTitle }}</h3>
       <div class="sidebar-search">
         <form action="#">
@@ -8,6 +8,32 @@
           <button><i class="ion-ios-search"></i></button>
         </form>
       </div>
+    </div> -->
+    <div id="tools">
+      <div class="styled-select">
+        <select name="sort_rating" id="sort_rating">
+          <option value="" selected>Sort by ranking</option>
+          <option value="lower">Lowest ranking</option>
+          <option value="higher">Highest ranking</option>
+        </select>
+      </div>
+    </div>
+    <div class="sidebar-widget">
+      <h3 class="sidebar-title">{{ blogSidebar.tagTitle }}</h3>
+      <ul class="sidebar-tag">
+        <li v-for="tag in blogSidebar.tags" :key="tag.id">
+          <!-- <router-link :to="tag.link">{{ tag.name }}</router-link> -->
+          <button
+            style="border-radius: 30px"
+            class="tagbtn"
+            v-bind:id="tag.name"
+            @click="tagselectbtn(tag.name, $event)"
+            v-bind:style="{ 'background-color': selectboxcolor }"
+          >
+            {{ tag.name }}
+          </button>
+        </li>
+      </ul>
     </div>
 
     <div class="sidebar-widget">
@@ -39,23 +65,6 @@
         </div>
       </div>
     </div>
-
-    <div class="sidebar-widget">
-      <h3 class="sidebar-title">{{ blogSidebar.tagTitle }}</h3>
-      <ul class="sidebar-tag">
-        <li v-for="tag in blogSidebar.tags" :key="tag.id">
-          <!-- <router-link :to="tag.link">{{ tag.name }}</router-link> -->
-          <button
-            class="tagbtn"
-            v-bind:id="tag.name"
-            @click="tagselectbtn(tag.name, $event)"
-            v-bind:style="{ 'background-color': selectboxcolor }"
-          >
-            {{ tag.name }}
-          </button>
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 
@@ -79,7 +88,7 @@ export default {
     tagselectbtn(tagName, event) {
       if (this.doublecheck(this.tagselect, tagName)) {
         this.tagselect.push(tagName);
-        event.currentTarget.style.background = "#ff7f00";
+        event.currentTarget.style.background = "black";
         event.currentTarget.style.color = "white";
       } else {
         this.deduplication(this.tagselect, tagName);
@@ -114,8 +123,8 @@ export default {
   text-decoration: none;
   background: linear-gradient(
     to right,
-    rgba(#ff7f00, 0) 25%,
-    rgba(#ff7f00, 0.8) 75%
+    rgba(black, 0) 25%,
+    rgba(black, 0.8) 75%
   );
   background-position: 1% 50%;
   background-size: 400% 300%;

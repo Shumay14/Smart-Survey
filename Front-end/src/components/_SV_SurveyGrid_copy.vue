@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button
+    <a
       class="strip_list wow fadeIn"
       data-wow-delay="0.1s"
       style="width: 100%; text-align: left"
@@ -79,7 +79,7 @@
       </div>
       <!-- End row-->
       <!-- <ModalSelect /> -->
-    </button>
+    </a>
     <ModalSelect :project="project" />
   </div>
   <!-- End strip_list-->

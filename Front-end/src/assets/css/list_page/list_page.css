@@ -104,7 +104,7 @@ a#filters_col_bt .icon_set_1_icon-65 {
   margin-bottom: 25px;
 }
 a.strip_list:hover h3 {
-  color: #ec008c;
+  color: #ff7f00;
 }
 .desc {
   padding-left: 135px;
@@ -122,7 +122,7 @@ a.strip_list:hover h3 {
   color: #333;
 }
 .desc h3 a:hover {
-  color: #ec008c;
+  color: #ff7f00;
 }
 .desc .type {
   font-size: 12px;
@@ -203,12 +203,18 @@ a.strip_list {
   -o-transition: all 300ms ease-in-out;
 }
 a.strip_list:hover {
+  /*border-bottom: 10px solid black;*/
   transform: translate(0, -5px);
   -webkit-transform: translate(0, -5px);
   -ms-transform: translate(0, -5px);
+  /*
   -webkit-box-shadow: 0px 2px 0px 0px #ebedef;
   -moz-box-shadow: 0px 2px 0px 0px #ebedef;
   box-shadow: 0px 2px 0px 0px #ebedef;
+  */
+  -webkit-box-shadow: 2px 2px 2px 1px #ff7f00;
+  -moz-box-shadow: 2px 2px 2px 1px #ff7f00;
+  box-shadow: 2px 2px 2px 1px #ff7f00;
 }
 /*4.2 Grid list*/
 .strip_list.grid .desc {
@@ -271,17 +277,14 @@ a.bt_filters {
 }
 #tools .styled-select select {
   background: transparent;
-  width: 115%;
+  width: 100%;
   padding: 7px 5px 5px 15px;
   border: 0;
-  border-radius: 0;
+  border-radius: 10px;
   height: 31px;
   margin: 0;
   font-weight: 600;
   font-size: 11px;
-  /* -moz-appearance: window; */
-  -webkit-appearance: none;
-  cursor: pointer;
   color: #444;
   box-shadow: none;
 }
@@ -291,7 +294,6 @@ a.bt_filters {
   height: 36px;
   background: url(arrow_down.svg) no-repeat right center;
   border: none;
-  border-right: 1px solid #ededed;
 }
 
 .infoBox {
