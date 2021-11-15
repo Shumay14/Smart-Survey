@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS T_SURVEY(
 
 CREATE TABLE IF NOT EXISTS T_USER(
     idx int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    account Text NOT NULL --마이페이지에서 설정한 관심사가 JSON 형태로 저장
     interests Text NOT NULL --마이페이지에서 설정한 관심사가 JSON 형태로 저장
 );
 
