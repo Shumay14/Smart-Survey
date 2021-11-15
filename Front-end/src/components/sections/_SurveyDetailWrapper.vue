@@ -9,11 +9,6 @@
 
       <div class="col-lg-8">
         <SurveyContent />
-
-        <!-- End strip_list-->
-        <a href="#0" class="load_more_bt wow fadeIn" data-wow-delay="3.2s"
-          >Load more...</a
-        >
       </div>
       <!-- End col-md-9-->
     </div>

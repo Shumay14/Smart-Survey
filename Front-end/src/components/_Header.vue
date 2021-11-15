@@ -238,10 +238,10 @@ export default {
       const el = document.querySelector("#offcanvas-menu");
       if (addRemoveClass === "addClass") {
         el.classList.add(className);
-        console.log(className);
+        // console.log(className);
       } else {
         el.classList.remove(className);
-        console.log(className, "del");
+        // console.log(className, "del");
       }
     },
 
@@ -255,7 +255,7 @@ export default {
         "/200?format=png";
     },
     getCurrentSurveyInfo(msg) {
-      console.log(surveydata.projectGrid);
+      // console.log(surveydata.projectGrid);
 
       if (msg == "total") {
         var price = 0;

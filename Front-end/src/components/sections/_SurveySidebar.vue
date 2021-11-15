@@ -77,10 +77,26 @@ export default {
   unmounted() {},
   methods: {
     tagselectbtn(tagName, event) {
-      this.tagselect.push(tagName);
-      event.currentTarget.style.background = "#ff7f00";
-      event.currentTarget.style.color = "white";
+      if (this.doublecheck(this.tagselect, tagName)) {
+        this.tagselect.push(tagName);
+        event.currentTarget.style.background = "#ff7f00";
+        event.currentTarget.style.color = "white";
+      } else {
+        this.deduplication(this.tagselect, tagName);
+        event.currentTarget.style.background = "";
+        event.currentTarget.style.color = "black";
+      }
       console.log(this.tagselect);
+    },
+    doublecheck(arr, tagName) {
+      var flag = true;
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == tagName) flag = false;
+      }
+      return flag;
+    },
+    deduplication(arr, tagName) {
+      arr.splice(arr.indexOf(tagName), 1);
     },
   },
 };
