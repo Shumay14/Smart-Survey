@@ -13,8 +13,8 @@
     <div class="sidebar-widget">
       <h3 class="sidebar-title">{{ blogSidebar.CategoriesTitle }}</h3>
       <ul class="sidebar-list">
-        <li v-for="category in blogSidebar.categories" :key="category.id">
-          <router-link :to="category.link">{{ category.title }}</router-link>
+        <li v-for="(category, num) in catedata" :key="num">
+          <a>{{ num }}</a>
         </li>
       </ul>
     </div>
@@ -61,7 +61,7 @@
 
 <script>
 export default {
-  props: ["blogSidebar"],
+  props: ["blogSidebar", "catedata"],
   name: "",
   components: {},
   data() {
