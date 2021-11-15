@@ -23,7 +23,7 @@
 import Header from '@/components/_Header';
     import Breadcrumb from '../components/Breadcrumb'
     import AdminWrapper from '../components/sections/_AD_AdminWrapper'
-    import Footer from '../components/Footer'
+    import Footer from '../components/_Footer';
     import OffCanvasMobileMenu from '@/components/OffCanvasMobileMenu'
 
     export default {
