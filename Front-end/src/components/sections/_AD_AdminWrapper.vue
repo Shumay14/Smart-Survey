@@ -114,7 +114,7 @@
                                             </div>
                                             
                                             <div class="col-4">
-                                                <input type="button" @click="setAgreementState(tableIndex)" value="설정변경">
+                                                <input type="button" class="custom-btn" @click="setAgreementState(tableIndex)" value="변경">
                                             </div>
                                         </div>
                                     </td>
@@ -134,6 +134,7 @@
 </template>
 
 <script>
+    import Web3 from "web3";
 
     export default {
         components: {
@@ -155,7 +156,7 @@
                     sdate : '',
                     edate : '',
                     reward : '',
-                    max : '',
+                    max : 1,
                     url : '',
                     vp : {},
                 },
@@ -193,15 +194,51 @@
             setCategory(index){
                 this.surveyInfo.category = index
             },
+
             setAgreementState(index){
                 this.privacyList[index].state = (this.privacyList[index].state + 1) % 2;
-                console.log(this.privacyList[index])
+                this.surveyInfo.vp = this.privacyList.filter(item => item.state > 0);
                 this.$forceUpdate()
             },
-            addSurvey(){
-                this.surveyInfo.vp = this.privacyList.filter(item => item.state > 0);
+            
+            async addSurvey(){
+                const web3 = new Web3(window.ethereum);
+                // console.log("!@#", await web3.eth.getAccounts());
+                // 컨트랙트주소 :0xCd6238C265Fc5aDb07406e55a034F73CD6FCFd57
+                // createSurvey(address, userlimit), 클레이 같이 보내기 필요
                 console.log(this.surveyInfo)
-            }
+
+                var _account = (await web3.eth.getAccounts())[0]
+                var _contractAddr = '0xE6E57c4aCfeE212D1043c09eeec09350B5B0Ef8a';
+                var _abi = {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "_owner",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "_userLimit",
+                            "type": "uint256"
+                        }
+                    ],
+                    "name": "createSurvey",
+                    "outputs": [],
+                    "stateMutability": "payable",
+                    "type": "function"
+                };
+
+                var _params = [_account, this.surveyInfo.max];
+                var _data = web3.eth.abi.encodeFunctionCall(_abi, _params);
+
+                await web3.eth.sendTransaction({
+                    from: _account,
+                    to: _contractAddr,
+                    value: web3.utils.toWei(10000, "ether"),
+                    data: _data
+                })
+            },
         },
         computed: {
             calcReward() {
@@ -215,6 +252,14 @@
 </script>
 
 <style lang="scss" scoped>
+    .custom-btn{
+        height:100%;
+        width:90px;
+        font-weight: bold;
+        border-radius: 22px;
+        border: 1px solid #ced4da;
+        color: #495057;
+    }
     span{
         font-weight: bold;
     }
