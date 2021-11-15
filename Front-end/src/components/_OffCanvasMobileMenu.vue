@@ -7,10 +7,7 @@
             <div class="col-md-6 col-8">
               <div class="logo">
                 <router-link to="/">
-                  <img
-                    src="assets/img/logo-custom/Logo-full-03_example.png"
-                    alt="logo"
-                  />
+                  <img src="assets/img/logo-custom/Logo-text.png" class="img-fluid" style="" alt="Brand Logo">
                 </router-link>
               </div>
             </div>

@@ -4,11 +4,11 @@
         <Header />
 
         <div class="container">
-
+            
             <section class="row content">
-                <div class="d-flex justify-content-center">
-                    <!-- <img src="assets/img/logo-custom/Logo-full-03_example.png" class="title-img" alt="Brand Logo"> -->
-                </div>
+                <!-- <div class="d-flex justify-content-center">
+                    <img src="assets/img/logo-custom/Logo-text.png" class="img-fluid"  style="width:30em" alt="Brand Logo">
+                </div> -->
                 <p class="title-sub">
                     탈중앙화 신원인증 기반의 패널인증 설문 플랫폼
                 </p>
@@ -30,8 +30,8 @@
                 <div class="d-flex justify-content-center">
                     <!-- <img src="assets/img/main/main-2.png" class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/> -->
                     <img src="assets/img/main/main1.png" class="mt-5" style="width:70%" />
-                    
-                    
+
+
                 </div>
             </section>
 
@@ -94,8 +94,8 @@
                         </div>
                         <div class="col-6">
                             <h1 class="title-sub2">
-                                서베이존은 안전한<br>
-                                <strong>개인정보</strong>를 보장합니다.
+                                개인정보 유출 걱정없는<br>
+                                안전한 <strong>설문조사</strong>를 보장합니다.
                             </h1>
 
                             <p class="description">
@@ -202,14 +202,12 @@
     import Header from '@/components/_Header';
     import Footer from '../components/_Footer';
     import OffCanvasMobileMenu from '@/components/_OffCanvasMobileMenu';
-    // import main1 from "../assets/img/main/main1.svg"
 
     export default {
         components: {
             Header,
             Footer,
             OffCanvasMobileMenu,
-            // main1
         },
         data() {
             return {
@@ -353,11 +351,11 @@
         opacity: 0;
     }
 
-    .simple{
+    .simple {
         border: #F38024 solid;
         border-radius: 15px 15px 0px 0px;
         border-width: 0px 0px 2px 0px;
-        
+
     }
 
     .btn-simple {
@@ -370,7 +368,7 @@
 
     .btn-simple:hover {
         color: #b6590d;
-        
+
         // border: #F38024 solid;
         // border-width: 0px 0px 2px 0px;
 
