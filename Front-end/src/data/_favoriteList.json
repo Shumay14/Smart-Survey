@@ -59,12 +59,10 @@
       {
         "index": 8,
         "topIndex": 0,
-        "category": "cooking",
-        "name": "요리",
+        "category": "food",
+        "name": "음식",
         "img": "assets/img/favoriteImg/cooking.jpg"
-      }
-    ],
-    "한식": [
+      },
       {
         "index": 9,
         "topIndex": 8,
