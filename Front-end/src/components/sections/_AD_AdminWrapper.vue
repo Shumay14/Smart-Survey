@@ -4,8 +4,24 @@
             <h3>설문 등록 페이지</h3>
             <div class="comment-form">
                 <div class="row">
-                    <div class="col-2 section-space--bottom--20 "> 
+                    <div class="col-2 section-space--bottom--20 dropdown"> 
                         <span class="title-admin-main"> 카테고리 </span>
+                        <span class="required"> *필수사항 </span>
+                        <input type="button" class="btn dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false" 
+                            :value="categoryList[surveyInfo.category]" />
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li>
+                                <input type="button" class="dropdown-item"
+                                    v-for="category, categoryIndex in categoryList"
+                                    :key ="categoryIndex" :value="category" @click="setCategory(categoryIndex)" />
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <!-- <div class="col-2 section-space--bottom--20 "> 
+                        <span class="title-admin-main"> 카테고리 </span>
+                        <div>
                         <select id="category" v-model="surveyInfo.category">
                             <option 
                                 :value="categoryIndex"
@@ -14,53 +30,71 @@
                                 {{category}}
                             </option>
                         </select>
-                    </div>
+                        </div>
+                    </div> -->
+
                     <div class="col-10 section-space--bottom--20 "> 
                         <span class="title-admin-main"> 제목 </span>
                         <span class="required"> *필수사항 </span>
                         <input type="text" v-model="surveyInfo.title">
                     </div>
+                    
+                    <!-- <div class="col-7 section-space--bottom--20 "> 
+                        <span class="title-admin-main"> 제목 </span>
+                        <span class="required"> *필수사항 </span>
+                        <input type="text" v-model="surveyInfo.title">
+                    </div>
+                    
+                    <div class="col-2 section-space--bottom--20 "> 
+                        <span class="title-admin-main"> 이미지 </span>
+                        <input type="text" v-model="surveyInfo.img">
+                    </div> -->
+
                     <div class="col-12 section-space--bottom--20 "> 
                         <span class="title-admin-main"> 설명 </span>
                         <input type="text" v-model="surveyInfo.desc">
                     </div>
 
                     <div class="col-12 section-space--bottom--20 "> 
-                        <span class="title-admin-main"> URL </span>
+                        <span class="title-admin-main"> 외부 설문 URL </span>
                         <span class="required"> *필수사항 </span>
                         <input type="text" v-model="surveyInfo.url">
                     </div>
 
                     <div class="col-lg-4 col-sm-12 section-space--bottom--20"> 
+                    
                         <span class="title-admin-main"> 보상금 </span>
                         <span class="required"> *필수사항 </span>
-                        <input type="text" v-model="surveyInfo.reward">
+                        
+                        <div class="input-group">
+                            <input type="text" class="form-control" v-model="surveyInfo.reward">
+                            <span class="input-group-text">Klay</span>
+                        </div>
                     </div>
 
                     <div class="col-lg-4 col-sm-12 section-space--bottom--20"> 
                         <span class="title-admin-main"> 표본수 </span>
                         <span class="required"> *필수사항 </span>
-                        <input type="number" min="1" v-model="surveyInfo.max">
+                        
+                        <div class="input-group">
+                            <input type="number" class="form-control" min="1" v-model="surveyInfo.max"> 
+                            <span class="input-group-text">명</span>
+                        </div> 
                     </div>
 
-                        <div class="col-lg-4 col-sm-12 section-space--bottom--20"> 
+                    <div class="col-lg-4 col-sm-12 section-space--bottom--20"> 
                         <span class="title-admin-main"> 1인당 보상 지급액 </span>
                         <span class="title-admin-sub"> ( 보상 지급액 = 보상금 / 표본수 ) </span>
-                        <input type="text" v-model="calcReward">
+                        <div class="input-group">
+                            <input type="text" class="form-control" style="background:white" v-model="calcReward" readonly>
+                            <span class="input-group-text">Klay</span>
+                        </div>
                     </div>
                     
-                    <div class="col-lg-6 section-space--bottom--20"> 
-                        <span class="title-admin-main"> 참여 조건 설정</span>
-                        <input type="text" placeholder="검색">
-                    </div>
-
-                
-                    <div class="col-lg-6">
-                        <span class="title-admin-main"> 세부 조건 설정 </span>
-                        <input type="text" placeholder="검색">
-                    </div>
 
                     <div class="col-lg-12">
+                        <span class="title-admin-main"> 참여 조건 설정</span>
+                        <span class="required"> *필수사항 </span>
                         <table class="table table-hover">
                             <thead align="center">
                                 <tr>
@@ -71,13 +105,12 @@
                             <tbody align="center">
                                 <tr :key="tableIndex" v-for="privacyItem, tableIndex in privacyList" >
                                     <th class="col-2">{{privacyItem.description}}</th>
-                                    
                                     <td class="col-8">
                                         <div class="row">
                                             <div class="col-8">
                                                 <span v-if="privacyItem.state == 0">제공하지 않음 </span>
                                                 <span v-if="privacyItem.state == 1">필수 제공</span>
-                                                <span v-if="privacyItem.state == 2">선택적 제공</span>
+                                                <!-- <span v-if="privacyItem.state == 2">선택적 제공</span> -->
                                             </div>
                                             
                                             <div class="col-4">
@@ -118,6 +151,7 @@
                     category : 4,
                     title : '',
                     desc : '',
+                    img : '',
                     sdate : '',
                     edate : '',
                     reward : '',
@@ -156,8 +190,11 @@
             }
         },
         methods: {
+            setCategory(index){
+                this.surveyInfo.category = index
+            },
             setAgreementState(index){
-                this.privacyList[index].state = (this.privacyList[index].state + 1) % 3;
+                this.privacyList[index].state = (this.privacyList[index].state + 1) % 2;
                 console.log(this.privacyList[index])
                 this.$forceUpdate()
             },
@@ -182,9 +219,10 @@
         font-weight: bold;
     }
     td, th, tr{
-        height:30px;
+        height:10px;
     }
     .required{
+        padding-left: 3px;
         font-size:6px;
         color:red;
         letter-spacing: -0.05rem;
