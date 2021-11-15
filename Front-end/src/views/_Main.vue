@@ -18,7 +18,7 @@
                     국내 최초 블록체인 기반 설문 <strong>서베이존</strong>,<br>
                     설문조사에 참여해보세요.
                 </p>
-                
+
 
                 <div class="d-flex justify-content-center">
                     <button class="btn-start">
@@ -34,16 +34,16 @@
             </section>
 
 
-                <div>
-                    <!-- 스위치 버튼 시작 -->
-                    <button @click="mainState=true">패널</button>
-                    <button @click="mainState=false">의뢰업체</button>
-                    <!-- 스위치 버튼 끝 -->
-                </div>
+            <div>
+                <!-- 스위치 버튼 시작 -->
+                <button class="btn mx-1 btn-danger btn-lg" @click="mainState=true">패널</button>
+                <button class="btn mx-1 btn-danger btn-lg" @click="mainState=false">의뢰업체</button>
+                <!-- 스위치 버튼 끝 -->
+            </div>
 
-<!-- 패널 측 화면 시작 -->
-                <transition name="fade">
-                <section v-if="mainState==true">
+            <!-- 패널 측 화면 시작 -->
+            <transition name="fade">
+                <section v-show="mainState==true">
                     <!-- 섹션1 시작 -->
                     <section class="row content">
                         <div class="col-6">
@@ -72,13 +72,13 @@
                             <img src="assets/img/main/main3.png" style="width:100%" />
                             <!-- class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/> -->
                         </div>
-<div class="col-1">
+                        <div class="col-1">
 
                         </div>
                         <div class="col-6">
                             <h1 class="title-sub2">
-                                DID활용을 통한 <br>
-                                철저한 <strong>개인정보 보호</strong>
+                                서베이존은 안전한<br>
+                                <strong>개인정보</strong>를 보장합니다.
                             </h1>
 
                             <p class="description">
@@ -89,19 +89,60 @@
                     </section>
                     <!-- 섹션2 종료 -->
                 </section>
-                </transition>
-                
-<!-- 패널 측 화면 종료 -->
+            </transition>
+            <!-- 패널 측 화면 종료 -->
 
+            <!-- 의뢰업체 측 화면 -->
+                <section v-show="mainState==false">
+                    <!-- 섹션1 시작 -->
+                    <section class="row content">
+                        <div class="col-6">
+                            <p class="title-sub2">
+                                
+                                높은 수준의 <strong>인스던스</strong>를 <br> 제공합니다.</p>
+                            <p class="description">
+                                설문에 참여하는 패널들은 블록체인 상의 DID 발급을 통해 검증된 패널들입니다.
+                                이들에게 조건에 맞는 설문조사를 제공하기에, 높은 수준의 인스던스를 달성할 수 있습니다.
+                                <!-- 인스던스: 설문의 예상 성공율을 말함 -->
+                            </p>
+                        </div>
+                        <div class="col-1">
 
-                <section v-if="mainState==false">
-                    <div>
-                        하하하
-                    </div>
+                        </div>
+                        <div class="col-5">
+                            <img src="assets/img/main/mainCom1.png" style="width:120%" />
+                        </div>
+                    </section>
+                    <!-- 섹션1 종료 -->
+
+                    <!-- 섹션2 시작 -->
+                    <section class="row content">
+
+                        <div class="col-5">
+                            <img src="assets/img/main/main3.png" style="width:100%" />
+                            <!-- class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/> -->
+                        </div>
+                        <div class="col-1">
+
+                        </div>
+                        <div class="col-6">
+                            <h1 class="title-sub2">
+                                맞춤형 제공을 통해<br>
+                                <strong>스크리닝 비용</strong>을 
+                                 절약합니다.
+                            </h1>
+
+                            <p class="description">
+                               패널들에게 맞춤형 설문조사 제공을 통한 스크리닝 비용을 감소할 수 있습니다.
+                            </p>
+                        </div>
+                    </section>
+                    <!-- 섹션2 종료 -->
                 </section>
 
+            <!-- 의뢰업체 측 화면 종료 -->
 
-                <!-- <section class="row justify-content-center content">
+            <!-- <section class="row justify-content-center content">
                     <div class="col-6">
                         <h2>"탈중앙화 신원증명, 이미 많은 유저가 경험하고 있습니다."</h2>
                     </div>
@@ -283,10 +324,16 @@
         word-break: keep-all;
     }
 
-    .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .5s;
+    }
+
+    .fade-enter,
+    .fade-leave-to
+
+        {
+        opacity: 0;
+    }
+
 </style>
