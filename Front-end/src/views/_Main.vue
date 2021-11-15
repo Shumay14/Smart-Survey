@@ -30,17 +30,34 @@
                 <div class="d-flex justify-content-center">
                     <!-- <img src="assets/img/main/main-2.png" class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/> -->
                     <img src="assets/img/main/main1.png" class="mt-5" style="width:70%" />
+                    
+                    
                 </div>
             </section>
 
 
-            <div>
-                <!-- 스위치 버튼 시작 -->
-                <button class="btn mx-1 btn-danger btn-lg" @click="mainState=true">패널</button>
-                <button class="btn mx-1 btn-danger btn-lg" @click="mainState=false">의뢰업체</button>
-                <!-- 스위치 버튼 끝 -->
+            <div class="row" style="text-align:center;">
+                <label class="col-6 simple" v-bind:class="{ btnSimple1 :mainState==true }">
+                    <button class="btn-simple" @click="mainState=true"><b>패널</b></button>
+                </label>
+                <label class=" col-6 simple" v-bind:class="{ btnSimple2 :mainState==false }">
+                    <button class="btn-simple" @click="mainState=false"><b>의뢰업체</b></button>
+                </label>
             </div>
 
+            <!-- <div style="text-align:center;">
+                <input type="checkbox" id="switch1" name="switch1" class="input__on-off">
+                <label for="switch1" class="label__on-off">
+                    <span class="marble"></span>
+                    <span class="on">패 널</span>
+                    <span class="off">의뢰업체</span>
+                </label>
+            </div> -->
+        </div>
+        <!-- div container 끝 -->
+
+        <!-- div container 시작 -->
+        <div class="container">
             <!-- 패널 측 화면 시작 -->
             <transition name="fade">
                 <section v-show="mainState==true">
@@ -93,52 +110,52 @@
             <!-- 패널 측 화면 종료 -->
 
             <!-- 의뢰업체 측 화면 -->
-                <section v-show="mainState==false">
-                    <!-- 섹션1 시작 -->
-                    <section class="row content">
-                        <div class="col-6">
-                            <p class="title-sub2">
-                                
-                                높은 수준의 <strong>인스던스</strong>를 <br> 제공합니다.</p>
-                            <p class="description">
-                                설문에 참여하는 패널들은 블록체인 상의 DID 발급을 통해 검증된 패널들입니다.
-                                이들에게 조건에 맞는 설문조사를 제공하기에, 높은 수준의 인스던스를 달성할 수 있습니다.
-                                <!-- 인스던스: 설문의 예상 성공율을 말함 -->
-                            </p>
-                        </div>
-                        <div class="col-1">
+            <section v-show="mainState==false">
+                <!-- 섹션1 시작 -->
+                <section class="row content">
+                    <div class="col-6">
+                        <p class="title-sub2">
 
-                        </div>
-                        <div class="col-5">
-                            <img src="assets/img/main/mainCom1.png" style="width:120%" />
-                        </div>
-                    </section>
-                    <!-- 섹션1 종료 -->
+                            높은 수준의 <br> <strong>인스던스</strong>를 제공합니다.</p>
+                        <p class="description">
+                            설문에 참여하는 패널들은 블록체인 상의 DID 발급을 통해 검증된 패널들입니다.
+                            이들에게 조건에 맞는 설문조사를 제공하기에, 높은 수준의 인스던스를 달성할 수 있습니다.
+                            <!-- 인스던스: 설문의 예상 성공율을 말함 -->
+                        </p>
+                    </div>
+                    <div class="col-1">
 
-                    <!-- 섹션2 시작 -->
-                    <section class="row content">
-
-                        <div class="col-5">
-                            <img src="assets/img/main/main3.png" style="width:100%" />
-                            <!-- class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/> -->
-                        </div>
-                        <div class="col-1">
-
-                        </div>
-                        <div class="col-6">
-                            <h1 class="title-sub2">
-                                맞춤형 제공을 통해<br>
-                                <strong>스크리닝 비용</strong>을 
-                                 절약합니다.
-                            </h1>
-
-                            <p class="description">
-                               패널들에게 맞춤형 설문조사 제공을 통한 스크리닝 비용을 감소할 수 있습니다.
-                            </p>
-                        </div>
-                    </section>
-                    <!-- 섹션2 종료 -->
+                    </div>
+                    <div class="col-5">
+                        <img src="assets/img/main/mainCom1.png" style="width:100%" />
+                    </div>
                 </section>
+                <!-- 섹션1 종료 -->
+
+                <!-- 섹션2 시작 -->
+                <section class="row content">
+
+                    <div class="col-5">
+                        <img src="assets/img/main/main3.png" style="width:100%" />
+                        <!-- class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/> -->
+                    </div>
+                    <div class="col-1">
+
+                    </div>
+                    <div class="col-6">
+                        <h1 class="title-sub2">
+                            맞춤형 설문 시스템을 통해<br>
+                            <strong>스크리닝 비용</strong>을
+                            절약합니다.
+                        </h1>
+
+                        <p class="description">
+                            패널들에게 맞춤형 설문조사 제공을 통한 스크리닝 비용을 감소할 수 있습니다.
+                        </p>
+                    </div>
+                </section>
+                <!-- 섹션2 종료 -->
+            </section>
 
             <!-- 의뢰업체 측 화면 종료 -->
 
@@ -183,14 +200,16 @@
 
 <script>
     import Header from '@/components/_Header';
-    import Footer from '../components/Footer';
+    import Footer from '../components/_Footer';
     import OffCanvasMobileMenu from '@/components/_OffCanvasMobileMenu';
+    // import main1 from "../assets/img/main/main1.svg"
 
     export default {
         components: {
             Header,
             Footer,
             OffCanvasMobileMenu,
+            // main1
         },
         data() {
             return {
@@ -330,10 +349,43 @@
     }
 
     .fade-enter,
-    .fade-leave-to
-
-        {
+    .fade-leave-to {
         opacity: 0;
     }
 
+    .simple{
+        border: #F38024 solid;
+        border-radius: 15px 15px 0px 0px;
+        border-width: 0px 0px 2px 0px;
+        
+    }
+
+    .btn-simple {
+        background-color: white;
+        font-size: 2em;
+        margin: 1rem;
+        border: none;
+        color: #F38024;
+    }
+
+    .btn-simple:hover {
+        color: #b6590d;
+        
+        // border: #F38024 solid;
+        // border-width: 0px 0px 2px 0px;
+
+        // background-color: rgb(228, 228, 228);
+    }
+
+    .btnSimple1 {
+        color: #cf640c;
+        border: #F38024 solid;
+        border-width: 2px 2px 0px 2px;
+    }
+
+    .btnSimple2 {
+        color: #cf640c;
+        border: #F38024 solid;
+        border-width: 2px 2px 0px 2px;
+    }
 </style>
