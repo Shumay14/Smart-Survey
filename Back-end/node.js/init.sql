@@ -1,12 +1,18 @@
--- DB 생성
-CREATE DATABASE SURVEY_ZONE;
+-- DB 생성 
+CREATE database IF NOT EXISTS surveyzone;
 
+-- DB 기본 charset 한글(utf-8)로 변경
+ALTER DATABASE surveyzone DEFAULT CHARACTER SET utf8;
+
+-- 생성한 DB 사용
+use surveyzone;
 
 -- 테이블 구조 정의
 CREATE TABLE IF NOT EXISTS T_SURVEY(
     idx         INT     NOT NULL AUTO_INCREMENT PRIMARY KEY,
     item        TEXT    NOT NULL -- JSON 형태로 저장된 설문지 정보 
 );
+
 CREATE TABLE IF NOT EXISTS T_USER(
     idx         INT     NOT NULL AUTO_INCREMENT PRIMARY KEY,
     account     TEXT    NOT NULL, -- 메타마스크 주소 저장
