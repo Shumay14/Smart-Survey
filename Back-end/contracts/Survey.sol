@@ -16,10 +16,7 @@ contract Survey{
     
     uint surveyCount = 0; // 설문지 생성 갯수 
     mapping(uint => SurveyItem) surveyInfo; // 설문지 정보 리스트
-    
-    function () payable{
-        test
-    }
+
     
     // 설문 금액 예치, 설문 생성자 주소등록 및 최대 참여 인원수 지정
     function createSurvey(address _owner, uint _userLimit) public payable{
