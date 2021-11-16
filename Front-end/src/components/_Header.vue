@@ -1,7 +1,7 @@
 <template>
   <!--====================  header area ====================-->
   <fixed-header>
-    <div class="header-area" >
+    <div class="header-area">
       <div class="header-area__desktop header-area__desktop--default">
         <!--=======  header top bar  =======-->
 
@@ -14,7 +14,8 @@
                   <!-- logo START -->
                   <div class="logo">
                     <router-link to="/">
-                      <img src="assets/img/logo-custom/Logo-text.png" class="img-fluid" style="" alt="Brand Logo">
+                      <img src="assets/img/logo-custom/Logo-text.png" width="150%" class="img-fluid" style=""
+                        alt="Brand Logo">
                     </router-link>
                   </div>
                   <!-- logo END -->
@@ -26,9 +27,10 @@
                         header-navigation header-navigation--header-default
                         position-relative
                       ">
-                      <div class="header-navigation__nav position-static">
+                      <div class="header-navigation__nav position-static my-auto">
                         <nav>
                           <ul>
+
                             <li class="
                                 has-children has-children--multilevel-submenu
                               ">
@@ -80,13 +82,14 @@
                                 </li>
                               </ul>
                             </li>
+
                           </ul>
                         </nav>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col-3 metamask_div desktop-menu-icon">
+                  <div class="col-3 metamask_div desktop-menu-icon my-auto">
                     <!-- 메타마스크 아이콘 시작-->
                     <label class="metamask_Logo">
                       <MetamaskLogo v-if="this.$store.state.metamaskAdd == null" />
@@ -284,10 +287,11 @@
       // 사용자 해상도가 1024px 이상일 때 이 코드가 실행됨. 테블릿과 데스크톱의 공통 코드를 작성한다.
       .metamask_div {
         position: relative;
+        text-align: end;
       }
 
       .metamask_Logo {
-        border: 3px solid black;
+        border: 3px solid #313131;
         padding: 5px;
         border-radius: 30px;
         top: -18px;
