@@ -84,7 +84,7 @@
               <span class="input-group-text">Klay</span>
             </div>
           </div>
-
+          
           <div class="col-lg-4 col-sm-12 section-space--bottom--20">
             <span class="title-admin-main"> 표본수 </span>
             <span class="required"> *필수사항 </span>
@@ -168,7 +168,6 @@
               </tbody>
             </table>
           </div>
-
           <div class="col-12 d-flex justify-content-center">
             <input type="submit" value="등록하기" @click="addSurvey()" />
           </div>
@@ -279,7 +278,7 @@ export default {
       await web3.eth.sendTransaction({
         from: _account,
         to: _contractAddr,
-        value: web3.utils.toWei(10000, "ether"),
+        value: web3.utils.toWei(this.surveyInfo.reward, "ether"),
         data: _data,
       });
     },
