@@ -21,8 +21,9 @@
             }
 
             .header-contact-info {
+                height: 7em;
                 display: flex;
-                justify-content: flex-end;
+                justify-content: center;
 
                 @media #{$large-mobile} {
                     display: none;
@@ -125,8 +126,6 @@
 .header-top-bar {
     background-color: $theme-color--black4;
     color: #ddd;
-    font-weight: 400;
-    font-size: 14px;
     line-height: 1;
 
     &--white {

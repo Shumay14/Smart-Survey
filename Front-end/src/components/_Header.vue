@@ -1,7 +1,7 @@
 <template>
   <!--====================  header area ====================-->
   <fixed-header>
-    <div class="header-area">
+    <div class="header-area" >
       <div class="header-area__desktop header-area__desktop--default">
         <!--=======  header top bar  =======-->
 
@@ -123,35 +123,37 @@
         <div class="header-top-bar">
           <div class="container">
             <div class="top-info-bar row align-items-center">
-              <div class="info-menu--item col-lg-3">
-                <div class="info-menu--item--head text-right">총 설문 금액</div>
-                <div class="info-menu--item--data">
-                  : {{ getCurrentSurveyInfo("total") }} ￦
+
+              <div class="info-menu--item col-3">
+                <div class="info-menu--item--head">총 설문 금액</div>
+                <div class="info-menu--item--data ">
+                  ￦ {{ getCurrentSurveyInfo("total") }}
                 </div>
               </div>
 
-              <div class="info-menu--item col-lg-3">
-                <div class="info-menu--item--head text-right">
+              <div class="info-menu--item col-3">
+                <div class="info-menu--item--head ">
                   참여 가능한 설문
                 </div>
                 <div class="info-menu--item--data">
-                  : {{ getCurrentSurveyInfo("count") }} 개
+                  {{ getCurrentSurveyInfo("count") }} 개
                 </div>
               </div>
 
-              <div class="info-menu--item col-lg-3">
-                <div class="info-menu--item--head text-right">
+              <div class="info-menu--item col-3">
+                <div class="info-menu--item--head">
                   획득 가능한 수익
                 </div>
                 <div class="info-menu--item--data">
-                  : {{ getCurrentSurveyInfo("reward") }} ￦
+                  ￦ {{ getCurrentSurveyInfo("reward") }}
                 </div>
               </div>
 
-              <div class="info-menu--item col-lg-3">
-                <div class="info-menu--item--head text-right">획득한 수익</div>
-                <div class="info-menu--item--data">: 123,123 ￦</div>
+              <div class="info-menu--item col-3">
+                <div class="info-menu--item--head">총 획득한 수익</div>
+                <div class="info-menu--item--data">￦ 0</div>
               </div>
+
             </div>
           </div>
         </div>
@@ -247,20 +249,25 @@
 
   .info-menu {
     &--item {
-      padding-top: 1px;
-      padding-bottom: 1px;
-      letter-spacing: -0.02rem;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      // letter-spacing: -0.02rem;
 
       &--head {
-        font-size: 15px;
+        font-size: 1.1em;
         font-weight: bold;
-        width: 50%;
-
-        float: left;
+        text-align: start;
+        margin: 0 0 0.5em 0;
+        // width: 50%;
+        // float: left;
       }
 
       &--data {
-        font-size: 13px;
+        font-size: 1.5em;
+        text-align: center;
+        margin-top: 0.2em;
+        width: 90%;
+        color: orange;
       }
     }
   }
