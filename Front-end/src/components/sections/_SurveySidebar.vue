@@ -18,6 +18,8 @@
         </select>
       </div>
     </div>
+
+    <!-- VC-Tag 선택 위젯 시작 -->
     <div class="sidebar-widget">
       <h3 class="sidebar-title">{{ blogSidebar.tagTitle }}</h3>
       <ul class="sidebar-tag">
@@ -34,16 +36,31 @@
         </li>
       </ul>
     </div>
+    <!-- VC-Tag 선택 위젯 끝 -->
 
+
+
+    <!-- 카테고리 선택 위젯 시작 -->
     <div class="sidebar-widget">
       <h3 class="sidebar-title">{{ blogSidebar.CategoriesTitle }}</h3>
       <ul class="sidebar-list">
         <li v-for="(category, listname) in catedata" :key="listname">
-          <a @click="cateselectbtn(listname, $event)">{{ listname }}</a>
+          <div class="row justify-content-between" style="cursor:pointer;" 
+            @click="cateselectbtn(listname, $event)">
+            <div class="col-5" >
+              <a>{{ listname }}</a>
+            </div>
+            <div class="col-3">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
+    <!-- 카테고리 선택 위젯 끝 -->
 
+
+    <!-- 인기있는 설문 위젯 시작 -->
     <div class="sidebar-widget">
       <h3 class="sidebar-title">{{ blogSidebar.popularPostTitle }}</h3>
       <div
@@ -64,6 +81,9 @@
         </div>
       </div>
     </div>
+    <!-- 인기있는 설문 위젯 끝 -->
+
+
   </div>
 </template>
 
