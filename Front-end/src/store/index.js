@@ -9,7 +9,7 @@ const store = new Vuex.Store({
       KakaoUser: {},
       metamaskAdd: null,
       metamaskShortAdd: null,
-      categorySelect: [],
+      Selectcategory: [],
       vcgradeSelect: [],
     };
   },
