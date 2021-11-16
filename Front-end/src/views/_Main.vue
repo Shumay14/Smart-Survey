@@ -4,7 +4,7 @@
         <Header />
 
         <div class="container">
-            
+
             <section class="row content">
                 <!-- <div class="d-flex justify-content-center">
                     <img src="assets/img/logo-custom/Logo-text.png" class="img-fluid"  style="width:30em" alt="Brand Logo">
@@ -15,15 +15,18 @@
 
                 <!-- 서비스 정의 한마디 -->
                 <p class="title-main">
-                    국내 최초 블록체인 기반 설문 <strong>서베이존</strong>,<br>
-                    설문조사에 참여해보세요.
+                    블록체인 기반 설문 <strong>서베이존</strong><br>
+                    설문조사에 참여하고 보상을 받으세요.
                 </p>
 
 
                 <div class="d-flex justify-content-center">
-                    <button class="btn-start">
+                    <router-link to="/mypage">
+                    <button class="btn btn-start">
                         설문 조사 참여하기
                     </button>
+                        </router-link>
+
                 </div>
 
                 <!-- 메인이미지 시작 -->
@@ -65,8 +68,8 @@
                     <section class="row content">
                         <div class="col-6">
                             <p class="title-sub2">
-                                설문조사에 참여하고 <br>
-                                쏟아지는 <strong>보상</strong>을 챙겨보세요.
+                                다른 설문조사 사이트보다 <br>
+                                <strong>많은 보상</strong> 획득
                             </p>
                             <p class="description">
                                 설문 의뢰업체가 요구하는 선택적 정보사항을 추가로 제공하고 더 많은 보상을
@@ -92,10 +95,26 @@
                         <div class="col-1">
 
                         </div>
+                        <div class="col-6" style="text-align:end;">
+                            <h1 class="title-sub2" >
+                                설문 도중 탈락이 없는<br>
+                                <strong>맞춤형 설문조사</strong> 제공
+                            </h1>
+
+                            <p class="description">
+                                서베이존은 패널 맞춤형 설문을 제공하기 때문에, 조건에 충족되지않아 도중 탈락되는 일이 발생하지 않습니다. 
+                            </p>
+                        </div>
+                    </section>
+                    <!-- 섹션2 종료 -->
+
+                    <!-- 섹션3 시작 -->
+                    <section class="row content">
+
                         <div class="col-6">
                             <h1 class="title-sub2">
-                                개인정보 유출 걱정없는<br>
-                                안전한 <strong>설문조사</strong>를 보장합니다.
+                                블록체인을 활용하여<br>
+                                보호되는 <strong>개인정보</strong>
                             </h1>
 
                             <p class="description">
@@ -103,8 +122,19 @@
                                 블록체인 네트워크 상에서 관리됩니다.
                             </p>
                         </div>
+
+                        <div class="col-1">
+
+                        </div>
+
+                        <div class="col-5">
+                            <img src="assets/img/main/main3.png" style="width:100%" />
+                            <!-- class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/> -->
+                        </div>
+
                     </section>
-                    <!-- 섹션2 종료 -->
+                    <!-- 섹션3 종료 -->
+
                 </section>
             </transition>
             <!-- 패널 측 화면 종료 -->
@@ -116,10 +146,10 @@
                     <div class="col-6">
                         <p class="title-sub2">
 
-                            높은 수준의 <br> <strong>인스던스</strong>를 제공합니다.</p>
+                            검증 가능한 패널들을 통한<br> 설문조사의 <strong>신뢰성</strong> 제공</p>
                         <p class="description">
-                            설문에 참여하는 패널들은 블록체인 상의 DID 발급을 통해 검증된 패널들입니다.
-                            이들에게 조건에 맞는 설문조사를 제공하기에, 높은 수준의 인스던스를 달성할 수 있습니다.
+                            설문에 참여하는 패널들의 자격은 블록체인 상의 DID를 통해 검증할 수 있는 패널들입니다.
+                            따라서 신뢰성 높은 설문 결과를 도출 할 수 있습니다.
                             <!-- 인스던스: 설문의 예상 성공율을 말함 -->
                         </p>
                     </div>
@@ -142,19 +172,46 @@
                     <div class="col-1">
 
                     </div>
-                    <div class="col-6">
-                        <h1 class="title-sub2">
-                            맞춤형 설문 시스템을 통해<br>
-                            <strong>스크리닝 비용</strong>을
-                            절약합니다.
+                    <div class="col-6" style="text-align:end;">
+                        <h1 class="title-sub2" >
+                            낭비되는<br>
+                            <strong>스크리닝 비용</strong> 절약
                         </h1>
 
-                        <p class="description">
-                            패널들에게 맞춤형 설문조사 제공을 통한 스크리닝 비용을 감소할 수 있습니다.
+                        <p class="description" >
+                            서베이존은 패널들의 자격에 맞는 설문조사를 제공합니다. 따라서 원하는 타겟을 설정할 수 있으며, 낭비되는 스크리닝 비용을 줄일 수 있습니다.
                         </p>
                     </div>
                 </section>
                 <!-- 섹션2 종료 -->
+
+                <!-- 섹션3 시작 -->
+                <section class="row content">
+
+
+                    <div class="col-6">
+                        <h1 class="title-sub2">
+                            뭘 하면<br>
+                            <strong>좋을까?</strong>
+                        </h1>
+
+                        <p class="description">
+                            여기는 생각해보고 있습니다.
+                        </p>
+                    </div>
+
+                    <div class="col-1">
+
+                    </div>
+
+                    <div class="col-5">
+                        <img src="assets/img/main/main3.png" style="width:100%" />
+                        <!-- class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/> -->
+                    </div>
+
+
+                </section>
+                <!-- 섹션3 종료 -->
             </section>
 
             <!-- 의뢰업체 측 화면 종료 -->
@@ -288,6 +345,21 @@
             width: 300px;
             height: 60px;
         }
+
+        &-start:hover {
+            background-color: white;
+
+            border-radius: 10px;
+            border: 2px solid RGB(238, 111, 0);
+            box-shadow:5px 5px RGB(238, 111, 0);
+
+            color: RGB(238, 111, 0);
+            font-weight: bold;
+            font-size: 20px;
+
+            width: 300px;
+            height: 60px;
+        }
     }
 
     .title {
@@ -362,8 +434,8 @@
         border: #F38024 solid;
         border-radius: 15px 15px 0px 0px;
         border-width: 0px 0px 2px 0px;
-
     }
+
 
     .btn-simple {
         background-color: white;
