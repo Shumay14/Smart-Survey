@@ -26,7 +26,6 @@
           <button
             style="border-radius: 30px"
             class="tagbtn"
-            v-bind:id="tag.name"
             @click="tagselectbtn(tag.name, $event)"
             v-bind:style="{ 'background-color': selectboxcolor }"
           >
@@ -39,8 +38,8 @@
     <div class="sidebar-widget">
       <h3 class="sidebar-title">{{ blogSidebar.CategoriesTitle }}</h3>
       <ul class="sidebar-list">
-        <li v-for="(category, num) in catedata" :key="num">
-          <a>{{ num }}</a>
+        <li v-for="(category, listname) in catedata" :key="listname">
+          <a @click="cateselectbtn(listname, $event)">{{ listname }}</a>
         </li>
       </ul>
     </div>
@@ -75,7 +74,6 @@ export default {
   components: {},
   data() {
     return {
-      tagselect: [],
       selectboxcolor: "",
       selectonoff: false,
     };
@@ -85,31 +83,47 @@ export default {
   mounted() {},
   unmounted() {},
   methods: {
-    tagselectbtn(tagName, event) {
-      if (this.doublecheck(this.tagselect, tagName)) {
-        this.tagselect.push(tagName);
+    tagselectbtn(vcgradeTag, event) {
+      if (this.doublecheck(this.$store.state.vcSelect, vcgradeTag)) {
+        this.$store.state.vcSelect.push(vcgradeTag);
         event.currentTarget.style.background = "black";
         event.currentTarget.style.color = "white";
       } else {
-        this.deduplication(this.tagselect, tagName);
+        this.deduplication(this.$store.state.vcSelect, vcgradeTag);
         event.currentTarget.style.background = "";
         event.currentTarget.style.color = "black";
       }
-      console.log(this.tagselect);
+      console.log(this.$store.state.vcSelect);
     },
-    doublecheck(arr, tagName) {
+    cateselectbtn(cateTag, event) {
+      if (this.doublecheck(this.$store.state.cateSelect, cateTag)) {
+        this.$store.state.cateSelect.push(cateTag);
+        event.currentTarget.style.color = "#ff7f00";
+      } else {
+        this.deduplication(this.$store.state.cateSelect, cateTag);
+        event.currentTarget.style.color = "black";
+      }
+      console.log(this.$store.state.cateSelect);
+    },
+
+    doublecheck(arr, vcgradeTag) {
       var flag = true;
       for (var i = 0; i < arr.length; i++) {
-        if (arr[i] == tagName) flag = false;
+        if (arr[i] == vcgradeTag) flag = false;
       }
       return flag;
     },
-    deduplication(arr, tagName) {
-      arr.splice(arr.indexOf(tagName), 1);
+    deduplication(arr, vcgradeTag) {
+      arr.splice(arr.indexOf(vcgradeTag), 1);
     },
   },
 };
 </script>
+<style scoped>
+.sidebar-list a:hover {
+  color: #ff7f00;
+}
+</style>
 <style lang="scss" scoped>
 .tagbtn {
   display: inline-block;
