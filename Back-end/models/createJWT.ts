@@ -7,9 +7,9 @@ import { decodeBase64url, encodeBase64url } from './util'
 const defaultAlg = 'ES256K'
 
 
-export type getVC = string
+// export type getVC = string
 export type publicKey = string
-export type rawData = string
+// export type rawData = string
 
 export interface JWTHeader {
   typ: 'JWT'
@@ -38,16 +38,17 @@ export async function createVC(
     return [endcodedHeader, encodedPayload].join('.')
 }
 
-const getVC = await createVC(header, payload)
+
 
 export async function createVP(
-    
-    VC: getVC,
+    header: Partial<JWTHeader>,
+    payload: string | Partial<JWTPayload>,
     pubKey: publicKey,
     rawData: string,
 
 ): Promise<string> {
-  const VZC = createVC(header, payload)  
+  const VC = createVC(header, payload)
+  
   return [VC, rawData, pubKey].join('.')
 }
 
