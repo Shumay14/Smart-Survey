@@ -4,7 +4,7 @@
   </canvas>
 </template>
 <script>
-  import Chart from "chart.js";
+  
   import userChartData from "../../data/_chartData.js"
   export default {
     data() {
