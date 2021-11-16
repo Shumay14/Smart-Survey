@@ -1,7 +1,7 @@
 // convert data into canonical(standard or normal) format
 import canonicalizeData from 'canonicalize'
 
-import { decodeBase64url, encodeBase64url } from './util'
+import { encodeBase64url } from './util'
 
 
 const defaultAlg = 'ES256K'
