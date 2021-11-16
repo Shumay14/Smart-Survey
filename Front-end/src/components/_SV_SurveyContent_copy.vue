@@ -50,6 +50,7 @@ export default {
       if (this.finish > data.projectGrid.length)
         this.finish = data.projectGrid.length;
     },
+
     CheckVcCategory(cate, vcObj) {
       var flag = false;
       var vcObjlist = Object.entries(vcObj);
