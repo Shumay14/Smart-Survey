@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="(project, num) in data.projectGrid" :key="num">
+    <div v-for="(project, num) in showUpList" :key="num">
       <!-- <div
         v-if="CheckVcCategory(project.category, project.vp)"
         :project="project"
@@ -11,18 +11,12 @@
           :project="project"
         />
       </transition>
-      <!-- </div> -->
-      <!-- <SurveyGrid v-else-if="num < finish" :project="project" /> -->
-      <!-- <button @click="CheckVcCategory(project.category, project.vp)">
-        aaaaaaaaaaaaaaa
-      </button> -->
-      <!-- <SurveyGrid v-if="" :project="project" /> -->
     </div>
     <!-- End strip_list-->
     <a
       class="load_more_bt wow fadeIn"
       data-wow-delay="13.2s"
-      @click="startplus()"
+      @click="addSurveyList()"
       style="margin-bottom: 1rem"
       >Load more...</a
     >
@@ -37,18 +31,33 @@ export default {
   components: {
     SurveyGrid,
   },
+  
   data() {
     return {
       data,
-      finish: 6,
-      number: 0,
+      showUpList: [],
+      showUpIdx:0
     };
   },
+
+  mounted(){
+    this.addSurveyList();
+  },
+
   methods: {
-    startplus() {
-      this.finish += 6;
-      if (this.finish > data.projectGrid.length)
-        this.finish = data.projectGrid.length;
+    addSurveyList(){
+      let cnt = 0;
+      
+      while(this.data.projectGrid.length != this.showUpIdx){
+        var item = this.data.projectGrid[this.showUpIdx]; // 설문지 리스트에서 인덱스로 가져온 '설문JSON'
+
+        if(cnt == 7) break;
+        this.showUpList.push(item);
+        this.showUpIdx++;
+        cnt++;
+
+        console.log(item, " added")
+      }
     },
 
     CheckVcCategory(cate, vcObj) {
