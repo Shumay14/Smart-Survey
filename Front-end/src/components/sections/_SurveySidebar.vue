@@ -84,26 +84,26 @@ export default {
   unmounted() {},
   methods: {
     tagselectbtn(vcgradeTag, event) {
-      if (this.doublecheck(this.$store.state.vcSelect, vcgradeTag)) {
-        this.$store.state.vcSelect.push(vcgradeTag);
+      if (this.doublecheck(this.$store.state.vcgradeSelect, vcgradeTag)) {
+        this.$store.state.vcgradeSelect.push(vcgradeTag);
         event.currentTarget.style.background = "black";
         event.currentTarget.style.color = "white";
       } else {
-        this.deduplication(this.$store.state.vcSelect, vcgradeTag);
+        this.deduplication(this.$store.state.vcgradeSelect, vcgradeTag);
         event.currentTarget.style.background = "";
         event.currentTarget.style.color = "black";
       }
-      console.log(this.$store.state.vcSelect);
+      console.log(this.$store.state.vcgradeSelect);
     },
     cateselectbtn(cateTag, event) {
-      if (this.doublecheck(this.$store.state.cateSelect, cateTag)) {
-        this.$store.state.cateSelect.push(cateTag);
+      if (this.doublecheck(this.$store.state.categorySelect, cateTag)) {
+        this.$store.state.categorySelect.push(cateTag);
         event.currentTarget.style.color = "#ff7f00";
       } else {
-        this.deduplication(this.$store.state.cateSelect, cateTag);
+        this.deduplication(this.$store.state.categorySelect, cateTag);
         event.currentTarget.style.color = "black";
       }
-      console.log(this.$store.state.cateSelect);
+      console.log(this.$store.state.categorySelect);
     },
 
     doublecheck(arr, vcgradeTag) {

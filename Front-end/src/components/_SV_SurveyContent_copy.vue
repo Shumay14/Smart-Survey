@@ -31,64 +31,69 @@ export default {
   components: {
     SurveyGrid,
   },
-  
+
   data() {
     return {
       data,
       showUpList: [],
-      showUpIdx:0
+      showUpIdx: 0,
     };
   },
 
-  mounted(){
+  mounted() {
     this.addSurveyList();
   },
 
   methods: {
-    addSurveyList(){
+    addSurveyList() {
       let cnt = 0;
-      
-      while(this.data.projectGrid.length != this.showUpIdx){
+
+      while (this.data.projectGrid.length != this.showUpIdx) {
         var item = this.data.projectGrid[this.showUpIdx]; // 설문지 리스트에서 인덱스로 가져온 '설문JSON'
 
-        if(cnt == 7) break;
+        if (cnt == 7) break;
         this.showUpList.push(item);
         this.showUpIdx++;
         cnt++;
 
-        console.log(item, " added")
+        console.log(item, " added");
       }
     },
 
     CheckVcCategory(cate, vcObj) {
       var flag = false;
       var vcObjlist = Object.entries(vcObj);
-      var catelist = this.$store.state.cateSelect;
-      var vclist = this.$store.state.vcSelect;
 
-      if (vclist.length == 0 && catelist.length == 0) {
-        flag = true;
-      } else if (vclist.length == 0) {
-        if (catelist.indexOf(cate) >= 0) {
+      var catelist = this.$store.state.categorySelect;
+      var vclist = this.$store.state.vcgradeSelect;
+
+      try {
+        if (vclist.length == 0 && catelist.length == 0) {
           flag = true;
-        }
-      } else if (catelist.length == 0) {
-        for (var i = 0; i < vcObjlist.length; i++) {
-          if (vclist.indexOf(vcObjlist[i][0]) >= 0) {
+        } else if (vclist.length == 0) {
+          if (catelist.indexOf(cate) >= 0) {
             flag = true;
           }
-        }
-      } else {
-        for (var i = 0; i < vcObjlist.length; i++) {
-          if (
-            vclist.indexOf(vcObjlist[i][0]) >= 0 &&
-            catelist.indexOf(cate) >= 0
-          ) {
-            flag = true;
+        } else if (catelist.length == 0) {
+          for (var i = 0; i < vcObjlist.length; i++) {
+            if (vclist.indexOf(vcObjlist[i][0]) >= 0) {
+              flag = true;
+            }
+          }
+        } else {
+          for (var i = 0; i < vcObjlist.length; i++) {
+            if (
+              vclist.indexOf(vcObjlist[i][0]) >= 0 &&
+              catelist.indexOf(cate) >= 0
+            ) {
+              flag = true;
+            }
           }
         }
+        return flag;
+      } catch {
+        return true;
       }
-      return flag;
     },
   },
 };

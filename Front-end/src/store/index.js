@@ -9,8 +9,8 @@ const store = new Vuex.Store({
       KakaoUser: {},
       metamaskAdd: null,
       metamaskShortAdd: null,
-      cateSelect: [],
-      vcSelect: [],
+      categorySelect: [],
+      vcgradeSelect: [],
     };
   },
 
