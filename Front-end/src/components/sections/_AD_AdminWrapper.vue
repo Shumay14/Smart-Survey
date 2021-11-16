@@ -137,10 +137,16 @@
                   <td class="col-8">
                     <div class="row">
                       <div class="col-8">
-                        <span v-if="privacyItem.state == 0"
-                          >제공하지 않음
+                        <span
+                          v-if="privacyItem.state == 0"
+                          style="color: rgba(170, 170, 170, 0.658)"
+                          >선택 없음
                         </span>
-                        <span v-if="privacyItem.state == 1">필수 제공</span>
+                        <span
+                          v-if="privacyItem.state == 1"
+                          style="color: #f0542d"
+                          >필수 제공</span
+                        >
                         <!-- <span v-if="privacyItem.state == 2">선택적 제공</span> -->
                       </div>
 
