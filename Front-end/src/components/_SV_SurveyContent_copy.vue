@@ -64,36 +64,32 @@ export default {
       var flag = false;
       var vcObjlist = Object.entries(vcObj);
 
-      var catelist = this.$store.state.categorySelect;
+      var catelist = this.$store.state.Selectcategory;
       var vclist = this.$store.state.vcgradeSelect;
 
-      try {
-        if (vclist.length == 0 && catelist.length == 0) {
+      if (vclist.length == 0 && catelist.length == 0) {
+        flag = true;
+      } else if (vclist.length == 0) {
+        if (catelist.indexOf(cate) >= 0) {
           flag = true;
-        } else if (vclist.length == 0) {
-          if (catelist.indexOf(cate) >= 0) {
+        }
+      } else if (catelist.length == 0) {
+        for (var i = 0; i < vcObjlist.length; i++) {
+          if (vclist.indexOf(vcObjlist[i][0]) >= 0) {
             flag = true;
           }
-        } else if (catelist.length == 0) {
-          for (var i = 0; i < vcObjlist.length; i++) {
-            if (vclist.indexOf(vcObjlist[i][0]) >= 0) {
-              flag = true;
-            }
-          }
-        } else {
-          for (var i = 0; i < vcObjlist.length; i++) {
-            if (
-              vclist.indexOf(vcObjlist[i][0]) >= 0 &&
-              catelist.indexOf(cate) >= 0
-            ) {
-              flag = true;
-            }
+        }
+      } else {
+        for (var i = 0; i < vcObjlist.length; i++) {
+          if (
+            vclist.indexOf(vcObjlist[i][0]) >= 0 &&
+            catelist.indexOf(cate) >= 0
+          ) {
+            flag = true;
           }
         }
-        return flag;
-      } catch {
-        return true;
       }
+      return flag;
     },
   },
 };

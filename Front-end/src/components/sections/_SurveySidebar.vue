@@ -96,14 +96,14 @@ export default {
       console.log(this.$store.state.vcgradeSelect);
     },
     cateselectbtn(cateTag, event) {
-      if (this.doublecheck(this.$store.state.categorySelect, cateTag)) {
-        this.$store.state.categorySelect.push(cateTag);
+      if (this.doublecheck(this.$store.state.Selectcategory, cateTag)) {
+        this.$store.state.Selectcategory.push(cateTag);
         event.currentTarget.style.color = "#ff7f00";
       } else {
-        this.deduplication(this.$store.state.categorySelect, cateTag);
+        this.deduplication(this.$store.state.Selectcategory, cateTag);
         event.currentTarget.style.color = "black";
       }
-      console.log(this.$store.state.categorySelect);
+      console.log(this.$store.state.Selectcategory);
     },
 
     doublecheck(arr, vcgradeTag) {
