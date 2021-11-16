@@ -25,7 +25,12 @@ export interface JWTPayload {
 }
 
 
+
+
+
+
 // create jwt-did-vc
+// return aaaa.bbbb
 export async function createVC(
     header: Partial<JWTHeader>,
     payload: string | Partial<JWTPayload>,
@@ -39,7 +44,8 @@ export async function createVC(
 }
 
 
-
+// create jwt-did-vp
+// return aaaa.rawData.pubKey
 export async function createVP(
     header: Partial<JWTHeader>,
     payload: string | Partial<JWTPayload>,
@@ -53,11 +59,13 @@ export async function createVP(
 }
 
 
+
 function encodeSection(data: any, shouldCanonicalize = false): string {
     if (shouldCanonicalize) {
       return encodeBase64url(<string>canonicalizeData(data))
     } else {
       return encodeBase64url(JSON.stringify(data))
     }
-  }
+}
+
 
