@@ -1,41 +1,70 @@
 const express = require('express')
+const cors = require('cors');
+
 const app = express()
+const port = 3000
 
-
-var db = {
-    host     : 'localhost',
-    user     : 'root',
-    password : 'toor',
-    database : 'SURVEY_ZONE',
-    connectionLimit : 10
+const db = {
+    host: '127.0.0.1',
+    user: 'root',
+    password: 'root',
+    database: 'surveyzone',
+    connectionLimit: 10
 };
 
 const dbPool = require('mysql').createPool(db);
 
-const port = 3000
-
+app.use(cors());
 app.use(express.json({
     limit: '50mb'
 }));
+app.use(express.urlencoded({
+    extends: true
+}))
 
-
+// GET Methods START
 app.get('/', (req, res) => {
-    console.log("In")
-    res.send('Hello World!');
+    res.send('API SERVER OPEN');
 })
 
-app.get('/download', (req, res) => {
-    dbPool.getConnection(function(err, conn) {
-        if(!err) {
-            conn.query('SELECT * FROM T_SURVEY', function(err,result,fields){
-                if(err) throw err;
+app.get('/api/survey', (req, res) => {
+    dbPool.getConnection(function (err, conn) {
+        if (!err) {
+            conn.query('SELECT * FROM T_SURVEY', function (err, result, fields) {
+                if (err) throw err;
                 res.send(result);
             });
         }
         conn.release();
     });
 })
+// GET Methods END
 
+
+// POST Method START
+app.post('/', (req, res) => {
+    //x-www-form-urlencoded
+    console.log(req.body);
+    res.send(req.body);
+})
+
+app.post('/api/survey', (req, res) => {
+    dbPool.getConnection(function (err, conn) {
+        var param = {
+            item: req.body.item
+        };
+        if (!err) {
+            conn.query('INSERT INTO T_SURVEY SET ?', param, function (err, result, fields) {
+                if (err) throw err;
+                res.send(result);
+            });
+        }
+    })
+})
+// POST Method END
+
+
+// Express Server Start
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Survey-Zone API SERVER listening on port ${port}`)
 })
