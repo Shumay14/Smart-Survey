@@ -1,46 +1,51 @@
-export const surveyData = {
-    type: "line",
-    data: {
-        labels: ['4월', '5월', "6월", "7월", "8월", "9월", "10월", "11월"],
-        datasets: [
-            {
-                // 첫 번째 데이터 셋
-                label: "획득한 리워드",
-                data: [0, 0, 1, 2, 24, 12, 27, 14],
-                backgroundColor: [
-                    "rgba(255, 178, 119, 0.5)",
-                    
-                ],
-                borderColor: [
-                    "#F38024",
-                    
-                ],
-                borderWidth: 3
-            },{
-                label: "작성한 설문조사",
-                data: [4.8, 12.1, 12.7, 6.7, 139.8, 116.4, 50.7, 49.2],
-                backgroundColor: [
-                    "rgba(226, 37, 0, 0.5",
-                ],
-                borderColor: [
-                    "#e22500",
-                ],
-                borderWidth: 3
-            }
-        ]
+export const userDataChart = {
+    series: [{
+        name: '응답한 설문조사',
+        type: 'column',
+        data: [1, 10, 3, 4, 5, 6]
+    }, {
+        name: '획득한 리워드',
+        type: 'line',
+        data: [1, 3, 2, 3, 4, 1]
+    }],
+    chart: {
+        height: 350,
+        type: 'line',
     },
-    options: {
-        responsive: true,
-        lineTension: 1,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-                    padding: 25,
-                }
-            }]
-        }
-    }
-}
+    stroke: {
+        width: [1, 4]
+    },
+    dropShadow: {
+        enabled: true,
+        top: 0,
+        left: 0,
+        blur: 3,
+        opacity: 0.5
+      },
+    // title: {
+    //     text: 'Traffic Sources'
+    // },
+    colors: ['#F38024', '#f0542d', '#f0542d'],
+    dataLabels: {
+        enabled: true,
+        enabledOnSeries: [1],
+        
+    },
+    labels: ['6월', '7월', '8월', '9월', '10월', '11월'],
+    xaxis: {
+        type: 'month'
+    },
+    yaxis: [{
+        title: {
+            text: '응답한 설문조사',
+        },
 
-export default surveyData;
+    }, {
+        opposite: true,
+        title: {
+            text: '리워드 내역'
+        }
+    }]
+};
+
+export default userDataChart;

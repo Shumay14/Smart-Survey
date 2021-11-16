@@ -1,30 +1,23 @@
 <template>
-  <canvas id="userChart">
-    
-  </canvas>
+  <div>
+    <div id="chart">
+
+    </div>
+  </div>
 </template>
 <script>
-  
-  import userChartData from "../../data/_chartData.js"
+  import ApexCharts from 'apexcharts'
+  import userDataChart from "../../data/_chartData.js"
   export default {
     data() {
       return {
-        userChartData: userChartData,
+        userDataChart: userDataChart,
       }
     },
-   
-    methods: {
-      createChart(charId, chartData) {
-        const ctx = document.getElementById(charId);
-        const myChart = new Chart(ctx, {
-          type: chartData.type,
-          data: chartData.data,
-          options: chartData.options
-        });
-      }
-    },
-     mounted() {
-      this.createChart("userChart", this.userChartData)
+    mounted() {
+      // this.createChart("userChart", this.userDataChart);
+      var chart = new ApexCharts(document.querySelector("#chart"), this.userDataChart);
+      chart.render();
     },
   };
 </script>
