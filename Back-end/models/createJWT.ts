@@ -5,7 +5,7 @@ import { decodeBase64url, encodeBase64url } from './util'
 
 
 const defaultAlg = 'ES256K'
-const getVC = await createVC(header, payload)
+
 
 export type getVC = string
 export type publicKey = string
@@ -25,17 +25,7 @@ export interface JWTPayload {
 }
 
 
-// export async function createJWT(
-//   header: Partial<JWTHeader>,
-//   payload: Partial<JWTPayload>,
-     
-// ): Promise<string> {
-  
-//   return createVC(header, payload)
-// }
-
-
-// output => aaa.bbb.ccc
+// create jwt-did-vc
 export async function createVC(
     header: Partial<JWTHeader>,
     payload: string | Partial<JWTPayload>,
@@ -48,15 +38,16 @@ export async function createVC(
     return [endcodedHeader, encodedPayload].join('.')
 }
 
-
+const getVC = await createVC(header, payload)
 
 export async function createVP(
+    
     VC: getVC,
     pubKey: publicKey,
     rawData: string,
 
 ): Promise<string> {
-    
+  const VZC = createVC(header, payload)  
   return [VC, rawData, pubKey].join('.')
 }
 
