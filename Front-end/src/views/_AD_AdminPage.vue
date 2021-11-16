@@ -49,9 +49,9 @@ import Header from '@/components/_Header';
             }
         },
         metaInfo: {
-            title: 'Castro - Blog Details',
+            title: '서베이존 - 설문 등록',
             htmlAttrs: {
-                lang: 'en',
+                lang: 'ko',
                 amp: true
             }
         }

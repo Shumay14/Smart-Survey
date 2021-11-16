@@ -50,9 +50,9 @@
             }
         },
         metaInfo: {
-            title: 'Castro - Blog Details',
+            title: '서베이존 - 공지사항',
             htmlAttrs: {
-                lang: 'en',
+                lang: 'ko',
                 amp: true
             }
         }

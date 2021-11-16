@@ -6,6 +6,7 @@
         <Breadcrumb :items="items" title="마이페이지" />
 
         <MyPageDetail />
+        <!-- <Chart /> -->
         <Footer/>
 
         <OffCanvasMobileMenu />
@@ -25,6 +26,7 @@
     import MyPageDetail from '../components/sections/_MyPageDetail'
     import OffCanvasMobileMenu from '@/components/_OffCanvasMobileMenu';
     import Footer from "../components/_Footer";
+    // import Chart from "../components/sections/_Chart";
 
 
     export default {
@@ -33,7 +35,8 @@
             Breadcrumb,
             OffCanvasMobileMenu,
             MyPageDetail,
-            Footer
+            Footer,
+            // Chart
         },
         data() {
             return {
@@ -50,9 +53,9 @@
             }
         },
         metaInfo: {
-            title: 'Castro - Contact Us',
+            title: '서베이존 - 마이페이지',
             htmlAttrs: {
-                lang: 'en',
+                lang: 'ko',
                 amp: true
             }
         }

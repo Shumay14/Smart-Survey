@@ -48,9 +48,9 @@
             }
         },
         metaInfo: {
-            title: 'Castro - Blog Details',
+            title: '서베이존 - 1:1 문의',
             htmlAttrs: {
-                lang: 'en',
+                lang: 'ko',
                 amp: true
             }
         }

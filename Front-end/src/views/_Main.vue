@@ -228,6 +228,13 @@
                 ]
             }
         },
+        metaInfo: {
+            title: '서베이존',
+            htmlAttrs: {
+                lang: 'ko',
+                amp: true
+            }
+        },
         mounted() {
             window.addEventListener('scroll', this.onScroll)
         },

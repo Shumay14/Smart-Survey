@@ -57,9 +57,9 @@ export default {
     };
   },
   metaInfo: {
-    title: "Castro - Blog Left Sidebar",
+    title: "서베이존 - 전체 설문조사",
     htmlAttrs: {
-      lang: "en",
+      lang: "ko",
       amp: true,
     },
   },

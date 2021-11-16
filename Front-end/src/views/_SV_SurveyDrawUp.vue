@@ -75,9 +75,9 @@
             }
         },
         metaInfo: {
-            title: 'Castro - All Projects',
+            title: '서베이존 - 참여한 설문조사',
             htmlAttrs: {
-                lang: 'en',
+                lang: 'ko',
                 amp: true
             }
         }

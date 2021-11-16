@@ -49,9 +49,9 @@
             }
         },
         metaInfo: {
-            title: 'Castro - Contact Us',
+            title: '서베이존 - 관심사 설정',
             htmlAttrs: {
-                lang: 'en',
+                lang: 'ko',
                 amp: true
             }
         }
