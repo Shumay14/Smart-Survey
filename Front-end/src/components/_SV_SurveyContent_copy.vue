@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import data from "../data/_survey.json";
 import SurveyGrid from "./_SV_SurveyGrid_copy.vue";
 
 export default {
@@ -35,13 +34,14 @@ export default {
 
   data() {
     return {
-      data,
+      surveyData: [],
       showUpList: [],
       showUpIdx: 0,
     };
   },
 
-  mounted() {
+  async mounted() {
+    this.surveyData = await this.$api('get', 'http://127.0.0.1:3000/api/survey');
     this.addSurveyList();
   },
 
@@ -49,8 +49,8 @@ export default {
     addSurveyList() {
       let cnt = 0;
 
-      while (this.data.projectGrid.length != this.showUpIdx) {
-        var item = this.data.projectGrid[this.showUpIdx]; // 설문지 리스트에서 인덱스로 가져온 '설문JSON'
+      while (this.surveyData.length != this.showUpIdx) {
+        var item = this.surveyData[this.showUpIdx]; // 설문지 리스트에서 인덱스로 가져온 '설문JSON'
 
         if (cnt == 7) break;
         this.showUpList.push(item);
