@@ -22,7 +22,7 @@ contract Survey{
         contractOwner = msg.sender;
     }
 
-    // 인기설문 조회를 위한 참여자수 조작 어드민 함수 
+    // OK 인기 설문지 리스트업을 위한 관리자 전용 참여자 수 조작 함수 
     function fakeSurveyParticipation(uint surveyIndex, uint _times) public{
         require(msg.sender == contractOwner);
 
@@ -43,12 +43,12 @@ contract Survey{
         surveyCount += 1;
     }
     
-    // 컨트랙트에 예치된 전체 보상금 액수를 반환함
+    // OK 컨트랙트에 예치된 전체 보상금 액수를 반환함
     function getContractBalance() public view returns(uint){
         return address(this).balance;
     }
     
-    // 설문에 참여한 유저를 등록함
+    // OK 설문에 참여한 유저를 등록함
     function addUser(uint surveyIndex, address payable _to) public returns (address){
         //require(userState[_to] != 1 && currentUser < userLimit && msg.sender == _to);
         require(surveyInfo[surveyIndex].userState[_to] != 1 && 
@@ -83,7 +83,12 @@ contract Survey{
         return surveyInfo[surveyIndex].userLimit;
     }
     
-    // OK 설문에 참여한 유저에게 보상을 줌 
+    // OK 설문 참여 시 수령 가능한 보상금 액수를 반환
+    function estimateReward(uint surveyIndex) public view returns (uint){
+        return surveyInfo[surveyIndex].totalAmount / surveyInfo[surveyIndex].userLimit;
+    }
+
+    // OK 설문에 참여한 유저에게 보상을 줌, 보상수령
     function claimReward(uint surveyIndex, address payable _to) private {
         uint reward = surveyInfo[surveyIndex].totalAmount / surveyInfo[surveyIndex].userLimit;
         _to.transfer(reward);
