@@ -5,9 +5,9 @@ const app = express()
 const port = 3000
 
 const db = {
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'root',
+    host: 'surveyzone.cqqcyxlpgd6h.ap-northeast-2.rds.amazonaws.com',
+    user: 'corgi',
+    password: 'corgi123!',
     database: 'surveyzone',
     connectionLimit: 10
 };
@@ -28,11 +28,13 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/survey', (req, res) => {
+    console.log("income");
     dbPool.getConnection(function (err, conn) {
         if (!err) {
             conn.query('SELECT * FROM T_SURVEY', function (err, result, fields) {
                 if (err) throw err;
-                res.send(result);
+
+                res.send(result.map(v => JSON.parse(v.item)));
             });
         }
         conn.release();
