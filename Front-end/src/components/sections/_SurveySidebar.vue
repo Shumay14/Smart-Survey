@@ -18,7 +18,6 @@
         </select>
       </div>
     </div>
-
     <!-- VC-Tag 선택 위젯 시작 -->
     <div class="sidebar-widget">
       <h3 class="sidebar-title">{{ blogSidebar.tagTitle }}</h3>
@@ -38,27 +37,27 @@
     </div>
     <!-- VC-Tag 선택 위젯 끝 -->
 
-
-
     <!-- 카테고리 선택 위젯 시작 -->
     <div class="sidebar-widget">
       <h3 class="sidebar-title">{{ blogSidebar.CategoriesTitle }}</h3>
       <ul class="sidebar-list">
         <li v-for="(category, listname) in catedata" :key="listname">
-          <div class="row justify-content-between" style="cursor:pointer;" 
-            @click="cateselectbtn(listname, $event)">
-            <div class="col-5" >
+          <div
+            class="row justify-content-between"
+            style="cursor: pointer"
+            @click="cateselectbtn(listname, $event)"
+          >
+            <div class="col-5">
               <a>{{ listname }}</a>
             </div>
-            <div class="col-3">
-              <i class="fas fa-check"></i>
-            </div>
+            <!-- <div class="col-3">
+              <i class="fas fa-check" :id="listname"></i>
+            </div> -->
           </div>
         </li>
       </ul>
     </div>
     <!-- 카테고리 선택 위젯 끝 -->
-
 
     <!-- 인기있는 설문 위젯 시작 -->
     <div class="sidebar-widget">
@@ -82,8 +81,6 @@
       </div>
     </div>
     <!-- 인기있는 설문 위젯 끝 -->
-
-
   </div>
 </template>
 
@@ -99,33 +96,34 @@ export default {
     };
   },
   setup() {},
-  created() {},
+  created() {
+    this.$store.commit("countnull");
+  },
   mounted() {},
   unmounted() {},
   methods: {
     tagselectbtn(vcgradeTag, event) {
-      if (this.doublecheck(this.$store.state.vcgradeSelect, vcgradeTag)) {
-        this.$store.state.vcgradeSelect.push(vcgradeTag);
+      if (this.doublecheck(this.$store.state.vsgradelist, vcgradeTag)) {
+        this.$store.commit("vcplus", vcgradeTag);
         event.currentTarget.style.background = "black";
         event.currentTarget.style.color = "white";
       } else {
-        this.deduplication(this.$store.state.vcgradeSelect, vcgradeTag);
+        this.$store.commit("vcdeduplication", vcgradeTag);
         event.currentTarget.style.background = "";
         event.currentTarget.style.color = "black";
       }
-      console.log(this.$store.state.vcgradeSelect);
+      console.log(this.$store.state.vsgradelist);
     },
     cateselectbtn(cateTag, event) {
-      if (this.doublecheck(this.$store.state.Selectcategory, cateTag)) {
-        this.$store.state.Selectcategory.push(cateTag);
+      if (this.doublecheck(this.$store.state.categorylist, cateTag)) {
+        this.$store.commit("cateplus", cateTag);
         event.currentTarget.style.color = "#ff7f00";
       } else {
-        this.deduplication(this.$store.state.Selectcategory, cateTag);
+        this.$store.commit("catededuplication", cateTag);
         event.currentTarget.style.color = "black";
       }
-      console.log(this.$store.state.Selectcategory);
+      console.log(this.$store.state.categorylist);
     },
-
     doublecheck(arr, vcgradeTag) {
       var flag = true;
       for (var i = 0; i < arr.length; i++) {
@@ -133,8 +131,8 @@ export default {
       }
       return flag;
     },
-    deduplication(arr, vcgradeTag) {
-      arr.splice(arr.indexOf(vcgradeTag), 1);
+    iconselec() {
+      return true;
     },
   },
 };
