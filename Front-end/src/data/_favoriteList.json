@@ -1,22 +1,22 @@
 {
   "categorylist": {
-    "여행": [
+    "travel": [
       {
         "index": 1,
         "topIndex": 0,
-        "category": "surveyType",
+        "category": "travel",
         "name": "국내",
         "img": "assets/img/favoriteImg/korea.jpg"
       },
       {
         "index": 2,
         "topIndex": 0,
-        "category": "surveyType",
+        "category": "travel",
         "name": "해외",
         "img": "assets/img/favoriteImg/overseas.jpg"
       }
     ],
-    "자동차": [
+    "car": [
       {
         "index": 3,
         "topIndex": 0,
@@ -46,7 +46,7 @@
         "img": "assets/img/favoriteImg/car-large.jpg"
       }
     ],
-    "음악": [
+    "music": [
       {
         "index": 7,
         "topIndex": 0,
@@ -55,7 +55,7 @@
         "img": "assets/img/favoriteImg/music.jpg"
       }
     ],
-    "요리": [
+    "food": [
       {
         "index": 8,
         "topIndex": 0,
@@ -92,7 +92,7 @@
         "img": "assets/img/favoriteImg/food-chinese.jpg"
       }
     ],
-    "전자제품": [
+    "electronic-products": [
       {
         "index": 13,
         "topIndex": 0,
