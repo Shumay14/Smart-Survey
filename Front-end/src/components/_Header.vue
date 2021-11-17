@@ -1,8 +1,9 @@
 <template>
   <!--====================  header area ====================-->
   <fixed-header>
-    <div class="header-area">
-      <div class="header-area__desktop header-area__desktop--default">
+    <div class="header-area" >
+      <fixed-header >
+      <div class="header-area__desktop header-area__desktop--default mainHeader">
         <!--=======  header top bar  =======-->
 
         <!--=======  End of header top bar   =======-->
@@ -34,7 +35,7 @@
                             <!-- <li class="
                                 has-children has-children--multilevel-submenu
                               "> -->
-                              <li >
+                            <li>
                               <router-link to="/surveylist">설문조사</router-link>
                               <!-- <ul class="submenu">
                                 <li>
@@ -123,10 +124,15 @@
             </div>
           </div>
         </div>
+
+      </div>
+      </fixed-header>
+
+      <!-- <fixed-header > -->
         <!--=======  End of header info area =======-->
-        <div class="header-top-bar">
+        <div class="header-top-bar subHeader">
           <div class="container">
-            <div class="top-info-bar row align-items-center">
+            <div class="top-info-bar row align-items-center" >
 
               <div class="info-menu--item col-3">
                 <div class="info-menu--item--head">총 설문 금액</div>
@@ -159,9 +165,13 @@
               </div>
 
             </div>
+
           </div>
         </div>
-      </div>
+        <!-- 헤더 추가 정보 끝 -->
+      <!-- </fixed-header> -->
+
+
     </div>
   </fixed-header>
 </template>
@@ -177,16 +187,27 @@
       Web3,
       surveydata,
       MetamaskLogo,
-      Logo
+      Logo,
 
     },
     data() {
       return {
-        user_avatar: "",
+        user_avatar: "https://identicon-api.herokuapp.com/" + this.$store.state.metamaskAdd + "/200?format=png",
+        headerInfoShow: true
       };
     },
+    computed: {
+      hiddenInfo: function () {
+        if (this.$refs.headerFlex.classList.contains("vue-fixed-header--isFixed") == true) {
+          return this.headerInfoShow = false;
+        } else {
+          return this.headerInfoShow = true;
+
+        }
+      }
+    },
     created() {
-      this.userAvatar();
+      // this.userAvatar();
     },
     methods: {
       // offcanvas mobilemenu
@@ -204,12 +225,12 @@
       logout() {
         this.$store.commit("metamaskAdd", null);
       },
-      userAvatar() {
-        this.user_avatar =
-          "https://identicon-api.herokuapp.com/" +
-          this.$store.state.metamaskAdd +
-          "/200?format=png";
-      },
+      // userAvatar() {
+      //   this.user_avatar =
+      //     "https://identicon-api.herokuapp.com/" +
+      //     this.$store.state.metamaskAdd +
+      //     "/200?format=png";
+      // },
       getCurrentSurveyInfo(msg) {
         // console.log(surveydata.projectGrid);
 
@@ -231,7 +252,14 @@
         }
         return "222";
       },
+      test() {
+        console.log(this.$refs.headerFlex)
+        console.log(this.$refs.headerFlex.classList.contains('vue-fixed-header--isFixed'))
+
+      }
     },
+
+
   };
 </script>
 
@@ -309,4 +337,5 @@
       }
     }
   }
+  
 </style>
