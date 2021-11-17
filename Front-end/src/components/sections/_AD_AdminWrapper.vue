@@ -184,7 +184,7 @@ export default {
   components: {},
   data() {
     return {
-      categoryList: ["정부", "주거", "자산", "투자", "기타"],
+      categoryList: ["여행", "자동차", "음악", "요리", "전자제품"],
       surveyInfo: {
         category: 4,
         title: "",
@@ -246,13 +246,10 @@ export default {
 
     async addSurvey() {
       const web3 = new Web3(window.ethereum);
-      // console.log("!@#", await web3.eth.getAccounts());
-      // 컨트랙트주소 :0xCd6238C265Fc5aDb07406e55a034F73CD6FCFd57
-      // createSurvey(address, userlimit), 클레이 같이 보내기 필요
       console.log(this.surveyInfo);
 
       var _account = (await web3.eth.getAccounts())[0];
-      var _contractAddr = "0xE6E57c4aCfeE212D1043c09eeec09350B5B0Ef8a";
+      var _contractAddr = "0x475853e073b9003Dbfb46Da3Dda197c39eE37991";
       var _abi = {
         inputs: [
           {
