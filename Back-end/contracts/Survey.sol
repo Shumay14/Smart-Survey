@@ -13,12 +13,10 @@ contract Survey{
         mapping(address => uint) userState;
     }
     
-    
     uint surveyCount = 0; // 설문지 생성 갯수 
     mapping(uint => SurveyItem) surveyInfo; // 설문지 정보 리스트
-
     
-    // 설문 금액 예치, 설문 생성자 주소등록 및 최대 참여 인원수 지정
+    // OK 설문 금액 예치, 설문 생성자 주소등록 및 최대 참여 인원수 지정
     function createSurvey(address _owner, uint _userLimit) public payable{
         surveyInfo[surveyCount].owner = _owner;
         surveyInfo[surveyCount].totalAmount = msg.value;
@@ -40,6 +38,11 @@ contract Survey{
         
         claimReward(surveyIndex, _to);
         return _to;
+    }
+    
+    // OK 전체 설문 갯수를 반환함
+    function getNumOfSurvey() public returns(uint){
+        return surveyCount;
     }
     
     // OK 설문지 생성자 주소를 반환함
