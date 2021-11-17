@@ -6,7 +6,7 @@ contract registryDID {
   string[] public didVCs;
 
   // string[] public repositoryVC;
-  mapping(address => didVCs[]) public repositoryVC;
+  mapping(address => string[]) public repositoryVC;
   
   // struct repositoryVC {
   //   address owner;
