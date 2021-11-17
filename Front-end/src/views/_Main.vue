@@ -89,7 +89,7 @@
                     <section class="row content">
 
                         <div class="col-5">
-                            <img src="assets/img/main/main3.png" style="width:100%" />
+                            <img src="assets/img/main/main4.png" style="width:100%" />
                             <!-- class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/> -->
                         </div>
                         <div class="col-1">
@@ -166,7 +166,7 @@
                 <section class="row content">
 
                     <div class="col-5">
-                        <img src="assets/img/main/main3.png" style="width:100%" />
+                        <img src="assets/img/main/main5.png" style="width:100%" />
                         <!-- class="img-main" v-bind:class="{ 'img-main--hidden' : !showNavbar }"/> -->
                     </div>
                     <div class="col-1">
