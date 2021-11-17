@@ -84,6 +84,6 @@
 </script>
 <style>
 .custom-login-btn{
-    height: 55px;
+    height: 40px;
 }
 </style>
