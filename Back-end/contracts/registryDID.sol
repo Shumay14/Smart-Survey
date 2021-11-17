@@ -4,11 +4,13 @@ pragma solidity >=0.4.22 <0.9.0;
 contract registryDID {
 
   mapping(address => bytes32) public registeredVC;
-  address owner;
-  bytes32 didVC;
-//   uint owner_id;
 
-  bytes32[] public repositoryVC;
+  string[] public repositoryVC;
+
+  struct myVC {
+    address owner;
+    string didVC;
+  }
 
   modifier isOwner(uint _owner) {
         require(repositoryVC[_owner].owner == msg.sender);
@@ -16,7 +18,7 @@ contract registryDID {
   }
 
   
-  function registerVC(bytes32 _didVC) public {
+  function registerVC(string _didVC) public {
       repositoryVC.push(_didVC);
   }
   
