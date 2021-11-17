@@ -43,7 +43,7 @@ export function createVC(
 
 
 // create jwt-did-vp
-// return aaaa.rawData.pubKey
+// return aaaa.bbbb.cccc
 export function createVP(
     header: Partial<JWTHeader>,
     payload: string | Partial<JWTPayload>,
