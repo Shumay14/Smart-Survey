@@ -37,7 +37,7 @@ contract registryDID {
           check = true;
           return repositoryVC[msg.sender];
       } else if(repositoryVC[i] != msg.sender){
-          
+          // nothing
       }
     }
 
