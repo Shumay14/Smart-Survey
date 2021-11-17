@@ -86,11 +86,12 @@
 </template>
 
 <script>
+import Web3 from "web3";
 import dayjs from "dayjs";
 import ModalSelect from "../components/sections/_ModalSelect.vue";
 
 export default {
-  props: ["project"],
+  props: ["project", "surveyIndex"],
   name: "",
   components: { ModalSelect },
   data() {
@@ -102,11 +103,81 @@ export default {
   },
   setup() {},
   created() {},
-  mounted() {},
   unmounted() {},
   methods: {
-    btnHoverin() {
-      this.btnname = "1/250";
+    async getCharmyeoInfo() {
+      const web3 = new Web3(window.ethereum);
+
+      var _contractAddr = "0x475853e073b9003Dbfb46Da3Dda197c39eE37991";
+      var _abi = {
+        getCurrentUserNumber : {
+            inputs: [
+              {
+                internalType: "uint256",
+                name: "surveyIndex",
+                type: "uint256"
+              }
+            ],
+            name: "getCurrentUserNumber",
+            outputs: [
+              {
+                internalType: "uint256",
+                name: "",
+                type: "uint256"
+              }
+            ],
+            stateMutability: "view",
+            type: "function"
+          },
+        getUserLimit :
+          {
+            inputs: [
+              {
+                internalType: "uint256",
+                name: "surveyIndex",
+                type: "uint256"
+              }
+            ],
+            name: "getUserLimit",
+            outputs: [
+              {
+                internalType: "uint256",
+                name: "",
+                type: "uint256"
+              }
+            ],
+            stateMutability: "view",
+            type: "function"
+          }
+        }
+
+      var _params = [0];
+      console.log(_abi.getCurrentUserNumber);
+
+      var _res =
+      {
+        currentUserNumber:0,
+        userLimit:0,
+      };
+
+      _res.currentUserNumber = 
+        web3.utils.hexToNumber(await web3.eth.call({
+          to: _contractAddr,
+          data: web3.eth.abi.encodeFunctionCall(_abi.getCurrentUserNumber, _params)
+        }));
+
+      _res.userLimit = 
+        web3.utils.hexToNumber(await web3.eth.call({
+          to: _contractAddr,
+          data: web3.eth.abi.encodeFunctionCall(_abi.getUserLimit, _params)
+        }));
+        
+      return _res;
+    },
+    async btnHoverin() {
+      var items = await this.getCharmyeoInfo();
+      console.log(items);
+      this.btnname = `${items.currentUserNumber}/${items.userLimit}`;
     },
     btnHoverout() {
       this.btnname = "참여하기";
