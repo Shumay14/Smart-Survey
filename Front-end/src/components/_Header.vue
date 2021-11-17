@@ -31,11 +31,12 @@
                         <nav>
                           <ul>
 
-                            <li class="
+                            <!-- <li class="
                                 has-children has-children--multilevel-submenu
-                              ">
+                              "> -->
+                              <li >
                               <router-link to="/surveylist">설문조사</router-link>
-                              <ul class="submenu">
+                              <!-- <ul class="submenu">
                                 <li>
                                   <router-link to="/surveylist">전체 설문조사</router-link>
                                 </li>
@@ -43,7 +44,7 @@
                                   <router-link to="/surveydrawup">참여한 설문조사
                                   </router-link>
                                 </li>
-                              </ul>
+                              </ul> -->
                             </li>
 
                             <li>
