@@ -2,6 +2,8 @@ pragma solidity 0.8.7;
 
 contract Survey{
     
+    address contractOwner;
+
     struct SurveyItem{
         address owner;
         
@@ -16,6 +18,22 @@ contract Survey{
     uint surveyCount = 0; // 설문지 생성 갯수 
     mapping(uint => SurveyItem) surveyInfo; // 설문지 정보 리스트
     
+    constructor(){
+        contractOwner = msg.sender;
+    }
+
+    // 인기설문 조회를 위한 참여자수 조작 어드민 함수 
+    function fakeSurveyParticipation(uint surveyIndex, uint _times) public{
+        require(msg.sender == contractOwner);
+
+        surveyInfo[surveyIndex].currentUser += _times; // 강제로 현재 참여자수 증가
+        
+        // uint reward = (surveyInfo[surveyIndex].totalAmount / surveyInfo[surveyIndex].userLimit) * _times;
+        // payable(address(msg.sender)).transfer(reward);
+        
+        // surveyInfo[surveyIndex].currentAmount = reward;
+    }
+
     // OK 설문 금액 예치, 설문 생성자 주소등록 및 최대 참여 인원수 지정
     function createSurvey(address _owner, uint _userLimit) public payable{
         surveyInfo[surveyCount].owner = _owner;
