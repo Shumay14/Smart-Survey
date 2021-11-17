@@ -1,6 +1,6 @@
 pragma solidity >=0.4.22 <0.9.0;
 
-import "../models/createDID.js";
+import "../models/createJWT.ts";
 
 contract registryDID {
 
@@ -31,8 +31,8 @@ contract registryDID {
 
   
 
-   function createCredential( string memory _name, string memory _licenseNum, string memory _localAddress, string memory _periodStart, string memory periodEnd, string memory LicenseClass, string memory issueDate) public contractIsDIDOwner(_DIDRepositoryAddress, DID_Id) returns(bool){
-        credentialOwner.push(driveLicense( _name, _licenseNum, _localAddress, _periodStart, periodEnd, LicenseClass, issueDate));
+   function createCredential(string memory _name) public contractIsDIDOwner(_DIDRepositoryAddress, DID_Id) returns(bool){
+        credentialOwner.push(driveLicense( _name));
 
         emit DIDCreated(msg.sender, didId);
         return true;
