@@ -19,6 +19,22 @@ contract registryDID {
       repositoryVC.push(msg.sender);
       repositoryVC[msg.sender].push(_didVC);
   }
+
+  function getVC(address _owner) public {
+    bool check = false;
+
+    for (uint i = 0; i < repositoryVC.length; i++) {
+      if (repositoryVC[i] == msg.sender) {
+          check = true;
+      } else if(repositoryVC[i] != msg.sender){
+          
+      }
+    }
+
+    if (check == false) {
+        revert("Your address is not allowed. First of all, set your address.");
+    }
+  }
     
 
 
