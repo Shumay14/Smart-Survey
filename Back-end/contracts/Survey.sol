@@ -25,6 +25,11 @@ contract Survey{
         surveyCount += 1;
     }
     
+    // 컨트랙트에 예치된 전체 보상금 액수를 반환함
+    function getContractBalance() public view returns(uint){
+        return address(this).balance;
+    }
+    
     // 설문에 참여한 유저를 등록함
     function addUser(uint surveyIndex, address payable _to) public returns (address){
         //require(userState[_to] != 1 && currentUser < userLimit && msg.sender == _to);
