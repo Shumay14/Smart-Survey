@@ -41,7 +41,7 @@ contract Survey{
     }
     
     // OK 전체 설문 갯수를 반환함
-    function getNumOfSurvey() public returns(uint){
+    function getNumOfSurvey() public view returns(uint){
         return surveyCount;
     }
     
