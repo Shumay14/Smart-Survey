@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <div style="margin:0px;">
 
-        <label class="btn" v-show="!this.$store.state.KakaoUser.email" @click="kakaologin()">
+        <label class="btn" v-show="!this.$store.state.KakaoUser.email" @click="kakaologin()" style="margin:0px; padding:0px;">
             <img class="custom-login-btn" src="../assets/img/카카오연동.png" />
         </label>
 
         
-        <label class="btn"  v-show="this.$store.state.KakaoUser.email" @click="kakaologout()">
+        <label class="btn"  v-show="this.$store.state.KakaoUser.email" @click="kakaologout()" style="margin:0px; padding:0px;">
                <img class="custom-login-btn" src="../assets/img/카카오연동해제.png" />
         </label>
         
