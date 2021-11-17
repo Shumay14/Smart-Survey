@@ -1,7 +1,11 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import persistedstate from "vuex-persistedstate";
+
+import mixins from './mixins'
+
 Vue.use(Vuex);
+Vue.mixin(mixins);
 
 const store = new Vuex.Store({
   state() {
