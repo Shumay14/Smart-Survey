@@ -9,6 +9,7 @@
         <SurveyGrid
           v-if="CheckVcCategory(project.category, project.vp)"
           :project="project"
+          :surveyIndex="project.id"
         />
       </transition>
     </div>
