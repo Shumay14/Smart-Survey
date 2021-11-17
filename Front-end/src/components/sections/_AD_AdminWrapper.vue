@@ -4,7 +4,7 @@
       <h3>설문 등록 페이지</h3>
       <div class="comment-form">
         <div class="row">
-          <div class="col-2 section-space--bottom--20 dropdown">
+          <div class="col-3 section-space--bottom--20 dropdown">
             <span class="title-admin-main"> 카테고리 </span>
             <span class="required"> *필수사항 </span>
             <input
@@ -15,7 +15,7 @@
               aria-expanded="false"
               :value="categoryList[surveyInfo.category]"
             />
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="width:256px">
               <li>
                 <input
                   type="button"
@@ -43,10 +43,10 @@
                         </div>
                     </div> -->
 
-          <div class="col-10 section-space--bottom--20">
+          <div class="col-9 section-space--bottom--20">
             <span class="title-admin-main"> 제목 </span>
             <span class="required"> *필수사항 </span>
-            <input type="text" v-model="surveyInfo.title" />
+            <input type="text" v-model="surveyInfo.title"/>
           </div>
 
           <!-- <div class="col-7 section-space--bottom--20 ">
@@ -115,6 +115,19 @@
               />
               <span class="input-group-text">Klay</span>
             </div>
+
+          </div>
+
+          <div class="col-lg-6 section-space--bottom--20">
+            <span class="title-admin-main"> 시작일</span>
+            <span class="required"> *필수사항 </span>
+            <input type="text" v-model="surveyInfo.sdate" />
+          </div>
+
+          <div class="col-lg-6 section-space--bottom--20">
+            <span class="title-admin-main"> 종료일</span>
+            <span class="required"> *필수사항 </span>
+            <input type="text" v-model="surveyInfo.edate" />
           </div>
 
           <div class="col-lg-12">
@@ -184,7 +197,8 @@ export default {
   components: {},
   data() {
     return {
-      categoryList: ["여행", "자동차", "음악", "요리", "전자제품"],
+      // categoryList: ["여행", "자동차", "음악", "요리", "전자제품"],
+      categoryList: ["travel", "car", "music", "food", "electronic-products"],
       surveyInfo: {
         category: 4,
         title: "",
@@ -231,6 +245,10 @@ export default {
       ],
     };
   },
+  // mounted(){
+  //   this.surveyInfo.reward = String(Math.round(Math.random()*1000/3)/10000);
+  //   this.surveyInfo.max = Math.round((Math.random()*100) + 1) * 10;
+  // },
   methods: {
     setCategory(index) {
       this.surveyInfo.category = index;
@@ -245,11 +263,14 @@ export default {
     },
 
     async addSurvey() {
+      // DB 연결도 해야함
+      // ... 여기에 코드 ...
+      this.$api('post','http://127.0.0.1:3000/api/survey', JSON.stringify(this.surveyInfo))
+      // DB 끝
       const web3 = new Web3(window.ethereum);
-      console.log(this.surveyInfo);
 
       var _account = (await web3.eth.getAccounts())[0];
-      var _contractAddr = "0x475853e073b9003Dbfb46Da3Dda197c39eE37991";
+      var _contractAddr = "0x779155D5F1b4E06e73B870c6aF37A7FC6CdE88fE";
       var _abi = {
         inputs: [
           {
@@ -272,12 +293,12 @@ export default {
       var _params = [_account, this.surveyInfo.max];
       var _data = web3.eth.abi.encodeFunctionCall(_abi, _params);
 
-      await web3.eth.sendTransaction({
-        from: _account,
-        to: _contractAddr,
-        value: web3.utils.toWei(this.surveyInfo.reward, "ether"),
-        data: _data,
-      });
+      // await web3.eth.sendTransaction({
+      //   from: _account,
+      //   to: _contractAddr,
+      //   value: web3.utils.toWei(this.surveyInfo.reward, "ether"),
+      //   data: _data,
+      // });
     },
   },
   computed: {
