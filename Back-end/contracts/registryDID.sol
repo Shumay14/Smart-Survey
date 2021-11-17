@@ -26,6 +26,7 @@ contract registryDID {
     for (uint i = 0; i < repositoryVC.length; i++) {
       if (repositoryVC[i] == msg.sender) {
           check = true;
+          return repositoryVC[msg.sender];
       } else if(repositoryVC[i] != msg.sender){
           
       }
