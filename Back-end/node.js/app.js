@@ -28,10 +28,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/survey', (req, res) => {
-    console.log("income");
+    var where = req.body;
     dbPool.getConnection(function (err, conn) {
         if (!err) {
-            conn.query('SELECT * FROM T_SURVEY', function (err, result, fields) {
+            conn.query('SELECT * FROM T_SURVEY W', function (err, result, fields) {
                 if (err) throw err;
 
                 res.send(result.map(v => JSON.parse(v.item)));
@@ -53,8 +53,10 @@ app.post('/', (req, res) => {
 app.post('/api/survey', (req, res) => {
     dbPool.getConnection(function (err, conn) {
         var param = {
-            item: req.body.item
-        };
+            item: req.body
+        }
+
+        console.log(param.item, typeof (param.item));
         if (!err) {
             conn.query('INSERT INTO T_SURVEY SET ?', param, function (err, result, fields) {
                 if (err) throw err;
