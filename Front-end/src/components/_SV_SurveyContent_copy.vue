@@ -40,7 +40,6 @@ export default {
   },
 
   async mounted() {
-    console.log("Asdf");
     this.surveyData = await this.$api(
       "get",
       "http://127.0.0.1:3000/api/survey"
