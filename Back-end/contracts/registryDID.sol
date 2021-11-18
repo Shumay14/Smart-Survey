@@ -3,51 +3,32 @@ pragma solidity >=0.4.22 <0.9.0;
 
 contract registryDID {
 
-  // string[] public didVCs;
+  struct repositoryVC {
+      string nameVC;
+      string genderVC;
+      string ageVC;
+  }
 
-  // string[] public repositoryVC;
-  // mapping(address => didVCs[]) public repositoryVC;
-  mapping(address => string[]) public repositoryVC;
-  
-  // struct didVCs {
-  //   address owner;
-  //   string didVC;
-  // }
-
-  address owner;
-  string didVC;
-  
-
-  // modifier isOwner(address _owner) {
-  //   address[] memory ownedVC = repositoryVC[_owner];
-  //   require(ownedVC == msg.sender);
-  //   _;
-  // }
-
-  
-  function registerVC(address _owner, string _didVC) public {
-    require(msg.sender == _owner);
-    repositoryVC[_owner].push(_didVC);
+  struct  didInfo {
+      uint countRepoVC;
+      repositoryVC[] repoVC;
   }
 
 
-  function getVC(address _owner) public view {
-    bool check = false;
 
-    for (uint i = 0; i < repositoryVC.length; i++) {
-      if (repositoryVC[i] == msg.sender) {
-          check = true;
-          return repositoryVC[msg.sender];
-      } else if(repositoryVC[i] != msg.sender){
-          // nothing
-      }
-    }
+  mapping (address => didInfo) ownerVC;
 
-    if (check == false) {
-        revert("Your address is not allowed. First of all, set your address.");
-    }
-  }
+  function registerVC (string memory _nameVC, string memory _genderVC, string memory _ageVC) public {
+
+    ownerVC[msg.sender].countRepoVC++;
     
+    ownerVC[msg.sender].repoVC.push(repositoryVC(_nameVC, _genderVC, _ageVC));
+  
+  }
 
 
+function getVC (address _add, uint _num) public view returns(repositoryVC memory) {
+   return ownerVC[_add].repoVC[_num];
+}
+  
 }
