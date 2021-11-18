@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors');
+// const bodyParser = require('body-parser');
 
 const app = express()
 const port = 3000
@@ -14,6 +15,7 @@ const db = {
 
 const dbPool = require('mysql').createPool(db);
 
+// app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json({
     limit: '50mb'
@@ -31,10 +33,9 @@ app.get('/api/survey', (req, res) => {
     var where = req.body;
     dbPool.getConnection(function (err, conn) {
         if (!err) {
-            conn.query('SELECT * FROM T_SURVEY W', function (err, result, fields) {
+            conn.query('SELECT * FROM T_SURVEY', function (err, result, fields) {
                 if (err) throw err;
-
-                res.send(result.map(v => JSON.parse(v.item)));
+                res.send(result);
             });
         }
         conn.release();
@@ -53,10 +54,29 @@ app.post('/', (req, res) => {
 app.post('/api/survey', (req, res) => {
     dbPool.getConnection(function (err, conn) {
         var param = {
+            item: Object.keys(req.body)[0]
+        }
+
+        if (!err) {
+            conn.query('INSERT INTO T_SURVEY SET ?', param, function (err, result, fields) {
+                if (err) throw err;
+                res.send(result);
+            });
+        }
+    })
+})
+// 아직 미완
+app.post('/api/category', (req, res) => {
+    dbPool.getConnection(function (err, conn) {
+        var param = {
             item: req.body
         }
 
+        console.log(param);
+
+        console.log(req.body);
         console.log(param.item, typeof (param.item));
+
         if (!err) {
             conn.query('INSERT INTO T_SURVEY SET ?', param, function (err, result, fields) {
                 if (err) throw err;
