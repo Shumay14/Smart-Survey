@@ -6,138 +6,87 @@
                 <div class="row">
 
                     <!-- 관심사 설정 설명 시작-->
-                    <div class="col-12">
-                        <div class="project-details mb-3">
+                    <div class="row">
+                        <div
+                            class="project-details mb-3 col-lg-8 col-12 section-space--bottom--30 pl-30 pl-sm-15 pl-xs-15">
                             <h2 class="pb-2">관심사 설정</h2>
                             <p>관심사 설정이란 설정한 관심 항목에 따라 관련 설문조사를 우선으로 추천해주는 맞춤형 서비스입니다. <br>
                                 선택된 항목은 관심사 목록으로 이동하며, 목록에서 클릭하는 것으로 클릭된 항목을 뺄 수 있습니다. <br>
                                 하단에 사진을 클릭하여 관심사를 추가하세요!</p>
-                        </div>
-                        <div>
-                            <b>관리자 모드</b> <br>
-                            <button type="button" @click="testShow=true">ON</button>
-                            <button type="button" @click="testShow=false">OFF</button>
-                        </div>
-                        <div>
-                            <button @click="categoryListShow()">테스트</button>
-                        </div>
-                    </div>
-                    <!-- 관심사 설정 설명 끝-->
+                            <div>
+                                <button @click="categoryListShow()">테스트</button>
+                            </div>
 
-                    <b-card v-show="testShow == false">
-                        <b-card>
-                            <b> faveroriteList Key</b> : {{Object.keys(favoriteList)}}
-                            <br>
-                            <b>faveroriteList</b> : {{favoriteList}}
-                        </b-card>
+                            <!-- 이미지 선택 시작 -->
 
-                        <b-card>
-                            <b> categorylist Key</b> : {{Object.keys(favoriteList.categorylist)}}
-                            <br>
-                            <b>categorylist</b> : {{favoriteList.categorylist}}
-                        </b-card>
+                            <div class="row">
 
-                        <b-card>
-                            <b> categorylist item Key</b> : {{Object.keys(favoriteList.categorylist.travel)}}
-                            <br>
-                            <b>categorylist item</b> : {{favoriteList.categorylist.travel}}
-                        </b-card>
-
-                        <b-card>
-                            <b> categorylist item [0] Key</b> : {{Object.keys(favoriteList.categorylist.travel[0])}}
-                            <br>
-                            <b>categorylist item [0]</b> : {{favoriteList.categorylist.travel[0]}}
-                        </b-card>
-                    </b-card>
-
-                    <!-- #1 -->
-                    <!-- 이미지 선택 시작 -->
-                    <!-- <div class="col-lg-8 col-12 section-space--bottom--30 pl-30 pl-sm-15 pl-xs-15">
-                        <div class="row row-5 image-popup">
-                            <div class="col-lg-3 col-sm-4 col-6 section-space--top--10" v-for="(i, num) in favoriteList"
-                                :key="num" @click="addItem(i)" v-show="selectedIndex.includes(i.topIndex) == true">
                                 <transition name="fade">
-                                    <div class="gallery-item single-gallery-thumb "
-                                        v-if="selectedIndex.includes(i.topIndex) == true">
-                                        <img :src="i.img" class="img-fluid" alt="thumbnail">
-                                        <span class="overlayName">{{i.name}}</span>
-                                        <span class="plus"></span>
+                                    <div class="row row-5 image-popup">
+                                        <div class="col-lg-3 col-sm-4 col-6 section-space--top--10"
+                                            v-for="(val2, key2, num2) in favoriteList.categorylist" :key="num2"
+                                            @click="selectCate(key2)">
+
+                                            <div class="gallery-item single-gallery-thumb cate1">
+                                                <img :src="val2[0].img" class="img-fluid" alt="thumbnail">
+                                                <span class="overlayName">{{val2[0].name}}</span>
+                                                <span class="plus"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </transition>
 
+
+                                <transition name="fade">
+
+                                    <b-card v-if="selectedCate != null" class="subCate ">
+                                        <div class="row row-5 image-popup">
+                                            <div class="col-lg-3 col-sm-4 col-6 section-space--top--10"
+                                                v-for="(val3, num3) in selectedCateDetail" :key="num3"
+                                                @click="addItem(val3)">
+
+                                                <div class="gallery-item single-gallery-thumb cate1">
+                                                    <img :src="val3.img" class="img-fluid" alt="thumbnail">
+                                                    <span class="overlayName">{{val3.name}}</span>
+                                                    <span class="plus"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <button class="btn btn-outline-light"
+                                                @click="selectedCate = null">닫기</button>
+                                        </div>
+                                    </b-card>
+                                </transition>
+
                             </div>
+                            <!-- 이미지 선택 끝 -->
+
                         </div>
-                    </div> -->
-                    <!-- 이미지 선택 끝 -->
 
-
-                    <!-- #2 -->
-                    <!-- 이미지 선택 시작 -->
-                    <div class="col-lg-8 col-12 section-space--bottom--30 pl-30 pl-sm-15 pl-xs-15">
-
-
-                        <div class="col-lg-3 col-sm-4 col-6 section-space--top--10"
-                            v-for="(val2, key2, num2) in favoriteList.categorylist" :key="num2"
-                            style="border:3px solid red;" @click="addItem(key2)">
-
-                            <div class="gallery-item single-gallery-thumb">
-                                <img :src="val2[0].img" class="img-fluid" alt="thumbnail">
-                                <span class="overlayName">{{val2[0].name}}</span>
-                                <span class="plus"></span>
-                            </div>
-
-                            <!-- 하위 항목 시작 -->
-                            <div class="row" v-if="selectedItem.includes(key2) == true">
-                                <div v-for="(val3, num3) in val2.slice(1)" :key="num3">
-                                    <div class="gallery-item single-gallery-thumb ">
-                                        <img :src="val3.img" class="img-fluid" alt="thumbnail">
-                                        <span class="overlayName">{{val3.name}}</span>
-                                        <span class="plus"></span>
+                        <div class="col-lg-4 col-12 section-space--bottom--30 pt-2">
+                            <div class="project-information">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3>관심사 목록</h3>
                                     </div>
-
+                                    <div class="col">
+                                        <button class="btn btn-outline-light" @click="sendDB() ">저장</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- 하위 항목 종료 -->
-
-                        </div>
-                    </div>
-                </div>
-                <!-- 이미지 선택 끝 -->
-
-                <!-- #3 -->
-                <!-- 이미지 선택 시작 -->
-                <!-- <div class="col-lg-8 col-12 section-space--bottom--30 pl-30 pl-sm-15 pl-xs-15">
-                        <div class="row row-5 image-popup">
-                            <div class="col-lg-3 col-sm-4 col-6 section-space--top--10" v-for="(i, num) in favoriteList"
-                                :key="num" @click="addItem(i)" v-show="selectedIndex.includes(i.topIndex) == true">
-                                <transition name="fade">
-                                    <div class="gallery-item single-gallery-thumb "
-                                        v-if="selectedIndex.includes(i.topIndex) == true">
-                                        <img :src="i.img" class="img-fluid" alt="thumbnail">
-                                        <span class="overlayName">{{i.name}}</span>
-                                        <span class="plus"></span>
-                                    </div>
-                                </transition>
-
+                                <button type="button" class="favorite_Selected btn btn-outline-light mx-1 my-1"
+                                    v-for="(i, num) in selectedItem" :key="num" @click="deleteItem(i)">X {{i.name}}
+                                </button>
                             </div>
                         </div>
-                    </div> -->
-                <!-- 이미지 선택 끝 -->
 
 
-                <!-- 관심사 목록 시작 -->
-                <div class="col-lg-4 col-12 section-space--bottom--30 pt-2">
-                    <div class="project-information">
-                        <h3>관심사 목록</h3>
-                        <button type="button" class="favorite_Selected btn btn-outline-light mx-1 my-1"
-                            v-for="(i, num) in selectedItem" :key="num" @click="deleteItem(i)">X {{i}}
-                        </button>
                     </div>
-                </div>
-                <!-- 관심사 목록 끝 -->
 
+                </div>
             </div>
         </div>
+
     </div>
     <!--Projects section end-->
 </template>
@@ -153,20 +102,51 @@
                 testv1: "",
                 testv2: "",
                 testShow: true,
-                value1: null,
-                value2: null,
-
+                selectedCate: null,
+                selectedCateDetail: null,
+                saveCate: []
             }
         },
+        computed: {
+
+        },
         methods: {
+            // 누르면 카테고리 항목이 뜨게
+            selectCate(i) {
+
+
+
+                this.selectedCate = i
+                console.log(this.selectedCate)
+
+                var select = this.selectedCate
+                this.selectedCateDetail = this.favoriteList.categorylist[select]
+
+
+
+
+            },
+            // 만약 카테고리 항목이 뜬 걸 우측에 뜨게함
             addItem(i) {
-                // 만약 셀렉트 아이템이 포함되어있다면
                 if (this.selectedItem.includes(i) == true) {
 
                 } else {
                     // index를 따로 분리
                     this.selectedItem.push(i)
+
+                    // 이것은 항목
+                    this.selectedCate = i
+                    console.log("이것이 뜨고 있다.:", this.selectedCate.category)
+                    if (this.saveCate.includes(this.selectedCate.category)) {
+
+                    } else {
+                        this.saveCate.push(this.selectedCate.category)
+                        console.log("이것을 추가했습니다:", this.saveCate)
+                    }
+
                 }
+
+
             },
 
             deleteItem(x) {
@@ -185,22 +165,28 @@
                         // i--;
                     }
                 };
+
+                if (this.saveCate.includes(x.category)) {
+                    for (let i = 0; i < this.selectedItem; i++) {
+                        console.log("테스트중", this.selectedItem[i].category)
+                    }
+                }
             },
 
             categoryListShow() {
-                var cate = this.favoriteList.categorylist;
-                console.log("a")
-                
-                // for (var i = 0; i < cate.length; i++) {
-                //     console.log(cate[i])
-                // }
+                console.log(this.saveCate)
 
+            },
 
-                // 세부 항목
-                 for (var key1 of cate.food){
-                     console.log("key1 :",key1)
-                     console.log("value :",cate.key1)
-                 }
+            sendDB() {
+                for (let i = 0; i < this.selectedItem.length; i++) {
+                    // console.log("테스트중",this.selectedItem[i].category)
+
+                    if (this.saveCate.includes(this.selectedItem[i].category) == false) {
+                        this.saveCate.push(this.selectedItem[i].category)
+                    }
+                }
+                this.$api('POST','http://127.0.0.1:3000/api/category', JSON.stringify(this.saveCate))
             }
 
         }
@@ -241,5 +227,11 @@
     /* .fade-leave-active below version 2.1.8 */
         {
         opacity: 0;
+    }
+
+    .subCate {
+        position: sticky !important;
+        background: rgba(0, 0, 0, 0.664) !important;
+        display: inline-block;
     }
 </style>
