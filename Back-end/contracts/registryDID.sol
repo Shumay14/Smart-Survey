@@ -3,12 +3,13 @@ pragma solidity >=0.4.22 <0.9.0;
 
 contract registryDID {
 
-  string[] public didVCs;
+  // string[] public didVCs;
 
   // string[] public repositoryVC;
+  // mapping(address => didVCs[]) public repositoryVC;
   mapping(address => string[]) public repositoryVC;
   
-  // struct repositoryVC {
+  // struct didVCs {
   //   address owner;
   //   string didVC;
   // }
@@ -17,10 +18,11 @@ contract registryDID {
   string didVC;
   
 
-  modifier isOwner(address _owner) {
-    require(didVCs == msg.sender);
-    _;
-  }
+  // modifier isOwner(address _owner) {
+  //   address[] memory ownedVC = repositoryVC[_owner];
+  //   require(ownedVC == msg.sender);
+  //   _;
+  // }
 
   
   function registerVC(address _owner, string _didVC) public {
