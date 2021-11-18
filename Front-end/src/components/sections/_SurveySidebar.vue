@@ -9,7 +9,6 @@
         </form>
       </div>
     </div> -->
-    <button @click="asdf()">aaaaaaaaaaaaaaaaaaa</button>
     <div id="tools">
       <div class="styled-select">
         <select name="sort_rating" id="sort_rating">
@@ -229,9 +228,6 @@ export default {
     },
     iconselec() {
       return true;
-    },
-    asdf() {
-      this.$store.commit("changechange");
     },
   },
 };
