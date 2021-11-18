@@ -7,6 +7,7 @@ import OneOnOne from "../views/_SC_OneOnOne.vue";
 import Notice from "../views/_SC_Notice.vue";
 import Favorite from "../views/_MP_Favorite.vue";
 import MyPage from "../views/_MP_MyPage.vue";
+import MySurvey from "../views/_MP_MySurvey.vue";
 import SurveyDrawUp from "../views/_SV_SurveyDrawUp.vue";
 import SurveyList from "../views/_SurveyList.vue";
 import _SV_SurveyGrid_copy from "../../src/components/_SV_SurveyGrid_copy.vue";
@@ -128,6 +129,10 @@ const routes = [
     path: "/mypage",
     name: "mypage",
     component: MyPage,
+  }, {
+    path: "/mysurvey",
+    name: "mysurvey",
+    component: MySurvey,
   },
   {
     path: "/favorite",
