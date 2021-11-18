@@ -1,22 +1,24 @@
 <template>
   <div>
-    <div id="chart">
-
+    <div id="chartA">
     </div>
   </div>
 </template>
 <script>
   import ApexCharts from 'apexcharts'
-  import userDataChart from "../../data/_chartData.js"
+  import userDataChartA from "../../data/_chartDataA.js"
   export default {
+    components: {
+       apexchart: ApexCharts,
+        },
     data() {
       return {
-        userDataChart: userDataChart,
+        userDataChartA: userDataChartA,
       }
     },
     mounted() {
       // this.createChart("userChart", this.userDataChart);
-      var chart = new ApexCharts(document.querySelector("#chart"), this.userDataChart);
+      var chart = new ApexCharts(document.querySelector("#chartA"), this.userDataChartA);
       chart.render();
     },
   };

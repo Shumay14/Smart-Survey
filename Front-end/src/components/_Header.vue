@@ -102,6 +102,11 @@
                                     >
                                   </li>
                                   <li>
+                                    <router-link to="/mysurvey"
+                                      >설문조사 결과</router-link
+                                    >
+                                  </li>
+                                  <li>
                                     <router-link to="/favorite">
                                       관심사 설정
                                     </router-link>

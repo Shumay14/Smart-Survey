@@ -1,4 +1,5 @@
-export const userDataChart = {
+export const userDataChartA = {
+
     series: [{
         name: '응답한 설문조사',
         type: 'column',
@@ -9,7 +10,7 @@ export const userDataChart = {
         data: [1, 3, 2, 3, 4, 1]
     }],
     chart: {
-        height: 350,
+        height: 500,
         type: 'line',
     },
     stroke: {
@@ -21,7 +22,7 @@ export const userDataChart = {
         left: 0,
         blur: 3,
         opacity: 0.5
-      },
+    },
     // title: {
     //     text: 'Traffic Sources'
     // },
@@ -29,7 +30,7 @@ export const userDataChart = {
     dataLabels: {
         enabled: true,
         enabledOnSeries: [1],
-        
+
     },
     labels: ['6월', '7월', '8월', '9월', '10월', '11월'],
     xaxis: {
@@ -46,6 +47,7 @@ export const userDataChart = {
             text: '리워드 내역'
         }
     }]
-};
 
-export default userDataChart;
+}
+
+export default userDataChartA;

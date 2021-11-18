@@ -5,26 +5,36 @@
             <div class="container">
                 <div class="row">
 
+                    <b-card class="my-2 col">
+                        <div class="contact-form">
+                            <h4 class="pb-3">설문조사 데이터</h4>
+                            <Chart />
+                        </div>
+                    </b-card>
+
+                    <div class="my-2 col-4 g-0">
+                        <b-card class="mb-2">
+                            <Chart2 />
+                        </b-card>
+                        <b-card>
+                            <Chart1 />
+                        </b-card>
+
+                    </div>
 
 
                     <!-- 위젯 시작 -->
                     <b-card>
                         <!-- b-card-head 시작 -->
-                        <div class="col-8 row mx-auto" style=" text-align: center;">
-                            <div class="col-5">
-                                <h4>
-                                    현재 진행중인 설문조사</h4>
+                        <div class="col-8 row mx-auto mb-3" style=" text-align: center;">
+                            <div class="col-6">
+                                <button class="btn-start">
+                                    현재 진행중인 설문조사</button>
                             </div>
-                            <div class="col-2">
-                                <label class="switch-button">
-                                    <input type="checkbox" v-model="surveyData" />
-                                    <span class="onoff-switch">
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="col-5">
-                                <h4>
-                                    완료된 설문조사</h4>
+
+                            <div class="col-6">
+                               <button class="btn-start">
+                                    완료된 설문조사</button>
                             </div>
                         </div>
                         <!-- b-card-head 종료 -->
@@ -107,22 +117,6 @@
 
 
 
-                    <b-card class="my-2 mr-2 col-7">
-                        <div class="contact-form">
-                            <h4 class="pb-3">설문조사 데이터</h4>
-                            <Chart />
-                        </div>
-                    </b-card>
-
-                    <b-card class="my-2 col-4">
-
-                        <div id="chart">
-                            <apexchart type="radialBar" height="350" :options="data1.chartOptions1"
-                                :series="data1.series1">
-                            </apexchart>
-                        </div>
-                    </b-card>
-
 
 
 
@@ -137,10 +131,14 @@
 <script>
     import data from '../../data/contact.json'
     import Chart from '@/components/sections/_Chart';
+    import Chart1 from '@/components/sections/_Chart1';
+    import Chart2 from '@/components/sections/_Chart2';
 
     export default {
         components: {
-            Chart
+            Chart,
+            Chart1,
+            Chart2
         },
         data() {
             return {
@@ -149,113 +147,43 @@
                 selectSurvey: "",
 
 
-
-                series1: [67],
-                chartOptions1: {
-                    chart: {
-                        height: 350,
-                        type: 'radialBar',
-                        offsetY: -10
-                    },
-                    plotOptions: {
-                        radialBar: {
-                            startAngle: -135,
-                            endAngle: 135,
-                            dataLabels: {
-                                name: {
-                                    fontSize: '16px',
-                                    color: undefined,
-                                    offsetY: 120
-                                },
-                                value: {
-                                    offsetY: 76,
-                                    fontSize: '22px',
-                                    color: undefined,
-                                    formatter: function (val) {
-                                        return val + "%";
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    fill: {
-                        type: 'gradient',
-                        gradient: {
-                            shade: 'dark',
-                            shadeIntensity: 0.15,
-                            inverseColors: false,
-                            opacityFrom: 1,
-                            opacityTo: 1,
-                            stops: [0, 50, 65, 91]
-                        },
-                    },
-                    stroke: {
-                        dashArray: 4
-                    },
-                    labels: ['Median Ratio'],
-
-
-
-                },
-
-
-
             }
         },
+
         methods: {
 
         }
     };
 </script>
-<style scoped>
-    .switch-button {
-        position: relative;
-        display: inline-block;
-        width: 55px;
-        height: 30px;
-    }
+<style lang="scss" scoped>
+    .btn {
+        &-start {
+            background-color: RGB(238, 111, 0);
 
-    .switch-button input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
+            border-radius: 10px;
+            border: 0px;
 
-    .onoff-switch {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 20px;
-        background-color: rgb(255, 166, 0);
-        box-shadow: inset 1px 5px 1px rgb(207, 135, 0);
-        -webkit-transition: 0.2s;
-        transition: 0.2s;
-    }
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
 
-    .onoff-switch:before {
-        position: absolute;
-        content: "";
-        height: 22px;
-        width: 22px;
-        left: 4px;
-        bottom: 4px;
-        background-color: #fff;
-        -webkit-transition: 0.2s;
-        transition: 0.2s;
-        border-radius: 20px;
-    }
+            width: 300px;
+            height: 60px;
+        }
 
-    .switch-button input:checked+.onoff-switch {
-        background-color: #f0542d;
-        box-shadow: inset 1px 5px 1px #b44022;
-    }
+        &-start:hover {
+            background-color: white;
 
-    .switch-button input:checked+.onoff-switch:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
+            border-radius: 10px;
+            border: 2px solid RGB(238, 111, 0);
+            // box-shadow:5px 5px RGB(238, 111, 0);
+
+            color: RGB(238, 111, 0);
+            font-weight: bold;
+            font-size: 20px;
+
+            width: 300px;
+            height: 60px;
+        }
     }
 </style>
