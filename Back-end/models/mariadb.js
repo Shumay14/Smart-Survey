@@ -11,7 +11,7 @@ const sql = require('../config/sql.js');
 
 module.exports = {
     sendQuery: (query, param = '', where = '') => {
-        return new Promise((resolve, reject) => dbPool.query(sql[query].cmd, (error, results, fields) => {
+        return new Promise((resolve, reject) => dbPool.query(sql[query].cmd + where, param, (error, results, fields) => {
             if (error) {
                 resolve({
                     error
