@@ -1,19 +1,18 @@
 module.exports = {
     getSurveyList: {
-        query: `update t_user set artist=1
-                where email=? provider=?;`
+        cmd: `SELECT * FROM T_SURVEY;`
     },
     addSurveyList: {
-        query: `update t_user set artist=1
+        cmd: `update t_user set artist=1
                 where email=? provider=?;`
     },
 
     getUserInterest: {
-        query: `update t_user set artist=1
+        cmd: `update t_user set artist=1
                 where email=? provider=?;`
     },
     setUserInterest: {
-        query: `update t_user set artist=1
+        cmd: `update t_user set artist=1
                 where email=? provider=?;`
     }
 }
