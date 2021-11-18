@@ -99,7 +99,87 @@ export default {
   created() {
     this.$store.commit("countnull");
   },
-  mounted() {},
+    async mounted() {
+
+    // 전체 설문갯수, 설문참여수, 
+    // rank 3개
+    // web3, api
+    // abi 
+    
+    //this.$api('get','http://127.0.0.1:3000/api/survey', JSON.stringify(this.surveyInfo))
+    const web3 = new Web3(window.ethereum);
+
+    var _contractAddr = "0x779155D5F1b4E06e73B870c6aF37A7FC6CdE88fE";
+    var _abi = {
+      getNumOfSurvey:
+        {
+          "inputs": [],
+          "name": "getNumOfSurvey",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+      getCurrentUserNumber:
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "surveyIndex",
+              "type": "uint256"
+            }
+          ],
+          "name": "getCurrentUserNumber",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+    }
+    
+    var _data = web3.eth.abi.encodeFunctionSignature(_abi.getNumOfSurvey);
+
+    var _surveyAmount = web3.utils.hexToNumber(await web3.eth.call({
+      to: _contractAddr,
+      data: _data 
+    }));
+
+    var index=0;
+    var popularList = [];
+
+    var temp = [];
+
+    while(index < _surveyAmount){
+      var _params = [index];
+      var _data = web3.eth.abi.encodeFunctionCall(_abi.getCurrentUserNumber, _params);
+
+      var _curUserNum = web3.utils.hexToNumber(await web3.eth.call({
+        to: _contractAddr,
+        data: _data 
+      }));
+
+      temp.push(_curUserNum);
+      index++;
+    }
+    
+    for(var testidx=0; testidx<3; testidx++){
+      var position = temp.indexOf(Math.max.apply(null, temp));
+      temp[position] = -1;
+      popularList.push(position);
+    }
+
+    console.log(popularList);
+  },
   unmounted() {},
   methods: {
     convertcatekor(listName) {
