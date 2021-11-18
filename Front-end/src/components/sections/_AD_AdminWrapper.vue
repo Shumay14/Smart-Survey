@@ -445,4 +445,8 @@ tr {
     }
   }
 }
+
+.dropdown-menu{
+  z-index: 2 !important;
+}
 </style>
