@@ -121,13 +121,13 @@
           <div class="col-lg-6 section-space--bottom--20">
             <span class="title-admin-main"> 시작일</span>
             <span class="required"> *필수사항 </span>
-            <input type="text" v-model="surveyInfo.sdate" />
+            <input type="number" v-model="surveyInfo.sdate" />
           </div>
 
           <div class="col-lg-6 section-space--bottom--20">
             <span class="title-admin-main"> 종료일</span>
             <span class="required"> *필수사항 </span>
-            <input type="text" v-model="surveyInfo.edate" />
+            <input type="number" v-model="surveyInfo.edate" />
           </div>
 
           <div class="col-lg-12">
@@ -191,7 +191,7 @@
 </template>
 
 <script>
-
+import Web3 from 'web3';
 export default {
   components: {},
   data() {
@@ -201,10 +201,11 @@ export default {
       surveyInfo: {
         category: 4,
         title: "",
+        img: "",
         desc: "",
-        sdate: "",
-        edate: "",
-        reward: "",
+        sdate: 0,
+        edate: 0,
+        reward: 0,
         max: 1,
         url: "",
       },
@@ -253,24 +254,18 @@ export default {
         },
         {
           idx: 7,
-          name: "major",
-          description: "학력",
-          state: 0,
-        },
-        {
-          idx: 8,
           name: "certificate",
           description: "자격증",
           state: 0,
         },
         {
-          idx: 9,
+          idx: 8,
           name: "carowner",
           description: "차량 보유 여부",
           state: 0,
         },
         {
-          idx: 10,
+          idx: 9,
           name: "email",
           description: "이메일",
           state: 0,
@@ -291,7 +286,7 @@ export default {
       this.privacyList[index].state = (this.privacyList[index].state + 1) % 2;
     
       var vpObject = {}
-      var iterableVP=
+      var iterableVP =
         this.privacyList.map(function(Obj){
           if(Obj.state > 0){
             var rObj = {}
@@ -315,9 +310,14 @@ export default {
     },
 
     async addSurvey() {
+      
+      // DB에 설문지 생성 
+      console.log("POST", this.surveyInfo);
+      this.surveyInfo.vp = JSON.stringify(this.surveyInfo.vp);
+      this.$api('POST','http://127.0.0.1:3000/api/survey', this.surveyInfo);
 
-      this.$api('POST','http://127.0.0.1:3000/api/survey', JSON.stringify(this.surveyInfo))
-
+      
+      // 블록체인에 설문지 생성 
       const web3 = new Web3(window.ethereum);
       
       var _account = (await web3.eth.getAccounts())[0];
@@ -347,9 +347,9 @@ export default {
       await web3.eth.sendTransaction({
         from: _account,
         to: _contractAddr,
-        value: web3.utils.toWei(this.surveyInfo.reward, "ether"),
+        value: web3.utils.toWei(String(this.surveyInfo.reward), "ether"),
         data: _data,
-      });
+      })
     },
   },
   computed: {
