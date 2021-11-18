@@ -64,19 +64,21 @@
       <h3 class="sidebar-title">{{ blogSidebar.popularPostTitle }}</h3>
       <div
         class="sidebar-blog"
-        v-for="popularPost in blogSidebar.popularPost"
-        :key="popularPost.id"
+        v-for="popularItem in popularSurvey"
+        :key="popularItem.idx"
       >
         <router-link to="/blog-details" class="image">
-          <img :src="popularPost.image" alt="image" />
+          <img :src="popularItem.img" alt="image" />
+          <!-- 이미지가 없어서 못찾네 -->
         </router-link>
         <div class="content">
           <h5>
-            <router-link to="/blog-details">{{
-              popularPost.title
-            }}</router-link>
+            <router-link to="/blog-details">
+              {{popularItem.title}}
+            </router-link>
           </h5>
-          <span>{{ popularPost.date }}</span>
+          <span>{{ popularItem.reward }} SUB</span>
+          <span>{{ popularItem.reward }} SUB</span>
         </div>
       </div>
     </div>
@@ -94,6 +96,7 @@ export default {
     return {
       selectboxcolor: "",
       selectonoff: false,
+      popularSurvey: [],
     };
   },
   setup() {},
@@ -101,12 +104,6 @@ export default {
     this.$store.commit("countnull");
   },
   async mounted() {
-    // 전체 설문갯수, 설문참여수,
-    // rank 3개
-    // web3, api
-    // abi
-
-    //this.$api('get','http://127.0.0.1:3000/api/survey', JSON.stringify(this.surveyInfo))
     const web3 = new Web3(window.ethereum);
 
     var _contractAddr = "0x779155D5F1b4E06e73B870c6aF37A7FC6CdE88fE";
@@ -177,6 +174,8 @@ export default {
       index++;
     }
 
+    console.log(temp);
+
     for (var testidx = 0; testidx < 3; testidx++) {
       var position = temp.indexOf(Math.max.apply(null, temp));
       temp[position] = -1;
@@ -184,6 +183,18 @@ export default {
     }
 
     console.log(popularList);
+
+    // var result = popularList.map(async (idx) =>
+    //   await this.$api('get', `http://127.0.0.1:3000/api/survey/${idx}`)
+    // );
+
+    var result = []
+    result.push((await this.$api('get', `http://127.0.0.1:3000/api/survey/1`))[0])
+    result.push((await this.$api('get', `http://127.0.0.1:3000/api/survey/6`))[0])
+    result.push((await this.$api('get', `http://127.0.0.1:3000/api/survey/10`))[0])
+    console.log("POP LIST ", result);
+    this.popularSurvey = result;
+    //(await this.$api('get', `http://127.0.0.1:3000/api/survey?sqlQuery=${sqlQuery}`)); // 인기있는 설문 JSON 파일
   },
   unmounted() {},
   methods: {
