@@ -21,7 +21,7 @@
 
 
                 <div class="d-flex justify-content-center">
-                    <router-link to="/mypage">
+                    <router-link to="/surveylist">
                     <button class="btn btn-start">
                         설문 조사 참여하기
                     </button>
