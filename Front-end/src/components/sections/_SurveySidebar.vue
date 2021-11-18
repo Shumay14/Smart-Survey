@@ -85,6 +85,7 @@
 </template>
 
 <script>
+import Web3 from "web3";
 export default {
   props: ["blogSidebar", "catedata"],
   name: "",
@@ -192,8 +193,8 @@ export default {
       ];
     },
     convertvckor(listName) {
-      return this.$store.state.vcgradekor[
-        this.$store.state.vcgradeenglish.indexOf(listName)
+      return this.$store.state.vcgradeko[
+        this.$store.state.vcgradeengl.indexOf(listName)
       ];
     },
     tagselectbtn(vcgradeTag, event) {

@@ -17,21 +17,21 @@ const store = new Vuex.Store({
       vsgradelist: [],
       eng_category: ["travel", "car", "music", "food", "electronic-products"],
       kor_category: ["여행", "자동차", "음악", "음식", "전자제품"],
-      vcgradeenglish: [
+      vcgradeengl: [
         "gender",
         "age",
         "edu",
         "residence",
-        "Major",
+        "major",
         "income",
-        "Certificate",
+        "certificate",
         "email",
         "phonenumber",
         "carowner",
       ],
-      vcgradekor: [
+      vcgradeko: [
         "성별",
-        "나이대",
+        "나이",
         "학력",
         "거주지",
         "전공",
