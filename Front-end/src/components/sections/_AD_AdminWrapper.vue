@@ -191,7 +191,6 @@
 </template>
 
 <script>
-import Web3 from "web3";
 
 export default {
   components: {},
@@ -263,10 +262,9 @@ export default {
     },
 
     async addSurvey() {
-      // DB 연결도 해야함
-      // ... 여기에 코드 ...
+
       this.$api('post','http://127.0.0.1:3000/api/survey', JSON.stringify(this.surveyInfo))
-      // DB 끝
+
       const web3 = new Web3(window.ethereum);
 
       var _account = (await web3.eth.getAccounts())[0];
@@ -293,12 +291,12 @@ export default {
       var _params = [_account, this.surveyInfo.max];
       var _data = web3.eth.abi.encodeFunctionCall(_abi, _params);
 
-      // await web3.eth.sendTransaction({
-      //   from: _account,
-      //   to: _contractAddr,
-      //   value: web3.utils.toWei(this.surveyInfo.reward, "ether"),
-      //   data: _data,
-      // });
+      await web3.eth.sendTransaction({
+        from: _account,
+        to: _contractAddr,
+        value: web3.utils.toWei(this.surveyInfo.reward, "ether"),
+        data: _data,
+      });
     },
   },
   computed: {
