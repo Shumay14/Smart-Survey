@@ -4,8 +4,8 @@ module.exports = {
     },
     addSurveyItem: {
         cmd: `INSERT INTO T_SURVEY VALUES
-            (NULL, ?, ?, ?, ?, ?, ?, ?, ?);`
-        //idx, category, img, title, desc, sdate, edate, vp
+            (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?);`
+        //idx, category, img, title, desc, sdate, edate, reward, vp
     },
 
     getUserInterest: {
