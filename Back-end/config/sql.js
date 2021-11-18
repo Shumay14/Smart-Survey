@@ -2,9 +2,10 @@ module.exports = {
     getSurveyList: {
         cmd: `SELECT * FROM T_SURVEY;`
     },
-    addSurveyList: {
-        cmd: `update t_user set artist=1
-                where email=? provider=?;`
+    addSurveyItem: {
+        cmd: `INSERT INTO T_SURVEY VALUES
+            (NULL, ?, ?, ?, ?, ?, ?, ?, ?);`
+        //idx, category, img, title, desc, sdate, edate, vp
     },
 
     getUserInterest: {
