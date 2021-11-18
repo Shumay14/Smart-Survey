@@ -1,11 +1,11 @@
 -- DB 생성
-CREATE database IF NOT EXISTS surveyzone;
+CREATE DATABASE IF NOT EXISTS surveyzone;
 
 -- DB 기본 charset 한글(utf-8)로 변경
 ALTER DATABASE surveyzone DEFAULT CHARACTER SET utf8;
 
 -- 생성한 DB 사용
-use surveyzone;
+USE surveyzone;
 
 -- 테이블 구조 정의
 CREATE TABLE IF NOT EXISTS T_SURVEY(
@@ -48,6 +48,11 @@ INSERT INTO T_SURVEY(item) VALUES('{"id":19,"category":0,"img":"cute.jpg","title
 INSERT INTO T_SURVEY(item) VALUES('{"id":20,"category":0,"img":"cute2.jpg","title":"인테리어 관련 조사 ","desc":"","sdate":211023,"edate":211126,"reward":11,"vp":{}} ');
 -- 21
 INSERT INTO T_SURVEY(item) VALUES('{"id":21,"category":0,"img":"cute.jpg","title":"생수 구입자 대상 시장 조사 ","desc":"","sdate":211023,"edate":211126,"reward":11,"vp":{}}');
+
+
+-- AUTO INCREMENT 초기화
+SET @IDX=0;
+UPDATE T_SURVEY SET T_SURVEY.idx = @IDX:=@IDX+1;
 
 
 -- 데이터 조회

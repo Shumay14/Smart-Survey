@@ -6,13 +6,13 @@ contract Survey{
 
     struct SurveyItem{
         address owner;
-        
         uint totalAmount; // 설문 보상 총액
-        uint userLimit; // 
-        uint currentUser; //현재 설문에 참여 한 인원 수
-        uint currentAmount;
-        
+        uint userLimit; // 최대 참여 가능 인원 수
+        uint currentUser; // 현재 설문에 참여한 인원 수
+        uint currentAmount; // 미지급된 보상액(= 설문 보상 총액 - 지급한 보상액)
+
         mapping(address => uint) userState;
+        mapping(uint => string) necessaryVP;
     }
     
     uint surveyCount = 0; // 설문지 생성 갯수 
