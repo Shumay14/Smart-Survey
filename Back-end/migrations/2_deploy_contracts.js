@@ -1,5 +1,5 @@
 
-var createDID = artifact.require("./registryDID.sol");
+var registryDID = artifact.require("./registryDID.sol");
 
 module.exports = function(deployer) {
   
