@@ -30,7 +30,7 @@ import SurveySlider from "../components/sections/_SurveySlider";
 import SurveyDetailWrapper from "../components/sections/_SurveyDetailWrapper";
 import BrandCarousel from "../components/_BrandCarousel";
 import Footer from "../components/_Footer";
-import OffCanvasMobileMenu from "@/components/OffCanvasMobileMenu";
+import OffCanvasMobileMenu from "@/components/_OffCanvasMobileMenu";
 
 export default {
   components: {

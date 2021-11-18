@@ -39,9 +39,19 @@ export default {
   components: {
     ServiceItem,
   },
+  async mounted() {
+    this.interestData = (
+      await this.$api("GET", "http://127.0.0.1:3000/api/survey/interest")
+    ).map(function (Obj) {
+      console.log(JSON.parse(Obj.interests));
+    });
+
+    // console.log(this.interestData);
+  },
   data() {
     return {
       data,
+      interestData: [],
       swiperOption: {
         loop: true,
         speed: 1000,
@@ -66,9 +76,9 @@ export default {
         speed: 300,
         slidesPerView: 3,
         spaceBetween: 30,
-        autoplay: {
-          delay: 1000,
-        },
+        // autoplay: {
+        //   delay: 1000,
+        // },
         loop: true,
         navigation: {
           nextEl: ".swiper-button-next",

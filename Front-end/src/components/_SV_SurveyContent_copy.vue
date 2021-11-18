@@ -40,11 +40,9 @@ export default {
   },
 
   async mounted() {
-    console.log("Asdf");
-    this.surveyData = await this.$api(
-      "get",
-      "http://127.0.0.1:3000/api/survey"
-    );
+    
+    this.surveyData = (await this.$api("GET", "http://127.0.0.1:3000/api/survey")).map(Obj => JSON.parse(Obj.item));
+
     this.addSurveyList();
   },
 

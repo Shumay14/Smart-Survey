@@ -202,13 +202,11 @@ export default {
         category: 4,
         title: "",
         desc: "",
-        img: "",
         sdate: "",
         edate: "",
         reward: "",
         max: 1,
         url: "",
-        vp: {},
       },
       privacyList: [
         {
@@ -219,13 +217,13 @@ export default {
         },
         {
           idx: 1,
-          name: "address",
+          name: "residence",
           description: "거주지",
           state: 0,
         },
         {
           idx: 2,
-          name: "phone",
+          name: "phonenumber",
           description: "핸드폰",
           state: 0,
         },
@@ -239,6 +237,42 @@ export default {
           idx: 4,
           name: "gender",
           description: "성별",
+          state: 0,
+        },
+        {
+          idx: 5,
+          name: "age",
+          description: "나이",
+          state: 0,
+        },
+        {
+          idx: 6,
+          name: "edu",
+          description: "학력",
+          state: 0,
+        },
+        {
+          idx: 7,
+          name: "major",
+          description: "학력",
+          state: 0,
+        },
+        {
+          idx: 8,
+          name: "certificate",
+          description: "자격증",
+          state: 0,
+        },
+        {
+          idx: 9,
+          name: "carowner",
+          description: "차량 보유 여부",
+          state: 0,
+        },
+        {
+          idx: 10,
+          name: "email",
+          description: "이메일",
           state: 0,
         },
       ],
@@ -255,18 +289,37 @@ export default {
 
     setAgreementState(index) {
       this.privacyList[index].state = (this.privacyList[index].state + 1) % 2;
-      this.surveyInfo.vp = this.privacyList.filter((item) => item.state > 0);
+    
+      var vpObject = {}
+      var iterableVP=
+        this.privacyList.map(function(Obj){
+          if(Obj.state > 0){
+            var rObj = {}
+            rObj[Obj.name] = Obj.state
+            return rObj;
+          }
+        }).filter(item => item != undefined)
+      
+      for(var vpItem of iterableVP){
+        vpObject = Object.assign(vpObject, vpItem)
+      }
+
+      this.surveyInfo.vp = vpObject;
+      
+      console.log(this.surveyInfo);
+
       var ele = document.getElementById(index);
       ele.checked = !ele.checked;
+
       this.$forceUpdate();
     },
 
     async addSurvey() {
 
-      this.$api('post','http://127.0.0.1:3000/api/survey', JSON.stringify(this.surveyInfo))
+      this.$api('POST','http://127.0.0.1:3000/api/survey', JSON.stringify(this.surveyInfo))
 
       const web3 = new Web3(window.ethereum);
-
+      
       var _account = (await web3.eth.getAccounts())[0];
       var _contractAddr = "0x779155D5F1b4E06e73B870c6aF37A7FC6CdE88fE";
       var _abi = {
