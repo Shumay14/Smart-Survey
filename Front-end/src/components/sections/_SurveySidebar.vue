@@ -9,6 +9,7 @@
         </form>
       </div>
     </div> -->
+    <button @click="asdf()">aaaaaaaaaaaaaaaaaaa</button>
     <div id="tools">
       <div class="styled-select">
         <select name="sort_rating" id="sort_rating">
@@ -85,6 +86,7 @@
 </template>
 
 <script>
+import Web3 from "web3";
 export default {
   props: ["blogSidebar", "catedata"],
   name: "",
@@ -192,8 +194,8 @@ export default {
       ];
     },
     convertvckor(listName) {
-      return this.$store.state.vcgradekor[
-        this.$store.state.vcgradeenglish.indexOf(listName)
+      return this.$store.state.vcgradeko[
+        this.$store.state.vcgradeengl.indexOf(listName)
       ];
     },
     tagselectbtn(vcgradeTag, event) {
@@ -227,6 +229,9 @@ export default {
     },
     iconselec() {
       return true;
+    },
+    asdf() {
+      this.$store.commit("changechange");
     },
   },
 };

@@ -357,8 +357,8 @@ export default {
   unmounted() {},
   methods: {
     convertkor(vcName) {
-      return this.$store.state.vcgradekor[
-        this.$store.state.vcgradeenglish.indexOf(vcName)
+      return this.$store.state.vcgradeko[
+        this.$store.state.vcgradeengl.indexOf(vcName)
       ];
     },
     allbtn() {
