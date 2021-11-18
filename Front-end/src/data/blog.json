@@ -1,167 +1,167 @@
 {
-    "sectionTitle": "Latest Blog",
-    "blogPosts": [
-        {
-            "image": "assets/img/blog/1.jpg",
-            "title": "Industry Ministry to Hike Elit",
-            "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe minus, illo error ratione",
-            "date": "April 12, 2020"
-        },
-        {
-            "image": "assets/img/blog/2.jpg",
-            "title": "Worker Safety: India Appeals",
-            "desc": "consectetur adipisicing Lorem ipsum dolor amet elit. Nemo exercitationem consequuntur",
-            "date": "March 18, 2020"
-        },
-        {
-            "image": "assets/img/blog/3.jpg",
-            "title": "Lorem ipsum dolor sit amet.",
-            "desc": "amet consectetur Lorem ipsum, dolor sit adipisicing elit. Saepe minus, illo error ratione",
-            "date": "January 10, 2020"
-        },
-        {
-            "image": "assets/img/blog/1.jpg",
-            "title": "Industry Ministry to Hike Elit",
-            "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe minus, illo error ratione",
-            "date": "April 12, 2020"
-        },
-        {
-            "image": "assets/img/blog/2.jpg",
-            "title": "Worker Safety: India Appeals",
-            "desc": "consectetur adipisicing Lorem ipsum dolor amet elit. Nemo exercitationem consequuntur",
-            "date": "March 18, 2020"
-        },
-        {
-            "image": "assets/img/blog/3.jpg",
-            "title": "Lorem ipsum dolor sit amet.",
-            "desc": "amet consectetur Lorem ipsum, dolor sit adipisicing elit. Saepe minus, illo error ratione",
-            "date": "January 10, 2020"
-        }
-    ],
-    "blogSidebarData": {
-        "searchTitle": "검색",
-        "CategoriesTitle": "카테고리",
-        "categories": [
-            {
-                "title": "정부/정책",
-                "link": "/blog-details"
-            },
-            {
-                "title": "부동산",
-                "link": "/blog-details"
-            },
-            {
-                "title": "차량",
-                "link": "/blog-details"
-            },
-            {
-                "title": "금융/투자",
-                "link": "/blog-details"
-            },
-            {
-                "title": "디자인",
-                "link": "/blog-details"
-            },
-            {
-                "title": "여행",
-                "link": "/blog-details"
-            },
-            {
-                "title": "음식",
-                "link": "/blog-details"
-            }
-        ],
-        "popularPostTitle": "인기있는 설문",
-        "popularPost": [
-            {
-                "image": "assets/img/blog/sidebar-blog-1.jpg",
-                "title": "What are Groundworkers and what do they do?",
-                "date": "April 12, 2020"
-            },
-            {
-                "image": "assets/img/blog/sidebar-blog-2.jpg",
-                "title": "What's really delaying the £15.4bn mega-project",
-                "date": "April 18, 2020"
-            },
-            {
-                "image": "assets/img/blog/sidebar-blog-3.jpg",
-                "title": "How much space does a house wall take up in",
-                "date": "March 12, 2020"
-            }
-        ],
-        "tagTitle": "제공할 정보 목록 (VC-Grade)",
-        "tags": [
-            {
-                "name": "성별",
-                "link": "/blog-left-sidebar"
-            },
-            {
-                "name": "나이대",
-                "link": "/blog-left-sidebar"
-            },
-            {
-                "name": "학력",
-                "link": "/blog-left-sidebar"
-            },
-            {
-                "name": "거주지",
-                "link": "/blog-left-sidebar"
-            },
-            {
-                "name": "전공",
-                "link": "/blog-left-sidebar"
-            },
-            {
-                "name": "연봉",
-                "link": "/blog-left-sidebar"
-            },
-            {
-                "name": "자격증",
-                "link": "/blog-left-sidebar"
-            },
-            {
-                "name": "이메일",
-                "link": "/blog-left-sidebar"
-            },
-            {
-                "name": "전화번호",
-                "link": "/blog-left-sidebar"
-            },
-            {
-                "name": "차량 보유 여부",
-                "link": "/blog-left-sidebar"
-            }
-        ]
+  "sectionTitle": "Latest Blog",
+  "blogPosts": [
+    {
+      "image": "assets/img/blog/1.jpg",
+      "title": "Industry Ministry to Hike Elit",
+      "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe minus, illo error ratione",
+      "date": "April 12, 2020"
     },
-    "blogDetails": {
-        "image": "assets/img/blog/blog-details-1.jpg",
-        "title": "What are Groundworkers and what do they do?",
-        "desc_para1": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit eveniet reprehenderit voluptas delectus reiciendis pariatur, totam id quae tempore fugiat tenetur asperiores saepe velit nisi voluptates molestiae quia fugit laboriosam quidem, distinctio dolor consequatur repellendus debitis natus magni. Totam atque provident nulla quasi voluptatum nostrum officia rerum pariatur maxime sit.",
-        "desc_para2": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste iure eveniet minima commodi consequuntur veritatis, officiis quibusdam molestias, nemo dolorum veniam quisquam pariatur facilis repudiandae eaque quas assumenda enim, unde placeat dolores id voluptatibus amet.",
-        "desc_para3": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam explicabo iusto suscipit dolore repellendus odit laborum, cupiditate unde nesciunt eveniet temporibus autem adipisci earum at error aspernatur neque minima doloribus?",
-        "desc_para4": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis voluptate repellat quam exercitationem excepturi enim et blanditiis amet minima itaque, doloribus cumque labore. Asperiores nemo odio sed molestias harum laborum quia enim, delectus repellendus consequuntur unde magnam, ipsam possimus vero, quam dolore adipisci. Rerum, vitae!",
-        "blockQuote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ad totam est optio mollitia dolores rem ducimus. Odio assumenda distinctio adipisci! Consequuntur excepturi eos nulla.",
-        "author": "Erik Jhonson",
-        "tags": [
-            {
-                "tagName": "Consulting",
-                "link": "/blog-details"
-            },
-            {
-                "tagName": "Planning",
-                "link": "/blog-details"
-            },
-            {
-                "tagName": "Renovation",
-                "link": "/blog-details"
-            }
-        ],
-        "metas": {
-            "author": "Admin",
-            "authorLink": "#",
-            "date": "April 12, 2020",
-            "comment": "03 Comment",
-            "allComment": "#"
-        }
+    {
+      "image": "assets/img/blog/2.jpg",
+      "title": "Worker Safety: India Appeals",
+      "desc": "consectetur adipisicing Lorem ipsum dolor amet elit. Nemo exercitationem consequuntur",
+      "date": "March 18, 2020"
+    },
+    {
+      "image": "assets/img/blog/3.jpg",
+      "title": "Lorem ipsum dolor sit amet.",
+      "desc": "amet consectetur Lorem ipsum, dolor sit adipisicing elit. Saepe minus, illo error ratione",
+      "date": "January 10, 2020"
+    },
+    {
+      "image": "assets/img/blog/1.jpg",
+      "title": "Industry Ministry to Hike Elit",
+      "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe minus, illo error ratione",
+      "date": "April 12, 2020"
+    },
+    {
+      "image": "assets/img/blog/2.jpg",
+      "title": "Worker Safety: India Appeals",
+      "desc": "consectetur adipisicing Lorem ipsum dolor amet elit. Nemo exercitationem consequuntur",
+      "date": "March 18, 2020"
+    },
+    {
+      "image": "assets/img/blog/3.jpg",
+      "title": "Lorem ipsum dolor sit amet.",
+      "desc": "amet consectetur Lorem ipsum, dolor sit adipisicing elit. Saepe minus, illo error ratione",
+      "date": "January 10, 2020"
     }
+  ],
+  "blogSidebarData": {
+    "searchTitle": "검색",
+    "CategoriesTitle": "카테고리",
+    "categories": [
+      {
+        "title": "정부/정책",
+        "link": "/blog-details"
+      },
+      {
+        "title": "부동산",
+        "link": "/blog-details"
+      },
+      {
+        "title": "차량",
+        "link": "/blog-details"
+      },
+      {
+        "title": "금융/투자",
+        "link": "/blog-details"
+      },
+      {
+        "title": "디자인",
+        "link": "/blog-details"
+      },
+      {
+        "title": "여행",
+        "link": "/blog-details"
+      },
+      {
+        "title": "음식",
+        "link": "/blog-details"
+      }
+    ],
+    "popularPostTitle": "인기있는 설문",
+    "popularPost": [
+      {
+        "image": "assets/img/blog/sidebar-blog-1.jpg",
+        "title": "What are Groundworkers and what do they do?",
+        "date": "April 12, 2020"
+      },
+      {
+        "image": "assets/img/blog/sidebar-blog-2.jpg",
+        "title": "What's really delaying the £15.4bn mega-project",
+        "date": "April 18, 2020"
+      },
+      {
+        "image": "assets/img/blog/sidebar-blog-3.jpg",
+        "title": "How much space does a house wall take up in",
+        "date": "March 12, 2020"
+      }
+    ],
+    "tagTitle": "제공할 정보 목록 (VC-Grade)",
+    "tags": [
+      {
+        "name": "gender",
+        "link": "/blog-left-sidebar"
+      },
+      {
+        "name": "age",
+        "link": "/blog-left-sidebar"
+      },
+      {
+        "name": "edu",
+        "link": "/blog-left-sidebar"
+      },
+      {
+        "name": "residence",
+        "link": "/blog-left-sidebar"
+      },
+      {
+        "name": "Major",
+        "link": "/blog-left-sidebar"
+      },
+      {
+        "name": "income",
+        "link": "/blog-left-sidebar"
+      },
+      {
+        "name": "Certificate",
+        "link": "/blog-left-sidebar"
+      },
+      {
+        "name": "email",
+        "link": "/blog-left-sidebar"
+      },
+      {
+        "name": "phonenumber",
+        "link": "/blog-left-sidebar"
+      },
+      {
+        "name": "carowner",
+        "link": "/blog-left-sidebar"
+      }
+    ]
+  },
+  "blogDetails": {
+    "image": "assets/img/blog/blog-details-1.jpg",
+    "title": "What are Groundworkers and what do they do?",
+    "desc_para1": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit eveniet reprehenderit voluptas delectus reiciendis pariatur, totam id quae tempore fugiat tenetur asperiores saepe velit nisi voluptates molestiae quia fugit laboriosam quidem, distinctio dolor consequatur repellendus debitis natus magni. Totam atque provident nulla quasi voluptatum nostrum officia rerum pariatur maxime sit.",
+    "desc_para2": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste iure eveniet minima commodi consequuntur veritatis, officiis quibusdam molestias, nemo dolorum veniam quisquam pariatur facilis repudiandae eaque quas assumenda enim, unde placeat dolores id voluptatibus amet.",
+    "desc_para3": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam explicabo iusto suscipit dolore repellendus odit laborum, cupiditate unde nesciunt eveniet temporibus autem adipisci earum at error aspernatur neque minima doloribus?",
+    "desc_para4": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis voluptate repellat quam exercitationem excepturi enim et blanditiis amet minima itaque, doloribus cumque labore. Asperiores nemo odio sed molestias harum laborum quia enim, delectus repellendus consequuntur unde magnam, ipsam possimus vero, quam dolore adipisci. Rerum, vitae!",
+    "blockQuote": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ad totam est optio mollitia dolores rem ducimus. Odio assumenda distinctio adipisci! Consequuntur excepturi eos nulla.",
+    "author": "Erik Jhonson",
+    "tags": [
+      {
+        "tagName": "Consulting",
+        "link": "/blog-details"
+      },
+      {
+        "tagName": "Planning",
+        "link": "/blog-details"
+      },
+      {
+        "tagName": "Renovation",
+        "link": "/blog-details"
+      }
+    ],
+    "metas": {
+      "author": "Admin",
+      "authorLink": "#",
+      "date": "April 12, 2020",
+      "comment": "03 Comment",
+      "allComment": "#"
+    }
+  }
 }

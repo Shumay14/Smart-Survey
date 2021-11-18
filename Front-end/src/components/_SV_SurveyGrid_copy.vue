@@ -13,10 +13,15 @@
           <div class="desc">
             <div class="thumb_strip">
               <!-- <a href="detail_page.html"> -->
-              <img
+              <!-- <img
                 :src="require('../../src/assets/img/' + `${project.img}`)"
                 alt="thumbnail"
-              />
+              /> -->
+              <i v-bind:class="iconimage(project.category)"></i>
+              <!-- <i class="fas fa-car fa-6x"></i>
+              <i class="fas fa-music fa-6x"></i>
+              <i class="fas fa-utensils fa-6x"></i>
+              <i class="fas fa-mobile-alt fa-6x"></i> -->
               <!-- <img src="../../src/assets/img/cute.jpg" alt="" /> -->
               <!-- </a> -->
             </div>
@@ -99,79 +104,99 @@ export default {
       btnname: "참여하기",
       allSelect: "#e8e8e8",
       clickSelect: "",
+      // iconimage: "fas fa-suitcase-rolling fa-6x",
     };
   },
   setup() {},
   created() {},
   unmounted() {},
   methods: {
+    iconimage(catename) {
+      switch (catename) {
+        case "travel":
+          return "fas fa-suitcase-rolling fa-6x";
+        case "car":
+          return "fas fa-car fa-6x";
+        case "music":
+          return "fas fa-music fa-6x";
+        case "food":
+          return "fas fa-utensils fa-6x";
+        case "electronic-products":
+          return "fas fa-mobile-alt fa-6x";
+        default:
+          break;
+      }
+    },
     async getCharmyeoInfo() {
       const web3 = new Web3(window.ethereum);
 
       var _contractAddr = "0x475853e073b9003Dbfb46Da3Dda197c39eE37991";
       var _abi = {
-        getCurrentUserNumber : {
-            inputs: [
-              {
-                internalType: "uint256",
-                name: "surveyIndex",
-                type: "uint256"
-              }
-            ],
-            name: "getCurrentUserNumber",
-            outputs: [
-              {
-                internalType: "uint256",
-                name: "",
-                type: "uint256"
-              }
-            ],
-            stateMutability: "view",
-            type: "function"
-          },
-        getUserLimit :
-          {
-            inputs: [
-              {
-                internalType: "uint256",
-                name: "surveyIndex",
-                type: "uint256"
-              }
-            ],
-            name: "getUserLimit",
-            outputs: [
-              {
-                internalType: "uint256",
-                name: "",
-                type: "uint256"
-              }
-            ],
-            stateMutability: "view",
-            type: "function"
-          }
-        }
+        getCurrentUserNumber: {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "surveyIndex",
+              type: "uint256",
+            },
+          ],
+          name: "getCurrentUserNumber",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        getUserLimit: {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "surveyIndex",
+              type: "uint256",
+            },
+          ],
+          name: "getUserLimit",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      };
 
       var _params = [0];
       console.log(_abi.getCurrentUserNumber);
 
-      var _res =
-      {
-        currentUserNumber:0,
-        userLimit:0,
+      var _res = {
+        currentUserNumber: 0,
+        userLimit: 0,
       };
 
-      _res.currentUserNumber = 
-        web3.utils.hexToNumber(await web3.eth.call({
+      _res.currentUserNumber = web3.utils.hexToNumber(
+        await web3.eth.call({
           to: _contractAddr,
-          data: web3.eth.abi.encodeFunctionCall(_abi.getCurrentUserNumber, _params)
-        }));
+          data: web3.eth.abi.encodeFunctionCall(
+            _abi.getCurrentUserNumber,
+            _params
+          ),
+        })
+      );
 
-      _res.userLimit = 
-        web3.utils.hexToNumber(await web3.eth.call({
+      _res.userLimit = web3.utils.hexToNumber(
+        await web3.eth.call({
           to: _contractAddr,
-          data: web3.eth.abi.encodeFunctionCall(_abi.getUserLimit, _params)
-        }));
-        
+          data: web3.eth.abi.encodeFunctionCall(_abi.getUserLimit, _params),
+        })
+      );
+
       return _res;
     },
     async btnHoverin() {

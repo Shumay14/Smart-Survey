@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import persistedstate from "vuex-persistedstate";
 
-import mixins from './mixins'
+import mixins from "./mixins";
 
 Vue.use(Vuex);
 Vue.mixin(mixins);
@@ -13,12 +13,35 @@ const store = new Vuex.Store({
       KakaoUser: {},
       metamaskAdd: null,
       metamaskShortAdd: null,
-      Selectcategory: [],
-      vcgradeSelect: [],
-      catelist: [],
-      countlistlist: [],
       categorylist: [],
       vsgradelist: [],
+      eng_category: ["travel", "car", "music", "food", "electronic-products"],
+      kor_category: ["여행", "자동차", "음악", "음식", "전자제품"],
+      vcgradeenglish: [
+        "gender",
+        "age",
+        "edu",
+        "residence",
+        "Major",
+        "income",
+        "Certificate",
+        "email",
+        "phonenumber",
+        "carowner",
+      ],
+      vcgradekor: [
+        "성별",
+        "나이대",
+        "학력",
+        "거주지",
+        "전공",
+        "연봉",
+        "자격증",
+        "이메일",
+        "전화번호",
+        "차량보유여부",
+      ],
+      test: 5,
     };
   },
 
@@ -49,6 +72,19 @@ const store = new Vuex.Store({
     countnull(state) {
       state.categorylist.splice(0);
       state.vsgradelist.splice(0);
+    },
+    testtesttest(state) {
+      // var tmp = ["travel", "car"];
+      // return state.vsgradelist.indexOf(data);
+      console.log("Asdf");
+      return "Asdf";
+    },
+  },
+  getters: {
+    testtest(state, asdf) {
+      var tmp = ["travel", "car"];
+      // state.vsgradelist.indexOf(data);
+      return state.test;
     },
   },
   plugins: [

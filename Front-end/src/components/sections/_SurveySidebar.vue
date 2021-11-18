@@ -30,7 +30,7 @@
             @click="tagselectbtn(tag.name, $event)"
             v-bind:style="{ 'background-color': selectboxcolor }"
           >
-            {{ tag.name }}
+            {{ convertvckor(tag.name) }}
           </button>
         </li>
       </ul>
@@ -48,7 +48,7 @@
             @click="cateselectbtn(listname, $event)"
           >
             <div class="col-5">
-              <a>{{ listname }}</a>
+              <a>{{ convertcatekor(listname) }}</a>
             </div>
             <!-- <div class="col-3">
               <i class="fas fa-check" :id="listname"></i>
@@ -102,6 +102,16 @@ export default {
   mounted() {},
   unmounted() {},
   methods: {
+    convertcatekor(listName) {
+      return this.$store.state.kor_category[
+        this.$store.state.eng_category.indexOf(listName)
+      ];
+    },
+    convertvckor(listName) {
+      return this.$store.state.vcgradekor[
+        this.$store.state.vcgradeenglish.indexOf(listName)
+      ];
+    },
     tagselectbtn(vcgradeTag, event) {
       if (this.doublecheck(this.$store.state.vsgradelist, vcgradeTag)) {
         this.$store.commit("vcplus", vcgradeTag);

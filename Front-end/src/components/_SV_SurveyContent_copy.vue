@@ -9,7 +9,6 @@
         <SurveyGrid
           v-if="CheckVcCategory(project.category, project.vp)"
           :project="project"
-          :surveyIndex="project.id"
         />
       </transition>
     </div>
@@ -41,7 +40,11 @@ export default {
   },
 
   async mounted() {
-    this.surveyData = await this.$api('get', 'http://127.0.0.1:3000/api/survey');
+    console.log("Asdf");
+    this.surveyData = await this.$api(
+      "get",
+      "http://127.0.0.1:3000/api/survey"
+    );
     this.addSurveyList();
   },
 
@@ -56,7 +59,6 @@ export default {
         this.showUpList.push(item);
         this.showUpIdx++;
         cnt++;
-
         console.log(item, " added");
       }
     },
@@ -65,8 +67,8 @@ export default {
       var flag = false;
       var vcObjlist = Object.entries(vcObj);
 
-      var catelist = this.$store.state.Selectcategory;
-      var vclist = this.$store.state.vcgradeSelect;
+      var catelist = this.$store.state.categorylist;
+      var vclist = this.$store.state.vsgradelist;
 
       if (vclist.length == 0 && catelist.length == 0) {
         flag = true;
@@ -91,6 +93,13 @@ export default {
         }
       }
       return flag;
+    },
+    asdf() {
+      console.log(
+        this.$store.state.kor_category[
+          this.$store.state.eng_category.indexOf(this.surveyData[0].category)
+        ]
+      );
     },
   },
 };

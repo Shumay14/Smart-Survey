@@ -18,10 +18,12 @@
                     <ServiceItem :service="service" />
                   </div>
                 </swiper>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <!-- <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div> -->
               </div>
             </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
           </div>
         </div>
       </div>
@@ -31,7 +33,7 @@
 </template>
 
 <script>
-import ServiceItem from "@/components/ServiceItem.vue";
+import ServiceItem from "@/components/_ServiceItem.vue";
 import data from "../../data/service.json";
 export default {
   components: {
@@ -61,8 +63,12 @@ export default {
         },
       },
       swiperOption: {
+        speed: 300,
         slidesPerView: 3,
         spaceBetween: 30,
+        autoplay: {
+          delay: 1000,
+        },
         loop: true,
         navigation: {
           nextEl: ".swiper-button-next",
@@ -74,8 +80,22 @@ export default {
 };
 </script>
 <style scoped>
-.swiper-button-next,
+.swiper-button-next {
+  margin-top: 4rem;
+  background: url("../../../src/assets/img/right.png") no-repeat;
+  background-size: 50% auto;
+  background-position: center;
+}
+
 .swiper-button-prev {
-  color: white;
+  margin-top: 4rem;
+  background: url("../../../src/assets/img/left.png") no-repeat;
+  background-size: 50% auto;
+  background-position: center;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
 }
 </style>
