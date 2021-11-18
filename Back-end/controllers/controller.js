@@ -4,9 +4,9 @@ module.exports = {
 
     getQuery: async (req, res) => {
         try {
-            console.log(req.params.alias);
             const queryResult = await mariaDB.sendQuery(req.params.alias)
-            res.send(JSON.stringify(queryResult))
+            //res.send(JSON.stringify(queryResult))
+            res.send(queryResult)
         } catch (err) {
             res.status(500).send({
                 error: err,
