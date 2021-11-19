@@ -12,10 +12,14 @@
                 <swiper :options="swiperOption">
                   <div
                     class="swiper-slide"
-                    v-for="service in data.serviceOne.serviceList"
-                    :key="service.id"
+                    v-for="(service, num) in data.serviceOne.serviceList"
+                    :key="num"
                   >
-                    <ServiceItem :service="service" />
+                    <ServiceItem
+                      :service="service"
+                      :imagename="imagefile[num]"
+                      :interestlist="interestData[num]"
+                    />
                   </div>
                 </swiper>
                 <!-- <div class="swiper-button-prev"></div>
@@ -41,16 +45,27 @@ export default {
   },
   async mounted() {
     this.interestData = (
-      await this.$api("GET", "http://127.0.0.1:3000/api/survey/interest")
-    ).map(function (Obj) {
-      console.log(JSON.parse(Obj.interests));
-    });
+      await this.$api(
+        "get",
+        `http://127.0.0.1:3000/api/interest/` + this.$store.state.metamaskAdd
+      )
+    ).map(function (obj) {
+      return JSON.parse(obj.interests);
+    })[0];
 
-    // console.log(this.interestData);
+    console.log(this.interestData);
   },
   data() {
     return {
       data,
+      imagefile: [
+        "car.png",
+        "electronic_products.png",
+        "food.png",
+        "music.png",
+        "travel.png",
+        "food.png",
+      ],
       interestData: [],
       swiperOption: {
         loop: true,
@@ -90,7 +105,7 @@ export default {
 };
 </script>
 <style scoped>
-.swiper-button-next {
+/* .swiper-button-next {
   margin-top: 4rem;
   background: url("../../../src/assets/img/right.png") no-repeat;
   background-size: 50% auto;
@@ -107,5 +122,13 @@ export default {
 .swiper-button-next::after,
 .swiper-button-prev::after {
   display: none;
+} */
+.swiper-button-next,
+.swiper-button-prev {
+  color: black;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #ff7f00;
 }
 </style>

@@ -5,7 +5,7 @@
       data-wow-delay="0.1s"
       style="width: 100%; text-align: left"
       data-bs-toggle="modal"
-      v-bind:data-bs-target="'#Modal' + project.id"
+      v-bind:data-bs-target="'#Modal' + project.idx"
     >
       <!-- <div class="ribbon_1">Popular</div> -->
       <div class="row">
@@ -17,7 +17,10 @@
                 :src="require('../../src/assets/img/' + `${project.img}`)"
                 alt="thumbnail"
               /> -->
-              <i v-bind:class="iconimage(project.category)"></i>
+              <i
+                v-bind:class="iconimage(project.category)"
+                style="margin-top: 18px"
+              ></i>
               <!-- <i class="fas fa-car fa-6x"></i>
               <i class="fas fa-music fa-6x"></i>
               <i class="fas fa-utensils fa-6x"></i>
@@ -112,17 +115,18 @@ export default {
   unmounted() {},
   methods: {
     iconimage(catename) {
+      catename = this.$store.state.eng_category[catename];
       switch (catename) {
         case "travel":
-          return "fas fa-suitcase-rolling fa-6x";
+          return "fas fa-suitcase-rolling fa-4x";
         case "car":
-          return "fas fa-car fa-6x";
+          return "fas fa-car fa-4x";
         case "music":
-          return "fas fa-music fa-6x";
+          return "fas fa-music fa-4x";
         case "food":
-          return "fas fa-utensils fa-6x";
+          return "fas fa-utensils fa-4x";
         case "electronic-products":
-          return "fas fa-mobile-alt fa-6x";
+          return "fas fa-mobile-alt fa-4x";
         default:
           break;
       }

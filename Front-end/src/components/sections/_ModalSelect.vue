@@ -13,7 +13,7 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      v-bind:id="'Modal' + project.id"
+      v-bind:id="'Modal' + project.idx"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -268,20 +268,15 @@
                   ></i
                   ><span> [필수] 필수 제공 항목</span>
                   <div
-                    style="
-                      font-size: 16px;
-                      color: #c5c8c1;
-                      margin-left: 1rem;
-                      margin-top: 0.5em;
-                    "
+                    style="font-size: 16px; color: #c5c8c1; margin-left: 1rem"
                   >
                     <span
-                      v-for="project in Object.keys(project.vp)"
+                      v-for="project in Object.keys(JSON.parse(project.vp))"
                       :key="project"
                     >
-                      <span style="margin-left: 5px">{{
-                        convertkor(project)
-                      }}</span>
+                      <span style="margin-left: 5px"
+                        >{{ convertkor(project) }}
+                      </span>
                     </span>
                   </div>
                 </div>
@@ -353,7 +348,6 @@ export default {
   },
   setup() {},
   created() {},
-  mounted() {},
   unmounted() {},
   methods: {
     convertkor(vcName) {

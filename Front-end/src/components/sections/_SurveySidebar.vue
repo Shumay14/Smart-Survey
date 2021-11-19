@@ -64,21 +64,25 @@
       <h3 class="sidebar-title">{{ blogSidebar.popularPostTitle }}</h3>
       <div
         class="sidebar-blog"
-        v-for="popularItem in popularSurvey"
-        :key="popularItem.idx"
+        v-for="(popularItem, num) in popularSurvey"
+        :key="num"
       >
-        <router-link to="/blog-details" class="image">
-          <img :src="popularItem.img" alt="image" />
+        <div to="" class="image">
+          <!-- <img :src="popularItem.img" alt="image" /> -->
+          <i
+            v-bind:class="iconimage(popularItem.category)"
+            style="margin-left: 1rem"
+          ></i>
           <!-- 이미지가 없어서 못찾네 -->
-        </router-link>
+        </div>
         <div class="content">
           <h5>
             <router-link to="/blog-details">
-              {{popularItem.title}}
+              {{ popularItem.title }}
             </router-link>
           </h5>
-          <span>{{ popularItem.reward }} SUB</span>
-          <span>{{ popularItem.reward }} SUB</span>
+          <span>현재참여자 : {{ listlist[popularList[num]] }} 명</span>
+          <span>보상지급액 : {{ popularItem.reward }} SUB</span>
         </div>
       </div>
     </div>
@@ -97,6 +101,9 @@ export default {
       selectboxcolor: "",
       selectonoff: false,
       popularSurvey: [],
+      temp: [],
+      popularList: [],
+      listlist: [],
     };
   },
   setup() {},
@@ -152,9 +159,8 @@ export default {
     );
 
     var index = 0;
-    var popularList = [];
 
-    var temp = [];
+    // var temp = [];
 
     while (index < _surveyAmount) {
       var _params = [index];
@@ -170,34 +176,58 @@ export default {
         })
       );
 
-      temp.push(_curUserNum);
+      this.temp.push(_curUserNum);
+      this.listlist.push(_curUserNum);
       index++;
     }
 
-    console.log(temp);
+    console.log(this.temp);
 
     for (var testidx = 0; testidx < 3; testidx++) {
-      var position = temp.indexOf(Math.max.apply(null, temp));
-      temp[position] = -1;
-      popularList.push(position);
+      var position = this.temp.indexOf(Math.max.apply(null, this.temp));
+      this.temp[position] = -1;
+      this.popularList.push(position);
     }
 
-    console.log(popularList);
+    console.log(this.popularList);
 
     // var result = popularList.map(async (idx) =>
     //   await this.$api('get', `http://127.0.0.1:3000/api/survey/${idx}`)
     // );
 
-    var result = []
-    result.push((await this.$api('get', `http://127.0.0.1:3000/api/survey/1`))[0])
-    result.push((await this.$api('get', `http://127.0.0.1:3000/api/survey/6`))[0])
-    result.push((await this.$api('get', `http://127.0.0.1:3000/api/survey/10`))[0])
+    var result = [];
+    result.push(
+      (await this.$api("get", `http://127.0.0.1:3000/api/survey/1`))[0]
+    );
+    result.push(
+      (await this.$api("get", `http://127.0.0.1:3000/api/survey/6`))[0]
+    );
+    result.push(
+      (await this.$api("get", `http://127.0.0.1:3000/api/survey/10`))[0]
+    );
     console.log("POP LIST ", result);
     this.popularSurvey = result;
     //(await this.$api('get', `http://127.0.0.1:3000/api/survey?sqlQuery=${sqlQuery}`)); // 인기있는 설문 JSON 파일
   },
   unmounted() {},
   methods: {
+    iconimage(catename) {
+      catename = this.$store.state.eng_category[catename];
+      switch (catename) {
+        case "travel":
+          return "fas fa-suitcase-rolling fa-4x";
+        case "car":
+          return "fas fa-car fa-4x";
+        case "music":
+          return "fas fa-music fa-4x";
+        case "food":
+          return "fas fa-utensils fa-4x";
+        case "electronic-products":
+          return "fas fa-mobile-alt fa-4x";
+        default:
+          break;
+      }
+    },
     convertcatekor(listName) {
       return this.$store.state.kor_category[
         this.$store.state.eng_category.indexOf(listName)

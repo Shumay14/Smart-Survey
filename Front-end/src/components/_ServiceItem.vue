@@ -1,19 +1,23 @@
 <template>
   <div class="service-grid-item">
-    <!-- <div class="service-grid-item__image">
+    <div class="service-grid-item__image">
       <div class="service-grid-item__image-wrapper">
         <router-link to="/service-details">
-          <img :src="service.image" class="img-fluid" alt="service thumb" />
+          <img
+            :src="require('../../src/assets/img/category/' + `${imagename}`)"
+            class="img-fluid"
+            alt="service thumb"
+          />
         </router-link>
       </div>
       <div class="icon">
         <i :class="service.icon"></i>
       </div>
-    </div> -->
+    </div>
     <div class="service-grid-item__content">
       <h3 class="title">
         <router-link to="/service-details">
-          {{ service.title }}
+          {{ convertcatekor(interestlist) }}
         </router-link>
       </h3>
       <p class="subtitle">{{ service.desc }}</p>
@@ -26,6 +30,16 @@
 
 <script>
 export default {
-  props: ["service"],
+  props: ["service", "imagename", "interestlist"],
+  data() {
+    return {};
+  },
+  methods: {
+    convertcatekor(listName) {
+      return this.$store.state.kor_category[
+        this.$store.state.eng_category.indexOf(listName)
+      ];
+    },
+  },
 };
 </script>

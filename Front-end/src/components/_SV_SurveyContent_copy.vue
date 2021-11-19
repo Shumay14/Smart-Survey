@@ -40,9 +40,10 @@ export default {
   },
 
   async mounted() {
-    
-    this.surveyData = (await this.$api("GET", "http://127.0.0.1:3000/api/survey")).map(Obj => JSON.parse(Obj.item));
-
+    this.surveyData = await this.$api(
+      "get",
+      "http://127.0.0.1:3000/api/survey"
+    );
     this.addSurveyList();
   },
 
@@ -62,6 +63,8 @@ export default {
     },
 
     CheckVcCategory(cate, vcObj) {
+      vcObj = JSON.parse(vcObj);
+      cate = this.$store.state.eng_category[cate];
       var flag = false;
       var vcObjlist = Object.entries(vcObj);
 
