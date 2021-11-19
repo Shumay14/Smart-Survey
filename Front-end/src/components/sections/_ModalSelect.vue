@@ -21,7 +21,7 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <img class="mainimg" src="../../../src/assets/img/pushimg.jpg" />
+            <img class="mainimg" src="../../../src/assets/img/pushimg_sv.jpg" />
 
             <div class="center-name">
               <h4
@@ -29,9 +29,9 @@
                 id="exampleModalLabel"
                 style="line-height: 20px"
               >
-                Push
+                SurveyZone
               </h4>
-              <p id="exampleModalLabel" style="color: #c5c8c1; font-size: 12px">
+              <p id="exampleModalLabel" style="color: RGB(10,10,10); font-weight: 500; font-size: 15px; letter-spacing: -0.2px">
                 {{ project.title }}
               </p>
             </div>
@@ -43,7 +43,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div style="border-bottom: 2px solid #f3f3f3">
+            <div style="border-bottom: 2px solid #f3f3f3;">
               <div
                 @click="allbtn()"
                 v-bind:style="{ outline: allcliclSelect }"
@@ -52,12 +52,12 @@
                 <i
                   class="far fa-check-circle fa-lg"
                   v-bind:style="{ color: allSelect }"
-                ></i
-                ><span style="font-weight: 900; font-size: 1rem">
-                  개인정보 수집 및 이용 동의<span class="terms_choice"
-                    >(필수)</span
-                  ></span
                 >
+                </i>
+                <span style="font-weight: 900; font-size: 1rem;">
+                  개인정보 수집 및 이용 동의
+                  <span class="terms_choice">(필수)</span>
+                </span>
               </div>
               <!-- <p
                 style="font-size: 12px; margin-left: 3rem; margin-bottom: 1rem"
@@ -299,13 +299,16 @@
               type="button"
               v-bind:style="{
                 'background-color': btnbackcolorstyle,
-                color: btncolorstyle,
+                 color: btncolorstyle,
+                 
               }"
               style="
                 width: 100%;
                 border: 0;
                 padding: 0.5rem;
                 border-radius: 0.5rem;
+                font-weight: 700;
+                color: #FFFFFF;
               "
               data-bs-dismiss="modal"
               @click="kkk()"
@@ -358,10 +361,10 @@ export default {
     allbtn() {
       this.allSelect = this.allSelect == "#ff7f00" ? "#e8e8e8" : "#ff7f00";
       this.allcliclSelect =
-        this.allcliclSelect == "2px solid black" ? "" : "2px solid black";
+        this.allcliclSelect == "2px solid #ff7f00" ? "" : "2px solid #ff7f00";
       this.btnbackcolorstyle =
         this.btnbackcolorstyle == "#f6f6f6" ? "#ff7f00" : "#f6f6f6";
-      this.btncolorstyle = this.btncolorstyle == "#c5c8c1" ? "" : "#c5c8c1";
+      this.btncolorstyle = this.btncolorstyle == "#c5c8c1" ? "#FFFFFF" : "#c5c8c1";
     },
     kkk() {
       console.log(this.project.title + "출력");
@@ -395,11 +398,16 @@ export default {
 .mainimg {
   width: 50px;
   height: 48px;
-  border-radius: 40%;
+  border-radius: 20%;
+  padding: 5px 5px 5px 5px;
+  border: 3px solid RGB(255,119,0);
   overflow: hidden; /*  넘치는 부분 제거 */
 }
 .terms_box {
-  font-family: Dotum, "돋움", Helvetica, sans-serif;
+  /* font-family: Dotum, "돋움", Helvetica, sans-serif; */
+  /* font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif; */
+
+
   font-size: 12px;
   color: #666;
   position: relative;
