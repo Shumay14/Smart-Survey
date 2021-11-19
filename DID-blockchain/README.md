@@ -1,4 +1,4 @@
-# DID_test
+# DID-blockchain
 $ npm install -g ganache-cli
 $ ganache-cli
 
