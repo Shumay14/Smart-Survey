@@ -3,7 +3,7 @@
 
         <Header />
 
-        <Breadcrumb :items="items" title="Blog Details" />
+        <Breadcrumb :items="items" title="설문 등록" />
 
         <AdminWrapper />
 
@@ -24,7 +24,7 @@ import Header from '@/components/_Header';
     import Breadcrumb from '../components/Breadcrumb'
     import AdminWrapper from '../components/sections/_AD_AdminWrapper'
     import Footer from '../components/_Footer';
-    import OffCanvasMobileMenu from '@/components/OffCanvasMobileMenu'
+    import OffCanvasMobileMenu from '@/components/_OffCanvasMobileMenu'
 
     export default {
         components: {
