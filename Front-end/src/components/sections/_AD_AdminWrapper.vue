@@ -13,18 +13,22 @@
               id="dropdownMenu2"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              :value="categoryList[surveyInfo.category]"
+              :value="defaultselect"
             />
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="width:256px">
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenu2"
+              style="width: 256px"
+            >
               <li>
-                <input
+                <a
                   type="button"
                   class="dropdown-item"
                   v-for="(category, categoryIndex) in categoryList"
                   :key="categoryIndex"
-                  :value="category"
                   @click="setCategory(categoryIndex)"
-                />
+                  >{{ categoryListkor[categoryIndex] }}</a
+                >
               </li>
             </ul>
           </div>
@@ -46,7 +50,7 @@
           <div class="col-9 section-space--bottom--20">
             <span class="title-admin-main"> 제목 </span>
             <span class="required"> *필수사항 </span>
-            <input type="text" v-model="surveyInfo.title"/>
+            <input type="text" v-model="surveyInfo.title" />
           </div>
 
           <!-- <div class="col-7 section-space--bottom--20 ">
@@ -84,7 +88,7 @@
               <span class="input-group-text">Klay</span>
             </div>
           </div>
-          
+
           <div class="col-lg-4 col-sm-12 section-space--bottom--20">
             <span class="title-admin-main"> 표본수 </span>
             <span class="required"> *필수사항 </span>
@@ -115,7 +119,6 @@
               />
               <span class="input-group-text">Klay</span>
             </div>
-
           </div>
 
           <div class="col-lg-6 section-space--bottom--20">
@@ -191,12 +194,13 @@
 </template>
 
 <script>
-import Web3 from 'web3';
+import Web3 from "web3";
 export default {
   components: {},
   data() {
     return {
-      // categoryList: ["여행", "자동차", "음악", "요리", "전자제품"],
+      defaultselect: "선택",
+      categoryListkor: ["여행", "자동차", "음악", "요리", "전자제품"],
       categoryList: ["travel", "car", "music", "food", "electronic-products"],
       surveyInfo: {
         category: 4,
@@ -280,27 +284,29 @@ export default {
   methods: {
     setCategory(index) {
       this.surveyInfo.category = index;
+      this.defaultselect = this.categoryListkor[index];
     },
 
     setAgreementState(index) {
       this.privacyList[index].state = (this.privacyList[index].state + 1) % 2;
-    
-      var vpObject = {}
-      var iterableVP =
-        this.privacyList.map(function(Obj){
-          if(Obj.state > 0){
-            var rObj = {}
-            rObj[Obj.name] = Obj.state
+
+      var vpObject = {};
+      var iterableVP = this.privacyList
+        .map(function (Obj) {
+          if (Obj.state > 0) {
+            var rObj = {};
+            rObj[Obj.name] = Obj.state;
             return rObj;
           }
-        }).filter(item => item != undefined)
-      
-      for(var vpItem of iterableVP){
-        vpObject = Object.assign(vpObject, vpItem)
+        })
+        .filter((item) => item != undefined);
+
+      for (var vpItem of iterableVP) {
+        vpObject = Object.assign(vpObject, vpItem);
       }
 
       this.surveyInfo.vp = vpObject;
-      
+
       console.log(this.surveyInfo);
 
       var ele = document.getElementById(index);
@@ -310,16 +316,14 @@ export default {
     },
 
     async addSurvey() {
-      
-      // DB에 설문지 생성 
+      // DB에 설문지 생성
       console.log("POST", this.surveyInfo);
       this.surveyInfo.vp = JSON.stringify(this.surveyInfo.vp);
-      this.$api('POST','http://127.0.0.1:3000/api/survey', this.surveyInfo);
+      this.$api("POST", "http://127.0.0.1:3000/api/survey", this.surveyInfo);
 
-      
-      // 블록체인에 설문지 생성 
+      // 블록체인에 설문지 생성
       const web3 = new Web3(window.ethereum);
-      
+
       var _account = (await web3.eth.getAccounts())[0];
       var _contractAddr = "0x779155D5F1b4E06e73B870c6aF37A7FC6CdE88fE";
       var _abi = {
@@ -349,7 +353,7 @@ export default {
         to: _contractAddr,
         value: web3.utils.toWei(String(this.surveyInfo.reward), "ether"),
         data: _data,
-      })
+      });
     },
   },
   computed: {
@@ -446,7 +450,7 @@ tr {
   }
 }
 
-.dropdown-menu{
+.dropdown-menu {
   z-index: 2 !important;
 }
 </style>

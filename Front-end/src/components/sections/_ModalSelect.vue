@@ -31,7 +31,15 @@
               >
                 SurveyZone
               </h4>
-              <p id="exampleModalLabel" style="color: RGB(10,10,10); font-weight: 500; font-size: 15px; letter-spacing: -0.2px">
+              <p
+                id="exampleModalLabel"
+                style="
+                  color: RGB(10, 10, 10);
+                  font-weight: 500;
+                  font-size: 15px;
+                  letter-spacing: -0.2px;
+                "
+              >
                 {{ project.title }}
               </p>
             </div>
@@ -43,7 +51,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div style="border-bottom: 2px solid #f3f3f3;">
+            <div style="border-bottom: 2px solid #f3f3f3">
               <div
                 @click="allbtn()"
                 v-bind:style="{ outline: allcliclSelect }"
@@ -54,8 +62,8 @@
                   v-bind:style="{ color: allSelect }"
                 >
                 </i>
-                <span style="font-weight: 900; font-size: 1rem;">
-                  개인정보 수집 및 이용 동의
+                <span style="font-weight: 900; font-size: 1rem">
+                  개인정보 제3자 제공에 대한 동의
                   <span class="terms_choice">(필수)</span>
                 </span>
               </div>
@@ -299,8 +307,7 @@
               type="button"
               v-bind:style="{
                 'background-color': btnbackcolorstyle,
-                 color: btncolorstyle,
-                 
+                color: btncolorstyle,
               }"
               style="
                 width: 100%;
@@ -308,7 +315,7 @@
                 padding: 0.5rem;
                 border-radius: 0.5rem;
                 font-weight: 700;
-                color: #FFFFFF;
+                color: #ffffff;
               "
               data-bs-dismiss="modal"
               @click="kkk()"
@@ -333,13 +340,18 @@
         </div>
       </div>
     </div>
+    <SurveyModal v-if="showModal" @close="showModal = false"> </SurveyModal>
   </div>
 </template>
 <script>
+import SurveyModal from "./_SurveyModal.vue";
+
 export default {
   props: ["project"],
   name: "",
-  components: {},
+  components: {
+    SurveyModal,
+  },
   data() {
     return {
       metamaskaddr: this.$store.state.metamaskAdd,
@@ -347,6 +359,7 @@ export default {
       allcliclSelect: "",
       btnbackcolorstyle: "#f6f6f6",
       btncolorstyle: "#c5c8c1",
+      showModal: false,
     };
   },
   setup() {},
@@ -364,10 +377,12 @@ export default {
         this.allcliclSelect == "2px solid #ff7f00" ? "" : "2px solid #ff7f00";
       this.btnbackcolorstyle =
         this.btnbackcolorstyle == "#f6f6f6" ? "#ff7f00" : "#f6f6f6";
-      this.btncolorstyle = this.btncolorstyle == "#c5c8c1" ? "#FFFFFF" : "#c5c8c1";
+      this.btncolorstyle =
+        this.btncolorstyle == "#c5c8c1" ? "#FFFFFF" : "#c5c8c1";
     },
     kkk() {
-      console.log(this.project.title + "출력");
+      this.showModal = true;
+      console.log(this.project.url);
     },
     printvc(vplist) {
       //JSON.stringify JavaScript 객체를 JSON 텍스트로 바꾸고 해당 JSON 텍스트를 문자열에 저장
@@ -400,13 +415,12 @@ export default {
   height: 48px;
   border-radius: 20%;
   padding: 5px 5px 5px 5px;
-  border: 3px solid RGB(255,119,0);
+  border: 3px solid RGB(255, 119, 0);
   overflow: hidden; /*  넘치는 부분 제거 */
 }
 .terms_box {
   /* font-family: Dotum, "돋움", Helvetica, sans-serif; */
   /* font-family: 맑은고딕, Malgun Gothic, dotum, gulim, sans-serif; */
-
 
   font-size: 12px;
   color: #666;
