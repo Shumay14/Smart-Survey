@@ -4,16 +4,77 @@
         <div class="conact-section">
             <div class="container">
                 <div class="row">
+                                {{testData}}
 
-                    <b-card class="my-2 col">
-                        <div class="contact-form">
+                    <div class="col-12 row mx-auto test">
+
+                        <b-card class="mr-2 col-4 text-center ">
+                             
+                                <h4>
+                                    설문 기간
+                                </h4>
+                             
+                                <div >
+                                    2021.11.01 ~ 2021.11.31
+                                </div>
+                        </b-card>
+
+                        <b-card class="mr-2 col text-center">
+                            <h4>
+                                요구 정보
+                            </h4>
+                            <div>
+                                <button type="button" class="favorite_Selected btn btn-outline-dark mx-1 my-1" @click="viewData('gender')">
+                                    성별
+                                </button>
+                                <button type="button" class="favorite_Selected btn btn-outline-dark mx-1 my-1" @click="viewData('age')">
+                                    나이
+                                </button>
+                                <button type="button" class="favorite_Selected btn btn-outline-dark mx-1 my-1" @click="viewData('edu')">
+                                    학력
+                                </button>
+                                <button type="button" class="favorite_Selected btn btn-outline-dark mx-1 my-1" @click="viewData('income')">
+                                    연봉
+                                </button>
+                 
+                                
+                            </div>
+                        </b-card>
+
+                        <b-card class="mr-2 col-2 text-center">
+                            <h4>
+                                보상금액
+                            </h4>
+                            <div>
+                                3 SUB
+                            </div>
+                        </b-card>
+
+                        <b-card class="col-2 text-center">
+                            <h4>
+                                참여인원
+                            </h4>
+                            <div>
+                                150명
+                            </div>
+                        </b-card>
+
+                         
+                    </div>
+
+                    <b-card class="my-2 col mr-2">
+                        <!-- <div class="contact-form">
                             <h4 class="pb-3">설문조사 데이터</h4>
-                            <Chart />
-                        </div>
+
+
+                            <ChartMain />
+        
+                        </div> -->
+                        <ChartMain />
                     </b-card>
 
-                    <div class="my-2 col-4 g-0">
-                        <b-card class="mb-2">
+                    <div class="my-2 col-4 g-0 test">
+                        <b-card class="mb-2 ">
                             <Chart2 />
                         </b-card>
                         <b-card>
@@ -33,7 +94,7 @@
                             </div>
 
                             <div class="col-6">
-                               <button class="btn-start">
+                                <button class="btn-start">
                                     완료된 설문조사</button>
                             </div>
                         </div>
@@ -50,49 +111,22 @@
 
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody v-for="(val1, num1) in surveyData.projectGrid" :key="num1">
                                 <tr>
                                     <td>
-                                        1
+                                        {{num1}}
                                     </td>
                                     <td>
-                                        유튜브 시청자 패널 조사
+                                        {{val1.title}}
                                     </td>
                                     <td>
                                         79 / 150
                                     </td>
                                     <td>
-                                        2021-11-18
+                                        {{val1.edate}}
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        컵라면 수요도 조사
-                                    </td>
-                                    <td>
-                                        289 / 300
-                                    </td>
-                                    <td>
-                                        2021-12-01
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        배달 음식 플랫폼 설문 조사
-                                    </td>
-                                    <td>
-                                        300 / 300
-                                    </td>
-                                    <td>
-                                        2021-11-20
-                                    </td>
-                                </tr>
+                               
 
                             </tbody>
                         </table>
@@ -115,6 +149,11 @@
                     </b-card>
                     <!-- 위젯 종료 -->
 
+
+
+
+
+
                 </div>
 
             </div>
@@ -124,29 +163,39 @@
 </template>
 
 <script>
-    import data from '@/data/contact.json'
-    import Chart from '@/components/sections/4.MyPage/_Chart';
-    import Chart1 from '@/components/sections/4.MyPage/_Chart1';
-    import Chart2 from '@/components/sections/4.MyPage/_Chart2';
+    import data from '../../../data/contact.json'
+    import Chart from '../4.MyPage/_Chart';
+    import Chart1 from '../4.MyPage/_Chart1';
+    import Chart2 from '../4.MyPage/_Chart2';
+    import ChartMain from '../4.MyPage/_ChartMain';
+    import surveyData from '../../../data/_survey.json';
 
     export default {
         components: {
             Chart,
             Chart1,
-            Chart2
+            Chart2,
+            ChartMain,
         },
         data() {
             return {
                 data,
                 surveyData: false,
                 selectSurvey: "",
+                selected: '1',
+                surveyData,
+                
 
 
             }
         },
 
         methods: {
-
+            viewData(i) {
+                console.log(i)
+                this.testData = i 
+            },
+         
         }
     };
 </script>
@@ -181,4 +230,22 @@
             height: 60px;
         }
     }
+
+   
+
+    .text-center {
+        text-align: center;
+    }
+
+    .test {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .favorite_Selected {
+        border-radius: 30px !important;
+        display: inline;
+        font-size: 0.5em;
+    }
+
 </style>
