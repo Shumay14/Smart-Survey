@@ -60,7 +60,7 @@
     </div>
     <!-- 카테고리 선택 위젯 끝 -->
     <!-- 인기있는 설문 위젯 시작 -->
-    <div class="sidebar-widget">
+    <div class="sidebar-widget" style="margin-bottom:60px;">
       <h3 class="sidebar-title">{{ blogSidebar.popularPostTitle }}</h3>
       <lottie-player
         src="https://assets6.lottiefiles.com/packages/lf20_oblw8lrt.json"
@@ -104,8 +104,7 @@
 <script>
 import Web3 from "web3";
 export default {
-  props: ["blogSidebar", "catedata"],
-  name: "",
+  props: ["blogSidebar", "catedata"],  
   components: {},
   data() {
     return {
