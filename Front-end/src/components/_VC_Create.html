@@ -37,6 +37,13 @@
     <input type="text" id="signature"/>
   </div>
 
+  <div>
+    <button onclick="registerVC()">REGISTER VC</button>
+    <input type="text" id="nameVC"/>
+    <input type="text" id="genderVC"/>
+    <input type="text" id="ageVC"/>
+  </div>
+
 
   <div>
     <button onclick="getVC()">Set Your Address to getVC</button>
@@ -65,7 +72,7 @@
     JWTSignature
     
         
-    const VC = await createVC(header, payload);
+    const VC = await createVC(${header}, payload);
     const VP = await createVP(header, payload, signature);
     
     async function init() {
