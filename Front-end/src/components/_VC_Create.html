@@ -12,6 +12,13 @@
 
   <input type="text" id="">
 
+  <!-- connect wallet -->
+  <div>
+    <button onclick="init()">Connect Wallet</button>
+    <div id="account"></div>
+  </div>
+
+  <!-- getContract -->
   <div>
     <button onclick="GetContract()">Get Contract Instance</button>
     <div id="contract"></div>
@@ -56,7 +63,28 @@
     const VC = await createVC(header, payload);
     const VP = await createVP(header, payload, signature);
     
+    async function init() {
 
+    if (window.ethereum) {
+      web3 = new Web3(window.ethereum);
+      try {
+        // Request account access if needed
+        await window.ethereum.enable();
+        // Acccounts now exposed
+        web3.eth.getAccounts().then(function(accounts){
+          account = accounts[0]
+          document.getElementById("account").innerText = account
+        })
+      } catch (error) {
+      }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+      // Use Mist/MetaMask's provider.
+      web3 = window.web3;
+      console.log("Injected web3 detected.");
+    }
+    }
 
     async function GetContract() {
       
