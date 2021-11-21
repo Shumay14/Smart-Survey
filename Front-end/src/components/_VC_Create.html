@@ -12,6 +12,13 @@
 
   <input type="text" id="">
 
+  <!-- connect wallet -->
+  <div>
+    <button onclick="init()">Connect Wallet</button>
+    <div id="account"></div>
+  </div>
+
+  <!-- getContract -->
   <div>
     <button onclick="GetContract()">Get Contract Instance</button>
     <div id="contract"></div>
@@ -28,6 +35,13 @@
     <input type="text" id="header"/>
     <input type="text" id="payload"/>
     <input type="text" id="signature"/>
+  </div>
+
+  <div>
+    <button onclick="registerVC()">REGISTER VC</button>
+    <input type="text" id="nameVC"/>
+    <input type="text" id="genderVC"/>
+    <input type="text" id="ageVC"/>
   </div>
 
 
@@ -47,16 +61,43 @@
     
     import {JWTHeader, JWTPayload, JWTSignature} from "../../../DID-blockchain/models/createJWT.ts";
     
+
+    let provider;
+    let web3;
+    let account;
+    let contract;
     
     JWTHeader
     JWTPayload
     JWTSignature
     
+    document.getElementById("nameVC").innerText = _nameVC
         
-    const VC = await createVC(header, payload);
+    const VC = await createVC(${header}, payload);
     const VP = await createVP(header, payload, signature);
     
+    async function init() {
 
+    if (window.ethereum) {
+      web3 = new Web3(window.ethereum);
+      try {
+        // Request account access if needed
+        await window.ethereum.enable();
+        // Acccounts now exposed
+        web3.eth.getAccounts().then(function(accounts){
+          account = accounts[0]
+          document.getElementById("account").innerText = account
+        })
+      } catch (error) {
+      }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+      // Use Mist/MetaMask's provider.
+      web3 = window.web3;
+      console.log("Injected web3 detected.");
+    }
+    }
 
     async function GetContract() {
       
@@ -130,16 +171,6 @@
       document.getElementById("contract").innerText = contract._address
       console.log(contract)
   
-      
-      // raised_result
-      // document.getElementById("").innerText = web3.fromWei(eth.getBalance(this))
-  
-      // contract.methods.ownersArr().call().then(console.log)
-      // contract.methods.signs(account).call().then(function(signs_result) {
-      //     signs_result = _signs_result;
-      // })
-  
-      // let index = contract.methods.ownersArr.length
       await getVC()
       
       
