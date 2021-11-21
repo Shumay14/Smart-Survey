@@ -5,6 +5,7 @@ const controller = require("../controllers/controller");
 router.get("/api/survey", controller.getSurveyList);
 router.get("/api/survey/:index", controller.getFilteredSurveyList);
 router.get("/api/interest/:index", controller.getFilteredInterest);
+router.get("/api/vclist/:index", controller.getFilteredVcList);
 
 router.post("/api/survey", controller.addSurveyItem);
 

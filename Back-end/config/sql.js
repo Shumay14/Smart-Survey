@@ -5,6 +5,9 @@ module.exports = {
   getUserInterest: {
     cmd: `SELECT interests FROM T_USER`,
   },
+  getUserVclist: {
+    cmd: `SELECT vclist FROM T_USER`,
+  },
   addSurveyItem: {
     cmd: `INSERT INTO T_SURVEY VALUES
             (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,

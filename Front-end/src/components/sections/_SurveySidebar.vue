@@ -27,6 +27,7 @@
           <button
             style="border-radius: 30px"
             class="tagbtn"
+            :id="tag.name"
             @click="tagselectbtn(tag.name, $event)"
             v-bind:style="{ 'background-color': selectboxcolor }"
           >
@@ -58,11 +59,21 @@
       </ul>
     </div>
     <!-- 카테고리 선택 위젯 끝 -->
-
     <!-- 인기있는 설문 위젯 시작 -->
     <div class="sidebar-widget">
       <h3 class="sidebar-title">{{ blogSidebar.popularPostTitle }}</h3>
+      <lottie-player
+        src="https://assets6.lottiefiles.com/packages/lf20_oblw8lrt.json"
+        background="transparent"
+        speed="1"
+        stroke="color: red"
+        style="width: 300px; height: 200px"
+        loop
+        autoplay
+        v-show="loadingicon == 'loading'"
+      ></lottie-player>
       <div
+        v-show="loadingicon == 'loadshow'"
         class="sidebar-blog"
         v-for="(popularItem, num) in popularSurvey"
         :key="num"
@@ -86,7 +97,7 @@
         </div>
       </div>
     </div>
-    <!-- 인기있는 설문 위젯 끝 -->
+    <!-- 인기있're는 설문 위젯 끝 -->
   </div>
 </template>
 
@@ -104,6 +115,8 @@ export default {
       temp: [],
       popularList: [],
       listlist: [],
+      loadingicon: "loading",
+      vcData: [],
     };
   },
   setup() {},
@@ -111,6 +124,21 @@ export default {
     this.$store.commit("countnull");
   },
   async mounted() {
+    this.vcData = (
+      await this.$api(
+        "get",
+        `http://127.0.0.1:3000/api/vclist/` + this.$store.state.metamaskAdd
+      )
+    ).map((obj) => {
+      return Object.keys(JSON.parse(obj.vclist));
+    })[0];
+
+    for (var i = 0; i < this.vcData.length; i++) {
+      this.$store.commit("vcplus", this.vcData[i]);
+      document.getElementById(this.vcData[i]).style.background = "black";
+      document.getElementById(this.vcData[i]).style.color = "white";
+    }
+
     const web3 = new Web3(window.ethereum);
 
     var _contractAddr = "0x779155D5F1b4E06e73B870c6aF37A7FC6CdE88fE";
@@ -150,7 +178,6 @@ export default {
     };
 
     var _data = web3.eth.abi.encodeFunctionSignature(_abi.getNumOfSurvey);
-
     var _surveyAmount = web3.utils.hexToNumber(
       await web3.eth.call({
         to: _contractAddr,
@@ -194,6 +221,7 @@ export default {
     // var result = popularList.map(async (idx) =>
     //   await this.$api('get', `http://127.0.0.1:3000/api/survey/${idx}`)
     // );
+    this.loadingicon = "loadshow";
 
     var result = [];
     result.push(

@@ -46,6 +46,22 @@ module.exports = {
       });
     }
   },
+  getFilteredVcList: async (req, res) => {
+    try {
+      console.log("getUserVclist");
+      const tmp = JSON.stringify(req.params.index);
+      const where = ` where account = ${tmp}`;
+      const queryResult = await mariaDB.sendQuery("getUserVclist", "", where);
+      res.send(queryResult);
+    } catch (err) {
+      res.status(500).send({
+        error: err,
+        queryName: req.params.alias,
+        bodyParams: req.body.param,
+        where: req.body.where,
+      });
+    }
+  },
   addSurveyItem: async (req, res) => {
     try {
       var params = Object.values(req.body);
