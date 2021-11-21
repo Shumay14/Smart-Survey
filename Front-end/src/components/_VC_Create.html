@@ -1,88 +1,158 @@
-<script>
-import Web3 from "web3";
-import dayjs from "dayjs";
-import ModalSelect from "../components/sections/_ModalSelect.vue";
-
-import { createVC, createVP } from "../../../DID-blockchain/models/createJWT.ts";
-
-import {JWTHeader, JWTPayload, JWTSignature} from "../../../DID-blockchain/models/createJWT.ts";
-
-
-JWTHeader
-JWTPayload
-JWTSignature
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 
 
-const VC = createVC(header, payload);
-const VP = createVP(header, payload, signature);
+<body>
 
-const _contractAddr = "0x58f82e407C37e74c6D76E205534659146D794a90";
-const _abi = [
-    {
-      "inputs": [
+  <input type="text" id="">
+
+  <div>
+    <button onclick="createVC()">CREATE VC</button>
+    <input type="text" id="header"/>
+    <input type="text" id="payload"/>
+  </div>
+
+  <div>
+    <button onclick="createVP()">CREATE VP</button>
+    <input type="text" id="header"/>
+    <input type="text" id="payload"/>
+    <input type="text" id="signature"/>
+  </div>
+
+  
+  <div>
+    <button onclick="getVC()">Set Your Address to getVC</button>
+    <input type="text" id="setaddress"/>
+  </div>
+
+
+  <script type="text/javascript">
+
+    import Web3 from "web3";
+    import dayjs from "dayjs";
+    import ModalSelect from "./sections/_ModalSelect.vue";
+    
+    import { createVC, createVP } from "../../../DID-blockchain/models/createJWT.ts";
+    
+    import {JWTHeader, JWTPayload, JWTSignature} from "../../../DID-blockchain/models/createJWT.ts";
+    
+    
+    JWTHeader
+    JWTPayload
+    JWTSignature
+    
+        
+    const VC = await createVC(header, payload);
+    const VP = await createVP(header, payload, signature);
+    
+
+
+    async function GetContract() {
+      
+      let abi = [
         {
-          "internalType": "address",
-          "name": "_add",
-          "type": "address"
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_add",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "_num",
+              "type": "uint256"
+            }
+          ],
+          "name": "getVC",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "nameVC",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "genderVC",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "ageVC",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct registryDID.repositoryVC",
+              "name": "",
+              "type": "tuple"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
         },
         {
-          "internalType": "uint256",
-          "name": "_num",
-          "type": "uint256"
-        }
-      ],
-      "name": "getVC",
-      "outputs": [
-        {
-          "components": [
+          "inputs": [
             {
               "internalType": "string",
-              "name": "nameVC",
+              "name": "_nameVC",
               "type": "string"
             },
             {
               "internalType": "string",
-              "name": "genderVC",
+              "name": "_genderVC",
               "type": "string"
             },
             {
               "internalType": "string",
-              "name": "ageVC",
+              "name": "_ageVC",
               "type": "string"
             }
           ],
-          "internalType": "struct registryDID.repositoryVC",
-          "name": "",
-          "type": "tuple"
+          "name": "registerVC",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
         }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "_nameVC",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_genderVC",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_ageVC",
-          "type": "string"
-        }
-      ],
-      "name": "registerVC",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    }
-];
+    ]
+      contract = await new web3.eth.Contract(abi, "0x58f82e407C37e74c6D76E205534659146D794a90")
+      document.getElementById("contract").innerText = contract._address
+      console.log(contract)
+  
+      
+      // raised_result
+      // document.getElementById("").innerText = web3.fromWei(eth.getBalance(this))
+  
+      // contract.methods.ownersArr().call().then(console.log)
+      // contract.methods.signs(account).call().then(function(signs_result) {
+      //     signs_result = _signs_result;
+      // })
+  
+      // let index = contract.methods.ownersArr.length
+      await getVC()
+      
+      
+  }
+    
+
+
+  </script>    
+  
+</body>
+
+</html>
+
+
+
+
+
+
 
 
 
@@ -95,6 +165,9 @@ if (typeof web3 !== 'undefined') {
     App.web3Provider = new web3.providers.HttpProvider('http://127.0.0.1:8545');
     web3 = new Web3(App.web3Provider);
   }
+
+
+
 
 
 
