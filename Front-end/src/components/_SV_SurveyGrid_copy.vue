@@ -35,20 +35,21 @@
             </h3>
             <!-- <div class="type">Mexican / American</div> -->
             <div class="location margintop">
-              보상지급액
+              <b>보상지급액</b>
               <span
                 class="opening"
                 style="font-size: 2em; margin-left: 0.5em; font-weight: bold"
               >
-                {{ project.reward }}
+                <!-- {{ project.reward }} -->
+                {{ this.reward }}
               </span>
               <span
                 class="opening"
                 style="margin-left: 0.5em; font-weight: bold"
               >
-                SUB</span
-              >
-              <span> = {{ project.reward * 1300 }}￦</span>
+                SUB
+              </span>
+              <span style="margin-left:0.5rem;"> <span style="font-size:5px; margin-right:0.5rem;"> ≈</span> {{ this.won }}￦</span>
             </div>
           </div>
         </div>
@@ -77,7 +78,7 @@
           <div class="margintop" style="margin-left: 1rem">
             <a
               class="btn_1"
-              @mouseover="btnHoverin()"
+              @mouseover="btnHoverin(project.idx-1)"
               @mouseout="btnHoverout()"
             >
               {{ btnname }}
@@ -107,12 +108,22 @@ export default {
       btnname: "참여하기",
       allSelect: "#e8e8e8",
       clickSelect: "",
+      reward : '-',
+      won : '-',
       // iconimage: "fas fa-suitcase-rolling fa-6x",
     };
   },
   setup() {},
   created() {},
   unmounted() {},
+  async mounted() {
+    
+    this.reward = await this.getReward(this.project.idx) / 1000000000000;
+    this.reward = (Math.round(this.reward*100 + 1) * 10)/1000;
+
+    this.won = (Math.round(this.reward * 12)).toLocaleString('ko-KR');;
+
+  },
   methods: {
     iconimage(catename) {
       catename = this.$store.state.eng_category[catename];
@@ -131,10 +142,54 @@ export default {
           break;
       }
     },
-    async getCharmyeoInfo() {
+    async getReward(surveyIndex){
+      
       const web3 = new Web3(window.ethereum);
 
-      var _contractAddr = "0x475853e073b9003Dbfb46Da3Dda197c39eE37991";
+      var _contractAddr = "0xd13D301B0AD89A576f2416D3Ba03173E489356eB";
+
+      var _params = [surveyIndex];
+      var _abi = {
+        estimateReward: {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "surveyIndex",
+              type: "uint256"
+            }
+          ],
+          name: "estimateReward",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256"
+            }
+          ],
+          stateMutability: "view",
+          type: "function"
+        },
+      }
+      console.log(_abi.estimateReward);
+
+      var _reward = 0;
+
+      _reward = web3.utils.hexToNumber(
+        await web3.eth.call({
+          to: _contractAddr,
+          data: web3.eth.abi.encodeFunctionCall(
+            _abi.estimateReward,
+            _params
+          ),
+        })
+      );
+
+      return _reward;
+    },
+    async getCharmyeoInfo(surveyIndex) {
+      const web3 = new Web3(window.ethereum);
+
+      var _contractAddr = "0xd13D301B0AD89A576f2416D3Ba03173E489356eB";
       var _abi = {
         getCurrentUserNumber: {
           inputs: [
@@ -176,7 +231,7 @@ export default {
         },
       };
 
-      var _params = [0];
+      var _params = [surveyIndex];
       console.log(_abi.getCurrentUserNumber);
 
       var _res = {
@@ -203,8 +258,8 @@ export default {
 
       return _res;
     },
-    async btnHoverin() {
-      var items = await this.getCharmyeoInfo();
+    async btnHoverin(surveyIndex) {
+      var items = await this.getCharmyeoInfo(surveyIndex);
       console.log(items);
       this.btnname = `${items.currentUserNumber}/${items.userLimit}`;
     },
