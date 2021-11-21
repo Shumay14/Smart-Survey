@@ -39,7 +39,6 @@ export default {
     Breadcrumb,
     SurveySlider,
     SurveyDetailWrapper,
-    BrandCarousel,
     Footer,
     OffCanvasMobileMenu,
   },
