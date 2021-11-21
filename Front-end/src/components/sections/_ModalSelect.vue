@@ -340,7 +340,8 @@
         </div>
       </div>
     </div>
-    <SurveyModal v-if="showModal" @close="showModal = false"> </SurveyModal>
+    <SurveyModal :project="project" v-if="showModal" @close="showModal = false">
+    </SurveyModal>
   </div>
 </template>
 <script>
