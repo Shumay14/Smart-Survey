@@ -40,6 +40,7 @@ export function hexToBytes(s: string): Uint8Array {
   return u8a.fromString(input.toLowerCase(), 'base16')
 }
 
+/////#####
 export function encodeBase64url(s: string): string {
   return bytesToBase64url(u8a.fromString(s))
 }
@@ -47,6 +48,7 @@ export function encodeBase64url(s: string): string {
 export function decodeBase64url(s: string): string {
   return u8a.toString(base64ToBytes(s))
 }
+/////#####
 
 export function bytesToHex(b: Uint8Array): string {
   return u8a.toString(b, 'base16')
