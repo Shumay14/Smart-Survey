@@ -14,17 +14,8 @@
 </template>
 
 <script>
-import FooterAbout from "@/components/FooterAbout.vue";
-import FooterLink from "@/components/FooterLink.vue";
-import ContactWidget from "@/components/ContactWidget.vue";
-
 import data from "../data/footer.json";
 export default {
-  components: {
-    FooterAbout,
-    FooterLink,
-    ContactWidget,
-  },
   data() {
     return {
       data,
