@@ -135,7 +135,7 @@
 
           <div class="col-lg-12">
             <span class="title-admin-main"> 참여 조건 설정</span>
-            <span class="required"> *필수사항 </span>
+            <!-- <span class="required"> *필수사항 </span> -->
             <table class="table table-hover">
               <thead align="center">
                 <tr>
@@ -207,10 +207,11 @@ export default {
         title: "",
         img: "",
         desc: "",
-        sdate: 0,
-        edate: 0,
+        sdate: 211121,
+        edate: 221121,
         reward: 0,
         max: 1,
+        vp: {},
         url: "",
       },
       privacyList: [
@@ -302,6 +303,7 @@ export default {
         })
         .filter((item) => item != undefined);
 
+      // Object.assign(A, B) = JSON Object 형식 A, B를 하나로 합침  
       for (var vpItem of iterableVP) {
         vpObject = Object.assign(vpObject, vpItem);
       }
@@ -316,11 +318,37 @@ export default {
       this.$forceUpdate();
     },
 
+    validateCheck(){
+      var flag = true;
+
+      if (this.defaultselect=="선택"){
+        alert("카테고리를 선택해주세요.");
+        flag=false;
+      }
+      else if (this.surveyInfo.title==""){
+        alert("제목을 선택해주세요.");
+        flag=false;
+      }
+      else if (this.surveyInfo.url==""){
+        alert("설문지 URL을 입력해주세요.");
+        flag=false;
+      }
+      else if (this.surveyInfo.reward <= 0){
+        alert("0 이상의 보상 지급액을 입력해주세요.");
+        flag=false;
+      }
+      else if (this.surveyInfo.sdate < 211121 || this.surveyInfo.edate <= 211121){
+        alert("유효하지 않은 날짜 형식입니다. 다시 입력해주세요.");
+        flag=false;
+      }
+      
+      if(!flag) window.scrollTo(0,180);
+
+      return flag;
+    },
     async addSurvey() {
-      // DB에 설문지 생성
-      console.log("POST", this.surveyInfo);
-      this.surveyInfo.vp = JSON.stringify(this.surveyInfo.vp);
-      this.$api("POST", "http://127.0.0.1:3000/api/survey", this.surveyInfo);
+      // 설문 데이터 입력 여부 및 유효성 검증
+      if(!this.validateCheck()) return 0;
 
       // 블록체인에 설문지 생성
       const web3 = new Web3(window.ethereum);
@@ -355,6 +383,16 @@ export default {
         value: web3.utils.toWei(String(this.surveyInfo.reward), "ether"),
         data: _data,
       });
+      
+      // DB에 설문지 생성
+      console.log("POST", this.surveyInfo);
+      
+      this.surveyInfo.vp = JSON.stringify(this.surveyInfo.vp)
+      
+      this.$api("POST", "http://127.0.0.1:3000/api/survey", this.surveyInfo);
+
+      alert("설문이 생성되었습니다.");
+      location.reload();
     },
   },
   computed: {
