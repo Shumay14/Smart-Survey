@@ -4,29 +4,6 @@
     {
       "inputs": [
         {
-          "internalType": "string",
-          "name": "_nameVC",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_genderVC",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_ageVC",
-          "type": "string"
-        }
-      ],
-      "name": "registerVC",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
           "internalType": "address",
           "name": "_add",
           "type": "address"
@@ -63,6 +40,29 @@
         }
       ],
       "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_nameVC",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_genderVC",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_ageVC",
+          "type": "string"
+        }
+      ],
+      "name": "registerVC",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     }
   ],
