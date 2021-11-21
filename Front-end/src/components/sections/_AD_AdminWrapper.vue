@@ -50,7 +50,7 @@
           <div class="col-9 section-space--bottom--20">
             <span class="title-admin-main"> 제목 </span>
             <span class="required"> *필수사항 </span>
-            <input type="text" v-model="surveyInfo.title" />
+            <input type="text" v-model="surveyInfo.title" placeholder="설문 주제에 대한 제목을 입력하세요"/>
           </div>
 
           <!-- <div class="col-7 section-space--bottom--20 ">
@@ -66,13 +66,13 @@
 
           <div class="col-12 section-space--bottom--20">
             <span class="title-admin-main"> 설명 </span>
-            <input type="text" v-model="surveyInfo.desc" />
+            <input type="text" v-model="surveyInfo.desc" placeholder="설문에 대한 상세 설명을 입력하세요"/>
           </div>
 
           <div class="col-12 section-space--bottom--20">
             <span class="title-admin-main"> 외부 설문 URL </span>
             <span class="required"> *필수사항 </span>
-            <input type="text" v-model="surveyInfo.url" />
+            <input type="text" v-model="surveyInfo.url" placeholder="http://ko.surveymonkey.com/example/1"/>
           </div>
 
           <div class="col-lg-4 col-sm-12 section-space--bottom--20">
@@ -277,6 +277,7 @@ export default {
       ],
     };
   },
+  // 가짜 설문 생성툴
   // mounted(){
   //   this.surveyInfo.reward = String(Math.round(Math.random()*1000/3)/10000);
   //   this.surveyInfo.max = Math.round((Math.random()*100) + 1) * 10;
@@ -325,7 +326,7 @@ export default {
       const web3 = new Web3(window.ethereum);
 
       var _account = (await web3.eth.getAccounts())[0];
-      var _contractAddr = "0x779155D5F1b4E06e73B870c6aF37A7FC6CdE88fE";
+      var _contractAddr = "0xd13D301B0AD89A576f2416D3Ba03173E489356eB";
       var _abi = {
         inputs: [
           {

@@ -141,7 +141,7 @@ export default {
 
     const web3 = new Web3(window.ethereum);
 
-    var _contractAddr = "0x779155D5F1b4E06e73B870c6aF37A7FC6CdE88fE";
+    var _contractAddr = "0xd13D301B0AD89A576f2416D3Ba03173E489356eB";
     var _abi = {
       getNumOfSurvey: {
         inputs: [],
