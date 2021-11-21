@@ -4,8 +4,8 @@ var Survey = require('./build/contracts/Survey.json')
 module.exports = {
     
 
-    REGISTRYDID_ADDRESS: '0x',
-    SURVEY_ADDRESS: '0x',
+    REGISTRYDID_ADDRESS: '0x58f82e407C37e74c6D76E205534659146D794a90',
+    SURVEY_ADDRESS: '0xd13D301B0AD89A576f2416D3Ba03173E489356eB',
 
     REGISTRYDID_ABI: registryDID.abi,
     SURVEY_ABI: Survey.abi,
