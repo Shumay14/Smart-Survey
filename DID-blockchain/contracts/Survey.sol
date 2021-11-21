@@ -19,6 +19,7 @@ contract Survey{
     mapping(uint => SurveyItem) surveyInfo; // 설문지 정보 리스트
     
     constructor(){
+        // msg.sender == tx.origin
         contractOwner = msg.sender;
     }
 
@@ -88,7 +89,7 @@ contract Survey{
         return surveyInfo[surveyIndex].totalAmount / surveyInfo[surveyIndex].userLimit;
     }
 
-    // OK 설문에 참여한 유저에게 보상을 줌, 보상수령
+    // OK 설문에 참여한 유저에게 보상을 줌, 보상 수령
     function claimReward(uint surveyIndex, address payable _to) private {
         uint reward = surveyInfo[surveyIndex].totalAmount / surveyInfo[surveyIndex].userLimit;
         _to.transfer(reward);
@@ -101,5 +102,17 @@ contract Survey{
         require(msg.sender == surveyInfo[surveyIndex].owner);
         
         _to.transfer(surveyInfo[surveyCount].currentAmount);
+    }
+
+    // 설문지 컨트랙트에 보관된 Reward 총합
+    function getTotalBalance() view public returns (uint) {
+        return address(this).balance;
+    }
+    
+    // 설문지 컨트랙트의 모든 보상금을 관리자 지갑으로 환수
+    function destructor(address payable _to) public{
+        require(contractOwner == msg.sender);
+        
+        _to.transfer(this.getTotalBalance());
     }
 }
