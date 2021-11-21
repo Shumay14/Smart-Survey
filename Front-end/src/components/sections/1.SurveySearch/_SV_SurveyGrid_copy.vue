@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div @mouseover="btnHoverin()"
+      @mouseout="btnHoverout()">
     <a
       class="strip_list wow fadeIn"
       data-wow-delay="0.1s"
@@ -78,7 +79,7 @@
           <div class="margintop" style="margin-left: 1rem">
             <a
               class="btn_1"
-              @mouseover="btnHoverin(project.idx-1)"
+              @mouseover="btnHoverin()"
               @mouseout="btnHoverout()"
             >
               {{ btnname }}
@@ -105,7 +106,11 @@ export default {
   components: { ModalSelect },
   data() {
     return {
-      btnname: "참여하기",
+      userCountInfo:{
+        current : "-",
+        limit : "-",
+      },
+      btnname: "",
       allSelect: "#e8e8e8",
       clickSelect: "",
       reward : '-',
@@ -118,10 +123,20 @@ export default {
   unmounted() {},
   async mounted() {
     
-    this.reward = await this.getReward(this.project.idx) / 1000000000000;
+    // 각 설문지 별 Reward를 불러오는 부분
+    this.reward = await this.getReward(this.project.idx - 1) / 1000000000000;
     this.reward = (Math.round(this.reward*100 + 1) * 10)/1000;
 
     this.won = (Math.round(this.reward * 12)).toLocaleString('ko-KR');;
+
+    // 각 설문지 별 참여자 정보를 불러오는 부분
+    this.btnname = `${this.userCountInfo.current} / ${this.userCountInfo.limit}`;
+    this.userCountInfo = await this.getCharmyeoInfo(this.project.idx - 1);
+    
+    console.log(this.userCountInfo);
+    
+    this.btnname = `${this.userCountInfo.currentUserNumber}/${this.userCountInfo.userLimit}`;
+
 
   },
   methods: {
@@ -258,13 +273,12 @@ export default {
 
       return _res;
     },
-    async btnHoverin(surveyIndex) {
-      var items = await this.getCharmyeoInfo(surveyIndex);
-      console.log(items);
-      this.btnname = `${items.currentUserNumber}/${items.userLimit}`;
-    },
-    btnHoverout() {
+    btnHoverin() {
       this.btnname = "참여하기";
+    },
+    async btnHoverout() {
+      
+      this.btnname = `${this.userCountInfo.currentUserNumber}/${this.userCountInfo.userLimit}`;
     },
     ddaylist(a, b) {
       // Json.parse -> object로 변환
@@ -284,6 +298,8 @@ export default {
 <style scoped>
 a:hover {
   color: black;
+  /* color: #5387DB */
+  color: #3E4A5C
 }
 .margintop {
   margin-top: 1.5em;
