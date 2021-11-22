@@ -2,10 +2,28 @@
     <div >
 
         <section class="content">
-            <!-- 페이지 네임 -->
+            <!-- section1 -->
             <div class="container">
                 <h1>마이페이지</h1>
                 <h1>MetaMask Encryption example</h1>
+                <div>
+                    <input type="text" id="encryptInput" v-model="data" placeholder="data to encrypt" />
+                    <button @click="encrypt()">encrypt</button>
+                    <output id="encryptedMessage"></output>
+                </div>
+                <div>
+                    <input type="text" id="decryptInput" placeholder="data to decrypt" />
+                    <button @click="decrypt()">decrypt</button>
+                    <output id="decryptedMessage"></output>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <!-- section2 -->
+            <div class="container">
+                <h1>connect wallet</h1>
+                
                 <div>
                     <input type="text" id="encryptInput" v-model="data" placeholder="data to encrypt" />
                     <button @click="encrypt()">encrypt</button>
@@ -29,6 +47,10 @@
     const Buffer = require("buffer/").Buffer;
     const sigUtil = require("eth-sig-util");
 
+    import Web3 from "web3";
+    import { createVC, createVP } from "../../../DID-blockchain/models/createJWT.js";
+    import {JWTHeader, JWTPayload, JWTSignature} from "../../../DID-blockchain/models/createJWT.js";
+
     export default {
         name: "",
         components: {
@@ -38,6 +60,14 @@
             return {
                 data: "",
                 encrypdata: "",
+                provider: null,
+                web3: null,
+                account: null,
+                contract: null,
+                Sub: null,
+                Title: null,
+                Data: null,
+                
             };
         },
         computed: {

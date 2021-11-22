@@ -10,8 +10,7 @@
 
 <body>
 
-  <input type="text" id="">
-
+  
   <!-- connect wallet -->
   <div>
     <button onclick="init()">Connect Wallet</button>
@@ -54,12 +53,10 @@
   <script type="text/javascript">
 
     import Web3 from "web3";
-    import dayjs from "dayjs";
-    import ModalSelect from "./sections/_ModalSelect.vue";
+      
+    import { createVC, createVP } from "../../../DID-blockchain/models/createJWT.js";
     
-    import { createVC, createVP } from "../../../DID-blockchain/models/createJWT.ts";
-    
-    import {JWTHeader, JWTPayload, JWTSignature} from "../../../DID-blockchain/models/createJWT.ts";
+    import {JWTHeader, JWTPayload, JWTSignature} from "../../../DID-blockchain/models/createJWT.js";
     
 
     let provider;
@@ -67,11 +64,34 @@
     let account;
     let contract;
     
-    JWTHeader
-    JWTPayload
-    JWTSignature
+    let Sub;
+    let Title;
+    let Data;
     
-    document.getElementById("nameVC").innerText = _nameVC
+    let RawData;
+    let PubKey;
+
+    Sub = document.getElementById("nameVC").innerText
+    Sub = document.getElementById("nameVC").innerText
+    Sub = document.getElementById("nameVC").innerText
+    
+    const JWTHeader = {
+      typ: "JWT",
+      alg: "X25519_XSalsa20_Poly1305"
+    };
+
+    const JWTPayload = {
+      sub: `${Sub}`,
+      title: `${Title}`,
+      data: `${Data}`
+    };
+
+    const JWTSignature = {
+      rawData: `${RawData}`,
+      pubKey: `${PubKey}`
+    };
+    
+    
         
     const VC = await createVC(${header}, payload);
     const VP = await createVP(header, payload, signature);
