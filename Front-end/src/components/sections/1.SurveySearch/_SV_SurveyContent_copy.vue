@@ -25,6 +25,7 @@
 
 <script>
 import SurveyGrid from "@/components/sections/1.SurveySearch/_SV_SurveyGrid_copy.vue";
+import Web3 from "web3";
 
 export default {
   components: {
@@ -48,11 +49,60 @@ export default {
   },
 
   methods: {
-    addSurveyList() {
+    async getReward(surveyIndex) {
+      const web3 = new Web3(window.ethereum);
+
+      var _contractAddr = "0xd13D301B0AD89A576f2416D3Ba03173E489356eB";
+
+      var _params = [surveyIndex];
+      var _abi = {
+        estimateReward: {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "surveyIndex",
+              type: "uint256",
+            },
+          ],
+          name: "estimateReward",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+      };
+
+      var _reward = 0;
+
+      _reward = web3.utils.hexToNumber(
+        await web3.eth.call({
+          to: _contractAddr,
+          data: web3.eth.abi.encodeFunctionCall(_abi.estimateReward, _params),
+        })
+      );
+      _reward = _reward / 1000000000000;
+      _reward = (Math.round(_reward * 100 + 1) * 10) / 1000;
+
+      return _reward;
+    },
+    async addSurveyList() {
       let cnt = 0;
+      var tmp = 0;
+
+      var rewardtmp = []; //sort된 변수
+      var rewardtmp2 = [];
+      var rewardindex = [];
 
       while (this.surveyData.length != this.showUpIdx) {
-        var item = this.surveyData[this.showUpIdx]; // 설문지 리스트에서 인덱스로 가져온 '설문JSON'
+        var item = this.surveyData[this.showUpIdx];
+        // 설문지 리스트에서 인덱스로 가져온 '설문JSON'
+        rewardtmp.push(await this.getReward(this.showUpIdx));
+        rewardtmp2.push(await this.getReward(this.showUpIdx));
 
         if (cnt == 7) break;
         this.showUpList.push(item);
@@ -60,6 +110,19 @@ export default {
         cnt++;
         console.log(item, " added");
       }
+
+      this.showUpList;
+      rewardtmp.sort((a, b) => {
+        return b - a;
+      });
+
+      console.log("rewardtmp: " + rewardtmp);
+      console.log("rewardtmp2: " + rewardtmp2);
+
+      for (var i = 0; i < rewardtmp.length; i++) {
+        rewardindex.push(rewardtmp.indexOf(rewardtmp2[i]));
+      }
+      console.log(rewardindex);
     },
 
     CheckVcCategory(cate, vcObj) {
@@ -94,13 +157,6 @@ export default {
         }
       }
       return flag;
-    },
-    asdf() {
-      console.log(
-        this.$store.state.kor_category[
-          this.$store.state.eng_category.indexOf(this.surveyData[0].category)
-        ]
-      );
     },
   },
 };

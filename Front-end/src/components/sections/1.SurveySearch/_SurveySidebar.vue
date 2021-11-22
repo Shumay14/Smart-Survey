@@ -11,10 +11,16 @@
     </div> -->
     <div id="tools">
       <div class="styled-select">
-        <select name="sort_rating" id="sort_rating">
-          <option value="" selected>Sort by ranking</option>
-          <option value="lower">Lowest ranking</option>
-          <option value="higher">Highest ranking</option>
+        <select
+          name="sort_rating"
+          id="sort_rating"
+          v-model="selectkey"
+          @change="rewardsortmeth"
+        >
+          <option value="defaultsort" selected>기본순</option>
+          <option value="rewardsort">보상지급액순</option>
+          <option value="ddaysort">남은일수순</option>
+          <option value="partisort">참여자순</option>
         </select>
       </div>
     </div>
@@ -116,7 +122,7 @@ import Web3 from "web3";
 import VcModalSelect from "@/components/sections/1.SurveySearch/_VcModalSelect.vue";
 
 export default {
-  props: ["blogSidebar", "catedata"],
+  props: ["blogSidebar", "catedata", "rewardSort"],
   name: "",
   components: { VcModalSelect },
   data() {
@@ -129,11 +135,13 @@ export default {
       listlist: [],
       loadingicon: "loading",
       vcData: [],
+      selectkey: "defaultsort",
     };
   },
   setup() {},
   created() {
     this.$store.commit("countnull");
+    this.$store.commit("selectdefault");
   },
   async mounted() {
     this.vcData = (
@@ -237,8 +245,15 @@ export default {
 
     var result = [];
 
-    for(var popularItem of this.popularList)
-      result.push((await this.$api("get", `http://127.0.0.1:3000/api/survey/${popularItem}`))[0]);
+    for (var popularItem of this.popularList)
+      result.push(
+        (
+          await this.$api(
+            "get",
+            `http://127.0.0.1:3000/api/survey/${popularItem}`
+          )
+        )[0]
+      );
 
     console.log("POP LIST ", result);
     this.popularSurvey = result;
@@ -312,6 +327,10 @@ export default {
     },
     iconselec() {
       return true;
+    },
+    rewardsortmeth() {
+      this.$store.commit("selectsort", this.selectkey);
+      console.log(this.$store.state.selectedsort);
     },
   },
 };

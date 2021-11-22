@@ -10,6 +10,7 @@ Vue.mixin(mixins);
 const store = new Vuex.Store({
   state() {
     return {
+      selectedsort: "defaultsort",
       KakaoUser: {},
       metamaskAdd: null,
       metamaskShortAdd: null,
@@ -72,6 +73,12 @@ const store = new Vuex.Store({
     countnull(state) {
       state.categorylist.splice(0);
       state.vsgradelist.splice(0);
+    },
+    selectdefault(state) {
+      state.selectedsort = "defaultsort";
+    },
+    selectsort(state, data) {
+      state.selectedsort = data;
     },
     testtesttest(state) {
       // var tmp = ["travel", "car"];

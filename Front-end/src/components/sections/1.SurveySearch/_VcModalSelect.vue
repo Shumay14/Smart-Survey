@@ -55,7 +55,7 @@
             <span style="font-weight: bold; color: green" v-if="certi == 3"
               >인증완료</span
             >
-            <p> {{ this.logMsg }} </p>
+            <p>{{ this.logMsg }}</p>
             <!-- <lottie-player
               src="https://assets6.lottiefiles.com/packages/lf20_oblw8lrt.json"
               background="transparent"
@@ -72,7 +72,7 @@
             ></lottie-player> -->
           </div>
 
-          <div class="modal-footer">
+          <!-- <div class="modal-footer">
             <button
               type="button"
               class="btn btn-primary"
@@ -80,7 +80,7 @@
             >
               저장
             </button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -93,9 +93,9 @@ export default {
   components: {},
   data() {
     return {
-      logMsg:"VC 생성 대기중",
-      msgCnt:0,
-      msgQueue:[
+      logMsg: "VC 생성 대기중",
+      msgCnt: 0,
+      msgQueue: [
         `VC 인증 서버 연결중...\\`,
         `VC 인증 서버 연결중...--`,
         `VC 인증 서버 연결중.../`,
@@ -206,13 +206,12 @@ export default {
       this.timecheck(vcname);
     },
     timecheck(vcname) {
-        
       var timerId = setInterval(() => {
         this.logMsg = this.msgQueue[this.msgCnt];
         this.msgCnt++;
       }, 100);
 
-      console.log(this.msgQueue.length - 1)*100
+      console.log(this.msgQueue.length - 1) * 100;
       // clearInterval(timerId);
       setTimeout(() => {
         clearInterval(timerId);
@@ -221,8 +220,8 @@ export default {
         this.$store.commit("vcplus", vcname);
         this.changecolor();
         console.log(vcname);
-        console.log("끝")
-      }, (this.msgQueue.length)*100)
+        console.log("끝");
+      }, this.msgQueue.length * 100);
     },
   },
 };

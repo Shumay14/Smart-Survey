@@ -49,7 +49,10 @@
               >
                 SUB
               </span>
-              <span style="margin-left:0.5rem;"> <span style="font-size:5px; margin-right:0.5rem;"> ≈</span> {{ this.won }}￦</span>
+              <span style="margin-left: 0.5rem">
+                <span style="font-size: 5px; margin-right: 0.5rem"> ≈</span>
+                {{ this.won }}￦</span
+              >
             </div>
           </div>
         </div>
@@ -68,14 +71,23 @@
               "day"
             ) -->
         <div class="col-md-3">
-          <h3 class="padtop pb-3" style="color: #ff7f00; text-align: center; 
-              font-size:17px; 
-              letter-spacing:-0.4px; 
-              position:relative; 
+          <h3
+            class="padtop pb-3"
+            style="
+              color: #ff7f00;
+              text-align: center;
+              font-size: 17px;
+              letter-spacing: -0.4px;
+              position: relative;
               top: 2px;
-              left:-24px;">
-            {{ this.ddaylist(project.sdate, project.edate) }}일 | 
-            {{ this.userCountInfo.userLimit - this.userCountInfo.currentUserNumber}}명 남음
+              left: -24px;
+            "
+          >
+            {{ this.ddaylist(project.sdate, project.edate) }}일 |
+            {{
+              this.userCountInfo.userLimit -
+              this.userCountInfo.currentUserNumber
+            }}명 남음
           </h3>
           <!-- <button @click="ddaylist(project.sdate, project.edate)">test</button> -->
           <!-- <h5 class="padtop" style="color: red; text-align: center">
@@ -102,17 +114,17 @@ import dayjs from "dayjs";
 import ModalSelect from "@/components/sections/1.SurveySearch/_ModalSelect.vue";
 
 export default {
-  props: ["project", "surveyIndex"],
+  props: ["project"],
   name: "",
   components: { ModalSelect },
   data() {
     return {
-      userCountInfo:{},
+      userCountInfo: {},
       btnname: "참여하기",
       allSelect: "#e8e8e8",
       clickSelect: "",
-      reward : '-',
-      won : '-',
+      reward: "-",
+      won: "-",
       // iconimage: "fas fa-suitcase-rolling fa-6x",
     };
   },
@@ -120,21 +132,18 @@ export default {
   created() {},
   unmounted() {},
   async mounted() {
-    
     // 각 설문지 별 Reward를 불러오는 부분
-    this.reward = await this.getReward(this.project.idx - 1) / 1000000000000;
-    this.reward = (Math.round(this.reward*100 + 1) * 10)/1000;
+    this.reward = (await this.getReward(this.project.idx - 1)) / 1000000000000;
+    this.reward = (Math.round(this.reward * 100 + 1) * 10) / 1000;
 
-    this.won = (Math.round(this.reward * 12)).toLocaleString('ko-KR');;
+    this.won = Math.round(this.reward * 12).toLocaleString("ko-KR");
 
     // 각 설문지 별 참여자 정보를 불러오는 부분
     this.userCountInfo = await this.getCharmyeoInfo(this.project.idx - 1);
-    
+
     console.log(this.userCountInfo);
-    
+
     // this.btnname = `${this.userCountInfo.currentUserNumber}/${this.userCountInfo.userLimit}`;
-
-
   },
   methods: {
     iconimage(catename) {
@@ -154,8 +163,7 @@ export default {
           break;
       }
     },
-    async getReward(surveyIndex){
-      
+    async getReward(surveyIndex) {
       const web3 = new Web3(window.ethereum);
 
       var _contractAddr = "0xd13D301B0AD89A576f2416D3Ba03173E489356eB";
@@ -167,21 +175,21 @@ export default {
             {
               internalType: "uint256",
               name: "surveyIndex",
-              type: "uint256"
-            }
+              type: "uint256",
+            },
           ],
           name: "estimateReward",
           outputs: [
             {
               internalType: "uint256",
               name: "",
-              type: "uint256"
-            }
+              type: "uint256",
+            },
           ],
           stateMutability: "view",
-          type: "function"
+          type: "function",
         },
-      }
+      };
       console.log(_abi.estimateReward);
 
       var _reward = 0;
@@ -189,10 +197,7 @@ export default {
       _reward = web3.utils.hexToNumber(
         await web3.eth.call({
           to: _contractAddr,
-          data: web3.eth.abi.encodeFunctionCall(
-            _abi.estimateReward,
-            _params
-          ),
+          data: web3.eth.abi.encodeFunctionCall(_abi.estimateReward, _params),
         })
       );
 
@@ -295,7 +300,7 @@ export default {
 a:hover {
   color: black;
   /* color: #5387DB */
-  color: #3E4A5C
+  color: #3e4a5c;
 }
 .margintop {
   margin-top: 1.5em;
