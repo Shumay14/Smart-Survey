@@ -316,6 +316,10 @@
       },
       async addSurvey() {
         // 설문 데이터 입력 여부 및 유효성 검증
+        
+        this.surveyInfo.sdate = parseInt(this.startDay.replaceAll('-','').substring(2,7))
+        this.surveyInfo.edate = parseInt(this.endDay.replaceAll('-','').substring(2,7))
+
         if (!this.validateCheck()) return 0;
 
         // 블록체인에 설문지 생성
