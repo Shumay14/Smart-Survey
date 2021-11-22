@@ -113,7 +113,7 @@
 
 <script>
 import Web3 from "web3";
-import VcModalSelect from "../_VcModalSelect.vue";
+import VcModalSelect from "@/components/sections/1.SurveySearch/_VcModalSelect.vue";
 
 export default {
   props: ["blogSidebar", "catedata"],
