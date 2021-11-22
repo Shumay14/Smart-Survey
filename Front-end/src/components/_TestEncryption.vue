@@ -48,13 +48,14 @@
                 <h1>VP 생성</h1>
 
                 <div>
-                    {{}}
+                    {{vcData.header}},
+
                 </div>
 
                 <div>
                 시그니처 - 로우데이터 + 퍼블릭키
-                    <input type="text" v-model="data" placeholder="data to encrypt" />
-                    <button @click="encrypt()">encrypt</button>
+                    <input type="text" v-model="vpdata" placeholder="raw data" />
+                    <button @click="createVP()">raw data</button>
                 </div>
 
               
@@ -255,10 +256,10 @@
                 return [endcodedHeader, encodedPayload].join('.');
             },
 
-            async createVP(header, payload, signature) {
+            async createVP(signature) {
                 header = this.vpData.Header;
                 payload = this.vpData.Payload;
-                signature = 
+                signature = this.vpData.signature
                 return [header, payload, signature].join('.');
             },
 
