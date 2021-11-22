@@ -287,19 +287,20 @@
                 if (!header.alg)
                     header.alg
                 // encodeSection == Base64 Encode Function, 사용자 정의 함수
-                var endcodedHeader = encodeSection(header);
+                var endcodedHeader = this.encodeSection(header);
                 this.vpData.Header = endcodedHeader
-                var encodedPayload = encodeSection(payload);
+                var encodedPayload = this.encodeSection(payload);
                 this.vpData.Payload = encodedPayload
-                return [endcodedHeader, encodedPayload].join('.');
+                console.log(this.vpData.Header)
             },
 
-            async createVP() {
-                header = this.vpData.Header;
-                payload = this.vpData.Payload;
-                signature = this.encodeSection(this.vpData.signature.rawData + this.encryptionPublicKey)
+             createVP() {
+                console.log("헤더 뜨고있습니다:",this.vpData.Header)
+                var header = this.vpData.Header;
+                var payload = this.vpData.Payload;
+                var signature = this.encodeSection(this.vpData.signature.rawData + this.encryptionPublicKey)
                 this.createVPResult = [header, payload, signature].join('.');
-                return [header, payload, signature].join('.');
+                // return [header, payload, signature].join('.');
             },
 
             // async createVP(signature) {
