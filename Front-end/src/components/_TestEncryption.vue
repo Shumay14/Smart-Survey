@@ -222,9 +222,11 @@
 
             async encrypt() {
                 const encryptionPublicKey = await this.getPublicKey();
+                console.log("error:","1")
                 const buf = Buffer.from(
                     JSON.stringify(
-                        sigUtil.encrypt(
+                        
+                        this.sigUtil.encrypt(
                             encryptionPublicKey, {
                                 data: this.vcData.payload.data,
                             },
@@ -234,6 +236,7 @@
                     ),
                     "utf8"
                 );
+                console.log("error:","2")
                 //this.encrypt = "0x" + buf.toString("hex"); 
 
                 // 암호화한 데이터를 hex로 버퍼하여 16진수로 변경
@@ -255,9 +258,9 @@
                 if (!header.alg)
                     header.alg
                 // encodeSection == Base64 Encode Function, 사용자 정의 함수
-                var endcodedHeader = encodeSection(header);
+                var endcodedHeader = this.encodeSection(header);
                 this.vpData.Header = endcodedHeader
-                var encodedPayload = encodeSection(payload);
+                var encodedPayload = this.encodeSection(payload);
                 this.vpData.Payload = encodedPayload
                 return [endcodedHeader, encodedPayload].join('.');
             },
@@ -265,7 +268,7 @@
             async createVP() {
                 header = this.vpData.Header;
                 payload = this.vpData.Payload;
-                signature = encodeSection(this.vpData.signature.rawData + this.encryptionPublicKey)
+                signature = this.encodeSection(this.vpData.signature.rawData + this.encryptionPublicKey)
                 this.createVPResult = [header, payload, signature].join('.');
                 return [header, payload, signature].join('.');
             },
@@ -276,9 +279,9 @@
                     shouldCanonicalize = false;
                 }
                 if (shouldCanonicalize) {
-                    return (0, util_1.encodeBase64url)((0, canonicalize_1["default"])(data));
+                    return (0, this.sigUtil.encodeBase64url)((0, canonicalize_1["default"])(data));
                 } else {
-                    return (0, util_1.encodeBase64url)(JSON.stringify(data));
+                    return (0, this.sigUtil.encodeBase64url)(JSON.stringify(data));
                 }
             },
 
