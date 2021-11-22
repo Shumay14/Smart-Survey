@@ -103,7 +103,7 @@
       <!-- End row-->
       <!-- <ModalSelect /> -->
     </a>
-    <ModalSelect :project="project" />
+    <ModalSelect :project="project" :surveyIndex="project.idx - 1" />
   </div>
   <!-- End strip_list-->
 </template>
@@ -165,7 +165,6 @@ export default {
     },
     async getReward(surveyIndex) {
       const web3 = new Web3(window.ethereum);
-
       var _contractAddr = "0xd13D301B0AD89A576f2416D3Ba03173E489356eB";
 
       var _params = [surveyIndex];

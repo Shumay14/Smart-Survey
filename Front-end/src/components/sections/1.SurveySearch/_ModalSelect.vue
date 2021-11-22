@@ -340,7 +340,7 @@
         </div>
       </div>
     </div>
-    <SurveyModal :project="project" v-if="showModal" @close="showModal = false">
+    <SurveyModal :project="project" :surveyIndex="this.surveyIndex" v-if="showModal" @close="showModal = false">
     </SurveyModal>
   </div>
 </template>
@@ -348,7 +348,7 @@
 import SurveyModal from "@/components/sections/1.SurveySearch/_SurveyModal.vue";
 
 export default {
-  props: ["project"],
+  props: ["project", "surveyIndex"],
   name: "",
   components: {
     SurveyModal,
@@ -365,6 +365,7 @@ export default {
   },
   setup() {},
   created() {},
+  mounted() {},
   unmounted() {},
   methods: {
     convertkor(vcName) {

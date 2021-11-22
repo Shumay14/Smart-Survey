@@ -8,13 +8,6 @@
               <h3 class="font-black text-spruce text-6xl">
                 {{ project.title }}
               </h3>
-              <button
-                class="btn btn-info"
-                type="submit"
-                @click="$emit('close')"
-              >
-                close
-              </button>
             </slot>
           </div>
           <div class="modal-body">
@@ -23,6 +16,12 @@
                 style="width: 50vw; height: 70vh"
                 :src="project.url"
               ></iframe>
+
+              <div class="d-flex justify-content-center mt-3">
+              <button type="submit" class="btn btn-info" @click="claimReward()">
+                보상 수령
+              </button>
+              </div>
             </slot>
           </div>
         </div>
@@ -31,8 +30,10 @@
   </transition>
 </template>
 <script>
+import Web3 from 'web3';
+
 export default {
-  props: ["project"],
+  props: ["project", "surveyIndex"],
   name: "",
   components: {},
   data() {
@@ -42,9 +43,56 @@ export default {
   },
   setup() {},
   created() {},
-  mounted() {},
+  mounted() {
+  },
   unmounted() {},
-  methods: {},
+  methods: {
+    async claimReward(){
+      
+      const web3 = new Web3(window.ethereum);
+
+      var _contractAddr = "0xd13D301B0AD89A576f2416D3Ba03173E489356eB";
+      var _abi = {
+        addUser: {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "surveyIndex",
+              type: "uint256"
+            },
+            {
+              internalType: "address payable",
+              name: "_to",
+              type: "address"
+            }
+          ],
+          name: "addUser",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address"
+            }
+          ],
+          stateMutability: "nonpayable",
+          type: "function"
+        },
+      }
+
+      console.log(this.surveyIndex, this.$store.state.metamaskAdd);
+
+      var _params = [this.surveyIndex, this.$store.state.metamaskAdd];
+      var _data = web3.eth.abi.encodeFunctionCall(_abi.addUser, _params);
+
+      await web3.eth.sendTransaction({
+        from: this.$store.state.metamaskAdd,
+        to: _contractAddr,
+        data: _data,
+      });
+
+      this.$emit('close');
+    },
+  },
 };
 </script>
 <style scoped>
