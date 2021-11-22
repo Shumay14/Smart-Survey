@@ -10,31 +10,33 @@
         <section class="content">
             <div class="container">
                 <h1>VC 생성</h1>
-
+                
                 <div>
                     헤더
                     <!-- <input type="text" id="encryptInput" v-model="vcData.header" placeholder="암호화할 데이터를 입력하세요." /> -->
                     {{vcData.header}}
                 </div>
-
+                                
                 <div>
                     페이로드 - 서브젝트
-                    <input type="text" v-model="vcData.payload.subject" placeholder="복호화할 데이터를 입력하세요." />
+                    <input type="text"  v-model="vcData.payload.subject"
+                        placeholder="encode할 데이터를 입력하세요." />
                     {{vcData.payload.subject}}
                 </div>
                 <div>
                     페이로드 - 타이틀
-                    <input type="text" v-model="vcData.payload.title" placeholder="복호화할 데이터를 입력하세요." />
+                    <input type="text"  v-model="vcData.payload.title"
+                        placeholder="encode할 데이터를 입력하세요." />
                     {{vcData.payload.title}}
                 </div>
                 <div>
                     페이로드 - 데이터
-                    <input type="text" v-model="vcData.payload.data" placeholder="복호화할 데이터를 입력하세요." />
+                    <input type="text"  v-model="vcData.payload.data" placeholder="encode할 데이터를 입력하세요." />
                     {{vcData.payload.data}}
                 </div>
-
+                
                 <div>
-                    <button @click="encrypt()">VC 생성 버튼</button>
+                    <button @click="encrypt1()">VC 생성 버튼</button>
                 </div>
             </div>
         </section>
@@ -46,8 +48,8 @@
                 <h1>VP 생성</h1>
 
                 <div>
-                    {{vcData.header}},
-
+                    {{vcData.header}}
+                    {{vcData.payload}}
                 </div>
 
                 <div>
@@ -56,11 +58,11 @@
                     <button @click="createVP()">raw data</button>
                 </div>
                 <div>
-                    <h5>createVP한 결과</h5>
+                    <h5>createVP 결과</h5>
                     {{createVPResult}}
                 </div>
 
-
+              
 
             </div>
         </section>
@@ -74,19 +76,19 @@
                 <div>
                     이름
                     <input type="text" v-model="data" placeholder="data to encrypt" />
-                    <button @click="encrypt()">encrypt</button>
+                    <button @click="encrypt2()">encrypt</button>
                 </div>
 
                 <div>
                     성별
                     <input type="text" placeholder="data to decrypt" />
-                    <button @click="decrypt()">decrypt</button>
+                    <button @click="decrypt2()">decrypt</button>
                 </div>
 
                 <div>
                     나이
                     <input type="text" placeholder="data to decrypt" />
-                    <button @click="decrypt()">decrypt</button>
+                    <button @click="decrypt2()">decrypt</button>
                 </div>
             </div>
         </section>
@@ -100,13 +102,13 @@
                 <div>
                     지갑 주소
                     <input type="text" v-model="data" placeholder="data to encrypt" />
-                    <button @click="encrypt()">encrypt</button>
+                    <button @click="encrypt2()">encrypt</button>
 
                 </div>
                 <div>
                     VC 번호
                     <input type="text" placeholder="data to decrypt" />
-                    <button @click="decrypt()">decrypt</button>
+                    <button @click="decrypt2()">decrypt</button>
                 </div>
             </div>
         </section>
@@ -117,6 +119,7 @@
 <script>
     const Buffer = require("buffer/").Buffer;
     const sigUtil = require("eth-sig-util");
+    const util_1 = require("../../../DID-blockchain/models/util.js");
 
     import Web3 from "web3";
     // import {
@@ -161,7 +164,7 @@
                 },
                 vpData: {
                     header: null,
-
+                    
                     payload: null,
                     signature: {
                         rawData: null,
@@ -185,7 +188,6 @@
                 Sub: null,
                 Title: null,
                 Data: null,
-
 
             };
         },
@@ -220,13 +222,11 @@
                 return encryptionPublicKey;
             },
 
-            async encrypt() {
+            async encrypt2() {
                 const encryptionPublicKey = await this.getPublicKey();
-                console.log("error:","1")
                 const buf = Buffer.from(
                     JSON.stringify(
-                        
-                        this.sigUtil.encrypt(
+                        sigUtil.encrypt(
                             encryptionPublicKey, {
                                 data: this.vcData.payload.data,
                             },
@@ -236,7 +236,36 @@
                     ),
                     "utf8"
                 );
-                console.log("error:","2")
+                //this.encrypt = "0x" + buf.toString("hex"); 
+
+                // 암호화한 데이터를 hex로 버퍼하여 16진수로 변경
+                this.encrypdata = "0x" + buf.toString("hex");
+                console.log("버퍼 : " + buf);
+                console.log(this.encrypdata);
+                //return "0x" + buf.toString("hex");
+
+                this.encrypDataJoin = this.vcData.payload.subject + this.vcData.payload.title + this.encrypdata
+                console.log(this.encrypDataJoin)
+
+                console.log("여기!")
+                // console.log("this.vcData.header:",this.vcData.header)
+                await this.createVC(this.vcData.header, this.encrypDataJoin)
+            },
+
+            async encrypt1() {
+                const encryptionPublicKey = await this.getPublicKey();
+                const buf = Buffer.from(
+                    JSON.stringify(
+                        sigUtil.encrypt(
+                            encryptionPublicKey, {
+                                data: this.vcData.payload.data,
+                            },
+                            // poly1305 버전
+                            "x25519-xsalsa20-poly1305"
+                        )
+                    ),
+                    "utf8"
+                );
                 //this.encrypt = "0x" + buf.toString("hex"); 
 
                 // 암호화한 데이터를 hex로 버퍼하여 16진수로 변경
@@ -258,9 +287,9 @@
                 if (!header.alg)
                     header.alg
                 // encodeSection == Base64 Encode Function, 사용자 정의 함수
-                var endcodedHeader = this.encodeSection(header);
+                var endcodedHeader = encodeSection(header);
                 this.vpData.Header = endcodedHeader
-                var encodedPayload = this.encodeSection(payload);
+                var encodedPayload = encodeSection(payload);
                 this.vpData.Payload = encodedPayload
                 return [endcodedHeader, encodedPayload].join('.');
             },
@@ -273,17 +302,34 @@
                 return [header, payload, signature].join('.');
             },
 
+            // async createVP(signature) {
+            //     header = this.vpData.Header;
+            //     payload = this.vpData.Payload;
+            //     signature = this.vpData.signature
+            //     return [header, payload, signature].join('.');
+            // },
+
 
             encodeSection(data, shouldCanonicalize) {
                 if (shouldCanonicalize === void 0) {
                     shouldCanonicalize = false;
                 }
                 if (shouldCanonicalize) {
-                    return (0, this.sigUtil.encodeBase64url)((0, canonicalize_1["default"])(data));
+                    return (0, util_1.encodeBase64url)((0, canonicalize_1["default"])(data));
                 } else {
-                    return (0, this.sigUtil.encodeBase64url)(JSON.stringify(data));
+                    return (0, util_1.encodeBase64url)(JSON.stringify(data));
                 }
             },
+            // encodeSection(data, shouldCanonicalize) {
+            //     if (shouldCanonicalize === void 0) {
+            //         shouldCanonicalize = false;
+            //     }
+            //     if (shouldCanonicalize) {
+            //         return (0, this.sigUtil.encodeBase64url)((0, canonicalize_1["default"])(data));
+            //     } else {
+            //         return (0, this.sigUtil.encodeBase64url)(JSON.stringify(data));
+            //     }
+            // },
 
             async decrypt() {
                 // 이더리움 네트워크를 const provider로 표현
