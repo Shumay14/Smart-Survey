@@ -71,7 +71,7 @@
     </div>
     <!-- 카테고리 선택 위젯 끝 -->
     <!-- 인기있는 설문 위젯 시작 -->
-    <div class="sidebar-widget">
+    <div class="sidebar-widget mb-5">
       <h3 class="sidebar-title">{{ blogSidebar.popularPostTitle }}</h3>
       <lottie-player
         src="https://assets6.lottiefiles.com/packages/lf20_oblw8lrt.json"
@@ -236,15 +236,10 @@ export default {
     this.loadingicon = "loadshow";
 
     var result = [];
-    result.push(
-      (await this.$api("get", `http://127.0.0.1:3000/api/survey/1`))[0]
-    );
-    result.push(
-      (await this.$api("get", `http://127.0.0.1:3000/api/survey/6`))[0]
-    );
-    result.push(
-      (await this.$api("get", `http://127.0.0.1:3000/api/survey/10`))[0]
-    );
+
+    for(var popularItem of this.popularList)
+      result.push((await this.$api("get", `http://127.0.0.1:3000/api/survey/${popularItem}`))[0]);
+
     console.log("POP LIST ", result);
     this.popularSurvey = result;
     //(await this.$api('get', `http://127.0.0.1:3000/api/survey?sqlQuery=${sqlQuery}`)); // 인기있는 설문 JSON 파일
