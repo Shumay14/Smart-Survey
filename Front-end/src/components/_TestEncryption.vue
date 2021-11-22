@@ -421,9 +421,10 @@ export default {
       let nameVC = this.nameVC;
       let genderVC = this.genderVC;
       let ageVC = this.ageVC;
-
+      console.log(this.$store.state.metamaskAdd);
       this.contract.methods
         .registerVC(nameVC, genderVC, ageVC)
+        .send({ from: this.$store.state.metamaskAdd })
         .then(function (receipt) {
           console.log(receipt);
         });
