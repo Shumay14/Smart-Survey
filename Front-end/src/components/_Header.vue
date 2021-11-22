@@ -31,28 +31,21 @@
                         <div class="header-navigation__nav position-static my-auto">
                           <nav>
                             <ul>
-                              <!-- <li class="
-                                has-children has-children--multilevel-submenu
-                              "> -->
-                              <li>
-                                <router-link to="/surveylist">설문조사</router-link>
-                                <!-- <ul class="submenu">
-                                <li>
-                                  <router-link to="/surveylist">전체 설문조사</router-link>
-                                </li>
-                                <li>
-                                  <router-link to="/surveydrawup">참여한 설문조사
-                                  </router-link>
-                                </li>
-                              </ul> -->
+                              <!-- 1.SurveySearch 시작 -->
+                              <li class="mx-2">
+                                <router-link to="/surveylist" class="header-nav-text"> 설문조사</router-link>
                               </li>
+                              <!-- 1.SurveySearch 종료 -->
 
-                              <li>
+                              <!-- 2.SurveyRegistration 시작 -->
+                              <li class="mx-2">
                                 <router-link to="/admin">설문 등록</router-link>
                               </li>
+                               <!-- 2.SurveyRegistration 종료 -->
 
+                              <!-- 3.CustimerService 시작 -->
                               <li class="
-                                  has-children has-children--multilevel-submenu
+                                  has-children has-children--multilevel-submenu mx-2
                                 ">
                                 <router-link to="/notice">고객센터</router-link>
                                 <ul class="submenu">
@@ -67,9 +60,11 @@
                                   </li>
                                 </ul>
                               </li>
+                              <!-- 3.CustimerService 종료 -->
 
+                              <!-- 4.MyPage 시작 -->
                               <li class="
-                                  has-children has-children--multilevel-submenu
+                                  has-children has-children--multilevel-submenu mx-2
                                 ">
                                 <router-link to="/mypage">마이페이지</router-link>
                                 <ul class="submenu">
@@ -86,6 +81,8 @@
                                   </li>
                                 </ul>
                               </li>
+                              <!-- 4.MyPage 종료 -->
+
                             </ul>
                           </nav>
                         </div>
@@ -136,7 +133,7 @@
         <div class="container">
           <div class="top-info-bar row align-items-center">
 
-            <router-link to="/surveylist" class="col-3">
+            <router-link to="/surveylist" class="col-3 router-link-color">
               <div class="info-menu--item ">
                 <span class="info-menu--item--head">총 설문 금액 : </span>
                 <span class="info-menu--item--data">
@@ -145,7 +142,7 @@
               </div>
             </router-link>
 
-            <router-link to="/surveylist" class="col-3">
+            <router-link to="/surveylist" class="col-3  router-link-color">
               <div class="info-menu--item">
                 <span class="info-menu--item--head">참여 가능한 설문 : </span>
                 <span class="info-menu--item--data">
@@ -154,21 +151,21 @@
               </div>
             </router-link>
 
-<router-link to="/surveylist" class="col-3">
-            <div class="info-menu--item">
-              <span class="info-menu--item--head">획득 가능한 수익 : </span>
-              <span class="info-menu--item--data">
-                {{ getCurrentSurveyInfo("reward") }} 원
-              </span>
-            </div>
+            <router-link to="/surveylist" class="col-3  router-link-color">
+              <div class="info-menu--item">
+                <span class="info-menu--item--head">획득 가능한 수익 : </span>
+                <span class="info-menu--item--data">
+                  {{ getCurrentSurveyInfo("reward") }} 원
+                </span>
+              </div>
             </router-link>
 
-<router-link to="/mypage" class="col-3">
-            <div class="info-menu--item">
-              <span class="info-menu--item--head">총 획득한 수익 : </span>
-              <span class="info-menu--item--data">0 원</span>
-            </div>
-             </router-link>
+            <router-link to="/mypage" class="col-3  router-link-color">
+              <div class="info-menu--item">
+                <span class="info-menu--item--head">총 획득한 수익 : </span>
+                <span class="info-menu--item--data">0 원</span>
+              </div>
+            </router-link>
 
           </div>
         </div>
@@ -269,6 +266,13 @@
 </script>
 
 <style lang="scss">
+  .router-link-color:hover {
+    color: #FF7F00;
+  }
+
+
+
+
   .vue-fixed-header--isFixed {
     left: 0;
     top: 0;
@@ -325,7 +329,7 @@
       }
 
       .metamask_Logo {
-        border: 3px solid #313131;
+        border: 3px solid #2B2423;
         padding: 5px;
         border-radius: 30px;
         top: -18px;
@@ -340,6 +344,9 @@
         left: 40px;
         z-index: 1;
       }
+
+
     }
+
   }
 </style>

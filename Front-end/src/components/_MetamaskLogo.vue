@@ -53,3 +53,8 @@
         methods: {}
     }
 </script>
+<style scoped>
+.btn-dark {
+    color: #2B2423 ;
+  }
+</style>

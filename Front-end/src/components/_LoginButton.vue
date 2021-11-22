@@ -86,6 +86,17 @@ export default {
       left: 40px;
       z-index: 1;
     }
+
+    .btn-dark {
+    background-color: #2B2423 ;
+    border: #2B2423 3px solid;
+  }
+
+    .btn-dark:hover {
+    background-color: white ;
+    color: #2B2423;
+    border: #2B2423 3px solid;
+  }
   }
 }
 </style>
