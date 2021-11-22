@@ -434,10 +434,13 @@ export default {
       let addr = this.addr;
       let num = this.num;
       console.log("addr", addr);
-      this.contract.methods.getVC(addr, num).then(function (receipt) {
-        console.log(receipt);
-        getList();
-      });
+      this.contract.methods
+        .getVC(addr, num)
+        .call()
+        .then((receipt) => {
+          console.log(receipt);
+          // getList();
+        });
     },
     // encodeSection(data, shouldCanonicalize) {
     //     if (shouldCanonicalize === void 0) {
