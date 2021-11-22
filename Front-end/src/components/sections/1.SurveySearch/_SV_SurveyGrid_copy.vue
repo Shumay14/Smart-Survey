@@ -1,6 +1,5 @@
 <template>
-  <div @mouseover="btnHoverin()"
-      @mouseout="btnHoverout()">
+  <div>
     <a
       class="strip_list wow fadeIn"
       data-wow-delay="0.1s"
@@ -69,19 +68,21 @@
               "day"
             ) -->
         <div class="col-md-3">
-          <h3 class="padtop" style="color: #ff7f00; text-align: center">
-            D - {{ this.ddaylist(project.sdate, project.edate) }}
+          <h3 class="padtop pb-3" style="color: #ff7f00; text-align: center; 
+              font-size:17px; 
+              letter-spacing:-0.4px; 
+              position:relative; 
+              top: 2px;
+              left:-24px;">
+            {{ this.ddaylist(project.sdate, project.edate) }}일 | 
+            {{ this.userCountInfo.userLimit - this.userCountInfo.currentUserNumber}}명 남음
           </h3>
           <!-- <button @click="ddaylist(project.sdate, project.edate)">test</button> -->
           <!-- <h5 class="padtop" style="color: red; text-align: center">
           21.03 - 21.06
         </h5> -->
           <div class="margintop" style="margin-left: 1rem">
-            <a
-              class="btn_1"
-              @mouseover="btnHoverin()"
-              @mouseout="btnHoverout()"
-            >
+            <a class="btn_1">
               {{ btnname }}
             </a>
           </div>
@@ -106,11 +107,8 @@ export default {
   components: { ModalSelect },
   data() {
     return {
-      userCountInfo:{
-        current : "-",
-        limit : "-",
-      },
-      btnname: "",
+      userCountInfo:{},
+      btnname: "참여하기",
       allSelect: "#e8e8e8",
       clickSelect: "",
       reward : '-',
@@ -130,12 +128,11 @@ export default {
     this.won = (Math.round(this.reward * 12)).toLocaleString('ko-KR');;
 
     // 각 설문지 별 참여자 정보를 불러오는 부분
-    this.btnname = `${this.userCountInfo.current} / ${this.userCountInfo.limit}`;
     this.userCountInfo = await this.getCharmyeoInfo(this.project.idx - 1);
     
     console.log(this.userCountInfo);
     
-    this.btnname = `${this.userCountInfo.currentUserNumber}/${this.userCountInfo.userLimit}`;
+    // this.btnname = `${this.userCountInfo.currentUserNumber}/${this.userCountInfo.userLimit}`;
 
 
   },
@@ -273,13 +270,12 @@ export default {
 
       return _res;
     },
-    btnHoverin() {
-      this.btnname = "참여하기";
-    },
-    async btnHoverout() {
-      
-      this.btnname = `${this.userCountInfo.currentUserNumber}/${this.userCountInfo.userLimit}`;
-    },
+    // btnHoverin() {
+    //   this.btnname = `${this.userCountInfo.currentUserNumber}/${this.userCountInfo.userLimit}`;
+    // },
+    // btnHoverout() {
+    //   this.btnname = "참여하기";
+    // },
     ddaylist(a, b) {
       // Json.parse -> object로 변환
       const today = dayjs(JSON.stringify(a));
