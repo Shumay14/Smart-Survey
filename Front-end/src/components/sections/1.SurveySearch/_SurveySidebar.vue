@@ -62,9 +62,9 @@
             <div class="col-5">
               <a>{{ convertcatekor(listname) }}</a>
             </div>
-            <!-- <div class="col-3">
-              <i class="fas fa-check" :id="listname"></i>
-            </div> -->
+            <div class="col-3">
+              <i class="fas fa-check" :id="listname" style="display: none"></i>
+            </div>
           </div>
         </li>
       </ul>
@@ -121,6 +121,7 @@ export default {
   components: { VcModalSelect },
   data() {
     return {
+      iconshow: false,
       selectonoff: false,
       popularSurvey: [],
       temp: [],
@@ -299,9 +300,11 @@ export default {
       if (this.doublecheck(this.$store.state.categorylist, cateTag)) {
         this.$store.commit("cateplus", cateTag);
         event.currentTarget.style.color = "#ff7f00";
+        document.getElementById(cateTag).style.display = "";
       } else {
         this.$store.commit("catededuplication", cateTag);
         event.currentTarget.style.color = "black";
+        document.getElementById(cateTag).style.display = "none";
       }
       console.log(this.$store.state.categorylist);
     },
