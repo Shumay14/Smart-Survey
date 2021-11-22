@@ -23,12 +23,12 @@
             <!-- section2 -->
             <div class="container">
                 <h1>connect wallet</h1>
-                
                 <div>
-                    <input type="text" id="encryptInput" v-model="data" placeholder="data to encrypt" />
-                    <button @click="encrypt()">encrypt</button>
-                    <output id="encryptedMessage"></output>
+                    
+                    <button @click="init()">Connect Wallet</button>
+                    <output id="account"></output>
                 </div>
+
                 <div>
                     <input type="text" id="decryptInput" placeholder="data to decrypt" />
                     <button @click="decrypt()">decrypt</button>
@@ -36,11 +36,9 @@
                 </div>
             </div>
         </section>
-        <!--end content-->
+        
 
-        <!--*********************************************************************************************************-->
-        <!--************ FOOTER *************************************************************************************-->
-        <!--*********************************************************************************************************-->
+        
     </div>
 </template>
 <script>
@@ -49,7 +47,7 @@
 
     import Web3 from "web3";
     import { createVC, createVP } from "../../../DID-blockchain/models/createJWT.js";
-    import {JWTHeader, JWTPayload, JWTSignature} from "../../../DID-blockchain/models/createJWT.js";
+    import { JWTHeader, JWTPayload, JWTSignature } from "../../../DID-blockchain/models/createJWT.js";
 
     export default {
         name: "",
@@ -67,7 +65,9 @@
                 Sub: null,
                 Title: null,
                 Data: null,
-                
+                RawData: null,
+                PubKey: null,
+
             };
         },
         computed: {
@@ -76,7 +76,82 @@
             // },
         },
         created() {},
-        mounted() {},
+        mounted() {
+            async function GetContract() {
+      
+                let abi = [
+                    {
+                    "inputs": [
+                        {
+                        "internalType": "address",
+                        "name": "_add",
+                        "type": "address"
+                        },
+                        {
+                        "internalType": "uint256",
+                        "name": "_num",
+                        "type": "uint256"
+                        }
+                    ],
+                    "name": "getVC",
+                    "outputs": [
+                        {
+                        "components": [
+                            {
+                            "internalType": "string",
+                            "name": "nameVC",
+                            "type": "string"
+                            },
+                            {
+                            "internalType": "string",
+                            "name": "genderVC",
+                            "type": "string"
+                            },
+                            {
+                            "internalType": "string",
+                            "name": "ageVC",
+                            "type": "string"
+                            }
+                        ],
+                        "internalType": "struct registryDID.repositoryVC",
+                        "name": "",
+                        "type": "tuple"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                    },
+                    {
+                    "inputs": [
+                        {
+                        "internalType": "string",
+                        "name": "_nameVC",
+                        "type": "string"
+                        },
+                        {
+                        "internalType": "string",
+                        "name": "_genderVC",
+                        "type": "string"
+                        },
+                        {
+                        "internalType": "string",
+                        "name": "_ageVC",
+                        "type": "string"
+                        }
+                    ],
+                    "name": "registerVC",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                    }
+                ]
+                contract = await new web3.eth.Contract(abi, "0x58f82e407C37e74c6D76E205534659146D794a90")
+                document.getElementById("contract").innerText = contract._address
+                console.log(contract)
+            
+                await getVC(this.$store.state.metamaskAdd)
+            }
+        },
         updated() {},
         unmounted() {},
         methods: {
