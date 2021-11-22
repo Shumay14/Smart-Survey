@@ -4,8 +4,11 @@
         <Header />
 
         <Breadcrumb :items="items" title="마이페이지" />
+        <TestEncryption/>
 
         <MyPageDetail />
+
+        
         <Footer/>
 
         <OffCanvasMobileMenu />
@@ -25,6 +28,7 @@
     import MyPageDetail from '@/components/sections/4.MyPage/_MyPageDetail'
     import OffCanvasMobileMenu from '@/components/_OffCanvasMobileMenu';
     import Footer from "@/components/_Footer";
+    import TestEncryption from "@/components/_TestEncryption";
 
 
     export default {
@@ -34,6 +38,7 @@
             OffCanvasMobileMenu,
             MyPageDetail,
             Footer,
+            TestEncryption
         },
         data() {
             return {

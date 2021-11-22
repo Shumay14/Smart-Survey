@@ -1,6 +1,7 @@
 <template>
   <div class="container section-space--inner--60">
     <div class="comment-wrapper">
+      
       <h3>설문 등록 페이지</h3>
       <div class="comment-form">
         <div class="row">
@@ -122,6 +123,9 @@
           </div>
 
           <div class="col-lg-6 section-space--bottom--20">
+            <button @click="test1==true">달력</button>
+            <div v-show="test1==true">
+              <Calender /></div>
             <span class="title-admin-main"> 시작일</span>
             <span class="required"> *필수사항 </span>
             <input type="number" v-model="surveyInfo.sdate" />
@@ -189,16 +193,21 @@
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 </template>
 
 <script>
 import Web3 from "web3";
+import Calender from "@/components/sections/2.SurveyRegistration/_Calendar"
 export default {
-  components: {},
+  components: {
+    Calender
+  },
   data() {
     return {
+        test1: false,
       defaultselect: "선택",
       categoryListkor: ["여행", "자동차", "음악", "요리", "전자제품"],
       categoryList: ["travel", "car", "music", "food", "electronic-products"],
