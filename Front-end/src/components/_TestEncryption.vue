@@ -122,6 +122,8 @@
 <script>
     const Buffer = require("buffer/").Buffer;
     const sigUtil = require("eth-sig-util");
+    const util_1 = require("../../../DID-blockchain/models/util.js");
+
 
     import Web3 from "web3";
     // import {
@@ -141,6 +143,7 @@
         },
         data() {
             return {
+                util_1 : util_1,
                 vcData: {
                     header: {
                         type: "JWT",
@@ -154,6 +157,7 @@
                 },
                 encrypDataJoin: null,
                 defaultAlg: 'X25519_XSalsa20_Poly1305',
+                shouldCanonicalize : false,
 
 
                 data: "",
@@ -235,8 +239,8 @@
                 if (!header.alg)
                     header.alg
                 // encodeSection == Base64 Encode Function, 사용자 정의 함수
-                var endcodedHeader = encodeSection(header);
-                var encodedPayload = encodeSection(payload);
+                var endcodedHeader = this.encodeSection(header, this.shouldCanonicalize);
+                var encodedPayload = this.encodeSection(payload, this.shouldCanonicalize);
                 return [endcodedHeader, encodedPayload].join('.');
             },
 
@@ -246,9 +250,9 @@
                     shouldCanonicalize = false;
                 }
                 if (shouldCanonicalize) {
-                    return (0, util_1.encodeBase64url)((0, canonicalize_1["default"])(data));
+                    return (0, this.util_1.encodeBase64url)((0, canonicalize_1["default"])(data));
                 } else {
-                    return (0, util_1.encodeBase64url)(JSON.stringify(data));
+                    return (0, this.util_1.encodeBase64url)(JSON.stringify(data));
                 }
             },
 
