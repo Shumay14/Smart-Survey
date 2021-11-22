@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div>
+    <section class="content">
+    <div class="container">
       <h1>test 존</h1>
       <button @click="test()">test</button>
       <button @click="getPublicKey()">getPublicKey</button>
@@ -8,9 +9,10 @@
     </div>
 
     <!-- getContract -->
-    <div>
+    <div class="container">
       <button @click="GetContract()">Get Contract Instance</button>
     </div>
+    </section>
 
     <!-- VC 생성 시작 -->
     <section class="content">
