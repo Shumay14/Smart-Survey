@@ -39,7 +39,7 @@
 
                               <!-- 2.SurveyRegistration 시작 -->
                               <li class="mx-2">
-                                <router-link to="/admin">설문 등록</router-link>
+                                <router-link to="/admin">설문등록</router-link>
                               </li>
                                <!-- 2.SurveyRegistration 종료 -->
 
