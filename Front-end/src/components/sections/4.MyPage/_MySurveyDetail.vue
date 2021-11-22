@@ -163,12 +163,12 @@
 </template>
 
 <script>
-    import data from '../../../data/contact.json'
-    import Chart from '../4.MyPage/_Chart';
-    import Chart1 from '../4.MyPage/_Chart1';
-    import Chart2 from '../4.MyPage/_Chart2';
-    import ChartMain from '../4.MyPage/_ChartMain';
-    import surveyData from '../../../data/_survey.json';
+    import data from '@/data/contact.json'
+    import Chart from '@/components/sections/4.MyPage/_Chart';
+    import Chart1 from '@/components/sections/4.MyPage/_Chart1';
+    import Chart2 from '@/components/sections/4.MyPage/_Chart2';
+    import ChartMain from '@/components/sections/4.MyPage/_ChartMain';
+    import surveyData from '@/data/_surveyMock.json';
 
     export default {
         components: {
@@ -189,6 +189,7 @@
 
             }
         },
+
 
         methods: {
             viewData(i) {
