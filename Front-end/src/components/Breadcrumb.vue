@@ -2,7 +2,7 @@
   <div
     class="breadcrumb-area bg-img"
     :style="{
-      'background-image': 'url(assets/img/backgrounds/funfact-bg.jpg)',
+      'background-image': 'url(assets/img/backgrounds/funfact-bgdd.jpg)',
     }"
   >
     <div class="container">
