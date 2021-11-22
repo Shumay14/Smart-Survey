@@ -10,31 +10,29 @@
         <section class="content">
             <div class="container">
                 <h1>VC 생성</h1>
-                
+
                 <div>
                     헤더
                     <!-- <input type="text" id="encryptInput" v-model="vcData.header" placeholder="암호화할 데이터를 입력하세요." /> -->
                     {{vcData.header}}
                 </div>
-                                
+
                 <div>
                     페이로드 - 서브젝트
-                    <input type="text"  v-model="vcData.payload.subject"
-                        placeholder="복호화할 데이터를 입력하세요." />
+                    <input type="text" v-model="vcData.payload.subject" placeholder="복호화할 데이터를 입력하세요." />
                     {{vcData.payload.subject}}
                 </div>
                 <div>
                     페이로드 - 타이틀
-                    <input type="text"  v-model="vcData.payload.title"
-                        placeholder="복호화할 데이터를 입력하세요." />
+                    <input type="text" v-model="vcData.payload.title" placeholder="복호화할 데이터를 입력하세요." />
                     {{vcData.payload.title}}
                 </div>
                 <div>
                     페이로드 - 데이터
-                    <input type="text"  v-model="vcData.payload.data" placeholder="복호화할 데이터를 입력하세요." />
+                    <input type="text" v-model="vcData.payload.data" placeholder="복호화할 데이터를 입력하세요." />
                     {{vcData.payload.data}}
                 </div>
-                
+
                 <div>
                     <button @click="encrypt()">VC 생성 버튼</button>
                 </div>
@@ -53,12 +51,16 @@
                 </div>
 
                 <div>
-                시그니처 - 로우데이터 + 퍼블릭키
-                    <input type="text" v-model="vpdata" placeholder="raw data" />
+                    시그니처 - 로우데이터 + 퍼블릭키
+                    <input type="text" v-model="vpData.signature.rawData" placeholder="raw data" />
                     <button @click="createVP()">raw data</button>
                 </div>
+                <div>
+                    <h5>createVP한 결과</h5>
+                    {{createVPResult}}
+                </div>
 
-              
+
 
             </div>
         </section>
@@ -159,7 +161,7 @@
                 },
                 vpData: {
                     header: null,
-                    
+
                     payload: null,
                     signature: {
                         rawData: null,
@@ -167,8 +169,12 @@
                     }
                 },
                 encrypDataJoin: null,
+                // 알고리즘
                 defaultAlg: 'X25519_XSalsa20_Poly1305',
-
+                // 공개키
+                encryptionPublicKey: null,
+                // createVP() result
+                createVPResult: null,
 
                 data: "",
                 encrypdata: "",
@@ -179,7 +185,7 @@
                 Sub: null,
                 Title: null,
                 Data: null,
-                encryptionPublicKey: null
+
 
             };
         },
@@ -256,10 +262,11 @@
                 return [endcodedHeader, encodedPayload].join('.');
             },
 
-            async createVP(signature) {
+            async createVP() {
                 header = this.vpData.Header;
                 payload = this.vpData.Payload;
-                signature = this.vpData.signature
+                signature = encodeSection(this.vpData.signature.rawData + this.encryptionPublicKey)
+                this.createVPResult = [header, payload, signature].join('.');
                 return [header, payload, signature].join('.');
             },
 
