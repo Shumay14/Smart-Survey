@@ -38,7 +38,7 @@
         </section>
         
 
-        
+
     </div>
 </template>
 <script>
@@ -67,6 +67,22 @@
                 Data: null,
                 RawData: null,
                 PubKey: null,
+
+                JWTHeader: {
+                    typ: "JWT",
+                    alg: "X25519_XSalsa20_Poly1305"
+                },
+
+                JWTPayload: {
+                    sub: null,
+                    title: null,
+                    data: null
+                },
+
+                JWTSignature = {
+                    rawData: null,
+                    pubKey: null
+                }
 
             };
         },
@@ -149,8 +165,9 @@
                 document.getElementById("contract").innerText = contract._address
                 console.log(contract)
             
-                await getVC(this.$store.state.metamaskAdd)
+                await contract.methods.getVC(this.$store.state.metamaskAdd, 0)
             }
+            await GetContract()
         },
         updated() {},
         unmounted() {},
