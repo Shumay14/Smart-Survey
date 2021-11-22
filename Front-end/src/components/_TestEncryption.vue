@@ -10,33 +10,31 @@
         <section class="content">
             <div class="container">
                 <h1>VC 생성</h1>
-                <!-- encrypt 시작 -->
+                
                 <div>
                     헤더
                     <!-- <input type="text" id="encryptInput" v-model="vcData.header" placeholder="암호화할 데이터를 입력하세요." /> -->
                     {{vcData.header}}
                 </div>
-                <!-- encrypt 종료 -->
-
-                <!-- decrypt 시작 -->
+                                
                 <div>
                     페이로드 - 서브젝트
-                    <input type="text" id="decryptInput" v-model="vcData.payload.subject"
+                    <input type="text"  v-model="vcData.payload.subject"
                         placeholder="복호화할 데이터를 입력하세요." />
                     {{vcData.payload.subject}}
                 </div>
                 <div>
                     페이로드 - 타이틀
-                    <input type="text" id="decryptInput" v-model="vcData.payload.title"
+                    <input type="text"  v-model="vcData.payload.title"
                         placeholder="복호화할 데이터를 입력하세요." />
                     {{vcData.payload.title}}
                 </div>
                 <div>
                     페이로드 - 데이터
-                    <input type="text" id="decryptInput" v-model="vcData.payload.data" placeholder="복호화할 데이터를 입력하세요." />
+                    <input type="text"  v-model="vcData.payload.data" placeholder="복호화할 데이터를 입력하세요." />
                     {{vcData.payload.data}}
                 </div>
-                <!-- decrypt 종료 -->
+                
                 <div>
                     <button @click="encrypt()">VC 생성 버튼</button>
                 </div>
@@ -50,22 +48,16 @@
                 <h1>VP 생성</h1>
 
                 <div>
-                    헤더
+                    {{}}
+                </div>
+
+                <div>
+                시그니처 - 로우데이터 + 퍼블릭키
                     <input type="text" v-model="data" placeholder="data to encrypt" />
                     <button @click="encrypt()">encrypt</button>
                 </div>
 
-                <div>
-                    페이로드
-                    <input type="text" placeholder="data to decrypt" />
-                    <button @click="decrypt()">decrypt</button>
-                </div>
-
-                <div>
-                    시그니쳐
-                    <input type="text" placeholder="data to decrypt" />
-                    <button @click="decrypt()">decrypt</button>
-                </div>
+              
 
             </div>
         </section>
@@ -134,6 +126,18 @@
     //     JWTSignature
     // } from "../../../DID-blockchain/models/createJWT.js";
 
+    // VC
+    // header == encrypt encode된거 => 받아와서 VP 에서 그대로 활용
+    // payload == encrypt encode된거 => 받아와서 VP 에서 그대로 활용
+
+
+    // VP
+    // header
+    // payload
+    // signature == encode( (payload 에서 raw data) + publickey  ) 
+
+    // header.payload.signature
+
     export default {
         name: "",
         components: {
@@ -150,6 +154,15 @@
                         subject: null,
                         title: null,
                         data: null
+                    }
+                },
+                vpData: {
+                    header: null,
+                    
+                    payload: null,
+                    signature: {
+                        rawData: null,
+                        pubKey: null
                     }
                 },
                 encrypDataJoin: null,
@@ -236,8 +249,17 @@
                     header.alg
                 // encodeSection == Base64 Encode Function, 사용자 정의 함수
                 var endcodedHeader = encodeSection(header);
+                this.vpData.Header = endcodedHeader
                 var encodedPayload = encodeSection(payload);
+                this.vpData.Payload = encodedPayload
                 return [endcodedHeader, encodedPayload].join('.');
+            },
+
+            async createVP(header, payload, signature) {
+                header = this.vpData.Header;
+                payload = this.vpData.Payload;
+                signature = 
+                return [header, payload, signature].join('.');
             },
 
 
