@@ -1,43 +1,121 @@
 <template>
-    <div >
-
+    <div>
+        <div>
+            <h1>test 존</h1>
+            <button @click="test()">test</button>
+            <button @click="getPublicKey()">getPublicKey</button>
+            {{this.encrypDataJoin}}
+        </div>
+        <!-- VC 생성 시작 -->
         <section class="content">
-            <!-- section1 -->
             <div class="container">
-                <h1>마이페이지</h1>
-                <h1>MetaMask Encryption example</h1>
+                <h1>VC 생성</h1>
+                <!-- encrypt 시작 -->
                 <div>
-                    <input type="text" id="encryptInput" v-model="data" placeholder="data to encrypt" />
+                    헤더
+                    <!-- <input type="text" id="encryptInput" v-model="vcData.header" placeholder="암호화할 데이터를 입력하세요." /> -->
+                    {{vcData.header}}
+                </div>
+                <!-- encrypt 종료 -->
+
+                <!-- decrypt 시작 -->
+                <div>
+                    페이로드 - 서브젝트
+                    <input type="text" id="decryptInput" v-model="vcData.payload.subject"
+                        placeholder="복호화할 데이터를 입력하세요." />
+                    {{vcData.payload.subject}}
+                </div>
+                <div>
+                    페이로드 - 타이틀
+                    <input type="text" id="decryptInput" v-model="vcData.payload.title"
+                        placeholder="복호화할 데이터를 입력하세요." />
+                    {{vcData.payload.title}}
+                </div>
+                <div>
+                    페이로드 - 데이터
+                    <input type="text" id="decryptInput" v-model="vcData.payload.data" placeholder="복호화할 데이터를 입력하세요." />
+                    {{vcData.payload.data}}
+                </div>
+                <!-- decrypt 종료 -->
+                <div>
+                    <button @click="encrypt()">VC 생성 버튼</button>
+                </div>
+            </div>
+        </section>
+        <!-- VC 생성 시작 -->
+
+        <!-- VP 생성 시작 -->
+        <section class="content">
+            <div class="container">
+                <h1>VP 생성</h1>
+
+                <div>
+                    헤더
+                    <input type="text" v-model="data" placeholder="data to encrypt" />
                     <button @click="encrypt()">encrypt</button>
-                    <output id="encryptedMessage"></output>
                 </div>
+
                 <div>
-                    <input type="text" id="decryptInput" placeholder="data to decrypt" />
+                    페이로드
+                    <input type="text" placeholder="data to decrypt" />
                     <button @click="decrypt()">decrypt</button>
-                    <output id="decryptedMessage"></output>
                 </div>
+
+                <div>
+                    시그니쳐
+                    <input type="text" placeholder="data to decrypt" />
+                    <button @click="decrypt()">decrypt</button>
+                </div>
+
             </div>
         </section>
+        <!-- VP 생성 종료 -->
 
+        <!-- VC Repo 시작 -->
         <section class="content">
-            <!-- section2 -->
             <div class="container">
-                <h1>connect wallet</h1>
+                <h1>VC Repo</h1>
+
                 <div>
-                    
-                    <button @click="init()">Connect Wallet</button>
-                    <output id="account"></output>
+                    이름
+                    <input type="text" v-model="data" placeholder="data to encrypt" />
+                    <button @click="encrypt()">encrypt</button>
                 </div>
 
                 <div>
-                    <input type="text" id="decryptInput" placeholder="data to decrypt" />
+                    성별
+                    <input type="text" placeholder="data to decrypt" />
                     <button @click="decrypt()">decrypt</button>
-                    <output id="decryptedMessage"></output>
+                </div>
+
+                <div>
+                    나이
+                    <input type="text" placeholder="data to decrypt" />
+                    <button @click="decrypt()">decrypt</button>
                 </div>
             </div>
         </section>
-        
+        <!-- VP Repo 종료 -->
 
+        <!-- Get VC 시작 -->
+        <section class="content">
+            <div class="container">
+                <h1>Get VC</h1>
+
+                <div>
+                    지갑 주소
+                    <input type="text" v-model="data" placeholder="data to encrypt" />
+                    <button @click="encrypt()">encrypt</button>
+
+                </div>
+                <div>
+                    VC 번호
+                    <input type="text" placeholder="data to decrypt" />
+                    <button @click="decrypt()">decrypt</button>
+                </div>
+            </div>
+        </section>
+        <!-- Get VC 종료 -->
 
     </div>
 </template>
@@ -46,16 +124,38 @@
     const sigUtil = require("eth-sig-util");
 
     import Web3 from "web3";
-    import { createVC, createVP } from "../../../DID-blockchain/models/createJWT.js";
-    import { JWTHeader, JWTPayload, JWTSignature } from "../../../DID-blockchain/models/createJWT.js";
+    // import {
+    //     createVC,
+    //     createVP
+    // } from "../../../DID-blockchain/models/createJWT.js";
+    // import {
+    //     JWTHeader,
+    //     JWTPayload,
+    //     JWTSignature
+    // } from "../../../DID-blockchain/models/createJWT.js";
 
     export default {
         name: "",
         components: {
-   
+
         },
         data() {
             return {
+                vcData: {
+                    header: {
+                        type: "JWT",
+                        alg: "X25519_XSalsa20_Poly1305"
+                    },
+                    payload: {
+                        subject: null,
+                        title: null,
+                        data: null
+                    }
+                },
+                encrypDataJoin: null,
+                defaultAlg: 'X25519_XSalsa20_Poly1305',
+
+
                 data: "",
                 encrypdata: "",
                 provider: null,
@@ -65,133 +165,48 @@
                 Sub: null,
                 Title: null,
                 Data: null,
-                RawData: null,
-                PubKey: null,
-
-                JWTHeader: {
-                    typ: "JWT",
-                    alg: "X25519_XSalsa20_Poly1305"
-                },
-
-                JWTPayload: {
-                    sub: null,
-                    title: null,
-                    data: null
-                },
-
-                JWTSignature = {
-                    rawData: null,
-                    pubKey: null
-                }
+                encryptionPublicKey: null
 
             };
         },
         computed: {
-            // user() {
-            //     return this.$store.state.user;
-            // },
+            user() {
+                return this.$store.state.user;
+            },
         },
         created() {},
-        mounted() {
-            async function GetContract() {
-      
-                let abi = [
-                    {
-                    "inputs": [
-                        {
-                        "internalType": "address",
-                        "name": "_add",
-                        "type": "address"
-                        },
-                        {
-                        "internalType": "uint256",
-                        "name": "_num",
-                        "type": "uint256"
-                        }
-                    ],
-                    "name": "getVC",
-                    "outputs": [
-                        {
-                        "components": [
-                            {
-                            "internalType": "string",
-                            "name": "nameVC",
-                            "type": "string"
-                            },
-                            {
-                            "internalType": "string",
-                            "name": "genderVC",
-                            "type": "string"
-                            },
-                            {
-                            "internalType": "string",
-                            "name": "ageVC",
-                            "type": "string"
-                            }
-                        ],
-                        "internalType": "struct registryDID.repositoryVC",
-                        "name": "",
-                        "type": "tuple"
-                        }
-                    ],
-                    "stateMutability": "view",
-                    "type": "function"
-                    },
-                    {
-                    "inputs": [
-                        {
-                        "internalType": "string",
-                        "name": "_nameVC",
-                        "type": "string"
-                        },
-                        {
-                        "internalType": "string",
-                        "name": "_genderVC",
-                        "type": "string"
-                        },
-                        {
-                        "internalType": "string",
-                        "name": "_ageVC",
-                        "type": "string"
-                        }
-                    ],
-                    "name": "registerVC",
-                    "outputs": [],
-                    "stateMutability": "nonpayable",
-                    "type": "function"
-                    }
-                ]
-                contract = await new web3.eth.Contract(abi, "0x58f82e407C37e74c6D76E205534659146D794a90")
-                document.getElementById("contract").innerText = contract._address
-                console.log(contract)
-            
-                await contract.methods.getVC(this.$store.state.metamaskAdd, 0)
-            }
-            await GetContract()
-        },
+        mounted() {},
         updated() {},
         unmounted() {},
         methods: {
+            test() {
+                console.log(this.encryptionPublicKey)
+                console.log(" this.encrypDataJoin:", this.encrypDataJoin)
+            },
+            // 구동 성공
             async getPublicKey() {
                 // 이더리움 네트워크 연결
                 const provider = window.ethereum;
                 //계정 연동
-                const accounts = await provider.request({ method: 'eth_requestAccounts' });
+                const accounts = await provider.request({
+                    method: 'eth_requestAccounts'
+                });
                 const encryptionPublicKey = await provider.request({
                     method: "eth_getEncryptionPublicKey",
-                    params: [accounts[0]],
+                    params: [accounts[0]]
                 });
                 console.log("공개키: " + encryptionPublicKey);
+                this.encryptionPublicKey = encryptionPublicKey
                 return encryptionPublicKey;
             },
 
             async encrypt() {
                 const encryptionPublicKey = await this.getPublicKey();
-                    const buf = Buffer.from(
+                const buf = Buffer.from(
                     JSON.stringify(
                         sigUtil.encrypt(
                             encryptionPublicKey, {
-                                data: this.data,
+                                data: this.vcData.payload.data,
                             },
                             // poly1305 버전
                             "x25519-xsalsa20-poly1305"
@@ -206,6 +221,35 @@
                 console.log("버퍼 : " + buf);
                 console.log(this.encrypdata);
                 //return "0x" + buf.toString("hex");
+
+                this.encrypDataJoin = this.vcData.payload.subject + this.vcData.payload.title + this.encrypdata
+                console.log(this.encrypDataJoin)
+
+                console.log("여기!")
+                // console.log("this.vcData.header:",this.vcData.header)
+                await this.createVC(this.vcData.header, this.encrypDataJoin)
+            },
+
+
+            async createVC(header, payload) {
+                if (!header.alg)
+                    header.alg
+                // encodeSection == Base64 Encode Function, 사용자 정의 함수
+                var endcodedHeader = encodeSection(header);
+                var encodedPayload = encodeSection(payload);
+                return [endcodedHeader, encodedPayload].join('.');
+            },
+
+
+            encodeSection(data, shouldCanonicalize) {
+                if (shouldCanonicalize === void 0) {
+                    shouldCanonicalize = false;
+                }
+                if (shouldCanonicalize) {
+                    return (0, util_1.encodeBase64url)((0, canonicalize_1["default"])(data));
+                } else {
+                    return (0, util_1.encodeBase64url)(JSON.stringify(data));
+                }
             },
 
             async decrypt() {
@@ -213,7 +257,9 @@
                 const provider = window.ethereum;
 
                 // 메타마스크에서 "ethereum.request"를 사용하여 주소를 가져옴
-                const accounts = await provider.request({ method: 'eth_requestAccounts' });
+                const accounts = await provider.request({
+                    method: 'eth_requestAccounts'
+                });
 
                 // 메타마스크에서 "eth_decrypt" 기능을 사용
                 const decMsg = await provider.request({
