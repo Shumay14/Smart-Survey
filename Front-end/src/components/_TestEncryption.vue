@@ -6,6 +6,12 @@
             <button @click="getPublicKey()">getPublicKey</button>
             {{this.encrypDataJoin}}
         </div>
+
+        <!-- getContract -->
+        <div>
+            <button @click="GetContract()">Get Contract Instance</button>
+        </div>
+
         <!-- VC 생성 시작 -->
         <section class="content">
             <div class="container">
@@ -75,20 +81,12 @@
 
                 <div>
                     이름
-                    <input type="text" v-model="data" placeholder="data to encrypt" />
-                    <button @click="encrypt2()">encrypt</button>
-                </div>
-
-                <div>
+                    <input type="text" v-model="nameVC" placeholder="name" />
                     성별
-                    <input type="text" placeholder="data to decrypt" />
-                    <button @click="decrypt2()">decrypt</button>
-                </div>
-
-                <div>
+                    <input type="text" v-model="genderVC" placeholder="gender" />
                     나이
-                    <input type="text" placeholder="data to decrypt" />
-                    <button @click="decrypt2()">decrypt</button>
+                    <input type="text" v-model="ageVC" placeholder="age" />
+                    <button @click="registerVC()">age</button>
                 </div>
             </div>
         </section>
@@ -101,14 +99,10 @@
 
                 <div>
                     지갑 주소
-                    <input type="text" v-model="data" placeholder="data to encrypt" />
-                    <button @click="encrypt2()">encrypt</button>
-
-                </div>
-                <div>
+                    <input type="text" v-model="addr" placeholder="set address" />
                     VC 번호
-                    <input type="text" placeholder="data to decrypt" />
-                    <button @click="decrypt2()">decrypt</button>
+                    <input type="text" v-model="num" placeholder="set vc num" />
+                    <button @click="getVC()">set address n num</button>
                 </div>
             </div>
         </section>
@@ -189,6 +183,13 @@
                 Title: null,
                 Data: null,
 
+                nameVC: null,
+                genderVC: null,
+                ageVC: null,
+
+                addr: null,
+                num: null,
+
             };
         },
         computed: {
@@ -205,6 +206,7 @@
                 console.log(this.encryptionPublicKey)
                 console.log(" this.encrypDataJoin:", this.encrypDataJoin)
             },
+            
             // 구동 성공
             async getPublicKey() {
                 // 이더리움 네트워크 연결
@@ -320,6 +322,109 @@
                 } else {
                     return (0, util_1.encodeBase64url)(JSON.stringify(data));
                 }
+            },
+
+
+            async GetContract() {
+      
+            let abi = [
+                {
+                "inputs": [
+                    {
+                    "internalType": "address",
+                    "name": "_add",
+                    "type": "address"
+                    },
+                    {
+                    "internalType": "uint256",
+                    "name": "_num",
+                    "type": "uint256"
+                    }
+                ],
+                "name": "getVC",
+                "outputs": [
+                    {
+                    "components": [
+                        {
+                        "internalType": "string",
+                        "name": "nameVC",
+                        "type": "string"
+                        },
+                        {
+                        "internalType": "string",
+                        "name": "genderVC",
+                        "type": "string"
+                        },
+                        {
+                        "internalType": "string",
+                        "name": "ageVC",
+                        "type": "string"
+                        }
+                    ],
+                    "internalType": "struct registryDID.repositoryVC",
+                    "name": "",
+                    "type": "tuple"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+                },
+                {
+                "inputs": [
+                    {
+                    "internalType": "string",
+                    "name": "_nameVC",
+                    "type": "string"
+                    },
+                    {
+                    "internalType": "string",
+                    "name": "_genderVC",
+                    "type": "string"
+                    },
+                    {
+                    "internalType": "string",
+                    "name": "_ageVC",
+                    "type": "string"
+                    }
+                ],
+                "name": "registerVC",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+                }
+            ]
+            this.contract = await new web3.eth.Contract(abi, "0x58f82e407C37e74c6D76E205534659146D794a90")
+            // document.getElementById("contract").innerText = contract._address
+            console.log(this.contract)
+        
+            // await getVC()
+            
+            
+        },
+
+            registerVC() {
+                let nameVC = this.nameVC
+                let genderVC = this.genderVC
+                let ageVC = this.ageVC
+
+                this.contract.methods.registerVC(nameVC, genderVC, ageVC)
+                .then(function(receipt){
+                    console.log(receipt)
+                    
+                });
+
+            },
+
+            getVC() {
+                let addr = this.addr
+                let num = this.num
+                console.log('addr', addr)
+                this.contract.methods.getVC(addr, num)
+                .then(function(receipt){
+                    console.log(receipt)
+                    getList()
+                });
+
             },
             // encodeSection(data, shouldCanonicalize) {
             //     if (shouldCanonicalize === void 0) {
