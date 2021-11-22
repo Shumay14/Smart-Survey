@@ -4,19 +4,19 @@
         <div class="conact-section">
             <div class="container">
                 <div class="row">
-                                {{testData}}
 
                     <div class="col-12 row mx-auto test">
 
                         <b-card class="mr-2 col-4 text-center ">
-                             
-                                <h4>
-                                    설문 기간
-                                </h4>
-                             
-                                <div >
-                                    2021.11.01 ~ 2021.11.31
-                                </div>
+
+                            <h4>
+                                설문 기간
+                            </h4>
+                            <button @click="createChartA()">차트생성</button>
+
+                            <div>
+                                2021.11.01 ~ 2021.11.31
+                            </div>
                         </b-card>
 
                         <b-card class="mr-2 col text-center">
@@ -24,20 +24,24 @@
                                 요구 정보
                             </h4>
                             <div>
-                                <button type="button" class="favorite_Selected btn btn-outline-dark mx-1 my-1" @click="viewData('gender')">
+                                <button type="button" class="favorite_Selected btn btn-outline-dark mx-1 my-1"
+                                    @click="viewData('gender')">
                                     성별
                                 </button>
-                                <button type="button" class="favorite_Selected btn btn-outline-dark mx-1 my-1" @click="viewData('age')">
+                                <button type="button" class="favorite_Selected btn btn-outline-dark mx-1 my-1"
+                                    @click="viewData('age')">
                                     나이
                                 </button>
-                                <button type="button" class="favorite_Selected btn btn-outline-dark mx-1 my-1" @click="viewData('edu')">
+                                <button type="button" class="favorite_Selected btn btn-outline-dark mx-1 my-1"
+                                    @click="viewData('edu')">
                                     학력
                                 </button>
-                                <button type="button" class="favorite_Selected btn btn-outline-dark mx-1 my-1" @click="viewData('income')">
+                                <button type="button" class="favorite_Selected btn btn-outline-dark mx-1 my-1"
+                                    @click="viewData('income')">
                                     연봉
                                 </button>
-                 
-                                
+
+
                             </div>
                         </b-card>
 
@@ -59,7 +63,7 @@
                             </div>
                         </b-card>
 
-                         
+
                     </div>
 
                     <b-card class="my-2 col mr-2">
@@ -75,10 +79,12 @@
 
                     <div class="my-2 col-4 g-0 test">
                         <b-card class="mb-2 ">
-                            <Chart2 />
+                            <div id="chartA">
+                            </div>
                         </b-card>
                         <b-card>
-                            <Chart1 />
+                            <div id="chartB">
+                            </div>
                         </b-card>
 
                     </div>
@@ -126,7 +132,7 @@
                                         {{val1.edate}}
                                     </td>
                                 </tr>
-                               
+
 
                             </tbody>
                         </table>
@@ -164,17 +170,17 @@
 
 <script>
     import data from '@/data/contact.json'
-    import Chart from '@/components/sections/4.MyPage/_Chart';
-    import Chart1 from '@/components/sections/4.MyPage/_Chart1';
-    import Chart2 from '@/components/sections/4.MyPage/_Chart2';
+    // import ChartAge from '@/components/sections/4.MyPage/_ChartAge';
+    // import ChartEdu from '@/components/sections/4.MyPage/_ChartEdu';
     import ChartMain from '@/components/sections/4.MyPage/_ChartMain';
     import surveyData from '@/data/_surveyMock.json';
+    import ApexCharts from 'apexcharts'
+
 
     export default {
         components: {
-            Chart,
-            Chart1,
-            Chart2,
+            // ChartAge,
+            // ChartEdu,
             ChartMain,
         },
         data() {
@@ -184,8 +190,56 @@
                 selectSurvey: "",
                 selected: '1',
                 surveyData,
-                
+                     // 차트데이터 A
+                userDataChartA: {
+                    series: [44, 55, 41, 17, 15],
+                    chart: {
+                        type: 'donut',
+                    },
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: 200
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }],
+                    labels: ['20대', '30대', '40대', '50대']
+                },
+                // 차트데이터 B
+                userDataChartB: {
+                    series: [44, 55, 67, 83],
+                    chart: {
+                        height: 300,
+                        type: 'radialBar',
 
+                    },
+                    plotOptions: {
+                        radialBar: {
+                            dataLabels: {
+                                name: {
+                                    fontSize: '22px',
+                                },
+                                value: {
+                                    fontSize: '16px',
+                                },
+                                total: {
+                                    show: true,
+                                    label: '나이별 참여인원',
+                                    formatter: function (w) {
+                                        // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+                                        return 249
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    labels: ['20대', '30대', '40대', '50대']
+                },
+           
 
             }
         },
@@ -194,9 +248,20 @@
         methods: {
             viewData(i) {
                 console.log(i)
-                this.testData = i 
+                this.testData = i
             },
-         
+            createChartA() {
+                var chart = new ApexCharts(document.querySelector("#chartA"), this.userDataChartA);
+                chart.render();
+                // 테스트용으로 넣은
+                var chart = new ApexCharts(document.querySelector("#chartB"), this.userDataChartB);
+                chart.render();
+            },
+            createChartB() {
+                var chart = new ApexCharts(document.querySelector("#chartB"), this.userDataChartB);
+                chart.render();
+            }
+
         }
     };
 </script>
@@ -232,7 +297,7 @@
         }
     }
 
-   
+
 
     .text-center {
         text-align: center;
@@ -248,5 +313,4 @@
         display: inline;
         font-size: 0.5em;
     }
-
 </style>
