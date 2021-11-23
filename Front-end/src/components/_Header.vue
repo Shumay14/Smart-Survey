@@ -137,7 +137,8 @@
               <div class="info-menu--item ">
                 <span class="info-menu--item--head">총 설문 금액 : </span>
                 <span class="info-menu--item--data">
-                  {{ getCurrentSurveyInfo("total") }} 원
+                  4,853,700 원
+                  <!-- {{ getCurrentSurveyInfo("total") }} 원 -->
                 </span>
               </div>
             </router-link>
@@ -155,7 +156,8 @@
               <div class="info-menu--item">
                 <span class="info-menu--item--head">획득 가능한 수익 : </span>
                 <span class="info-menu--item--data">
-                  {{ getCurrentSurveyInfo("reward") }} 원
+                  569,350 원
+                  <!-- {{ getCurrentSurveyInfo("reward") }} 원 -->
                 </span>
               </div>
             </router-link>
