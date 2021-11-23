@@ -177,8 +177,8 @@
         categoryList: ["travel", "car", "music", "food", "electronic-products"],
         surveyInfo: {
           category: 4,
-          title: "",
           img: "",
+          title: "",
           desc: "",
           sdate: 211121,
           edate: 221121,
@@ -315,15 +315,8 @@
         return flag;
       },
       async addSurvey() {
-        // 설문 데이터 입력 여부 및 유효성 검증
-        
-        this.surveyInfo.sdate = parseInt(this.startDay.replaceAll('-','').substring(2,7))
-        this.surveyInfo.edate = parseInt(this.endDay.replaceAll('-','').substring(2,7))
-
-        // 유효성 검사 부분
-        // if (!this.validateCheck()) return 0;
-
         // 블록체인에 설문지 생성
+
         const web3 = new Web3(window.ethereum);
 
         var _account = (await web3.eth.getAccounts())[0];
@@ -357,11 +350,31 @@
         });
 
         // DB에 설문지 생성
-        console.log("POST", this.surveyInfo);
+        // 설문 데이터 입력 여부 및 유효성 검증
+        this.surveyInfo.sdate = parseInt(this.startDay.replaceAll('-','').substring(2,7))
+        this.surveyInfo.edate = parseInt(this.endDay.replaceAll('-','').substring(2,7))
 
+        // 유효성 검사 부분
+        // if (!this.validateCheck()) return 0;
+
+        console.log("POST", this.surveyInfo);
+        
         this.surveyInfo.vp = JSON.stringify(this.surveyInfo.vp)
 
-        this.$api("POST", "http://127.0.0.1:3000/api/survey", this.surveyInfo);
+        var data = [
+          this.surveyInfo.category,
+          this.surveyInfo.img,
+          this.surveyInfo.title,
+          this.surveyInfo.desc,
+          this.surveyInfo.sdate,
+          this.surveyInfo.edate,
+          this.surveyInfo.max,
+          this.surveyInfo.reward,
+          this.surveyInfo.vp,
+          this.surveyInfo.url
+        ]
+
+        this.$api("POST", "http://127.0.0.1:3000/api/survey", data);
 
         alert("설문이 생성되었습니다.");
         location.reload();
