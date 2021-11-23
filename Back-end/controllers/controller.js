@@ -85,11 +85,23 @@ module.exports = {
   },
   addUserItem: async () => {
     try {
-      console.log();
+      var params = Object.values(req.body);
 
-    } catch (err) {
+      console.log(await mariaDB.sendQuery("addUserItem", params));
+      if (req.body.param.length > 0) {
+        for (let key in req.body.param[0])
+          req.session[key] = req.body.param[0][key];
+          res.send(req.body.param[0]);
+      } else {
+        res.send({
+          error: "Please try again or contact system manager.",
+        });
+      }
 
-
+    } catch (err) { 
+      res.send({
+        error: "DB access error",
+      });
     }
   },
 
