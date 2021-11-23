@@ -4,33 +4,33 @@
     "serviceList": [
       {
         "image": "assets/img/service/service1.jpg",
-        "icon": "flaticon-002-welding",
-        "title": "Land Minning",
-        "desc": "잘 하고 있는 부분뿐만이 아니라 개선이 필요한 부분도 파악하고, 이 필요한 이 필요한 이 필요한 이 필요한 이러한 정보를 활용하여 투자에 집중합니다."
+        "icon": "fas fa-plane",
+        "title": "여행지 선정 조사",
+        "desc": "연령, 나이대 별 국내 및 해외 여행지 선호도 조사 및 여행 시 숙소 결정에 있어 중요한 역할을 차지하는 부분, 여행을 가는 방법 조사 "
       },
       {
         "image": "assets/img/service/service2.jpg",
-        "icon": "flaticon-004-walkie-talkie",
-        "title": "Work Management",
-        "desc": "자동차관련"
+        "icon": "fas fa-car",
+        "title": "자동차 운전 습관 설문조사",
+        "desc": "자차 보유자의 자동차 운전 습관과 배우자 자동차 운전 습관 차이 비교 및 운전자의 인적특성, 차량의 특성이 안전운전 습관에 미친 영향 조사"
       },
       {
         "image": "assets/img/service/service3.jpg",
-        "icon": "flaticon-015-cart",
-        "title": "Material Engineering",
-        "desc": "음악관련"
+        "icon": "fas fa-music",
+        "title": "온라인 음악 스트리밍 설문 조사",
+        "desc": "음악 콘텐츠 소비자들의 만족스럽고, 지속적인 음악 콘텐츠 소비를 돕기 위해 연령과 나이별 온라인 음악 스트리밍 사이트 선호조사"
       },
       {
         "image": "assets/img/service/service4.jpg",
-        "icon": "flaticon-010-tank-1",
-        "title": "Power and Energy",
-        "desc": "음식관련"
+        "icon": "fas fa-utensils",
+        "title": "한식에 대한 선호도 조사",
+        "desc": "한식 상품화를 위한 한식 편의식품 개발과 관련한 의견을 조사하여, 한식 편의식품 개발에 기초자료로 활용될 수 있도록 활용"
       },
       {
         "image": "assets/img/service/service5.jpg",
-        "icon": "flaticon-002-welding",
-        "title": "Land Minning",
-        "desc": "전자제품관련"
+        "icon": "fas fa-mobile-alt",
+        "title": "스마트폰 사용자조사",
+        "desc": " App 컨셉 및 시나리오 개발과 스마트폰 시장 확대를 위한 20/30대 잠재적 스마트폰 사용자 요구 분석 조사"
       }
     ]
   },

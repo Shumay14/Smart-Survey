@@ -32,12 +32,16 @@
             ></button>
           </div>
           <div class="modal-body modalcerti">
-            <input type="text" style="display: inline; width: 10rem" />
+            <input
+              type="text"
+              style="display: inline; width: 10rem"
+              v-model="vcData.payload.data"
+            />
             <button
               type="button"
               style="margin-left: 10px; display: inline"
               class="btn btn-secondary btn-sm"
-              @click="certification(vcname)"
+              @click="encrypt1(vcname)"
               v-if="certi == 1"
             >
               인증 요청
@@ -99,6 +103,8 @@
   </div>
 </template>
 <script>
+import Web3 from "web3";
+const sigUtil = require("eth-sig-util");
 export default {
   props: ["vcname", "changecolor"],
   name: "",
@@ -201,11 +207,28 @@ export default {
         `VC 인증 서버 응답 대기.../`,
         `VC 생성 완료!`,
       ],
+      VCtmptmp: "",
       certi: 1,
+      contract: "",
+      encryptionPublicKey: "",
+      vcData: {
+        header: {
+          type: "JWT",
+          alg: "X25519_XSalsa20_Poly1305",
+        },
+        payload: {
+          subject: null,
+          title: null,
+          data: null,
+        },
+      },
     };
   },
   setup() {},
   created() {},
+  mounted() {
+    this.GetContract();
+  },
   unmounted() {},
   methods: {
     convertkor(vcName) {
@@ -234,6 +257,128 @@ export default {
         console.log(vcname);
         console.log("끝");
       }, this.msgQueue.length * 100);
+    },
+    async GetContract() {
+      let abi = [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_add",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_num",
+              type: "uint256",
+            },
+          ],
+          name: "getVC",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "string",
+                  name: "nameVC",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "genderVC",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "ageVC",
+                  type: "string",
+                },
+              ],
+              internalType: "struct registryDID.repositoryVC",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_nameVC",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_genderVC",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_ageVC",
+              type: "string",
+            },
+          ],
+          name: "registerVC",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ];
+      const web3 = new Web3(window.ethereum);
+      this.contract = await new web3.eth.Contract(
+        abi,
+        "0x58f82e407C37e74c6D76E205534659146D794a90"
+      );
+      console.log("컨트렉트 연결");
+    },
+    async getPublicKey() {
+      // 이더리움 네트워크 연결
+      const provider = window.ethereum;
+      //계정 연동
+      const accounts = await provider.request({
+        method: "eth_requestAccounts",
+      });
+      const encryptionPublicKey = await provider.request({
+        method: "eth_getEncryptionPublicKey",
+        params: [accounts[0]],
+      });
+      console.log("공개키: " + encryptionPublicKey);
+      this.encryptionPublicKey = encryptionPublicKey;
+      return encryptionPublicKey;
+    },
+    async encrypt1(vcname) {
+      console.log("87777777777777777777777777" + this.vcData.payload.data);
+      const encryptionPublicKey = await this.getPublicKey();
+      const buf = Buffer.from(
+        JSON.stringify(
+          sigUtil.encrypt(
+            encryptionPublicKey,
+            {
+              data: this.vcData.payload.data,
+            },
+            // poly1305 버전
+            "x25519-xsalsa20-poly1305"
+          )
+        ),
+        "utf8"
+      );
+      //this.encrypt = "0x" + buf.toString("hex");
+
+      // 암호화한 데이터를 hex로 버퍼하여 16진수로 변경
+      this.encrypdata = "0x" + buf.toString("hex");
+      // console.log("버퍼 : " + buf);
+      // console.log(this.encrypdata);
+
+      // this.encrypDataJoin =
+      //   this.vcData.payload.subject +
+      //   this.vcData.payload.title +
+      //   this.encrypdata;
+      // console.log(this.encrypDataJoin);
+
+      console.log("여기!");
+      // await this.createVC(this.vcData.header, this.encrypDataJoin);
+      this.certification(vcname);
     },
   },
 };

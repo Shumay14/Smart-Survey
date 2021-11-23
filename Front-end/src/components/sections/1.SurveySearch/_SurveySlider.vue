@@ -26,8 +26,8 @@
                 <div class="swiper-button-next"></div> -->
               </div>
             </div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <!-- <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> -->
           </div>
         </div>
       </div>
@@ -92,9 +92,9 @@ export default {
         speed: 300,
         slidesPerView: 3,
         spaceBetween: 30,
-        // autoplay: {
-        //   delay: 1000,
-        // },
+        autoplay: {
+          delay: 3700,
+        },
         loop: true,
         navigation: {
           nextEl: ".swiper-button-next",

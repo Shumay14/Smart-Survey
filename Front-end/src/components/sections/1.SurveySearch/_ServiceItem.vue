@@ -13,21 +13,20 @@
         </router-link>
       </div>
       <div class="icon" style="color: white">
-        <!-- <i :class="service.icon"></i> -->
-        100 ETH
+        <i :class="service.icon"></i>
       </div>
     </div>
     <div class="service-grid-item__content">
       <h3 class="title">
-        <router-link to="/service-details">
+        <router-link to="_ModalSelect">
           <!-- {{ convertcatekor(interestlist) }} 관련 설문조사 -->
-          정부혁신 배달음식 조사
+          {{ service.title }}
         </router-link>
       </h3>
       <p class="subtitle">{{ service.desc }}</p>
-      <router-link class="see-more-link" to="/service-details"
+      <!-- <router-link class="see-more-link" to="/service-details"
         >참여하기</router-link
-      >
+      > -->
     </div>
   </div>
 </template>

@@ -150,7 +150,7 @@ export default {
       catename = this.$store.state.eng_category[catename];
       switch (catename) {
         case "travel":
-          return "fas fa-suitcase-rolling fa-4x";
+          return "fas fa-plane fa-4x";
         case "car":
           return "fas fa-car fa-4x";
         case "music":

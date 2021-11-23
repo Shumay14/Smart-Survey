@@ -19,13 +19,21 @@
 }
 
 .service-grid-item {
+  box-shadow: 3px 3px 4px 0px grey;
+  padding: 10px 10px 25px 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+  border: 1px solid #ededed;
+  border-top: 2px solid #ccc;
+  border-left: 2px solid #ccc;
   &__image {
     position: relative;
     margin-bottom: 60px;
     .icon {
       width: 70px;
       height: 70px;
-      line-height: 70px;
+      line-height: 90px;
       text-align: center;
       background-color: #393939;
       position: absolute;

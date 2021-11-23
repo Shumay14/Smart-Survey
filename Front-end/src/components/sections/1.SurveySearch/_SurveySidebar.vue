@@ -9,7 +9,7 @@
         </form>
       </div>
     </div> -->
-    <div id="tools">
+    <!-- <div id="tools">
       <div class="styled-select">
         <select
           name="sort_rating"
@@ -23,7 +23,7 @@
           <option value="partisort">참여자순</option>
         </select>
       </div>
-    </div>
+    </div> -->
     <!-- VC-Tag 선택 위젯 시작 -->
     <div class="sidebar-widget">
       <h3 class="sidebar-title">{{ blogSidebar.tagTitle }}</h3>
@@ -79,7 +79,7 @@
     <!-- 인기있는 설문 위젯 시작 -->
     <div class="sidebar-widget mb-5">
       <h3 class="sidebar-title">{{ blogSidebar.popularPostTitle }}</h3>
-      <!-- <lottie-player
+      <lottie-player
         src="https://assets6.lottiefiles.com/packages/lf20_oblw8lrt.json"
         background="transparent"
         speed="1"
@@ -88,7 +88,7 @@
         loop
         autoplay
         v-show="loadingicon == 'loading'"
-      ></lottie-player> -->
+      ></lottie-player>
       <div
         v-show="loadingicon == 'loadshow'"
         class="sidebar-blog"
