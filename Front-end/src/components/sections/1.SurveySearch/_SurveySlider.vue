@@ -9,7 +9,7 @@
             <!-- -->
             <div class="swiper-container service-slider__container">
               <div class="swiper-wrapper service-slider__wrapper">
-                <swiper :options="swiperOption">
+                <swiper :options="swiperOption" style="width: 74em">
                   <div
                     class="swiper-slide"
                     v-for="(service, num) in data.serviceOne.serviceList"
@@ -78,7 +78,6 @@ export default {
           1200: {
             slidesPerView: 3,
           },
-
           768: {
             slidesPerView: 2,
           },
