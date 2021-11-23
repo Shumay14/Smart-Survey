@@ -74,9 +74,13 @@
                 다른 설문조사 사이트보다 <br />
                 <strong>많은 보상</strong> 획득
               </p>
-              <p class="description">
+              <!-- <p class="description">
                 설문 의뢰업체가 요구하는 선택적 정보사항을 추가로 제공하고 더
                 많은 보상을 획득 할 수 있습니다.
+              </p> -->
+              <p class="description">
+                서베이존은 탈락되는 패널이 발생하지 않기 때문에 
+                설문조사에 참여하는 패널들에게 보상이 집중됩니다.
               </p>
             </div>
             <div class="col-1"></div>
@@ -95,13 +99,13 @@
             <div class="col-1"></div>
             <div class="col-6" style="text-align: end">
               <h1 class="title-sub2">
-                설문 도중 탈락이 없는<br />
+                설문 도중 중단이 없는<br />
                 <strong>맞춤형 설문조사</strong> 제공
               </h1>
 
               <p class="description">
-                서베이존은 패널 맞춤형 설문을 제공하기 때문에, 조건에
-                충족되지않아 도중 탈락되는 일이 발생하지 않습니다.
+                패널들의 조건에 맞는 맞춤형 설문을 제공하기 때문에 
+                조건 미달로 설문 도중 중단되는 일이 발생하지 않습니다.
               </p>
             </div>
           </section>
@@ -110,14 +114,21 @@
           <!-- 섹션3 시작 -->
           <section class="row content">
             <div class="col-6">
-              <h1 class="title-sub2">
+              <!-- <h1 class="title-sub2">
                 블록체인을 활용하여<br />
                 보호되는 <strong>개인정보</strong>
-              </h1>
+              </h1> -->
+              <h1 class="title-sub2">
+                선택적 제공을 통해<br />
+                보호되는 <strong>개인정보</strong>
+              </h1>              
 
-              <p class="description">
+              <!-- <p class="description">
                 사용자의 모든 개인정보는 그 누구도 동의없이 확인할 수 없도록
                 암호화되어 블록체인 네트워크 상에서 관리됩니다.
+              </p> -->
+              <p class="description">
+                서베이존의 설문조사 참여 시 필요한 개인 정보는 사용자가 직접 선택하여 제공할 수 있기 때문에 개인 정보를 보호할 수 있습니다.
               </p>
             </div>
 
