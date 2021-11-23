@@ -12,4 +12,7 @@ router.post("/api/survey", controller.addSurveyItem);
 router.get("/apis/:alias", controller.getQuery);
 router.post("/apis/:alias", controller.postQuery);
 
+router.post("/api/adduseritem", controller.addUserItem);
+router.post("/api/registryvc", controller.registerVC);
+
 module.exports = router;

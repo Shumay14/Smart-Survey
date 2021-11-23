@@ -62,6 +62,7 @@ module.exports = {
       });
     }
   },
+
   addSurveyItem: async (req, res) => {
     try {
       var params = Object.values(req.body);
@@ -80,6 +81,25 @@ module.exports = {
       res.send({
         error: "DB access error",
       });
+    }
+  },
+  addUserItem: async () => {
+    try {
+      console.log();
+
+    } catch (err) {
+
+
+    }
+  },
+
+  registerVC: async (res, req) => { 
+    try {
+      console.log();
+
+    } catch (err) {
+
+
     }
   },
 
@@ -116,4 +136,6 @@ module.exports = {
       });
     }
   },
+  
+  
 };
