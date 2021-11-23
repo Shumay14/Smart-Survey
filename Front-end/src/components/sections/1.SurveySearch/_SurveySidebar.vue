@@ -79,7 +79,7 @@
     <!-- 인기있는 설문 위젯 시작 -->
     <div class="sidebar-widget mb-5">
       <h3 class="sidebar-title">{{ blogSidebar.popularPostTitle }}</h3>
-      <lottie-player
+      <!-- <lottie-player
         src="https://assets6.lottiefiles.com/packages/lf20_oblw8lrt.json"
         background="transparent"
         speed="1"
@@ -88,7 +88,7 @@
         loop
         autoplay
         v-show="loadingicon == 'loading'"
-      ></lottie-player>
+      ></lottie-player> -->
       <div
         v-show="loadingicon == 'loadshow'"
         class="sidebar-blog"

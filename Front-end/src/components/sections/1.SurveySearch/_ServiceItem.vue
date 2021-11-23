@@ -4,20 +4,24 @@
       <div class="service-grid-item__image-wrapper">
         <router-link to="/service-details">
           <img
-            :src="require('../../../../src/assets/img/category/' + `${imagename}`)"
+            :src="
+              require('../../../../src/assets/img/category/' + `${imagename}`)
+            "
             class="img-fluid"
             alt="service thumb"
           />
         </router-link>
       </div>
-      <div class="icon">
-        <i :class="service.icon"></i>
+      <div class="icon" style="color: white">
+        <!-- <i :class="service.icon"></i> -->
+        100 ETH
       </div>
     </div>
     <div class="service-grid-item__content">
       <h3 class="title">
         <router-link to="/service-details">
-          {{ convertcatekor(interestlist) }}
+          <!-- {{ convertcatekor(interestlist) }} 관련 설문조사 -->
+          정부혁신 배달음식 조사
         </router-link>
       </h3>
       <p class="subtitle">{{ service.desc }}</p>

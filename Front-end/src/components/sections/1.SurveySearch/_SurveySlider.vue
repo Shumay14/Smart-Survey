@@ -53,18 +53,19 @@ export default {
       return JSON.parse(obj.interests);
     })[0];
 
-    console.log(this.interestData);
+    console.log(
+      this.$store.state.metamaskAdd + " 관심사 목록 : " + this.interestData
+    );
   },
   data() {
     return {
       data,
       imagefile: [
-        "car.png",
-        "electronic_products.png",
-        "food.png",
-        "music.png",
         "travel.png",
+        "car.png",
+        "music.png",
         "food.png",
+        "electronic_products.png",
       ],
       interestData: [],
       swiperOption: {

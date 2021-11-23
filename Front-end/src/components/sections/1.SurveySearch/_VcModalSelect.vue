@@ -18,7 +18,7 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">
@@ -32,30 +32,42 @@
             ></button>
           </div>
           <div class="modal-body modalcerti">
-            <input type="text" style="display: inline; margin-top: 2rem" />
+            <input type="text" style="display: inline; width: 10rem" />
             <button
               type="button"
-              style="margin-left: 4rem; display: inline"
-              class="btn btn-secondary"
+              style="margin-left: 10px; display: inline"
+              class="btn btn-secondary btn-sm"
               @click="certification(vcname)"
               v-if="certi == 1"
             >
               인증 요청
             </button>
-            <div class="lds-dual-ring" v-if="certi == 2"></div>
-            <span style="font-weight: bold; color: #ff7f00" v-if="certi == 2"
+            <!-- <div class="lds-dual-ring" v-if="certi == 2"></div> -->
+            <div class="lds-ring" v-if="certi == 2">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <span
+              style="font-weight: bold; margin-left: 1em; color: #00c3ff"
+              v-if="certi == 2"
               >인증중</span
             >
             <i
               class="fas fa-check"
-              fa-10x
-              style="color: green; font-size: 1.5rem; margin-left: 4rem"
+              fa-xs
+              style="color: green; font-size: 1rem; margin-left: 1rem"
               v-if="certi == 3"
             ></i>
-            <span style="font-weight: bold; color: green" v-if="certi == 3"
+            <span
+              style="font-weight: bold; margin-left: 0.5em; color: green"
+              v-if="certi == 3"
               >인증완료</span
             >
-            <p>{{ this.logMsg }}</p>
+            <p style="font-size: 12px">
+              {{ this.logMsg }}
+            </p>
             <!-- <lottie-player
               src="https://assets6.lottiefiles.com/packages/lf20_oblw8lrt.json"
               background="transparent"
@@ -93,7 +105,7 @@ export default {
   components: {},
   data() {
     return {
-      logMsg: "VC 생성 대기중",
+      logMsg: this.convertkor(this.vcname) + "를 입력해주세요. ",
       msgCnt: 0,
       msgQueue: [
         `VC 인증 서버 연결중...\\`,
@@ -229,10 +241,11 @@ export default {
 
 <style scoped>
 .modalcerti {
-  height: 8rem;
+  height: 6rem;
 }
+
 .lds-dual-ring {
-  margin-left: 4rem;
+  margin-left: 2rem;
   display: inline-block;
   width: 18px;
   height: 45px;
@@ -240,15 +253,52 @@ export default {
 .lds-dual-ring:after {
   content: " ";
   display: block;
-  width: 64px;
-  height: 64px;
+  width: 34px;
+  height: 34px;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid #ff7f00;
-  border-color: #ff7f00 transparent #ff7f00 transparent;
+  border: 6px solid #00c3ff;
+  border-color: #00c3ff transparent #00c3ff transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  margin: 2px;
+  border: 4px solid #00c3ff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #00c3ff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
   0% {
     transform: rotate(0deg);
   }
