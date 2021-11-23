@@ -1,5 +1,5 @@
 <template>
-    <div id="chart5">
+    <div id="chartMain">
 
     </div>
 </template>
@@ -11,7 +11,7 @@
         components: {},
         data() {
             return {
-                options: {
+                chartMainOptions: {
                     series: [{
                         name: '선택 1번',
                         data: [44, 55, 41, 37, 22, 43, 21, 1, 1, 1],
@@ -72,7 +72,7 @@
         },
         created() {},
         mounted() {
-            var chart = new ApexCharts(document.querySelector("#chart5"), this.options);
+            var chart = new ApexCharts(document.querySelector("#chartMain"), this.chartMainOptions);
             chart.render();
         },
         updated() {},
@@ -80,8 +80,3 @@
         methods: {}
     }
 </script>
-<style>
-    .red {
-        background: #f8ae71;
-    }
-</style>
