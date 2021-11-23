@@ -95,11 +95,11 @@
         v-for="(popularItem, num) in popularSurvey"
         :key="num"
       >
-        <div to="" class="image">
+        <div to="" class="image" style="height: 67px">
           <!-- <img :src="popularItem.img" alt="image" /> -->
           <i
             v-bind:class="iconimage(popularItem.category)"
-            style="margin-left: 1rem"
+            style="margin-left: 1.5rem; margin-top: 1rem"
           ></i>
         </div>
         <div class="content">
@@ -269,15 +269,15 @@ export default {
       catename = this.$store.state.eng_category[catename];
       switch (catename) {
         case "travel":
-          return "fas fa-suitcase-rolling fa-4x";
+          return "fas fa-plane fa-3x";
         case "car":
-          return "fas fa-car fa-4x";
+          return "fas fa-car fa-3x";
         case "music":
-          return "fas fa-music fa-4x";
+          return "fas fa-music fa-3x";
         case "food":
-          return "fas fa-utensils fa-4x";
+          return "fas fa-utensils fa-3x";
         case "electronic-products":
-          return "fas fa-mobile-alt fa-4x";
+          return "fas fa-mobile-alt fa-3x";
         default:
           break;
       }
