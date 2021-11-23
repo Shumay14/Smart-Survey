@@ -348,37 +348,40 @@ export default {
       return encryptionPublicKey;
     },
     async encrypt1(vcname) {
-      console.log("87777777777777777777777777" + this.vcData.payload.data);
-      const encryptionPublicKey = await this.getPublicKey();
-      const buf = Buffer.from(
-        JSON.stringify(
-          sigUtil.encrypt(
-            encryptionPublicKey,
-            {
-              data: this.vcData.payload.data,
-            },
-            // poly1305 버전
-            "x25519-xsalsa20-poly1305"
-          )
-        ),
-        "utf8"
-      );
-      //this.encrypt = "0x" + buf.toString("hex");
+      try {
+        const encryptionPublicKey = await this.getPublicKey();
+        const buf = Buffer.from(
+          JSON.stringify(
+            sigUtil.encrypt(
+              encryptionPublicKey,
+              {
+                data: this.vcData.payload.data,
+              },
+              // poly1305 버전
+              "x25519-xsalsa20-poly1305"
+            )
+          ),
+          "utf8"
+        );
+        //this.encrypt = "0x" + buf.toString("hex");
 
-      // 암호화한 데이터를 hex로 버퍼하여 16진수로 변경
-      this.encrypdata = "0x" + buf.toString("hex");
-      // console.log("버퍼 : " + buf);
-      // console.log(this.encrypdata);
+        // 암호화한 데이터를 hex로 버퍼하여 16진수로 변경
+        this.encrypdata = "0x" + buf.toString("hex");
+        // console.log("버퍼 : " + buf);
+        // console.log(this.encrypdata);
 
-      // this.encrypDataJoin =
-      //   this.vcData.payload.subject +
-      //   this.vcData.payload.title +
-      //   this.encrypdata;
-      // console.log(this.encrypDataJoin);
+        // this.encrypDataJoin =
+        //   this.vcData.payload.subject +
+        //   this.vcData.payload.title +
+        //   this.encrypdata;
+        // console.log(this.encrypDataJoin);
 
-      console.log("여기!");
-      // await this.createVC(this.vcData.header, this.encrypDataJoin);
-      this.certification(vcname);
+        console.log("여기!");
+        // await this.createVC(this.vcData.header, this.encrypDataJoin);
+        this.certification(vcname);
+      } catch (e) {
+        alert(this.convertkor(vcname) + "를 입력해주세요");
+      }
     },
   },
 };
