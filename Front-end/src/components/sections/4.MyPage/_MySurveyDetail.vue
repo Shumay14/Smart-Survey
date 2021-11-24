@@ -5,10 +5,14 @@
       <div class="container">
         <div class="row">
           <div class="col-12 row mx-auto test">
+            <b-card class="mr-2 mb-2 col-12 text-center">
+              <h4>설문 제목</h4>
+              <div v-if="titletitle != 0">{{ titletitle }}</div>
+            </b-card>
             <b-card class="mr-2 col-4 text-center">
               <h4>설문 기간</h4>
-
-              <div>2021.11.01 ~ 2021.11.31</div>
+              <div v-if="startstart != 0">{{ startstart }} ~ {{ endend }}</div>
+              <!-- <div>2021.11.01 ~ 2021.11.31</div> -->
             </b-card>
 
             <b-card class="mr-2 col text-center">
@@ -28,24 +32,29 @@
 
             <b-card class="mr-2 col-2 text-center">
               <h4>보상금액</h4>
-              <div>3 ETH</div>
+              <div v-if="goldgold != 0">{{ goldgold }} ETH</div>
+              <!-- <div>3 ETH</div> -->
             </b-card>
 
             <b-card class="col-2 text-center">
               <h4>참여인원</h4>
-              <div>150명</div>
+              <div v-if="peoplepeople != 0">{{ peoplepeople }}명</div>
+              <!-- <div>150명</div> -->
             </b-card>
           </div>
 
-          <b-card class="my-2 col mr-2">
+          <b-card class="my-2 col mr-2 text-center">
+            <h4 v-if="showshow == 0">그래프1</h4>
             <div id="chartMain"></div>
           </b-card>
 
-          <div class="my-2 col-4 g-0 test">
+          <div class="my-2 col-4 g-0 test text-center">
             <b-card class="mb-2">
+              <h4 v-if="showshow == 0">그래프2</h4>
               <div id="chartA"></div>
             </b-card>
             <b-card>
+              <h4 v-if="showshow == 0">그래프3</h4>
               <div id="chartB"></div>
             </b-card>
           </div>
@@ -175,6 +184,12 @@ export default {
   },
   data() {
     return {
+      showshow: "",
+      titletitle: "",
+      startstart: "",
+      endend: "",
+      goldgold: "",
+      peoplepeople: "",
       viewChartDetail: false,
       today: null,
       data,
@@ -231,7 +246,7 @@ export default {
           colors: ["#fff"],
         },
         title: {
-          text: "배달 음식 관련 조사",
+          text: "",
         },
         xaxis: {
           categories: [
@@ -466,7 +481,7 @@ export default {
     };
   },
   mounted() {
-    this.selectChartData.vp = this.surveyData.projectGrid[0].vp;
+    // this.selectChartData.vp = this.surveyData.projectGrid[0].vp;
 
     // 오늘 날짜를 구했고
     let today = new Date();
@@ -493,23 +508,22 @@ export default {
         // console.log( this.fillterSurveyDataPast);
       }
     }
+    // var chartMain = new ApexCharts(
+    //   document.querySelector("#chartMain"),
+    //   this.chartMainOptions
+    // );
+    // var chartA = new ApexCharts(
+    //   document.querySelector("#chartA"),
+    //   this.userDataChartAge
+    // );
+    // var chartB = new ApexCharts(
+    //   document.querySelector("#chartB"),
+    //   this.userDataChartGender
+    // );
 
-    var chartMain = new ApexCharts(
-      document.querySelector("#chartMain"),
-      this.chartMainOptions
-    );
-    var chartA = new ApexCharts(
-      document.querySelector("#chartA"),
-      this.userDataChartAge
-    );
-    var chartB = new ApexCharts(
-      document.querySelector("#chartB"),
-      this.userDataChartGender
-    );
-
-    chartMain.render();
-    chartA.render();
-    chartB.render();
+    // chartMain.render();
+    // chartA.render();
+    // chartB.render();
   },
 
   methods: {
@@ -536,6 +550,13 @@ export default {
       // chartmain의 응답 데이터를 바꿔주는 역할
       this.chartMainOptions.series = this.selectChartData.series;
 
+      this.showshow = 1;
+      this.titletitle = this.selectChartData.title;
+      this.startstart = this.selectChartData.sdate;
+      this.endend = this.selectChartData.edate;
+      this.goldgold = this.selectChartData.reward;
+      this.peoplepeople = this.selectChartData.participate.num;
+
       // 선택된 서베이데이터의 VP가 영어로 되어있기에 바꿔주는 역할
       // this.selectChartData.vp
       // for (var i = 0; i < this.selectChartData.vp.length; i++) {
@@ -545,7 +566,7 @@ export default {
 
       //     }
       // }
-
+      //   this.chartMainOptions.title.text = this.selectChartData.title;
       this.createChartA();
     },
     createChartA() {
