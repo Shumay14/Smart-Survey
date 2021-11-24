@@ -143,7 +143,7 @@
                         style="width: 7em"
                       >
                         로그인
-                        <Web3 />
+                        <Web3Compo />
                       </label>
                       <!-- 로그인 버튼 종료 -->
 
@@ -225,14 +225,15 @@
 </template>
 <script>
 import FixedHeader from "vue-fixed-header";
-import Web3 from "@/components/_Web3";
+import Web3Compo from "@/components/_Web3";
+import Web3 from "web3";
 import Logo from "@/components/_Logo";
 import MetamaskLogo from "@/components/_MetamaskLogo";
 import surveydata from "../data/_survey";
 export default {
   components: {
     FixedHeader,
-    Web3,
+    Web3Compo,
     surveydata,
     MetamaskLogo,
     Logo,
@@ -244,7 +245,26 @@ export default {
       //   this.$store.state.metamaskAdd +
       //   "/200?format=png",
       headerInfoShow: true,
+      mymetamask_addr: this.$store.state.metamaskAdd,
     };
+  },
+  mounted() {
+    this.loading = setInterval(() => {
+      web3 = new Web3(window.web3.currentProvider);
+      var tmp;
+      web3.eth.getAccounts().then((array) => {
+        tmp = array[0];
+        if (tmp == undefined) {
+          this.$store.commit("metamaskAdd", null);
+        }
+        if (tmp != undefined) {
+          if (this.mymetamask_addr != tmp) location.reload();
+          this.$store.commit("metamaskAdd", tmp);
+          this.mymetamask_addr = this.$store.state.metamaskAdd;
+          // this.mymetamaskaddr_selec = true;
+        }
+      });
+    }, 1000);
   },
   computed: {
     hiddenInfo: function () {
