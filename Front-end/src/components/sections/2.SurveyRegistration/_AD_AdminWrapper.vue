@@ -152,7 +152,7 @@
             </table>
           </div>
           <div class="col-12 d-flex justify-content-center">
-            <input type="submit" value="등록하기" @click="addSurvey()" />
+            <input type="submit" value="등록하기" style="border-radius:5px" @click="addSurvey()" />
           </div>
         </div>
       </div>
