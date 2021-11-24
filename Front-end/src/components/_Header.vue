@@ -103,7 +103,7 @@
                                   </li>
                                   <li>
                                     <router-link to="/mysurvey"
-                                      >설문조사 결과</router-link
+                                      >설문분석</router-link
                                     >
                                   </li>
                                   <li>
