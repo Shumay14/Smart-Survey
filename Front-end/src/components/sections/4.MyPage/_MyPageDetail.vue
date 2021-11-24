@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="col-9">
-                  <h5>메타마스크 주소</h5>
+                  <h5 style="margin-top:20px">메타마스크 주소</h5>
                   <div class="metamaskAddress">
                     <p
                       v-show="this.$store.state.metamaskAdd"
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="col-9">
-                  <h5>카카오톡 본인 인증</h5>
+                  <h5 style="margin-top:20px">카카오톡 본인 인증</h5>
                   <div class="">
                     <KakaoLogin />
                   </div>
