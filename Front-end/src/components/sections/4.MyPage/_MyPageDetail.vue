@@ -15,7 +15,7 @@
             <div class="row g-0">
               <!-- 1번쨰 시작-->
               <div class="col-6 row g-0 mx-auto">
-                <div class="col-2">
+                <div class="col-2 d-flex justify-content-center align-items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -58,7 +58,7 @@
 
               <!-- 2번째 시작 -->
               <div class="col-6 row g-0 mx-auto">
-                <div class="col-2">
+                <div class="col-2 d-flex justify-content-center align-items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
