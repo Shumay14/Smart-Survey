@@ -38,7 +38,7 @@
                                 보상금액
                             </h4>
                             <div>
-                                3 SUB
+                                3 ETH
                             </div>
                         </b-card>
 
@@ -522,7 +522,7 @@
 
                 // 보상금액
                 this.selectChartData.reward
-                console.log("리워드:", this.selectChartData.reward + "SUB")
+                console.log("리워드:", this.selectChartData.reward + "ETH")
 
 
                 // chartmain의 응답 데이터를 바꿔주는 역할
