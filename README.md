@@ -1,19 +1,3 @@
-# castro
+탈중앙화 신원인증 기반의 패널인증 설문 플랫폼
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+플랫폼 명 : "디지털존"
